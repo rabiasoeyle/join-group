@@ -9,12 +9,11 @@
     *{
         margin:0;
         box-sizing: border-box;
-        border: solid 2px red;
     }
-    header{
+    .header{
        font-weight: 400;
        font-size: 20px;
-       font-family: 'inter';
+       font-family: 'Inter';
        max-width:1440px;
        height:96px;
        display:flex;
@@ -22,12 +21,13 @@
        align-items: center;
        position:sticky;
        top:0;
+       box-shadow: 0.1px 0.5px 5px 1px rgb(0 0 0 / 30%); 
     }
     .sidebar{
         background-color: #2A3647;
         width:232px;
         height:100vh;
-        position: fixed;
+        position: sticky;
         top:0; 
         left:0;
         display:flex;
@@ -56,6 +56,15 @@
         justify-content: flex-start;
         
     }
+    .sidebar_links a:hover{
+        background-color: aqua;
+    }
+    .sidebar_links{
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
     .sidebar_bottom a{
         text-decoration: none;
         color:white;
@@ -69,17 +78,46 @@
     .icons_sidebar{
         width:40px;
         height:40px;
+        margin-right:12px;
     }
+    .main{
+        display:flex;
+        min-height:100vh;
+    }
+    .body_right{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .circle{
+        border-radius:100%;
+        border:solid 2px black;
+        padding:10px;
+        display: flex;
+        width: 56px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .help_initials{
+        display: flex;
+        align-items: center;
+        gap:16px;
+        height:56px;
+        width:104px;
+    }
+    .help_img{
+        width:32px;
+        height:32px;
+    }
+    .content{
+        background-color: #f6f7f8;
+    }
+
 </style>
 </head>
 <body>
-    <header>
-        <diV>Kanban Project Management Tool</diV>
-        <div>
-            <img src="../assets/img/help.png">
-            <div></div>
-        </div>
-    </header>
+    <div class="main">
     <div class="sidebar">
         <div class="sidebar_top">
             <img class="join_Logo" src="../assets/img/join_logo_vector.png">
@@ -95,6 +133,17 @@
             <a href="impressum.html">Impressum</a>
         </div>
     </div>
-    <div class="content">Test Lauft</div>
+    <div class="body_right">
+        <div class="header">
+            <diV>Kanban Project Management Tool</diV>
+            <div class="help_initials">
+                <img class="help_img"src="../assets/img/help.png">
+                <div  class="circle" id="circle">GL</div>
+            </div>
+        </div>
+        <div class="content" id="content">
+        </div>
+    </div>
+</div>
 </body>
 </html>

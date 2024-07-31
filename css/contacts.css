@@ -1,6 +1,7 @@
 .contacts-list{
     background-color: red;
     height:100%;
+    width: 30px;
 }
 .contact-details{
     background-color: aqua;

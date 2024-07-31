@@ -9,11 +9,14 @@
     <link rel="stylesheet" href="../css/contacts.css">
     <link rel="stylesheet" href="../css/style.css">
     <script type="text/javascript" src="../script.js"></script>
+    <script type="text/javascript" src="../js/contacts.js"></script>
 </head>
 <body onload="includeHTML()">
-    <div w3-include-html="index.html"></div>
+    <div w3-include-html="sidebar.html"></div>
+    <!-- <div class="content-contacts" id ="content-contacts"></div> -->
 <script>
-    includeHTML();
+    await includeHTML();
+    init();
 </script>
 </body>
 

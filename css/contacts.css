@@ -12,3 +12,11 @@
     width:100%;
     display:flex;
 }
+.add-contacts-button{
+    position:sticky;
+    width:80%;
+    height:56px;
+    border-radius: 10px;
+    border:solid 1px;
+    padding: 12px 0px;
+}

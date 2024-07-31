@@ -1,13 +1,13 @@
-.contacts-list{
-    background-color: red;
-    height:100%;
+.contacts-list {
+  background-color: red;
+  height: 100%;
 }
-.contact-details{
-    background-color: aqua;
-    height:100%;
-    width:30vw;
+.contact-details {
+  background-color: aqua;
+  height: 100%;
+  width: 30vw;
 }
-.content-contacts{
-    width:70vW;
-    height:100%;
+.content-contacts {
+  width: 70vw;
+  height: 100%;
 }

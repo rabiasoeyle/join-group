@@ -10,3 +10,7 @@ function renderMainDivs(){
     <div class="contacts-list" id="contactsList"></div>
     <div class="contact-details" id="contactDetails"></div`
 }
+
+function renderContacts(){
+    
+}

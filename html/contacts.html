@@ -4,8 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakte</title>
+<style>
+    *{
+        margin:0;
+        box-sizing: border-box;
+    }
+    header{
+       font-weight: 400;
+       font-size: 20px;
+       max-width:1440px;
+       height:96px;
+       display:flex;
+       justify-content: center;
+       align-items: center;
+       position:sticky;
+       top:0;
+
+    }
+    .sidebar{
+        background-color: #2A3647;
+        width:232px;
+        height:100vh;
+        position: fixed;
+        top:0; 
+        left:0;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+
+
+    }
+    .content{
+        height:200vh;
+    }
+    .join_Logo{
+        margin-top:4vh;
+        width:50%;
+        height:auto;
+    }
+</style>
 </head>
 <body>
-    
+    <header>Kanban Project Management Tool</header>
+    <div class="sidebar">
+        <img class="join_Logo" src="../assets/img/join_logo_vector.png">
+        <div>
+            <a href="summary.html">Summary</a>
+            <a href="addTask.html">Add Task</a>
+            <a href="board.html">Board</a>
+            <a href="contacts.html">Contacts</a>
+        </div>
+        <div>
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="impressum.html">Impressum</a>
+        </div>
+    </div>
+    <div class="content"></div>
 </body>
 </html>

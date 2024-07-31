@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .contacts-list {
   background-color: red;
   height: 100%;
@@ -11,3 +12,27 @@
   width: 70vw;
   height: 100%;
 }
+=======
+.contacts-list{
+    background-color: white;
+    min-height: 100%;
+    width: 30vW;
+}
+.contact-details{
+    background-color: #f6f7f8;
+    height:100%;
+    flex: 1;
+}
+.contacts-content{
+    width:100%;
+    display:flex;
+}
+.add-contacts-button{
+    position:sticky;
+    width:80%;
+    height:56px;
+    border-radius: 10px;
+    border:solid 1px;
+    padding: 12px 0px;
+}
+>>>>>>> 71e994bcdcb9f3ddc046b313e15e6ecc333fa2d4

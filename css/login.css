@@ -16,7 +16,7 @@
   position: sticky;
   top: 0;
   left: 0;
-    right: 0;
+  right: 0;
   background-color: #f6f7f8;
 }
 
@@ -87,16 +87,20 @@
 
 .content {
   background-color: #f6f7f8;
-  height: 500vh;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .login_base {
-    display: flex;
-    background-color: white;
-    width: 40vw;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  background-color: white;
+  width: 40vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .font_color {

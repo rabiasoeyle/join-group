@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakte</title>
-    <link rel="stylesheet" href="../css/f">
+    <link rel="stylesheet" href="../css/fonts.css">
 <style>
     *{
         margin:0;
         box-sizing: border-box;
+        border: solid 2px red;
     }
     header{
        font-weight: 400;
        font-size: 20px;
-       font-family: Inter;
+       font-family: 'inter';
        max-width:1440px;
        height:96px;
        display:flex;
-       justify-content: center;
+       justify-content: space-evenly;
        align-items: center;
        position:sticky;
        top:0;
@@ -32,31 +33,64 @@
         display:flex;
         flex-direction: column;
         align-items: center;
+        padding: 64px 0px;
     }
     .content{
         height:200vh;
     }
     .join_Logo{
-        margin-top:4vh;
-        width:50%;
         height:auto;
     }
-    .sidebar_link{
+    .sidebar_top{
+        height:50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .sidebar_links a{
         text-decoration: none;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content: flex-start;
+        
+    }
+    .sidebar_bottom a{
+        text-decoration: none;
+        color:white;
+    }
+    .sidebar_bottom{
+        height:50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    .icons_sidebar{
+        width:40px;
+        height:40px;
     }
 </style>
 </head>
 <body>
-    <header>Kanban Project Management Tool</header>
-    <div class="sidebar">
-        <img class="join_Logo" src="../assets/img/join_logo_vector.png">
-        <div class="sidebar_links">
-            <a href="summary.html">Summary</a>
-            <a href="addTask.html">Add Task</a>
-            <a href="board.html">Board</a>
-            <a href="contacts.html">Contacts</a>
-        </div>
+    <header>
+        <diV>Kanban Project Management Tool</diV>
         <div>
+            <img src="../assets/img/help.png">
+            <div></div>
+        </div>
+    </header>
+    <div class="sidebar">
+        <div class="sidebar_top">
+            <img class="join_Logo" src="../assets/img/join_logo_vector.png">
+            <div class="sidebar_links">
+                <a href="summary.html"><img class="icons_sidebar"src="../assets/img/summary.png">Summary</a>
+                <a href="addTask.html"><img class="icons_sidebar" src="../assets/img/addTask.png">Add Task</a>
+                <a href="board.html"><img  class="icons_sidebar" src="../assets/img/bord.png">Board</a>
+                <a href="contacts.html"><img class="icons_sidebar" src="../assets/img/contacts.png">Contacts</a>
+            </div>
+        </div>
+        <div class="sidebar_bottom">
             <a href="datenschutz.html">Datenschutz</a>
             <a href="impressum.html">Impressum</a>
         </div>

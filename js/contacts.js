@@ -85,27 +85,50 @@ function profileInitials(i){
 /**
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
  */
-function openNewContactOverlay() {
-  console.log("overlayFunction");
-  let overlay = document.getElementById("overlayNewContact");
-  overlay.classList.remove("d-none");
-  overlay.classList.add("d-flex");
-  overlay.innerHTML = "";
-  overlay.innerHTML = `
-    <div class="add-contact-left" id="addContactLeft">
+function openNewContactOverlay(){
+    console.log('overlayFunction');
+    let overlay = document.getElementById('overlayNewContact');
+    overlay.classList.remove('d-none');
+    overlay.classList.add('d-flex');
+    overlay.innerHTML='';
+    overlay.innerHTML= /*html*/`
+    <div class="add-contact-container" id="addContactContainer">
+      <div class="add-contact-left" id="addContactLeft">
+        <img src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
         <h2>Add Contact</h2>
-    </div>
-    <div class="add-contact-right" id="addContactRight">
+        <p>Tasks are better with a team!</p>
+        <img src="../assets/icon-overlay-contact/underline.svg" alt="">
+      </div>
+      <div class="add-contact-right" id="addContactRight">
+        <div class="add-contact-right-left">
+        <div class="profile-picture">
+        </div>
+        </div>
+            <img src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
+        </div>
+        <div class="add-contact-right-right">
         <div class="input-new-contact">
-            <input type="text" placeholder="Name"class="input-field" id="inputFieldName">
-            <input type="email" placeholder="E-Mail"class="input-field" id="inputFieldEmail">
-            <input type="number" placeholder="Telefonnummer"class="input-field" id="inputFieldNumber">
+            <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName">
+            <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail">
+            <input type="tel" placeholder="Telefonnummer"class="input-field-phone" id="inputFieldNumber">
         </div>
         <div class="save-or-delete-buttons">
-            <button class="save-button" onclick="addContact()">Speichern</button>
-            <button class=""onclick="cancelAdding()"> x Abbrechen</button>
+            <button class="delete-button" onclick="cancelAdding()">
+            <p>Cancel</p>
+            <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+            
+            </button>
+            <button class="save-button" onclick="addContact()">
+                <p>Create contact</p>
+                <img src="../assets/icon-overlay-contact/check.svg" alt="">
+            </button>
+            
         </div>
-    </div>`;
+        </div>
+    </div>
+    </div>
+    `
+
 }
 
 /**

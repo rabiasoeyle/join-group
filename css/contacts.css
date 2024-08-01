@@ -59,7 +59,7 @@
 }
 .one-contact-container {
   display: flex;
-  padding: 16px;
+  padding: 16px 0 16px 0;
   align-items: center;
 }
 

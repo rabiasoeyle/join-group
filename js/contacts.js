@@ -1,9 +1,9 @@
-function init(){
-    renderMainDivs();
+function initContacts(){
+    renderMainContacts();
     renderContacts();
 }
 
-function renderMainDivs(){
+function renderMainContacts(){
     let content = document.getElementById('content');
     console.log('funktioniert');
     content.innerHTML='';
@@ -16,13 +16,13 @@ function renderContacts(){
     let contactsList = document.getElementById('contactsList');
     contactsList.innerHTML='';
     contactsList.innerHTML += `
-    <button type="button" class="add-contacts-button" onclick="openOverlay()">
+    <button type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
     <span> Add new Contact </span>
     <img src="../assets/img/addPerson.png">
     </button>
     <div class="contacts-list-bottom" id="contactsListBottom"></div>`
 }
 
-function openOverlay(){
+function openNewContactOverlay(){
     console.log('overlayFunction');
 }

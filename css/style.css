@@ -127,3 +127,11 @@
     background-color: #f6f7f8;
     min-height:90vh;
 }
+
+.d-none{
+  display:none;
+}
+
+.d-flex{
+  display:flex;
+}

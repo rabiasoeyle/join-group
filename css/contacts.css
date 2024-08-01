@@ -295,6 +295,7 @@
     align-items: flex-start;
     padding-bottom: 48px;
     padding-left: 16px;
+    border-radius: 10px 10px 0 0;
     
   }
 
@@ -305,7 +306,7 @@
   .profile-picture {
     
     margin-left: 0%;
-    margin-top: -95%;
+    margin-top: -115%;
   }
 
   .overlay-new-contact{

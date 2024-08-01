@@ -94,35 +94,32 @@ function openNewContactOverlay(){
     overlay.innerHTML= /*html*/`
     <div class="add-contact-container" id="addContactContainer">
       <div class="add-contact-left" id="addContactLeft">
-        <img src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
+        <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
         <h2>Add Contact</h2>
-        <p>Tasks are better with a team!</p>
-        <img src="../assets/icon-overlay-contact/underline.svg" alt="">
+        <p><span class="underline">Tasks are</span> better with a team!</p>
+        <!-- <img src="../assets/icon-overlay-contact/underline.svg" alt=""> -->
       </div>
       <div class="add-contact-right" id="addContactRight">
-        <div class="add-contact-right-left">
-        <div class="profile-picture">
-        </div>
-        </div>
-            <img src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
+         <div class="add-contact-right-left">
+            <img class="profile-picture" src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
         </div>
         <div class="add-contact-right-right">
-        <div class="input-new-contact">
-            <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName">
-            <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail">
-            <input type="tel" placeholder="Telefonnummer"class="input-field-phone" id="inputFieldNumber">
-        </div>
-        <div class="save-or-delete-buttons">
-            <button class="delete-button" onclick="cancelAdding()">
-            <p>Cancel</p>
-            <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
-            
-            </button>
-            <button class="save-button" onclick="addContact()">
+          <div class="input-new-contact">
+            <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
+             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName">
+             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail">
+             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber">
+          </div>
+          <div class="save-or-delete-buttons">
+             <button class="delete-button" onclick="cancelAdding()">
+             <p>Cancel</p>
+             <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+             </button>
+             <button class="save-button" onclick="addContact()">
                 <p>Create contact</p>
                 <img src="../assets/icon-overlay-contact/check.svg" alt="">
-            </button>
-            
+             </button> 
+         </div>
         </div>
         </div>
     </div>

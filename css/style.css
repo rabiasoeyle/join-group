@@ -123,13 +123,7 @@
   height: 32px;
 }
 
-.content {
-  background-color: #f6f7f8;
-}
-<<<<<<< HEAD
-=======
 .content{
     background-color: #f6f7f8;
     min-height:90vh;
 }
->>>>>>> 71e994bcdcb9f3ddc046b313e15e6ecc333fa2d4

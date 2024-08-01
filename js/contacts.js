@@ -56,7 +56,7 @@ async function loadContacts(path="/contacts"){
 
 function renderAllContacts(){
     let contactsListBottom = document.getElementById('contactsListBottom');
-    contactsListBottom.innerHTML =''
+    contactsListBottom.innerHTML ='';
     for(i=0; i<contacts.length; i++){
         contactsListBottom.innerHTML +=`
         <div class="one-contact-container">

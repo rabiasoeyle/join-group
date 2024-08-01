@@ -1,6 +1,7 @@
 function initContacts(){
     renderMainContacts();
     renderContacts();
+>>>>>>> 71e994bcdcb9f3ddc046b313e15e6ecc333fa2d4
 }
 
 function renderMainContacts(){
@@ -8,7 +9,16 @@ function renderMainContacts(){
     console.log('funktioniert');
     content.innerHTML='';
     content.innerHTML=`
+function renderMainDivs() {
+  let content = document.getElementById("content");
+  console.log("funktioniert");
+  content.innerHTML = "";
+  content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
+<<<<<<< HEAD
+    <div class="contact-details" id="contactDetails"></div`;
+}
+=======
     <div class="contact-details" id="contactDetails"></div`
 }
 
@@ -26,3 +36,4 @@ function renderContacts(){
 function openNewContactOverlay(){
     console.log('overlayFunction');
 }
+>>>>>>> 71e994bcdcb9f3ddc046b313e15e6ecc333fa2d4

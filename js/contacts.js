@@ -62,7 +62,7 @@ function renderAllContacts() {
     contactsListBottom.innerHTML += `
         <div class="one-contact-container">
             <dir>
-                <span class="profil_replacement_img">IK</span>
+                <span class="profil_replacement_img">${profileInitials(i)}</span>
             </dir>
             <div class="two-contact-container">
                 <span class="contact_font">${contacts[i]["name"]}</span>
@@ -72,6 +72,15 @@ function renderAllContacts() {
         `;
   }
 }
+
+function profileInitials(i){
+        var names = contacts[i]['name'].split(' '),
+            initials = names[0].substring(0, 1).toUpperCase();
+        if (names.length > 1) {
+            initials += names[names.length - 1].substring(0, 1).toUpperCase();
+        }
+        return initials;
+};
 
 /**
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
@@ -103,9 +112,9 @@ function openNewContactOverlay() {
  * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen Kontakt auszulesen und sie an die postData() weiterzugeben
  */
 async function addContact() {
-  let nameValue = document.getElementById("inputFieldName").value;
-  let emailValue = document.getElementById("inputFieldEmail").value;
-  let numberValue = document.getElementById("inputFieldNumber").value;
+  let nameValue = document.getElementById("inputFieldName").value.trim();
+  let emailValue = document.getElementById("inputFieldEmail").value.trim();
+  let numberValue = document.getElementById("inputFieldNumber").value.trim();
   let newContact = { name: nameValue, email: emailValue, phone: numberValue };
   nameValue = "";
   emailValue = "";

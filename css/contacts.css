@@ -1,11 +1,15 @@
 .contacts-list {
   background-color: white;
-  min-height: 100%;
+  height: 46%;
   width: 30vw;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #A8A8A8 #f6f7f8;
 }
+
 .contact-details {
   background-color: #f6f7f8;
-  height: 100%;
+  height: 93vh;
   flex: 1;
 }
 .contacts-content {

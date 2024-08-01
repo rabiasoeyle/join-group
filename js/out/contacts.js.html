@@ -1,4 +1,32 @@
-let firebase_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contacts.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contacts.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let firebase_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts=[];
 
 /**
@@ -6,7 +34,8 @@ let contacts=[];
  */
 function initContacts(){
     renderMainContacts();
-    renderContacts(); 
+    renderContacts();
+    
 }
 
 /**
@@ -17,8 +46,8 @@ function renderMainContacts(){
     console.log('funktioniert');
     content.innerHTML='';
     content.innerHTML=`
-    <div class="contacts-list" id="contactsList"></div>
-    <div class="contact-details" id="contactDetails"></div`
+    &lt;div class="contacts-list" id="contactsList">&lt;/div>
+    &lt;div class="contact-details" id="contactDetails">&lt;/div`
 }
 
 /**
@@ -28,11 +57,11 @@ async function renderContacts(){
     let contactsList = document.getElementById('contactsList');
     contactsList.innerHTML='';
     contactsList.innerHTML += `
-    <button type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
-    <span> Add new Contact </span>
-    <img src="../assets/img/addPerson.png">
-    </button>
-    <div class="contacts-list-bottom" id="contactsListBottom"></div>`
+    &lt;button type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
+    &lt;span> Add new Contact &lt;/span>
+    &lt;img src="../assets/img/addPerson.png">
+    &lt;/button>
+    &lt;div class="contacts-list-bottom" id="contactsListBottom">&lt;/div>`
     await loadContacts('/contacts');
     renderAllContacts();
 }
@@ -57,13 +86,13 @@ async function loadContacts(path="/contacts"){
 function renderAllContacts(){
     let contactsListBottom = document.getElementById('contactsListBottom');
     contactsListBottom.innerHTML =''
-    for(i=0; i<contacts.length; i++){
+    for(i=0; i&lt;contacts.length; i++){
         contactsListBottom.innerHTML +=`
-        <div class="one-contact-container">
-            <span>${contacts[i]['name']}</span>
-            <span>${contacts[i]['email']}</span>
-            <span>${contacts[i]['phone']}</span>
-        </div>
+        &lt;div class="one-contact-container">
+            &lt;span>${contacts[i]['name']}&lt;/span>
+            &lt;span>${contacts[i]['email']}&lt;/span>
+            &lt;span>${contacts[i]['phone']}&lt;/span>
+        &lt;/div>
         `
     }
 }
@@ -78,20 +107,20 @@ function openNewContactOverlay(){
     overlay.classList.add('d-flex');
     overlay.innerHTML='';
     overlay.innerHTML=`
-    <div class="add-contact-left" id="addContactLeft">
-        <h2>Add Contact</h2>
-    </div>
-    <div class="add-contact-right" id="addContactRight">
-        <div class="input-new-contact">
-            <input type="text" placeholder="Name"class="input-field" id="inputFieldName">
-            <input type="email" placeholder="E-Mail"class="input-field" id="inputFieldEmail">
-            <input type="number" placeholder="Telefonnummer"class="input-field" id="inputFieldNumber">
-        </div>
-        <div class="save-or-delete-buttons">
-            <button class="save-button" onclick="addContact()">Speichern</button>
-            <button class=""onclick="cancelAdding()"> x Abbrechen</button>
-        </div>
-    </div>`
+    &lt;div class="add-contact-left" id="addContactLeft">
+        &lt;h2>Add Contact&lt;/h2>
+    &lt;/div>
+    &lt;div class="add-contact-right" id="addContactRight">
+        &lt;div class="input-new-contact">
+            &lt;input type="text" placeholder="Name"class="input-field" id="inputFieldName">
+            &lt;input type="email" placeholder="E-Mail"class="input-field" id="inputFieldEmail">
+            &lt;input type="number" placeholder="Telefonnummer"class="input-field" id="inputFieldNumber">
+        &lt;/div>
+        &lt;div class="save-or-delete-buttons">
+            &lt;button class="save-button" onclick="addContact()">Speichern&lt;/button>
+            &lt;button class=""onclick="cancelAdding()"> x Abbrechen&lt;/button>
+        &lt;/div>
+    &lt;/div>`
 
 }
 
@@ -108,8 +137,6 @@ async function addContact(){
     numberValue =''; 
     console.log(newContact);
     await postData('/contacts', newContact);
-    await loadContacts('/contacts');
-    renderAllContacts();
 }
 
 /**
@@ -142,3 +169,26 @@ async function postData(path='', data){
     });
 }
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addContact">addContact</a></li><li><a href="global.html#cancelAdding">cancelAdding</a></li><li><a href="global.html#initContacts">initContacts</a></li><li><a href="global.html#openNewContactOverlay">openNewContactOverlay</a></li><li><a href="global.html#postData">postData</a></li><li><a href="global.html#renderContacts">renderContacts</a></li><li><a href="global.html#renderMainContacts">renderMainContacts</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.3</a> on Thu Aug 01 2024 09:28:45 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

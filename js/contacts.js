@@ -1,6 +1,7 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
+let initialArray =[];
 
 /**
  * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern
@@ -38,6 +39,11 @@ async function renderContacts() {
   renderAllContacts();
 }
 
+/**
+ * In dieser Funktion werden die Daten aus dem Firebase geladen.
+ * 
+ * @param {*} path 
+ */
 async function loadContacts(path = "/contacts") {
   let response = await fetch(firebase_URL + path + ".json");
   let responseToJson = await response.json();
@@ -51,13 +57,19 @@ async function loadContacts(path = "/contacts") {
         phone: responseToJson[key]["phone"],
       });
     });
+    // Sortiere die Kontakte alphabetisch nach Name
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
     console.log(contacts);
   }
 }
 
+/**
+ * In dieser Funktion werden alle Kontakte gerendert.
+ */
 function renderAllContacts() {
   let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
+  groupContactsByInitial(contacts)
   for (i = 0; i < contacts.length; i++) {
     contactsListBottom.innerHTML += `
         <div class="one-contact-container">
@@ -70,17 +82,23 @@ function renderAllContacts() {
             </div>
         </div>
         `;
-  }
+  }  
 }
 
+/**
+ * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
+ * 
+ * @param {*} i 
+ * @returns 
+ */
 function profileInitials(i){
-        var names = contacts[i]['name'].split(' '),
+        let names = contacts[i]['name'].split(' '),
             initials = names[0].substring(0, 1).toUpperCase();
         if (names.length > 1) {
             initials += names[names.length - 1].substring(0, 1).toUpperCase();
         }
         return initials;
-};
+}
 
 /**
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
@@ -128,7 +146,6 @@ function openNewContactOverlay(){
     </div>
     </div>
     `
-
 }
 
 /**
@@ -138,14 +155,17 @@ async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  let newContact = { name: nameValue, email: emailValue, phone: numberValue };
-  nameValue = "";
-  emailValue = "";
-  numberValue = "";
-  console.log(newContact);
-  await postData("/contacts", newContact);
-  await loadContacts("/contacts");
-  renderAllContacts();
+  if(nameValue&& emailValue&&numberValue){
+    let newContact = { name: nameValue, email: emailValue, phone: numberValue };
+    nameValue = "";
+    emailValue = "";
+    numberValue = "";
+    console.log(newContact);
+    await postData("/contacts", newContact);
+    await loadContacts("/contacts");
+    renderAllContacts();
+  }
+    cancelAdding();
 }
 
 /**
@@ -164,7 +184,8 @@ function cancelAdding() {
 }
 
 /**
- * Diese Funktion dient dazu um die neu erhaltenen Daten im Fiebase zu speichern
+ * Diese Funktion dient dazu um die neu erhaltenen Daten im Fiebase zu speichern.
+ * 
  * @param {*} path
  * @param {*} data
  */
@@ -177,3 +198,12 @@ async function postData(path = "", data) {
     body: JSON.stringify(data),
   });
 }
+
+/**
+ * Diese Funktion soll dazu dienen, die Kontakte mithilfe der ersten Buchstaben in Kategorien anzuordnen
+ * @param {*} contacts 
+ * @returns 
+ */
+function groupContactsByInitial(contacts) {
+    
+  }

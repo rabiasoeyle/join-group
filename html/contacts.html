@@ -13,7 +13,7 @@
     <script type="text/javascript" src="../templates/contactsTemplates.js"></script>
 </head>
 <body onload="includeHTML(), initContacts()">
-    <div class="main">
+    <div class="main" id="mainContacts">
         <div class="sidebar" w3-include-html="sidebar.html"></div>
         <div class="body_right">
             <div class="header" w3-include-html="header.html"></div>
@@ -22,6 +22,7 @@
             </div>
         </div>
     </div>
+    <div class="overlay-new-contact" id="overlayNewContact"></div>
 </body>
 
 </html>

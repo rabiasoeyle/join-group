@@ -1,3 +1,6 @@
+let Firebase_URL = "";
+let contacts=[];
+
 /**
  * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern
  */
@@ -21,7 +24,7 @@ function renderMainContacts(){
 /**
  * Diese Funktion soll den Button und den unteren Container für die Kontakte erstellen
  */
-function renderContacts(){
+async function renderContacts(){
     let contactsList = document.getElementById('contactsList');
     contactsList.innerHTML='';
     contactsList.innerHTML += `
@@ -30,6 +33,26 @@ function renderContacts(){
     <img src="../assets/img/addPerson.png">
     </button>
     <div class="contacts-list-bottom" id="contactsListBottom"></div>`
+    await getContacts();
+
+}
+
+async function loadContacts(path="/contacts"){
+    let response = await fetch(Firebase_URL + path + '.json');
+    let responseToJson = await response.json();
+    console.log(responseToJson);
+
+    if (responseToJson) {
+        Object.keys(responseToJson).forEach(key => {
+            contacts.push({
+                id: key,
+                name: responseToJson[key]['name'],
+                phone: responseToJson[key]['phone'],
+                email: responseToJson[key]['email'],
+            })
+        });
+        console.log(contacts);
+    }
 }
 
 /**
@@ -37,5 +60,8 @@ function renderContacts(){
  */
 function openNewContactOverlay(){
     console.log('overlayFunction');
+    let overlay = document.getElementById('overlayNewContact');
+    overlay.classList.remove('d-none');
+
 }
 

@@ -69,8 +69,6 @@ async function loadContacts(path = "/contacts") {
 function renderAllContacts() {
   let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
-//   let groupedContacts = groupContactsByInitial(contacts);
-
   for (i = 0; i < contacts.length; i++) {
     contactsListBottom.innerHTML += `
         <div class="one-contact-container">
@@ -157,7 +155,8 @@ async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  let newContact = { name: nameValue, email: emailValue, phone: numberValue };
+  if(nameValue&& emailValue&&numberValue){
+    let newContact = { name: nameValue, email: emailValue, phone: numberValue };
   nameValue = "";
   emailValue = "";
   numberValue = "";
@@ -165,6 +164,8 @@ async function addContact() {
   await postData("/contacts", newContact);
   await loadContacts("/contacts");
   renderAllContacts();
+  }
+cancelAdding();
 }
 
 /**
@@ -197,3 +198,4 @@ async function postData(path = "", data) {
     body: JSON.stringify(data),
   });
 }
+

@@ -61,9 +61,9 @@ function renderAllContacts() {
   for (i = 0; i < contacts.length; i++) {
     contactsListBottom.innerHTML += `
         <div class="one-contact-container">
-            <dir>
+            <div>
                 <span class="profil_replacement_img">${profileInitials(i)}</span>
-            </dir>
+            </div>
             <div class="two-contact-container">
                 <span class="contact_font">${contacts[i]["name"]}</span>
                 <span class="contact_link">${contacts[i]["email"]}</span>

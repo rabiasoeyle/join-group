@@ -4,7 +4,7 @@
   width: 30vw;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #A8A8A8 #f6f7f8;
+  scrollbar-color: #a8a8a8 #f6f7f8;
 }
 
 .contact-details {
@@ -32,17 +32,17 @@
   font-size: 16px;
   font-weight: 600;
 }
-.overlay-new-contact{
-    width: 55%;
-    height: 50vH;
-    background: white;
-    position: fixed;
-    top: 25vh;
-    left: 25vW;
-    right: 25vW;
-    bottom: 25vH;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+.overlay-new-contact {
+  width: 55%;
+  height: 50vh;
+  background: white;
+  position: fixed;
+  top: 25vh;
+  left: 25vw;
+  right: 25vw;
+  bottom: 25vh;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 .add-contact-right {
   display: flex;
@@ -61,6 +61,7 @@
   display: flex;
   padding: 16px 0 16px 0;
   align-items: center;
+  margin-left: 16px;
 }
 
 .two-contact-container {
@@ -98,18 +99,17 @@
   justify-content: center;
 }
 
-
 /* Add contact overlay */
 
-.add-contact-container{
+.add-contact-container {
   display: flex;
 }
 
-.add-contact-left{
+.add-contact-left {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #2A3647;
+  background-color: #2a3647;
   color: white;
   padding: 24px;
   border-radius: 10px 0;
@@ -120,23 +120,23 @@
   width: 55px;
 }
 
-.add-contact-left h2{
+.add-contact-left h2 {
   font-size: 61px;
   font-weight: 700;
 }
 
-.add-contact-left p{
+.add-contact-left p {
   font-size: 27px;
   font-weight: 00;
 }
 
-.add-contact-right{
-  display:flex;
+.add-contact-right {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.add-contact-right-right{
+.add-contact-right-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -144,12 +144,14 @@
   gap: 16px;
 }
 
-.input-field-name, .input-field-mail, .input-field-phone {
+.input-field-name,
+.input-field-mail,
+.input-field-phone {
   width: 250px;
   height: 42px;
   border: solid 1px;
   border-radius: 10px;
-  border-color: #D1D1D1;
+  border-color: #d1d1d1;
   padding: 13px 21px;
   background-repeat: no-repeat;
   background-position: calc(100% - 15px);
@@ -157,26 +159,26 @@
 
 .input-field-name {
   background-image: url(../assets/icon-overlay-contact/person-little.svg);
-} 
+}
 
-.input-field-mail{
+.input-field-mail {
   background-image: url(../assets/icon-overlay-contact/mail.svg);
 }
 
-
-.input-field-phone{
+.input-field-phone {
   background-image: url(../assets/icon-overlay-contact/phone.svg);
 }
 
-.save-or-delete-buttons{
+.save-or-delete-buttons {
   display: flex;
   gap: 8px;
   width: 100%;
 }
-.delete-button, .save-button {
+.delete-button,
+.save-button {
   display: flex;
   align-items: center;
-  border-radius:  10px;
+  border-radius: 10px;
   padding: 8px;
 }
 
@@ -184,7 +186,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #D1D1D1;
+  border: 1px solid #d1d1d1;
   background-color: white;
 }
 
@@ -192,6 +194,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #2A3647;
+  background-color: #2a3647;
   color: white;
 }

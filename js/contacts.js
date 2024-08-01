@@ -28,9 +28,9 @@ async function renderContacts(){
     let contactsList = document.getElementById('contactsList');
     contactsList.innerHTML='';
     contactsList.innerHTML += `
-    <button type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
+    <button  type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
     <span> Add new Contact </span>
-    <img src="../assets/img/addPerson.png">
+    <img class="icon" src="../assets/img/addPerson.png">
     </button>
     <div class="contacts-list-bottom" id="contactsListBottom"></div>`
     await loadContacts('/contacts');

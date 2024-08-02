@@ -16,7 +16,6 @@ function initContacts() {
  */
 function renderMainContacts() {
   let content = document.getElementById("content");
-  console.log("funktioniert");
   content.innerHTML = "";
   content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
@@ -47,7 +46,6 @@ async function renderContacts() {
 async function loadContacts(path = "/contacts") {
   let response = await fetch(firebase_URL + path + ".json");
   let responseToJson = await response.json();
-  console.log(responseToJson);
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
       contacts.push({
@@ -59,7 +57,6 @@ async function loadContacts(path = "/contacts") {
     });
     // Sortiere die Kontakte alphabetisch nach Name
     contacts.sort((a, b) => a.name.localeCompare(b.name));
-    console.log(contacts);
   }
 }
 
@@ -106,7 +103,6 @@ function profileInitials(i) {
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
  */
 function openNewContactOverlay() {
-  console.log("overlayFunction");
   let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
@@ -159,7 +155,6 @@ async function addContact() {
     nameValue = "";
     emailValue = "";
     numberValue = "";
-    console.log(newContact);
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
     renderAllContacts();

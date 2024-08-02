@@ -24,10 +24,10 @@ function contactDetailsHTML(index, id) {
         </div>
     </div>
     <p class="font_span">Contact Information</p>
-    <p class="font_span_big">Email</p>
-    <p class="contact_link">${contacts[index]["email"]}</p>
-    <p class="font_span_big">Phone</p>
-    <p class="contact_font">${contacts[index]["phone"]}</p>
+    <p class="font_span_big margin_contact">Email</p>
+    <p class="contact_link margin_contact">${contacts[index]["email"]}</p>
+    <p class="font_span_big margin_contact">Phone</p>
+    <p class="contact_font margin_contact">${contacts[index]["phone"]}</p>
     `;
 }
 

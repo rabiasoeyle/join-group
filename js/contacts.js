@@ -48,6 +48,7 @@ async function loadContacts(path = "/contacts") {
   let responseToJson = await response.json();
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
+      console.log(key);
       contacts.push({
         id: key,
         name: responseToJson[key]["name"],
@@ -189,6 +190,7 @@ async function addContact() {
     nameValue = "";
     emailValue = "";
     numberValue = "";
+    contacts=[];
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
     renderAllContacts();
@@ -234,8 +236,9 @@ async function postData(path = "", data) {
  */
 function contactDetails(i){
   let rightContent = document.getElementById('contactDetails');
+  let id = contacts[i]['id'];
   rightContent.innerHTML='';
-  rightContent.innerHTML=contactDetailsHTML(i);
+  rightContent.innerHTML=contactDetailsHTML(i, id);
   }
 
 /**
@@ -251,12 +254,12 @@ function groupContactsByInitial(contacts) {
  * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
  * @param {*} i 
  */
-async function deleteContact(path='/contacts/', data){
-    await fetch(firebase_URL + path + data + ".json", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-    })
+async function deleteContact(path=""){
+  console.log(`deleteContact-${path}`);
+  await fetch(firebase_URL + path +".json", {
+    method: "DELETE",
+  });
+  contacts=[];
+  renderContacts();
 }
+// deleteContact("contacts/-O3HOz29zw84oGtcEYju");

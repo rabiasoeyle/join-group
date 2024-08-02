@@ -2,12 +2,7 @@
 
 function contactDetailsHTML(index, id) {
   return `
-    <div class="contact_details">
-        <h2 class="contact_details_H2">Contacts</h2>
-        <div class="stroke"></div>
-        <samp class="contact_details_span">Better with a team</samp>
-    </div>
-    <div>
+    <div id="contactInformations">
         <div class="one-contact-container">
             <div>
                 <span class="profil_replacement_img_big">${profileInitials(index)}</span>

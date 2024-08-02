@@ -9,6 +9,7 @@ let initialArray = [];
 function initContacts() {
   renderMainContacts();
   renderContacts();
+  renderContactDetails();
 }
 
 /**
@@ -19,13 +20,22 @@ function renderMainContacts() {
   content.innerHTML = "";
   content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
-      <div class="contact-details" id="contactDetails">
-        <div class="contact_details">
-        <h2 class="contact_details_H2">Contacts</h2>
-        <div class="stroke"></div>
-        <samp class="contact_details_span">Better with a team</samp>
-      </div>
-    </div`;
+    <div class="contact-details" id="contactDetails"></div`;
+}
+
+/**
+ * Diese Funktion dient zum rendern von der Überschrift des rechten Contact contents
+ */
+function renderContactDetails(){
+  let content = document.getElementById("contactDetails"); 
+  content.innerHTML="";
+  content.innerHTML=`
+    <div class="contact_details" id="contactDetailsTop">
+      <h2 class="contact_details_H2">Contacts</h2>
+      <div class="stroke"></div>
+      <span class="contact_details_span">Better with a team</span>
+    </div>
+    <div id="contactDetailsBottom"></div>`
 }
 
 /**
@@ -147,7 +157,7 @@ function editContact(i) {
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
-  overlay.innerHTML = /*html*/ `
+  overlay.innerHTML = `
     <div class="add-contact-container" id="addContactContainer">
       <div class="add-contact-left" id="addContactLeft">
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
@@ -240,7 +250,7 @@ async function postData(path = "", data) {
  * @param {*} i
  */
 function contactDetails(i){
-  let rightContent = document.getElementById('contactDetails');
+  let rightContent = document.getElementById('contactDetailsBottom');
   let id = contacts[i]['id'];
   rightContent.innerHTML='';
   rightContent.innerHTML=contactDetailsHTML(i, id);
@@ -265,6 +275,8 @@ async function deleteContact(path=""){
     method: "DELETE",
   });
   contacts=[];
+  let rightContent = document.getElementById('contactInformations');
+  rightContent.innerHTML='';
+  renderContactDetails();
   renderContacts();
 }
-// deleteContact("contacts/-O3HOz29zw84oGtcEYju");

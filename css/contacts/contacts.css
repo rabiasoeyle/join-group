@@ -355,6 +355,27 @@ span {
   }
 }
 
+@media (max-width: 1060px) {
+  .contact_details_H2 {
+    font-size: 48px;
+  }
+  .stroke {
+    margin: 0px 12px 0 12px;
+    height: 40px;
+  }
+  .contact_details_span {
+    font-size: 20px;
+  }
+  .profil_replacement_img_big {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+  .contact_font_big {
+    font-size: 32px;
+  }
+}
+
 @media (max-width: 980px) {
   .add-contact-container {
     display: flex;

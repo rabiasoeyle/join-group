@@ -19,7 +19,13 @@ function renderMainContacts() {
   content.innerHTML = "";
   content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
-    <div class="contact-details" id="contactDetails"></div`;
+      <div class="contact-details" id="contactDetails">
+        <div class="contact_details">
+        <h2 class="contact_details_H2">Contacts</h2>
+        <div class="stroke"></div>
+        <samp class="contact_details_span">Better with a team</samp>
+      </div>
+    </div`;
 }
 
 /**
@@ -71,7 +77,6 @@ function renderAllContacts() {
     contactsListBottom.innerHTML += renderAllContactsHTML(i);
   }
 }
-
 
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
@@ -134,9 +139,9 @@ function openNewContactOverlay() {
 
 /**
  * In dieser Funktion werden Kontakte bearbeitet
- * @param {*} i 
+ * @param {*} i
  */
-function editContact(i){
+function editContact(i) {
   let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
@@ -229,14 +234,14 @@ async function postData(path = "", data) {
 
 /**
  * Die Funktion dient zur Öffnung der Details von Kontakten
- * 
- * @param {*} i 
+ *
+ * @param {*} i
  */
-function contactDetails(i){
-  let rightContent = document.getElementById('contactDetails');
-  rightContent.innerHTML='';
-  rightContent.innerHTML=contactDetailsHTML(i);
-  }
+function contactDetails(i) {
+  let rightContent = document.getElementById("contactDetails");
+  rightContent.innerHTML = "";
+  rightContent.innerHTML = contactDetailsHTML(i);
+}
 
 /**
  * Diese Funktion soll dazu dienen, die Kontakte mithilfe der ersten Buchstaben in Kategorien anzuordnen
@@ -244,4 +249,3 @@ function contactDetails(i){
  * @returns
  */
 function groupContactsByInitial(contacts) {}
-

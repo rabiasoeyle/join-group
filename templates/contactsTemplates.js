@@ -1,4 +1,6 @@
-function contactDetails(contacts, index) {
+
+
+function contactDetailsHTML(index) {
   return `
     <div class="contact_details">
         <h2 class="contact_details_H2">Contacts</h2>
@@ -14,9 +16,9 @@ function contactDetails(contacts, index) {
                 <span class="contact_font_big">${contacts[index]["name"]}</span>
                 <div class="edit_delete_icon">
                     <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
-                    <span class="margin_left">Edit</span>
+                    <span class="margin_left" onclick="editContact(${index})">Edit</span>
                     <img class="margin_left" src="../assets/img/delete.png" alt="Delete Icon">
-                    <span class="margin_left">Delete</span>
+                    <span class="margin_left" onclick="deleteContact(${index})">Delete</span>
                 </div>
             </div>
         </div>
@@ -28,3 +30,24 @@ function contactDetails(contacts, index) {
     <p class="contact_font">${contacts[index]["phone"]}</p>
     `;
 }
+
+function deleteContact(i){
+    
+}
+
+
+function renderAllContactsHTML(i){
+    return  `
+          <div class="one-contact-container" onclick="contactDetails(${i})">
+              <div>
+                  <span class="profil_replacement_img">${profileInitials(
+                    i
+                  )}</span>
+              </div>
+              <div class="two-contact-container">
+                  <span class="contact_font">${contacts[i]["name"]}</span>
+                  <span class="contact_link">${contacts[i]["email"]}</span>
+              </div>
+          </div>
+          `;
+  }

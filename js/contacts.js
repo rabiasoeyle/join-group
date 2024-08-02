@@ -243,5 +243,20 @@ function contactDetails(i){
  * @param {*} contacts
  * @returns
  */
-function groupContactsByInitial(contacts) {}
+function groupContactsByInitial(contacts) {
 
+}
+
+/**
+ * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
+ * @param {*} i 
+ */
+async function deleteContact(path='/contacts/', data){
+    await fetch(firebase_URL + path + data + ".json", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+}

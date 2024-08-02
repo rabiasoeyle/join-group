@@ -390,3 +390,21 @@ span {
     top: 10vh;
   }
 }
+.group-initial-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 16px;
+}
+
+.group-initial {
+  font-size: 1.5em; 
+  margin-bottom: 5px; 
+}
+
+.group-border {
+  width: 352px;
+  height: 1px; 
+  background-color: black; 
+}

@@ -1,7 +1,7 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
-let initialArray =[];
+let initialArray = [];
 
 /**
  * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern
@@ -41,8 +41,8 @@ async function renderContacts() {
 
 /**
  * In dieser Funktion werden die Daten aus dem Firebase geladen.
- * 
- * @param {*} path 
+ *
+ * @param {*} path
  */
 async function loadContacts(path = "/contacts") {
   let response = await fetch(firebase_URL + path + ".json");
@@ -69,12 +69,14 @@ async function loadContacts(path = "/contacts") {
 function renderAllContacts() {
   let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
-  groupContactsByInitial(contacts)
+  groupContactsByInitial(contacts);
   for (i = 0; i < contacts.length; i++) {
     contactsListBottom.innerHTML += `
         <div class="one-contact-container">
             <div>
-                <span class="profil_replacement_img">${profileInitials(i)}</span>
+                <span class="profil_replacement_img">${profileInitials(
+                  i
+                )}</span>
             </div>
             <div class="two-contact-container">
                 <span class="contact_font">${contacts[i]["name"]}</span>
@@ -82,34 +84,34 @@ function renderAllContacts() {
             </div>
         </div>
         `;
-  }  
+  }
 }
 
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
- * 
- * @param {*} i 
- * @returns 
+ *
+ * @param {*} i
+ * @returns
  */
-function profileInitials(i){
-        let names = contacts[i]['name'].split(' '),
-            initials = names[0].substring(0, 1).toUpperCase();
-        if (names.length > 1) {
-            initials += names[names.length - 1].substring(0, 1).toUpperCase();
-        }
-        return initials;
+function profileInitials(i) {
+  let names = contacts[i]["name"].split(" "),
+    initials = names[0].substring(0, 1).toUpperCase();
+  if (names.length > 1) {
+    initials += names[names.length - 1].substring(0, 1).toUpperCase();
+  }
+  return initials;
 }
 
 /**
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
  */
-function openNewContactOverlay(){
-    console.log('overlayFunction');
-    let overlay = document.getElementById('overlayNewContact');
-    overlay.classList.remove('d-none');
-    overlay.classList.add('d-flex');
-    overlay.innerHTML='';
-    overlay.innerHTML= /*html*/`
+function openNewContactOverlay() {
+  console.log("overlayFunction");
+  let overlay = document.getElementById("overlayNewContact");
+  overlay.classList.remove("d-none");
+  overlay.classList.add("d-flex");
+  overlay.innerHTML = "";
+  overlay.innerHTML = /*html*/ `
     <div class="add-contact-container" id="addContactContainer">
       <div class="add-contact-left" id="addContactLeft">
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
@@ -142,7 +144,7 @@ function openNewContactOverlay(){
         </div>
     </div>
     </div>
-    `
+    `;
 }
 
 /**
@@ -152,7 +154,7 @@ async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  if(nameValue&& emailValue&&numberValue){
+  if (nameValue && emailValue && numberValue) {
     let newContact = { name: nameValue, email: emailValue, phone: numberValue };
     nameValue = "";
     emailValue = "";
@@ -162,7 +164,7 @@ async function addContact() {
     await loadContacts("/contacts");
     renderAllContacts();
   }
-    cancelAdding();
+  cancelAdding();
 }
 
 /**
@@ -182,7 +184,7 @@ function cancelAdding() {
 
 /**
  * Diese Funktion dient dazu um die neu erhaltenen Daten im Fiebase zu speichern.
- * 
+ *
  * @param {*} path
  * @param {*} data
  */
@@ -198,9 +200,7 @@ async function postData(path = "", data) {
 
 /**
  * Diese Funktion soll dazu dienen, die Kontakte mithilfe der ersten Buchstaben in Kategorien anzuordnen
- * @param {*} contacts 
- * @returns 
+ * @param {*} contacts
+ * @returns
  */
-function groupContactsByInitial(contacts) {
-    
-  }
+function groupContactsByInitial(contacts) {}

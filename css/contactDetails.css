@@ -45,13 +45,13 @@
 }
 
 .edit_delete_icon {
-    display: flex;
-    align-items: center;
-    margin-top: 18px;
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
 }
 
 .margin_left {
-    margin-left: 12px;
+  margin-left: 12px;
 }
 
 /* Aus den contacts.css kopirt 

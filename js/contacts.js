@@ -2,6 +2,7 @@ let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let initialArray = [];
+let robertderaffe = 0;
 
 /**
  * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern

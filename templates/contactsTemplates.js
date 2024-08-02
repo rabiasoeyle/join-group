@@ -1,6 +1,6 @@
 
 
-function contactDetailsHTML(index) {
+function contactDetailsHTML(index, id) {
   return `
     <div id="contactInformations">
         <div class="one-contact-container">
@@ -13,7 +13,7 @@ function contactDetailsHTML(index) {
                     <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
                     <span class="margin_left" onclick="editContact(${index})">Edit</span>
                     <img class="margin_left" src="../assets/img/delete.png" alt="Delete Icon">
-                    <span class="margin_left" onclick="deleteContact('contacts/${contacts[index]['id']}')">Delete</span>
+                    <span class="margin_left" onclick="deleteContact('contacts/${id}')">Delete</span>
                 </div>
             </div>
         </div>

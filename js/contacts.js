@@ -9,6 +9,7 @@ let initialArray = [];
 function initContacts() {
   renderMainContacts();
   renderContacts();
+  renderContactDetails();
 }
 
 /**
@@ -20,6 +21,21 @@ function renderMainContacts() {
   content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
     <div class="contact-details" id="contactDetails"></div`;
+}
+
+/**
+ * Diese Funktion dient zum rendern von der Überschrift des rechten Contact contents
+ */
+function renderContactDetails(){
+  let content = document.getElementById("contactDetails"); 
+  content.innerHTML="";
+  content.innerHTML=`
+    <div class="contact_details" id="contactDetailsTop">
+      <h2 class="contact_details_H2">Contacts</h2>
+      <div class="stroke"></div>
+      <span class="contact_details_span">Better with a team</span>
+    </div>
+    <div id="contactDetailsBottom"></div>`
 }
 
 /**
@@ -48,6 +64,7 @@ async function loadContacts(path = "/contacts") {
   let responseToJson = await response.json();
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
+      console.log(key);
       contacts.push({
         id: key,
         name: responseToJson[key]["name"],
@@ -71,7 +88,6 @@ function renderAllContacts() {
     contactsListBottom.innerHTML += renderAllContactsHTML(i);
   }
 }
-
 
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
@@ -134,14 +150,14 @@ function openNewContactOverlay() {
 
 /**
  * In dieser Funktion werden Kontakte bearbeitet
- * @param {*} i 
+ * @param {*} i
  */
-function editContact(i){
+function editContact(i) {
   let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
-  overlay.innerHTML = /*html*/ `
+  overlay.innerHTML = `
     <div class="add-contact-container" id="addContactContainer">
       <div class="add-contact-left" id="addContactLeft">
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
@@ -189,6 +205,7 @@ async function addContact() {
     nameValue = "";
     emailValue = "";
     numberValue = "";
+    contacts=[];
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
     renderAllContacts();
@@ -229,11 +246,11 @@ async function postData(path = "", data) {
 
 /**
  * Die Funktion dient zur Öffnung der Details von Kontakten
- * 
- * @param {*} i 
+ *
+ * @param {*} i
  */
 function contactDetails(i){
-  let rightContent = document.getElementById('contactDetails');
+  let rightContent = document.getElementById('contactDetailsBottom');
   rightContent.innerHTML='';
   rightContent.innerHTML=contactDetailsHTML(i);
   }
@@ -243,5 +260,22 @@ function contactDetails(i){
  * @param {*} contacts
  * @returns
  */
-function groupContactsByInitial(contacts) {}
+function groupContactsByInitial(contacts) {
 
+}
+
+/**
+ * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
+ * @param {*} i 
+ */
+async function deleteContact(path=""){
+  console.log(`deleteContact-${path}`);
+  await fetch(firebase_URL + path +".json", {
+    method: "DELETE",
+  });
+  contacts=[];
+  let rightContent = document.getElementById('contactInformations');
+  rightContent.innerHTML='';
+  renderContactDetails();
+  renderContacts();
+}

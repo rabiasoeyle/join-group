@@ -17,7 +17,6 @@ function initContacts() {
  */
 function renderMainContacts() {
   let content = document.getElementById("content");
-  console.log("funktioniert");
   content.innerHTML = "";
   content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
@@ -101,7 +100,7 @@ function renderAllContacts() {
       // Kontakte dieser Gruppe rendern
       groupedContacts[initial].forEach(contact => {
           contactsListBottom.innerHTML += `
-              <div class="one-contact-container">
+              <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(contact)})>
                   <div>
                       <span class="profil_replacement_img">${profileInitials(contacts.indexOf(contact))}</span>
                   </div>
@@ -278,18 +277,15 @@ async function postData(path = "", data) {
  */
 function groupContactsByInitial(contacts) {
   let groupedContacts = {};
-
   contacts.forEach(contact => {
       let name = contact.name;
       let initial = name[0].toUpperCase();
-
       if (!groupedContacts[initial]) {
           groupedContacts[initial] = [];
       }
-
       groupedContacts[initial].push(contact);
   });
-      console.log(groupedContacts);
+  console.log(groupedContacts);
   return groupedContacts;
 }
 
@@ -299,6 +295,7 @@ function groupContactsByInitial(contacts) {
  * @param {*} i
  */
 function contactDetails(i){
+  console.log("funktioniert");
   let rightContent = document.getElementById('contactDetailsBottom');
   rightContent.innerHTML='';
   rightContent.innerHTML=contactDetailsHTML(i);

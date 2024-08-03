@@ -1,3 +1,4 @@
+
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
@@ -251,9 +252,8 @@ async function postData(path = "", data) {
  */
 function contactDetails(i){
   let rightContent = document.getElementById('contactDetailsBottom');
-  let id = contacts[i]['id'];
   rightContent.innerHTML='';
-  rightContent.innerHTML=contactDetailsHTML(i, id);
+  rightContent.innerHTML=contactDetailsHTML(i);
   }
 
 /**

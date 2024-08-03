@@ -9,6 +9,7 @@ let initialArray =[];
 function initContacts() {
   renderMainContacts();
   renderContacts();
+  renderContactDetails();
 }
 
 /**
@@ -21,6 +22,21 @@ function renderMainContacts() {
   content.innerHTML = `
     <div class="contacts-list" id="contactsList"></div>
     <div class="contact-details" id="contactDetails"></div`;
+}
+
+/**
+ * Diese Funktion dient zum rendern von der Überschrift des rechten Contact contents
+ */
+function renderContactDetails(){
+  let content = document.getElementById("contactDetails"); 
+  content.innerHTML="";
+  content.innerHTML=`
+    <div class="contact_details" id="contactDetailsTop">
+      <h2 class="contact_details_H2">Contacts</h2>
+      <div class="stroke"></div>
+      <span class="contact_details_span">Better with a team</span>
+    </div>
+    <div id="contactDetailsBottom"></div>`
 }
 
 /**
@@ -59,7 +75,6 @@ async function loadContacts(path = "/contacts") {
     });
     // Sortiere die Kontakte alphabetisch nach Name
     contacts.sort((a, b) => a.name.localeCompare(b.name));
-    console.log(contacts);
   }
 }
 
@@ -161,6 +176,51 @@ function openNewContactOverlay(){
 }
 
 /**
+ * In dieser Funktion werden Kontakte bearbeitet
+ * @param {*} i
+ */
+function editContact(i) {
+  let overlay = document.getElementById("overlayNewContact");
+  overlay.classList.remove("d-none");
+  overlay.classList.add("d-flex");
+  overlay.innerHTML = "";
+  overlay.innerHTML = `
+    <div class="add-contact-container" id="addContactContainer">
+      <div class="add-contact-left" id="addContactLeft">
+        <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
+        <h2>Edit Contact</h2>
+        <p><span class="underline">Tasks are</span> better with a team!</p>
+        <!-- <img src="../assets/icon-overlay-contact/underline.svg" alt=""> -->
+      </div>
+      <div class="add-contact-right" id="addContactRight">
+         <div class="add-contact-right-left">
+            <img class="profile-picture" src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
+        </div>
+        <div class="add-contact-right-right">
+          <div class="input-new-contact">
+            <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
+             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName">
+             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail">
+             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber">
+          </div>
+          <div class="save-or-delete-buttons">
+             <button class="delete-button" onclick="cancelAdding()">
+             <p>Cancel</p>
+             <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+             </button>
+             <button class="save-button" onclick="changeContact()">
+                <p>Create contact</p>
+                <img src="../assets/icon-overlay-contact/check.svg" alt="">
+             </button> 
+         </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    `;
+}
+
+/**
  * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen Kontakt auszulesen und sie an die postData() weiterzugeben
  */
 async function addContact() {
@@ -196,7 +256,7 @@ function cancelAdding() {
 }
 
 /**
- * Diese Funktion dient dazu um die neu erhaltenen Daten im Fiebase zu speichern.
+ * Diese Funktion dient dazu um die neu erhaltenen Daten im Firebase zu speichern.
  * 
  * @param {*} path
  * @param {*} data
@@ -231,4 +291,31 @@ function groupContactsByInitial(contacts) {
   });
       console.log(groupedContacts);
   return groupedContacts;
+}
+
+/**
+ * Die Funktion dient zur Öffnung der Details von Kontakten
+ *
+ * @param {*} i
+ */
+function contactDetails(i){
+  let rightContent = document.getElementById('contactDetailsBottom');
+  rightContent.innerHTML='';
+  rightContent.innerHTML=contactDetailsHTML(i);
+  }
+
+  /**
+ * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
+ * @param {*} i 
+ */
+async function deleteContact(path=""){
+  console.log(`deleteContact-${path}`);
+  await fetch(firebase_URL + path +".json", {
+    method: "DELETE",
+  });
+  contacts=[];
+  let rightContent = document.getElementById('contactInformations');
+  rightContent.innerHTML='';
+  renderContactDetails();
+  renderContacts();
 }

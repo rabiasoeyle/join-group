@@ -1,4 +1,3 @@
-
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
@@ -233,4 +232,3 @@ function groupContactsByInitial(contacts) {
       console.log(groupedContacts);
   return groupedContacts;
 }
-

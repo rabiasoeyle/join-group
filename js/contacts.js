@@ -102,7 +102,6 @@ function profileInitials(i){
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
  */
 function openNewContactOverlay(){
-    console.log('overlayFunction');
     let overlay = document.getElementById('overlayNewContact');
     overlay.classList.remove('d-none');
     overlay.classList.add('d-flex');
@@ -175,7 +174,6 @@ function editContactOverlayRight(i){
   editContactRight.innerHTML='';
   editContactRight.innerHTML= editContactOverlayRightHTML(i);
 }
-
 
 /**
  * Diese Funktion soll dazu dienen, die veränderten Infos von den Kontakten auszulesen und an die putData() weiterzugeben.
@@ -292,7 +290,6 @@ function groupContactsByInitial(contacts) {
  * @param {*} i
  */
 function contactDetails(i){
-  console.log("funktioniert");
   let rightContent = document.getElementById('contactDetailsBottom');
   rightContent.innerHTML='';
   rightContent.innerHTML=contactDetailsHTML(i);

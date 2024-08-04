@@ -178,7 +178,7 @@ function openNewContactOverlay(){
  * In dieser Funktion werden Kontakte bearbeitet
  * @param {*} i
  */
-function editContact(i) {
+function editContactOverlay(i) {
   let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
@@ -198,16 +198,16 @@ function editContact(i) {
         <div class="add-contact-right-right">
           <div class="input-new-contact">
             <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName">
-             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail">
-             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber">
+             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]['name']}">
+             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]['email']}">
+             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]['phone']}">
           </div>
           <div class="save-or-delete-buttons">
              <button class="delete-button" onclick="cancelAdding()">
              <p>Cancel</p>
              <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
              </button>
-             <button class="save-button" onclick="changeContact()">
+             <button class="save-button" onclick="editContact(${i})">
                 <p>Create contact</p>
                 <img src="../assets/icon-overlay-contact/check.svg" alt="">
              </button> 
@@ -217,10 +217,49 @@ function editContact(i) {
     </div>
     </div>
     `;
+    
 }
 
 /**
- * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen Kontakt auszulesen und sie an die postData() weiterzugeben
+ * Diese Funktion soll dazu dienen, die veränderten Infos von den Kontakten auszulesen und an die putData() weiterzugeben.
+ */
+async function editContact(i){
+  let nameValue = document.getElementById("inputFieldName").value.trim();
+  let emailValue = document.getElementById("inputFieldEmail").value.trim();
+  let numberValue = document.getElementById("inputFieldNumber").value.trim();
+  if(nameValue&& emailValue&&numberValue){
+    let updatedContact = {name: nameValue, email: emailValue, phone: numberValue };
+    nameValue = "";
+    emailValue = "";
+    numberValue = "";
+    let id = contacts[i]['id'];
+    await putData(`/contacts/${id}`, updatedContact);
+    contacts= [];
+    await loadContacts("/contacts/");
+    renderAllContacts();
+    contactDetails(i);
+  }
+  cancelAdding();
+}
+
+/**
+ * Diese Funktion dient dazu, um die geänderten Kontaktinfos genau an der richtigen Stelle zu ändern.
+ * 
+ * @param {*} path 
+ * @param {*} data 
+ */
+async function putData(path="", data){
+  await fetch(firebase_URL + path + ".json", {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+}
+
+/**
+ * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen Kontakt auszulesen und sie an die postData() weiterzugeben.
  */
 async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();

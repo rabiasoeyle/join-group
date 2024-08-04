@@ -315,5 +315,6 @@ async function deleteContact(path=""){
   let rightContent = document.getElementById('contactInformations');
   rightContent.innerHTML='';
   renderContactDetails();
-  renderContacts();
+  await loadContacts("/contacts");
+  renderAllContacts();
 }

@@ -100,7 +100,7 @@ function renderAllContacts() {
       // Kontakte dieser Gruppe rendern
       groupedContacts[initial].forEach(contact => {
           contactsListBottom.innerHTML += `
-              <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(contact)})>
+              <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(contact)})">
                   <div>
                       <span class="profil_replacement_img">${profileInitials(contacts.indexOf(contact))}</span>
                   </div>

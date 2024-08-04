@@ -232,6 +232,7 @@ async function addContact() {
     emailValue = "";
     numberValue = "";
     console.log(newContact);
+    contacts= [];
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
     renderAllContacts();

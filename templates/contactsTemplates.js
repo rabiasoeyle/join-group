@@ -10,9 +10,9 @@ function contactDetailsHTML(index) {
                     <span class="contact_font_big">${contacts[index]["name"]}</span>
                     <div class="edit_delete_icon">
                         <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
-                        <span class="margin_left" onclick="editContactOverlay(${index})">Edit</span>
+                        <button class="margin_left edit-delete-contact-button" onclick="editContactOverlay(${index})">Edit</button>
                         <img class="margin_left" src="../assets/img/delete.png" alt="Delete Icon">
-                        <span class="margin_left" onclick="deleteContact('contacts/${contacts[index]['id']}')">Delete</span>
+                        <button class="margin_left edit-delete-contact-button" onclick="deleteContact('contacts/${contacts[index]['id']}')">Delete</button>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
@@ -112,7 +113,6 @@ function openNewContactOverlay(){
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
         <h2>Add Contact</h2>
         <p><span class="underline">Tasks are</span> better with a team!</p>
-        <!-- <img src="../assets/icon-overlay-contact/underline.svg" alt=""> -->
       </div>
       <div class="add-contact-right" id="addContactRight">
          <div class="add-contact-right-left">
@@ -120,15 +120,17 @@ function openNewContactOverlay(){
         </div>
         <div class="add-contact-right-right">
           <div class="input-new-contact">
-            <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
+            <div class="cancel-button">
+              <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+            </div>
              <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName">
              <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail">
              <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber">
           </div>
           <div class="save-or-delete-buttons">
              <button class="delete-button" onclick="cancelAdding()">
-             <p>Cancel</p>
-             <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+              <p>Cancel</p>
+              <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
              </button>
              <button class="save-button" onclick="addContact()">
                 <p>Create contact</p>
@@ -220,7 +222,7 @@ async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  if(nameValue&& emailValue&&numberValue){
+  if(nameValue&& emailValue && numberValue){
     let newContact = { name: nameValue, email: emailValue, phone: numberValue };
     nameValue = "";
     emailValue = "";

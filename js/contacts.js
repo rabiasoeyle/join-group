@@ -18,9 +18,7 @@ function initContacts() {
 function renderMainContacts() {
   let content = document.getElementById("content");
   content.innerHTML = "";
-  content.innerHTML = `
-    <div class="contacts-list" id="contactsList"></div>
-    <div class="contact-details" id="contactDetails"></div`;
+  content.innerHTML = renderMainContactsHTML();
 }
 
 /**
@@ -29,13 +27,7 @@ function renderMainContacts() {
 function renderContactDetails(){
   let content = document.getElementById("contactDetails"); 
   content.innerHTML="";
-  content.innerHTML=`
-    <div class="contact_details" id="contactDetailsTop">
-      <h2 class="contact_details_H2">Contacts</h2>
-      <div class="stroke"></div>
-      <span class="contact_details_span">Better with a team</span>
-    </div>
-    <div id="contactDetailsBottom"></div>`
+  content.innerHTML=renderContactDetailsHTML();
 }
 
 /**
@@ -44,12 +36,7 @@ function renderContactDetails(){
 async function renderContacts() {
   let contactsList = document.getElementById("contactsList");
   contactsList.innerHTML = "";
-  contactsList.innerHTML += `
-    <button  type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
-    <span> Add new Contact </span>
-    <img class="icon" src="../assets/img/addPerson.png">
-    </button>
-    <div class="contacts-list-bottom" id="contactsListBottom"></div>`;
+  contactsList.innerHTML += renderContactsHTML()
   await loadContacts("/contacts");
   renderAllContacts();
 }
@@ -83,33 +70,15 @@ async function loadContacts(path = "/contacts") {
 function renderAllContacts() {
   let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
-
   // Kontakte nach Anfangsbuchstaben gruppieren
   let groupedContacts = groupContactsByInitial(contacts);
-
   // Durch die gruppierten Kontakte iterieren
   for (let initial in groupedContacts) {
       // Abstand und Border für den neuen Buchstaben
-      contactsListBottom.innerHTML += `
-          <div class="group-initial-container">
-              <div class="group-initial">${initial}</div>
-              <div class="group-border"></div>
-          </div>
-      `;
-
+      contactsListBottom.innerHTML += renderAllGroupinitialsHTML(initial)
       // Kontakte dieser Gruppe rendern
       groupedContacts[initial].forEach(contact => {
-          contactsListBottom.innerHTML += `
-              <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(contact)})">
-                  <div>
-                      <span class="profil_replacement_img">${profileInitials(contacts.indexOf(contact))}</span>
-                  </div>
-                  <div class="two-contact-container">
-                      <span class="contact_font">${contact.name}</span>
-                      <span class="contact_link">${contact.email}</span>
-                  </div>
-              </div>
-          `;
+          contactsListBottom.innerHTML += renderAllContactsHTML(contact);
       });
   }
 }
@@ -183,42 +152,30 @@ function editContactOverlay(i) {
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
-  overlay.innerHTML = `
-    <div class="add-contact-container" id="addContactContainer">
-      <div class="add-contact-left" id="addContactLeft">
-        <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
-        <h2>Edit Contact</h2>
-        <p><span class="underline">Tasks are</span> better with a team!</p>
-        <!-- <img src="../assets/icon-overlay-contact/underline.svg" alt=""> -->
-      </div>
-      <div class="add-contact-right" id="addContactRight">
-         <div class="add-contact-right-left">
-            <img class="profile-picture" src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
-        </div>
-        <div class="add-contact-right-right">
-          <div class="input-new-contact">
-            <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]['name']}">
-             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]['email']}">
-             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]['phone']}">
-          </div>
-          <div class="save-or-delete-buttons">
-             <button class="delete-button" onclick="cancelAdding()">
-             <p>Cancel</p>
-             <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
-             </button>
-             <button class="save-button" onclick="editContact(${i})">
-                <p>Create contact</p>
-                <img src="../assets/icon-overlay-contact/check.svg" alt="">
-             </button> 
-         </div>
-        </div>
-        </div>
-    </div>
-    </div>
-    `;
-    
+  overlay.innerHTML = editContactOverlayHTML(); 
+    editContactOverlayRight(i);
+    editContactOverlayLeft();
 }
+
+/**
+ * Diese Funktion soll die Linke Seite des editOverlays rendern
+ */
+function editContactOverlayLeft(){
+  let editContactLeft = document.getElementById('addContactLeft');
+  editContactLeft.innerHTML='';
+  editContactLeft.innerHTML= editContactOverlayLeftHTML();
+}
+
+/**
+ * Diese Funktion soll die Rechte Seite des editOverlays rendern
+ * @param {*} i 
+ */
+function editContactOverlayRight(i){
+  let editContactRight = document.getElementById('addContactRight');
+  editContactRight.innerHTML='';
+  editContactRight.innerHTML= editContactOverlayRightHTML(i);
+}
+
 
 /**
  * Diese Funktion soll dazu dienen, die veränderten Infos von den Kontakten auszulesen und an die putData() weiterzugeben.

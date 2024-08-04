@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="add-contact-container" id="addContactContainer">
+        <div class="add-contact-left" id="addContactLeft"></div>
+        <div class="add-contact-right" id="addContactRight"></div>
+    </div>
+</body>
+</html>
+
+
+
+function editContactOverlayLeft(){
+    let addContactLeft = document.getElementById('addContactLeft');
+    addContactLeft.innerHTML='';
+    addContactLeft.innerHTML=`
+        <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
+        <h2>Edit Contact</h2>
+        <p><span class="underline">Tasks are</span> better with a team!</p>
+    `;
+}
+
+function editContactOverlayRight(){
+    let addContactLeft = document.getElementById('addContactRight');
+    addContactLeft.innerHTML='';
+    addContactLeft.innerHTML=`
+    <div class="add-contact-right-left">
+        <img class="profile-picture" src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
+    </div>
+    <div class="add-contact-right-right">
+      <div class="input-new-contact">
+        <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
+         <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]['name']}">
+         <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]['email']}">
+         <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]['phone']}">
+      </div>
+      <div class="save-or-delete-buttons">
+         <button class="delete-button" onclick="cancelAdding()">
+         <p>Cancel</p>
+         <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+         </button>
+         <button class="save-button" onclick="editContact(${i})">
+            <p>Create contact</p>
+            <img src="../assets/icon-overlay-contact/check.svg" alt="">
+         </button> 
+     </div>
+    </div>
+    `;
+}

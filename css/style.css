@@ -184,6 +184,19 @@ button {
   justify-content: space-around;
 }
 
+.sidebar_mobile_sector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 20%;
+}
+
+.sidebar_mobile_sector:hover {
+  background-color: #091931;
+  border-radius: 16px;
+}
+
 .sidebar_mobile_part {
   color: white;
   text-decoration: none;

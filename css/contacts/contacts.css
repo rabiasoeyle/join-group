@@ -336,4 +336,22 @@ span {
 
 .go-back-to-contacts{
   display:none;
+  border: none;
+  background: none;
+  margin-left: 16px;
+}
+.add-contacts-button-mobile{
+  background-color: #2a3647;
+  border-radius: 46px;
+  width:56px;
+  height:56px;
+  position: fixed;
+  bottom: 12vh;
+  right: 8vW;
+  display:none;
+  padding:12px;
+}
+.icon-mobile{
+  width:32px;
+  height:32px;
 }

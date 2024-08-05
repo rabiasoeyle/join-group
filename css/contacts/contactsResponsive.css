@@ -129,4 +129,13 @@
   .contacts-list {
     min-width: 300px;
   }
+  .add-contacts-button{
+    display:none;
+  }
+  .add-contacts-button-mobile{
+    display:flex;
+  }
+  .edit_delete_icon{
+    display:none;
+  }
 }

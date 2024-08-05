@@ -124,11 +124,6 @@
   .go-back-to-contacts{
     display:flex;
   }
-}
-@media (max-width: 360px) {
-  .contacts-list {
-    min-width: 300px;
-  }
   .add-contacts-button{
     display:none;
   }
@@ -137,5 +132,10 @@
   }
   .edit_delete_icon{
     display:none;
+  }
+}
+@media (max-width: 360px) {
+  .contacts-list {
+    min-width: 300px;
   }
 }

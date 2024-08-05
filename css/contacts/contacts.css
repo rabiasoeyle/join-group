@@ -238,6 +238,12 @@ span {
   display: flex;
 }
 
+.add-contact-form {
+  display: flex;
+    gap: 8px;
+    flex-direction: column;
+}
+
 .input-field-name,
 .input-field-mail,
 .input-field-phone {

@@ -110,7 +110,6 @@ function editContactOverlayLeftHTML() {
   return `
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
         <h2>Edit Contact</h2>
-        <p><span class="underline">Tasks are</span> better with a team!</p>
         `;
 }
 
@@ -132,7 +131,7 @@ function editContactOverlayRightHTML(i) {
              <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
              </button>
              <button class="save-button" onclick="editContact(${i})">
-                <p>Create contact</p>
+                <p>Save</p>
                 <img src="../assets/icon-overlay-contact/check.svg" alt="">
              </button> 
          </div>
@@ -164,7 +163,7 @@ function openNewContactOverlayRightHTML(){
               <div class="cancel-button">
                   <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
               </div>
-              <form id="addContactForm" onsubmit="addContact()">
+              <form class="add-contact-form" id="addContactForm" onsubmit="addContact()">
                   <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName">
                   <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail">
                   <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber">

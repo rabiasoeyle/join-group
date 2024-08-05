@@ -41,6 +41,7 @@ function renderContactDetailsHTML() {
   return `
       <div class="contact_details" id="contactDetailsTop">
         <h2 class="contact_details_H2">Contacts</h2>
+        <button onclick="closeContactDetails()" id="goBackToContacts"class="go-back-to-contacts"><=</button>
         <div class="stroke"></div>
         <span class="contact_details_span">Better with a team</span>
       </div>

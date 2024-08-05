@@ -295,9 +295,26 @@ function groupContactsByInitial(contacts) {
  * @param {*} i
  */
 function contactDetails(i) {
+  let rightSide = document.getElementById('contactDetails');
+  rightSide.style.display = "flex";
+  rightSide.style.flexDirection = "column";
+  let leftSide = document.getElementById('contactsList');
+  leftSide.style.display = "none";
   let rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";
   rightContent.innerHTML = contactDetailsHTML(i);
+}
+
+/**
+ * Die Funktion dient zum schließen der contactDetails in der Responsive Ansicht.
+ * 
+ * @param {*} i 
+ */
+function closeContactDetails(){
+  let rightSide = document.getElementById('contactDetails');
+  rightSide.style.display = "none";
+  let leftSide = document.getElementById('contactsList');
+  leftSide.style.display = "flex";
 }
 
 /**

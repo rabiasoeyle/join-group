@@ -333,3 +333,7 @@ span {
   border: none;
   background: none;
 }
+
+.go-back-to-contacts{
+  display:none;
+}

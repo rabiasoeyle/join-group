@@ -420,12 +420,13 @@ span {
 }
 
 .group-initial {
-  font-size: 1.5em; 
-  margin-bottom: 5px; 
+  font-size: 1.5em;
+  margin-left: 12px;
+  margin-bottom: 12px; 
 }
 
 .group-border {
   width: 352px;
   height: 1px; 
-  background-color: black; 
+  background-color: #D1D1D1; 
 }

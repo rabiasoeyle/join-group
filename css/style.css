@@ -191,9 +191,11 @@ button {
 }
 
 .sidebar_mobile_sector:hover {
-  background-color: #091931;
+  background-color: #324f7b;
+  fill: white;
   border-radius: 16px;
 }
+
 
 .sidebar_mobile_part {
   color: white;

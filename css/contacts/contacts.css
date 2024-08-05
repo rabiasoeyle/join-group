@@ -94,11 +94,11 @@
   padding: 16px 0 16px 16px;
   align-items: center;
   border-radius: 16px;
-  gap:12%;
+  gap: 12%;
   transition: background-color 0.2s;
 }
 
-.one-contact-container:hover{
+.one-contact-container:hover {
   background-color: #f1f1f1;
   cursor: pointer;
 }
@@ -107,7 +107,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap:5px;
+  gap: 5px;
 }
 
 .profil_replacement_img_big {
@@ -123,12 +123,12 @@
   font-weight: 500;
 }
 
-.edit_delete_icon{
+.edit_delete_icon {
   display: flex;
   align-items: center;
 }
 
-.contact_font_big{
+.contact_font_big {
   font-size: 46px;
   font-weight: 500;
 }
@@ -320,20 +320,16 @@ span {
 
 .group-initial {
   font-size: 1.5em;
-  margin-left: 12px;
-  margin-bottom: 12px; 
+  margin-bottom: 5px;
 }
 
 .group-border {
   width: 100%;
   height: 0.1px;
-  background-color: #f1f1f1; 
-  width: 352px;
-  height: 1px; 
-  background-color: #D1D1D1; 
+  background-color: #f1f1f1;
 }
 
-.edit-delete-contact-button{
-  border:none;
+.edit-delete-contact-button {
+  border: none;
   background: none;
 }

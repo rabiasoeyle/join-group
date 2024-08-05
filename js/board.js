@@ -1,3 +1,1 @@
-function initBoard(){
-    
-}
+function initBoard() {}

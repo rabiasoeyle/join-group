@@ -1,18 +1,23 @@
-
 function contactDetailsHTML(index) {
-    return `
+  return `
         <div id="contactInformations">
             <div class="one-contact-container">
                 <div>
-                    <span class="profil_replacement_img_big">${profileInitials(index)}</span>
+                    <span class="profil_replacement_img_big">${profileInitials(
+                      index
+                    )}</span>
                 </div>
                 <div class="two-contact-container">
-                    <span class="contact_font_big">${contacts[index]["name"]}</span>
+                    <span class="contact_font_big">${
+                      contacts[index]["name"]
+                    }</span>
                     <div class="edit_delete_icon">
                         <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
                         <button class="margin_left edit-delete-contact-button" onclick="editContactOverlay(${index})">Edit</button>
                         <img class="margin_left" src="../assets/img/delete.png" alt="Delete Icon">
-                        <button class="margin_left edit-delete-contact-button" onclick="deleteContact('contacts/${contacts[index]['id']}')">Delete</button>
+                        <button class="margin_left edit-delete-contact-button" onclick="deleteContact('contacts/${
+                          contacts[index]["id"]
+                        }')">Delete</button>
                     </div>
                 </div>
             </div>
@@ -25,25 +30,25 @@ function contactDetailsHTML(index) {
         `;
 }
 
-function renderMainContactsHTML(){
-    return `
+function renderMainContactsHTML() {
+  return `
       <div class="contacts-list" id="contactsList"></div>
       <div class="contact-details" id="contactDetails"></div
       `;
 }
 
-function renderContactDetailsHTML(){
-    return `
+function renderContactDetailsHTML() {
+  return `
       <div class="contact_details" id="contactDetailsTop">
         <h2 class="contact_details_H2">Contacts</h2>
         <div class="stroke"></div>
         <span class="contact_details_span">Better with a team</span>
       </div>
       <div id="contactDetailsBottom"></div>
-      `
+      `;
 }
 
-function renderContactsHTML(){
+function renderContactsHTML() {
   return `
       <button  type="button" class="add-contacts-button" onclick="openNewContactOverlay()">
       <span> Add new Contact </span>
@@ -52,20 +57,24 @@ function renderContactsHTML(){
       <div class="contacts-list-bottom" id="contactsListBottom"></div>`;
 }
 
-function renderAllGroupinitialsHTML(initial){
-    return `
+function renderAllGroupinitialsHTML(initial) {
+  return `
         <div class="group-initial-container">
             <div class="group-initial">${initial}</div>
             <div class="group-border"></div>
         </div>
         `;
-  }
+}
 
-function renderAllContactsHTML(contact){
-    return `
-        <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(contact)})">
+function renderAllContactsHTML(contact) {
+  return `
+        <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(
+          contact
+        )})">
             <div>
-                <span class="profil_replacement_img">${profileInitials(contacts.indexOf(contact))}</span>
+                <span class="profil_replacement_img">${profileInitials(
+                  contacts.indexOf(contact)
+                )}</span>
             </div>
             <div class="two-contact-container">
                 <span class="contact_font">${contact.name}</span>
@@ -75,8 +84,8 @@ function renderAllContactsHTML(contact){
             `;
 }
 
-function editContactOverlayHTML(){
-    return `
+function editContactOverlayHTML() {
+  return `
         <div class="add-contact-container" id="addContactContainer">
             <div class="add-contact-left" id="addContactLeft"></div>
             <div class="add-contact-right" id="addContactRight"></div>
@@ -84,25 +93,25 @@ function editContactOverlayHTML(){
           `;
 }
 
-function editContactOverlayLeftHTML(){
-    return `
+function editContactOverlayLeftHTML() {
+  return `
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
         <h2>Edit Contact</h2>
         <p><span class="underline">Tasks are</span> better with a team!</p>
         `;
 }
 
-function editContactOverlayRightHTML(i){
-    return `
+function editContactOverlayRightHTML(i) {
+  return `
         <div class="add-contact-right-left">
             <img class="profile-picture" src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
         </div>
         <div class="add-contact-right-right">
           <div class="input-new-contact">
             <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]['name']}">
-             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]['email']}">
-             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]['phone']}">
+             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}">
+             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]["email"]}">
+             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}">
           </div>
           <div class="save-or-delete-buttons">
              <button class="delete-button" onclick="cancelAdding()">

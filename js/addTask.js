@@ -1,3 +1,1 @@
-function initAddTask(){
-    
-}
+function initAddTask() {}

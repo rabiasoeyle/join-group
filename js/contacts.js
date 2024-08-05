@@ -1,8 +1,7 @@
-
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
-let initialArray =[];
+let initialArray = [];
 
 /**
  * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern
@@ -25,10 +24,10 @@ function renderMainContacts() {
 /**
  * Diese Funktion dient zum rendern von der Überschrift des rechten Contact contents
  */
-function renderContactDetails(){
-  let content = document.getElementById("contactDetails"); 
-  content.innerHTML="";
-  content.innerHTML=renderContactDetailsHTML();
+function renderContactDetails() {
+  let content = document.getElementById("contactDetails");
+  content.innerHTML = "";
+  content.innerHTML = renderContactDetailsHTML();
 }
 
 /**
@@ -37,15 +36,15 @@ function renderContactDetails(){
 async function renderContacts() {
   let contactsList = document.getElementById("contactsList");
   contactsList.innerHTML = "";
-  contactsList.innerHTML += renderContactsHTML()
+  contactsList.innerHTML += renderContactsHTML();
   await loadContacts("/contacts");
   renderAllContacts();
 }
 
 /**
  * In dieser Funktion werden die Daten aus dem Firebase geladen.
- * 
- * @param {*} path 
+ *
+ * @param {*} path
  */
 async function loadContacts(path = "/contacts") {
   let response = await fetch(firebase_URL + path + ".json");
@@ -75,39 +74,39 @@ function renderAllContacts() {
   let groupedContacts = groupContactsByInitial(contacts);
   // Durch die gruppierten Kontakte iterieren
   for (let initial in groupedContacts) {
-      // Abstand und Border für den neuen Buchstaben
-      contactsListBottom.innerHTML += renderAllGroupinitialsHTML(initial)
-      // Kontakte dieser Gruppe rendern
-      groupedContacts[initial].forEach(contact => {
-          contactsListBottom.innerHTML += renderAllContactsHTML(contact);
-      });
+    // Abstand und Border für den neuen Buchstaben
+    contactsListBottom.innerHTML += renderAllGroupinitialsHTML(initial);
+    // Kontakte dieser Gruppe rendern
+    groupedContacts[initial].forEach((contact) => {
+      contactsListBottom.innerHTML += renderAllContactsHTML(contact);
+    });
   }
 }
 
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
- * 
- * @param {*} i 
- * @returns 
+ *
+ * @param {*} i
+ * @returns
  */
-function profileInitials(i){
-        let names = contacts[i]['name'].split(' '),
-            initials = names[0].substring(0, 1).toUpperCase();
-        if (names.length > 1) {
-            initials += names[names.length - 1].substring(0, 1).toUpperCase();
-        }
-        return initials;
+function profileInitials(i) {
+  let names = contacts[i]["name"].split(" "),
+    initials = names[0].substring(0, 1).toUpperCase();
+  if (names.length > 1) {
+    initials += names[names.length - 1].substring(0, 1).toUpperCase();
+  }
+  return initials;
 }
 
 /**
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
  */
-function openNewContactOverlay(){
-    let overlay = document.getElementById('overlayNewContact');
-    overlay.classList.remove('d-none');
-    overlay.classList.add('d-flex');
-    overlay.innerHTML='';
-    overlay.innerHTML= /*html*/`
+function openNewContactOverlay() {
+  let overlay = document.getElementById("overlayNewContact");
+  overlay.classList.remove("d-none");
+  overlay.classList.add("d-flex");
+  overlay.innerHTML = "";
+  overlay.innerHTML = /*html*/ `
     <div class="add-contact-container" id="addContactContainer">
       <div class="add-contact-left" id="addContactLeft">
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
@@ -141,7 +140,7 @@ function openNewContactOverlay(){
         </div>
     </div>
     </div>
-    `
+    `;
 }
 
 /**
@@ -153,45 +152,49 @@ function editContactOverlay(i) {
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
-  overlay.innerHTML = editContactOverlayHTML(); 
-    editContactOverlayRight(i);
-    editContactOverlayLeft();
+  overlay.innerHTML = editContactOverlayHTML();
+  editContactOverlayRight(i);
+  editContactOverlayLeft();
 }
 
 /**
  * Diese Funktion soll die Linke Seite des editOverlays rendern
  */
-function editContactOverlayLeft(){
-  let editContactLeft = document.getElementById('addContactLeft');
-  editContactLeft.innerHTML='';
-  editContactLeft.innerHTML= editContactOverlayLeftHTML();
+function editContactOverlayLeft() {
+  let editContactLeft = document.getElementById("addContactLeft");
+  editContactLeft.innerHTML = "";
+  editContactLeft.innerHTML = editContactOverlayLeftHTML();
 }
 
 /**
  * Diese Funktion soll die Rechte Seite des editOverlays rendern
- * @param {*} i 
+ * @param {*} i
  */
-function editContactOverlayRight(i){
-  let editContactRight = document.getElementById('addContactRight');
-  editContactRight.innerHTML='';
-  editContactRight.innerHTML= editContactOverlayRightHTML(i);
+function editContactOverlayRight(i) {
+  let editContactRight = document.getElementById("addContactRight");
+  editContactRight.innerHTML = "";
+  editContactRight.innerHTML = editContactOverlayRightHTML(i);
 }
 
 /**
  * Diese Funktion soll dazu dienen, die veränderten Infos von den Kontakten auszulesen und an die putData() weiterzugeben.
  */
-async function editContact(i){
+async function editContact(i) {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  if(nameValue&& emailValue&&numberValue){
-    let updatedContact = {name: nameValue, email: emailValue, phone: numberValue };
+  if (nameValue && emailValue && numberValue) {
+    let updatedContact = {
+      name: nameValue,
+      email: emailValue,
+      phone: numberValue,
+    };
     nameValue = "";
     emailValue = "";
     numberValue = "";
-    let id = contacts[i]['id'];
+    let id = contacts[i]["id"];
     await putData(`/contacts/${id}`, updatedContact);
-    contacts= [];
+    contacts = [];
     await loadContacts("/contacts/");
     renderAllContacts();
     contactDetails(i);
@@ -201,18 +204,18 @@ async function editContact(i){
 
 /**
  * Diese Funktion dient dazu, um die geänderten Kontaktinfos genau an der richtigen Stelle zu ändern.
- * 
- * @param {*} path 
- * @param {*} data 
+ *
+ * @param {*} path
+ * @param {*} data
  */
-async function putData(path="", data){
+async function putData(path = "", data) {
   await fetch(firebase_URL + path + ".json", {
-            method: "PUT",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 }
 
 /**
@@ -222,18 +225,18 @@ async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  if(nameValue&& emailValue && numberValue){
+  if (nameValue && emailValue && numberValue) {
     let newContact = { name: nameValue, email: emailValue, phone: numberValue };
     nameValue = "";
     emailValue = "";
     numberValue = "";
     console.log(newContact);
-    contacts= [];
+    contacts = [];
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
     renderAllContacts();
   }
-    cancelAdding();
+  cancelAdding();
 }
 
 /**
@@ -253,7 +256,7 @@ function cancelAdding() {
 
 /**
  * Diese Funktion dient dazu um die neu erhaltenen Daten im Firebase zu speichern.
- * 
+ *
  * @param {*} path
  * @param {*} data
  */
@@ -269,18 +272,18 @@ async function postData(path = "", data) {
 
 /**
  * Diese Funktion soll dazu dienen, die Kontakte mithilfe der ersten Buchstaben in Kategorien anzuordnen
- * @param {*} contacts 
- * @returns 
+ * @param {*} contacts
+ * @returns
  */
 function groupContactsByInitial(contacts) {
   let groupedContacts = {};
-  contacts.forEach(contact => {
-      let name = contact.name;
-      let initial = name[0].toUpperCase();
-      if (!groupedContacts[initial]) {
-          groupedContacts[initial] = [];
-      }
-      groupedContacts[initial].push(contact);
+  contacts.forEach((contact) => {
+    let name = contact.name;
+    let initial = name[0].toUpperCase();
+    if (!groupedContacts[initial]) {
+      groupedContacts[initial] = [];
+    }
+    groupedContacts[initial].push(contact);
   });
   console.log(groupedContacts);
   return groupedContacts;
@@ -291,24 +294,24 @@ function groupContactsByInitial(contacts) {
  *
  * @param {*} i
  */
-function contactDetails(i){
-  let rightContent = document.getElementById('contactDetailsBottom');
-  rightContent.innerHTML='';
-  rightContent.innerHTML=contactDetailsHTML(i);
-  }
+function contactDetails(i) {
+  let rightContent = document.getElementById("contactDetailsBottom");
+  rightContent.innerHTML = "";
+  rightContent.innerHTML = contactDetailsHTML(i);
+}
 
-  /**
+/**
  * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
- * @param {*} i 
+ * @param {*} i
  */
-async function deleteContact(path=""){
+async function deleteContact(path = "") {
   console.log(`deleteContact-${path}`);
-  await fetch(firebase_URL + path +".json", {
+  await fetch(firebase_URL + path + ".json", {
     method: "DELETE",
   });
-  contacts=[];
-  let rightContent = document.getElementById('contactInformations');
-  rightContent.innerHTML='';
+  contacts = [];
+  let rightContent = document.getElementById("contactInformations");
+  rightContent.innerHTML = "";
   renderContactDetails();
   await loadContacts("/contacts");
   renderAllContacts();

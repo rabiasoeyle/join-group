@@ -333,3 +333,7 @@ async function deleteContact(path = "") {
   await loadContacts("/contacts");
   renderAllContacts();
 }
+
+function toggleEditOrDelete(){
+  
+}

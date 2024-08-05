@@ -46,6 +46,9 @@ function renderContactDetailsHTML() {
         <button onclick="closeContactDetails()" id="goBackToContacts"class="go-back-to-contacts"><img src="../assets/img/blueArrow.png"></button>
       </div>
       <div id="contactDetailsBottom"></div>
+      <button  onclick="toggleEditOrDelete()" type="button" class="add-contacts-button-mobile" onclick="editOrDeleteBar()">
+      <img class="icon-mobile" src="../assets/img/threeDots.png">
+      </button>
       `;
 }
 

@@ -129,5 +129,8 @@
   }
   .add-contacts-button-mobile{
     display:flex;
-}
+  }
+  .edit_delete_icon{
+    display:none;
+  }
 }

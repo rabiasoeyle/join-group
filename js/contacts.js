@@ -4,6 +4,24 @@ let contacts = [];
 let initialArray = [];
 
 /**
+ * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
+ */
+window.addEventListener("resize", function(){
+  // fire when above 1203
+    let rightSide = document.getElementById('contactDetails');
+    let leftSide = document.getElementById('contactsList');
+    if(document.documentElement.clientWidth > 840) {
+      rightSide.style.display = "flex";
+      rightSide.style.flexDirection = "column";
+      leftSide.style.display = "flex";
+    }
+    else {
+        rightSide.style.display = "none";
+        leftSide.style.display = "flex";
+      }
+}, true);
+
+/**
  * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern
  */
 function initContacts() {
@@ -296,10 +314,20 @@ function groupContactsByInitial(contacts) {
  */
 function contactDetails(i) {
   let rightSide = document.getElementById('contactDetails');
-  rightSide.style.display = "flex";
-  rightSide.style.flexDirection = "column";
   let leftSide = document.getElementById('contactsList');
-  leftSide.style.display = "none";
+  if(document.documentElement.clientWidth > 840) {
+    rightSide.style.display = "flex";
+    rightSide.style.flexDirection = "column";
+    console.log('Greater!');
+    leftSide.style.display = "flex";
+  }
+    else {
+      console.log('Smaller!');
+      rightSide.style.display = "flex";
+      rightSide.style.flexDirection = "column";
+      leftSide.style.display = "none";
+    }
+  
   //hier muss das so eingestellt werden, dass der obere teil erst ab einer width von 840px geht
   let rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";

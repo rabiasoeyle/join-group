@@ -191,10 +191,13 @@ button {
 }
 
 .sidebar_mobile_sector:hover {
-  background-color: #091931;
+  background-color: #324f7b;
   border-radius: 16px;
 }
 
+.sidebar_mobile_sector:hover .icons_sidebar {
+  fill: white;
+}
 .sidebar_mobile_part {
   color: white;
   text-decoration: none;

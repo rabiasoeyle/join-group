@@ -362,4 +362,15 @@ span {
   right: 16vW;
   bottom: 12vh;
   flex-direction: column;
+  height: 100px;
+  width: 116px;
+  background: white;
+  border-radius: 20px 20px 0px 20px;
+  z-index:2;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+.edit-or-delete-toggle-div button{
+  flex:1;
+  background: none;
+  border:none;
 }

@@ -124,44 +124,17 @@ function openNewContactOverlay() {
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
-  overlay.innerHTML =`
-  <div class="add-contact-container" id="addContactContainer">
-            <div class="add-contact-left" id="addContactLeft">
-                <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
-                <h2>Add Contact</h2>
-                <p><span class="underline">Tasks are</span> better with a team!</p>
-            </div>
-            <div class="add-contact-right" id="addContactRight">
-                <div class="add-contact-right-left">
-                    <img class="profile-picture" src="../assets/icon-overlay-contact/profile-big.svg" alt="">
-                </div>
-                <div class="add-contact-right-right">
-                    <div class="input-new-contact">
-                        <div class="cancel-button">
-                            <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
-                        </div>
-                        <form id="addContactForm" onsubmit="addContact()">
-                            <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName">
-                            <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail">
-                            <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber">
-                            <div class="save-or-delete-buttons">
-                                <button type="button" class="delete-button" onclick="cancelAdding()">
-                                    <p>Cancel</p>
-                                    <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
-                                </button>
-                                <button type="submit" class="save-button">
-                                    <p>Create contact</p>
-                                    <img src="../assets/icon-overlay-contact/check.svg" alt="">
-                                </button> 
-                            </div>
-                        </form>
-                        <p id="error-message" style="color: red; display: none;">Please fill in all required fields.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
+  overlay.innerHTML = openNewContactOverlayHTML();
+  openNewContactOverlayRight();
+ 
 }
+
+function openNewContactOverlayRight(){
+  let addContactRight = document.getElementById('addContactRight');
+  addContactRight.innerHTML='';
+  addContactRight.innerHTML= openNewContactOverlayRightHTML();
+}
+
 
 /**
  * In dieser Funktion werden Kontakte bearbeitet

@@ -155,7 +155,7 @@ function openNewContactOverlayHTML(){
 }
 
 function openNewContactOverlayRightHTML(){
-  return `
+  return /*html*/ `
   <div class="add-contact-right-left">
           <img class="profile-picture" src="../assets/icon-overlay-contact/profile-big.svg" alt="">
       </div>

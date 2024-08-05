@@ -141,6 +141,8 @@ function openNewContactOverlayRight(){
  * @param {*} i
  */
 function editContactOverlay(i) {
+  let menu = document.getElementById('editOrDeleteMenu');
+  menu.style.display = "none";
   let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
@@ -291,11 +293,9 @@ function contactDetails(i) {
   if(document.documentElement.clientWidth > 840) {
     rightSide.style.display = "flex";
     rightSide.style.flexDirection = "column";
-    console.log('Greater!');
     leftSide.style.display = "flex";
   }
     else {
-      console.log('Smaller!');
       rightSide.style.display = "flex";
       rightSide.style.flexDirection = "column";
       leftSide.style.display = "none";

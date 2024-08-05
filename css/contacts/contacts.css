@@ -252,15 +252,15 @@ span {
 }
 
 .input-field-name {
-  background-image: url(../assets/icon-overlay-contact/person-little.svg);
+  background-image: url(../../assets/icon-overlay-contact/person-little.svg);
 }
 
 .input-field-mail {
-  background-image: url(../assets/icon-overlay-contact/mail.svg);
+  background-image: url(../../assets/icon-overlay-contact/mail.svg);
 }
 
 .input-field-phone {
-  background-image: url(../assets/icon-overlay-contact/phone.svg);
+  background-image: url(../../assets/icon-overlay-contact/phone.svg);
 }
 
 .save-or-delete-buttons {

@@ -134,6 +134,28 @@
     display:none;
   }
 }
+@media(max-width:600px){
+  .overlay-new-contact {
+    height: 100dvh;
+    top: 0vh;
+    bottom:0vh;
+    left:0vw;
+    right:0vw;
+    width:100%;
+    border-radius:0px;
+  }
+  .add-contact-left{
+    border-radius:0px;
+  }
+  .profile-picture{
+    position: fixed;
+        top: 35%;
+        bottom: 0;
+        left: 35vW;
+        right: 35vW;
+        margin:0;
+  }
+}
 @media (max-width: 360px) {
   .contacts-list {
     min-width: 300px;

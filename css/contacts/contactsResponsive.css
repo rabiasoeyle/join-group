@@ -125,3 +125,8 @@
     display:flex;
   }
 }
+@media (max-width: 360px) {
+  .contacts-list {
+    min-width: 300px;
+  }
+}

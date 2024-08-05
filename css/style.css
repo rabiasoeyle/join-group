@@ -175,21 +175,18 @@ button {
 }
 
 .sidebar_mobile {
-  color: white;
   background-color: #2a3647;
   height: 10vh;
   width: 100vw;
   display: flex;
-  align-items: center;
   justify-content: space-around;
 }
 
 .sidebar_mobile_sector {
+  width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 20%;
 }
 
 .sidebar_mobile_sector:hover {
@@ -203,6 +200,11 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.header_icon {
+  display: none;
+  height: 50px;
 }
 
 @media (max-width: 1020px) {
@@ -222,4 +224,20 @@ button {
     display: flex;
     justify-content: center;
   }
+  .help_img {
+    display: none;
+  }
+  .header_font {
+    display: none;
+  }
+  .header_icon {
+    display: block;
+  }
 }
+
+@media (max-width: 360px) {
+  .sidebar_mobile_part {
+    font-size: 12px;
+  }
+}
+  

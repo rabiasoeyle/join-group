@@ -173,3 +173,41 @@
 button {
   cursor: pointer;
 }
+
+.sidebar_mobile {
+  color: white;
+  background-color: #2a3647;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.sidebar_mobile_part {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1020px) {
+  .sidebar {
+    display: none;
+  }
+  .main{
+    min-height: 90vh;
+  }
+  .contact-details {
+    height: 83vh;
+  }
+  .contact-list {
+    height: 83vh;
+  }
+  .icons_sidebar {
+    display: flex;
+    justify-content: center;
+
+  }
+}

@@ -73,6 +73,12 @@
   }
 }
 
+@media (max-width: 1020px) {
+  .contacts-list {
+    height: 83vh;
+  }
+}
+
 @media (max-width: 980px) {
   .add-contact-container {
     display: flex;

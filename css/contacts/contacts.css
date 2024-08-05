@@ -347,11 +347,19 @@ span {
   height:56px;
   position: fixed;
   bottom: 12vh;
-  right: 8vW;
+  right: 4vW;
   display:none;
   padding:12px;
+  align-items: center;
+  justify-content: center;
 }
 .icon-mobile{
   width:32px;
   height:32px;
+}
+.edit-or-delete-toggle-div{
+  position: fixed;
+  right: 16vW;
+  bottom: 12vh;
+  flex-direction: column;
 }

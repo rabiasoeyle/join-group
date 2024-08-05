@@ -27,6 +27,11 @@ function contactDetailsHTML(index) {
         <p class="contact_link margin_contact">${contacts[index]["email"]}</p>
         <p class="font_span_big margin_contact">Phone</p>
         <p class="contact_font margin_contact">${contacts[index]["phone"]}</p>
+        <div id="editOrDeleteMenu" class="edit-or-delete-toggle-div"style="display: none;">
+        <!-- Inhalt des Toggle-Menüs -->
+        <button onclick="editContactOverlay(${index})">Edit</button>
+        <button onclick="deleteContact('contacts/${contacts[index]["id"]}')">Delete</button>
+      </div>
         `;
 }
 
@@ -43,7 +48,8 @@ function renderContactDetailsHTML() {
         <h2 class="contact_details_H2">Contacts</h2>
         <div class="stroke"></div>
         <span class="contact_details_span">Better with a team</span>
-        <button onclick="closeContactDetails()" id="goBackToContacts"class="go-back-to-contacts"><img src="../assets/img/blueArrow.png"></button>
+        <button onclick="closeContactDetails()" id="goBackToContacts"class="go-back-to-contacts">
+        <img src="../assets/img/blueArrow.png"></button>
       </div>
       <div id="contactDetailsBottom"></div>
       <button  onclick="toggleEditOrDelete()" type="button" class="add-contacts-button-mobile" onclick="editOrDeleteBar()">

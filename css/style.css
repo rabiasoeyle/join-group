@@ -223,6 +223,7 @@ button {
   .icons_sidebar {
     display: flex;
     justify-content: center;
+    margin-right:0;
   }
   .help_img {
     display: none;
@@ -232,6 +233,12 @@ button {
   }
   .header_icon {
     display: block;
+  }
+  .header{
+    padding: 0px 20px;
+  }
+  .help_initials{
+    width:auto;
   }
 }
 

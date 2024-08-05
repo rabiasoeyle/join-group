@@ -300,6 +300,7 @@ function contactDetails(i) {
   rightSide.style.flexDirection = "column";
   let leftSide = document.getElementById('contactsList');
   leftSide.style.display = "none";
+  //hier muss das so eingestellt werden, dass der obere teil erst ab einer width von 840px geht
   let rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";
   rightContent.innerHTML = contactDetailsHTML(i);

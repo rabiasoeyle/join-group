@@ -95,7 +95,7 @@
   align-items: center;
   border-radius: 16px;
   gap: 12%;
-  transition: background-color 0.2s;
+  transition: background-color 125ms;
 }
 
 .one-contact-container:hover {

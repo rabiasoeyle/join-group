@@ -245,7 +245,6 @@ async function addContact() {
   let nameValue = document.getElementById("inputFieldName").value.trim();
   let emailValue = document.getElementById("inputFieldEmail").value.trim();
   let numberValue = document.getElementById("inputFieldNumber").value.trim();
-  if (nameValue && emailValue && numberValue) {
     let newContact = { name: nameValue, email: emailValue, phone: numberValue };
     nameValue = "";
     emailValue = "";
@@ -255,8 +254,7 @@ async function addContact() {
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
     renderAllContacts();
-  }
-  cancelAdding();
+    cancelAdding();
 }
 
 /**

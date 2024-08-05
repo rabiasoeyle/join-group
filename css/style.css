@@ -63,7 +63,7 @@
   justify-content: flex-start;
   width: 100%;
   padding: 2% 10%;
-  transition: background-color 0.3s;
+  transition: background-color 125ms;
 }
 
 .sidebar_links a:hover {
@@ -88,7 +88,7 @@
   height: 40px;
   margin-right: 12px;
   fill: #858688;
-  transition: fill 0.3s;
+  transition: fill 125ms;
 }
 
 .icons_sidebar:hover {
@@ -98,7 +98,7 @@
 .sidebar_bottom a {
   text-decoration: none;
   color: #858688;
-  transition: color 0.3s;
+  transition: color 125ms;
 }
 
 .sidebar_bottom a:hover {
@@ -151,7 +151,7 @@
 .help_img {
   width: 32px;
   height: 32px;
-  transition: scale 0.3s;
+  transition: scale 125ms;
 }
 
 .help_img:hover {

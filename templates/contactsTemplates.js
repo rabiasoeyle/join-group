@@ -41,9 +41,9 @@ function renderContactDetailsHTML() {
   return `
       <div class="contact_details" id="contactDetailsTop">
         <h2 class="contact_details_H2">Contacts</h2>
-        <button onclick="closeContactDetails()" id="goBackToContacts"class="go-back-to-contacts"><=</button>
         <div class="stroke"></div>
         <span class="contact_details_span">Better with a team</span>
+        <button onclick="closeContactDetails()" id="goBackToContacts"class="go-back-to-contacts"><img src="../assets/img/blueArrow.png"></button>
       </div>
       <div id="contactDetailsBottom"></div>
       `;
@@ -55,7 +55,10 @@ function renderContactsHTML() {
       <span> Add new Contact </span>
       <img class="icon" src="../assets/img/addPerson.png">
       </button>
-      <div class="contacts-list-bottom" id="contactsListBottom"></div>`;
+      <div class="contacts-list-bottom" id="contactsListBottom"></div>
+      <button  type="button" class="add-contacts-button-mobile" onclick="openNewContactOverlay()">
+      <img class="icon-mobile" src="../assets/img/addPerson.png">
+      </button>`;
 }
 
 function renderAllGroupinitialsHTML(initial) {

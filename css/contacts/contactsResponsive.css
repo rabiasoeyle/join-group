@@ -124,4 +124,9 @@
   .go-back-to-contacts{
     display:flex;
   }
+  .add-contacts-button{
+    display:none;
+  }
+  .add-contacts-button-mobile{
+    display:flex;
 }

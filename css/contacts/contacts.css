@@ -61,6 +61,8 @@
 }
 
 .overlay-new-contact {
+  max-width: 950px;
+  max-height: 850px;
   width: 55%;
   height: 55%;
   background: white;

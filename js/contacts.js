@@ -75,6 +75,7 @@ async function loadContacts(path = "/contacts") {
         name: responseToJson[key]["name"],
         email: responseToJson[key]["email"],
         phone: responseToJson[key]["phone"],
+        colornumber: responseToJson[key]["colornumber"],
       });
     });
     // Sortiere die Kontakte alphabetisch nach Name
@@ -216,10 +217,10 @@ async function putData(path = "", data) {
  * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen Kontakt auszulesen und sie an die postData() weiterzugeben.
  */
 async function addContact() {
-  let nameValue = document.getElementById("inputFieldName").value.trim();
-  let emailValue = document.getElementById("inputFieldEmail").value.trim();
-  let numberValue = document.getElementById("inputFieldNumber").value.trim();
-    let newContact = { name: nameValue, email: emailValue, phone: numberValue };
+  let nameValue = document.getElementById('inputFieldName').value.trim();
+  let emailValue = document.getElementById('inputFieldEmail').value.trim();
+  let numberValue = document.getElementById('inputFieldNumber').value.trim();
+    let newContact = { name: nameValue, email: emailValue, phone: numberValue, colornumber:colornumber };
     nameValue = "";
     emailValue = "";
     numberValue = "";
@@ -342,4 +343,14 @@ function toggleEditOrDelete(){
   } else {
       menu.style.display = "none";
   }
+}
+
+function randomizeNumber(){
+  colornumber = Math.floor(Math.random() * 12); 
+  return colornumber;
+}
+
+function randomizeNumber(){
+  colornumber = Math.floor(Math.random() * 12); 
+  return colornumber;
 }

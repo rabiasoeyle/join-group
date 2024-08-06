@@ -240,8 +240,8 @@ span {
 
 .add-contact-form {
   display: flex;
-    gap: 8px;
-    flex-direction: column;
+  gap: 8px;
+  flex-direction: column;
 }
 
 .input-field-name,
@@ -340,43 +340,47 @@ span {
   background: none;
 }
 
-.go-back-to-contacts{
-  display:none;
+.go-back-to-contacts {
+  display: none;
   border: none;
   background: none;
   margin-left: 8%;
 }
-.add-contacts-button-mobile{
+
+.add-contacts-button-mobile {
   background-color: #2a3647;
   border-radius: 46px;
-  width:56px;
-  height:56px;
+  width: 56px;
+  height: 56px;
   position: fixed;
   bottom: 12vh;
-  right: 4vW;
-  display:none;
-  padding:12px;
+  right: 4vw;
+  display: none;
+  padding: 12px;
   align-items: center;
   justify-content: center;
 }
-.icon-mobile{
-  width:32px;
-  height:32px;
+
+.icon-mobile {
+  width: 32px;
+  height: 32px;
 }
-.edit-or-delete-toggle-div{
+
+.edit-or-delete-toggle-div {
   position: fixed;
-  right: 16vW;
+  right: 16vw;
   bottom: 12vh;
   flex-direction: column;
   height: 100px;
   width: 116px;
   background: white;
   border-radius: 20px 20px 0px 20px;
-  z-index:2;
+  z-index: 2;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
-.edit-or-delete-toggle-div button{
-  flex:1;
+
+.edit-or-delete-toggle-div button {
+  flex: 1;
   background: none;
-  border:none;
+  border: none;
 }

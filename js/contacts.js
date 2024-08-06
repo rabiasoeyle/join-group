@@ -353,3 +353,13 @@ function randomizeNumber(){
   colornumber = Math.floor(Math.random() * 12); 
   return colornumber;
 }
+
+function randomizeNumber(){
+  colornumber = Math.floor(Math.random() * 12); 
+  return colornumber;
+}
+
+function randomizeNumber(){
+  colornumber = Math.floor(Math.random() * 12); 
+  return colornumber;
+}

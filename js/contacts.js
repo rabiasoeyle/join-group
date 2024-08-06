@@ -2,7 +2,6 @@ let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let initialArray = [];
-let colornumber = 3;
 
 /**
  * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
@@ -29,16 +28,13 @@ function initContacts() {
   renderMainContacts();
   renderContacts();
   renderContactDetails();
-  randomizeNumber();
-  console.log(colornumber);
-  
 }
 
 /**
  * Diese Funktion soll die beiden Container für den Content erstellen.
  */
 function renderMainContacts() {
-  let content = document.getElementById('content');
+  let content = document.getElementById("content");
   content.innerHTML = "";
   content.innerHTML = renderMainContactsHTML();
 }
@@ -47,7 +43,7 @@ function renderMainContacts() {
  * Diese Funktion dient zum rendern von der Überschrift des rechten Contact contents
  */
 function renderContactDetails() {
-  let content = document.getElementById('contactDetails');
+  let content = document.getElementById("contactDetails");
   content.innerHTML = "";
   content.innerHTML = renderContactDetailsHTML();
 }
@@ -56,7 +52,7 @@ function renderContactDetails() {
  * Diese Funktion soll den Button und den unteren Container für die Kontakte erstellen
  */
 async function renderContacts() {
-  let contactsList = document.getElementById('contactsList');
+  let contactsList = document.getElementById("contactsList");
   contactsList.innerHTML = "";
   contactsList.innerHTML += renderContactsHTML();
   await loadContacts("/contacts");
@@ -91,7 +87,7 @@ async function loadContacts(path = "/contacts") {
  * In dieser Funktion werden alle Kontakte gerendert.
  */
 function renderAllContacts() {
-  let contactsListBottom = document.getElementById('contactsListBottom');
+  let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
   // Kontakte nach Anfangsbuchstaben gruppieren
   let groupedContacts = groupContactsByInitial(contacts);
@@ -125,7 +121,7 @@ function profileInitials(i) {
  * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
  */
 function openNewContactOverlay() {
-  let overlay = document.getElementById('overlayNewContact');
+  let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
@@ -147,7 +143,7 @@ function openNewContactOverlayRight(){
 function editContactOverlay(i) {
   let menu = document.getElementById('editOrDeleteMenu');
   menu.style.display = "none";
-  let overlay = document.getElementById('overlayNewContact');
+  let overlay = document.getElementById("overlayNewContact");
   overlay.classList.remove("d-none");
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
@@ -160,7 +156,7 @@ function editContactOverlay(i) {
  * Diese Funktion soll die Linke Seite des editOverlays rendern
  */
 function editContactOverlayLeft() {
-  let editContactLeft = document.getElementById('addContactLeft');
+  let editContactLeft = document.getElementById("addContactLeft");
   editContactLeft.innerHTML = "";
   editContactLeft.innerHTML = editContactOverlayLeftHTML();
 }
@@ -170,7 +166,7 @@ function editContactOverlayLeft() {
  * @param {*} i
  */
 function editContactOverlayRight(i) {
-  let editContactRight = document.getElementById('addContactRight');
+  let editContactRight = document.getElementById("addContactRight");
   editContactRight.innerHTML = "";
   editContactRight.innerHTML = editContactOverlayRightHTML(i);
 }
@@ -179,9 +175,9 @@ function editContactOverlayRight(i) {
  * Diese Funktion soll dazu dienen, die veränderten Infos von den Kontakten auszulesen und an die putData() weiterzugeben.
  */
 async function editContact(i) {
-  let nameValue = document.getElementById('inputFieldName').value.trim();
-  let emailValue = document.getElementById('inputFieldEmail').value.trim();
-  let numberValue = document.getElementById('inputFieldNumber').value.trim();
+  let nameValue = document.getElementById("inputFieldName").value.trim();
+  let emailValue = document.getElementById("inputFieldEmail").value.trim();
+  let numberValue = document.getElementById("inputFieldNumber").value.trim();
   if (nameValue && emailValue && numberValue) {
     let updatedContact = {
       name: nameValue,
@@ -306,7 +302,7 @@ function contactDetails(i) {
     }
   
   //hier muss das so eingestellt werden, dass der obere teil erst ab einer width von 840px geht
-  let rightContent = document.getElementById('contactDetailsBottom');
+  let rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";
   rightContent.innerHTML = contactDetailsHTML(i);
 }

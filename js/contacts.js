@@ -2,6 +2,7 @@ let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let initialArray = [];
+let colornumber = 3;
 
 /**
  * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
@@ -28,6 +29,9 @@ function initContacts() {
   renderMainContacts();
   renderContacts();
   renderContactDetails();
+  randomizeNumber();
+  console.log(colornumber);
+  
 }
 
 /**
@@ -342,4 +346,9 @@ function toggleEditOrDelete(){
   } else {
       menu.style.display = "none";
   }
+}
+
+function randomizeNumber(){
+  colornumber = Math.floor(Math.random() * 12); 
+  return colornumber;
 }

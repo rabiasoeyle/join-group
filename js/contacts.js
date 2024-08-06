@@ -125,8 +125,7 @@ function openNewContactOverlay() {
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
   overlay.innerHTML = openNewContactOverlayHTML();
-  openNewContactOverlayRight();
- 
+  openNewContactOverlayRight(); 
 }
 
 function openNewContactOverlayRight(){

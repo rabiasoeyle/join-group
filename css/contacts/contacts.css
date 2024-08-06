@@ -385,6 +385,16 @@ span {
   border: none;
 }
 
+<<<<<<< HEAD
 .sidebar_mobile_sector_contacts{
   background-color: crimson;
+=======
+.contacts-link-color{
+  background-color:
+  #091931;
+  border-radius: 16px;
+}
+.contacts-link-color .icons_sidebar{
+  fill:white;
+>>>>>>> 174e642e9b04e6b71d2a125979c8bb46d13073fe
 }

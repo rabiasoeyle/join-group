@@ -3,6 +3,7 @@ let firebase_URL =
 let contacts = [];
 let initialArray = [];
 
+
 /**
  * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
  */
@@ -75,7 +76,6 @@ async function loadContacts(path = "/contacts") {
         name: responseToJson[key]["name"],
         email: responseToJson[key]["email"],
         phone: responseToJson[key]["phone"],
-        colornumber: responseToJson[key]["colornumber"],
       });
     });
     // Sortiere die Kontakte alphabetisch nach Name
@@ -220,7 +220,7 @@ async function addContact() {
   let nameValue = document.getElementById('inputFieldName').value.trim();
   let emailValue = document.getElementById('inputFieldEmail').value.trim();
   let numberValue = document.getElementById('inputFieldNumber').value.trim();
-    let newContact = { name: nameValue, email: emailValue, phone: numberValue, colornumber:colornumber };
+    let newContact = { name: nameValue, email: emailValue, phone: numberValue};
     nameValue = "";
     emailValue = "";
     numberValue = "";
@@ -336,6 +336,9 @@ async function deleteContact(path = "") {
   renderAllContacts();
 }
 
+/**
+ * Diese Funktion dient zum toggeln des edit und delete Menus
+ */
 function toggleEditOrDelete(){
   let menu = document.getElementById('editOrDeleteMenu');
   if (menu.style.display === "none" || menu.style.display === "") {
@@ -345,7 +348,11 @@ function toggleEditOrDelete(){
   }
 }
 
-function randomizeNumber(){
-  colornumber = Math.floor(Math.random() * 12); 
-  return colornumber;
-}
+// /**
+//  * Diese Funktion dient um random Nummern zu erstellen. 
+//  * @returns 
+//  */
+// function randomizeNumber(){
+//   colornumber = Math.floor(Math.random() * 12); 
+//   return colornumber;
+// }

@@ -207,6 +207,11 @@ display: none;
   background-color: #324f7b;
   border-radius: 16px;
 }
+.sidebar_mobile_sector:hover .icons_sidebar{
+  background-color: #324f7b;
+  border-radius: 16px;
+  fill:white;
+}
 
 
 .sidebar_mobile_part {
@@ -263,12 +268,5 @@ height: 50px;
 @media (max-width: 360px) {
 .sidebar_mobile_part {
   font-size: 12px;
-}
-}
-
-
-@media (max-width: 320px) {
-.profile-picture {
- left: 28vW;
 }
 }

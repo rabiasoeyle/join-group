@@ -101,7 +101,7 @@
     height: 70%;
     text-align: left;
     align-items: flex-start;
-    padding-bottom: 48px;
+    /* padding-bottom: 48px; */
     padding-left: 16px;
     border-radius: 10px 10px 0 0;
   }
@@ -113,11 +113,16 @@
   .profile-picture {
     margin-left: 0%;
     margin-top: -115%;
+    position: relative;
+        top: -60px;
   }
 
   .overlay-new-contact {
     height: 78%;
     top: 10vh;
+    width:75%;
+    left:12vW;
+    right:12vW;
   }
 }
 
@@ -151,6 +156,7 @@
     right:0vw;
     width:100%;
     border-radius:0px;
+    max-height: 1500px;
   }
   .add-contact-left{
     border-radius:0px;
@@ -159,6 +165,9 @@
    display:flex;
    align-items: center;
    justify-content: center;
+  }
+  .profile-picture {
+    top: -135px;
   }
 }
 

@@ -121,6 +121,7 @@
   justify-content: center;
   font-size: 46px;
   font-weight: 500;
+  color:white;
 }
 
 .edit_delete_icon {
@@ -392,4 +393,18 @@ span {
 }
 .contacts-link-color .icons_sidebar{
   fill:white;
+}
+
+.profil_replacement_img_big_edit{
+  background-color: burlywood;
+  border-radius: 100%;
+  border: solid #ffff;
+  height: 120px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 46px;
+  font-weight: 500;
+  color:white;
 }

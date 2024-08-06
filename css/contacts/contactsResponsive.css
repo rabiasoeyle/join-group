@@ -155,13 +155,10 @@
   .add-contact-left{
     border-radius:0px;
   }
-  .profile-picture{
-    position: fixed;
-        top: 35%;
-        bottom: 0;
-        left: 35vW;
-        right: 35vW;
-        margin:0;
+  .profil_replacement_img_big_edit{
+   display:flex;
+   align-items: center;
+   justify-content: center;
   }
 }
 

@@ -116,7 +116,7 @@ function editContactOverlayLeftHTML() {
 function editContactOverlayRightHTML(i) {
   return `
         <div class="add-contact-right-left">
-            <img class="profile-picture" src="..//assets/icon-overlay-contact/profile-big.svg" alt="">
+          <span class="profil_replacement_img_big_edit">${profileInitials(i)}</span>
         </div>
         <div class="add-contact-right-right">
           <div class="input-new-contact">

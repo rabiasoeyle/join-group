@@ -52,7 +52,7 @@
   }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1120px) {
   .contact_details_H2 {
     font-size: 48px;
   }
@@ -71,11 +71,17 @@
   .contact_font_big {
     font-size: 32px;
   }
+  .one-contact-container {
+    gap: 6%;
+  }
 }
 
 @media (max-width: 1020px) {
   .contacts-list {
     height: 83vh;
+  }
+  .one-contact-container {
+    gap: 4%;
   }
 }
 
@@ -114,6 +120,7 @@
     top: 10vh;
   }
 }
+
 @media(max-width:840px){
   .contact-details{
     display:none;
@@ -134,6 +141,7 @@
     display:none;
   }
 }
+
 @media(max-width:600px){
   .overlay-new-contact {
     height: 100dvh;
@@ -156,8 +164,47 @@
         margin:0;
   }
 }
+
+@media (max-width: 550px) {
+  .go-back-to-contacts {
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact_details {
+    margin: 32px 0 12px 12px;
+  }
+  .contact_details_H2 {
+    font-size: 32px;
+  }
+  .contact_details_span {
+    font-size: 16px;
+  }
+  .profil_replacement_img_big {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  .contact_font_big {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .contact_details_span {
+    font-size: 14px;
+  }
+  .contact_details_H2 {
+    font-size: 28px;
+  }
+}
+
 @media (max-width: 360px) {
   .contacts-list {
     min-width: 300px;
+  }
+  .contact_details_H2 {
+    font-size: 18px;
   }
 }

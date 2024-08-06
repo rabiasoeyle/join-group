@@ -187,6 +187,7 @@ cursor: pointer;
 .sidebar_mobile {
 background-color: #2a3647;
 height: 10vh;
+min-height: 75px;
 width: 100vw;
 display: flex;
 justify-content: space-around;

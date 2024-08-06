@@ -125,8 +125,7 @@ function openNewContactOverlay() {
   overlay.classList.add("d-flex");
   overlay.innerHTML = "";
   overlay.innerHTML = openNewContactOverlayHTML();
-  openNewContactOverlayRight();
- 
+  openNewContactOverlayRight(); 
 }
 
 function openNewContactOverlayRight(){
@@ -236,13 +235,13 @@ async function addContact() {
  * Falls der Kontakt doch nicht mehr gespeichert werden soll, wird das Overlay geschlossen
  */
 function cancelAdding() {
-  let nameValue = document.getElementById("inputFieldName").value;
-  let emailValue = document.getElementById("inputFieldEmail").value;
-  let numberValue = document.getElementById("inputFieldNumber").value;
+  let nameValue = document.getElementById('inputFieldName').value;
+  let emailValue = document.getElementById('inputFieldEmail').value;
+  let numberValue = document.getElementById('inputFieldNumber').value;
   nameValue = "";
   emailValue = "";
   numberValue = "";
-  let overlay = document.getElementById("overlayNewContact");
+  let overlay = document.getElementById('overlayNewContact');
   overlay.classList.add("d-none");
   overlay.classList.remove("d-flex");
 }
@@ -329,7 +328,7 @@ async function deleteContact(path = "") {
     method: "DELETE",
   });
   contacts = [];
-  let rightContent = document.getElementById("contactInformations");
+  let rightContent = document.getElementById('contactInformations');
   rightContent.innerHTML = "";
   renderContactDetails();
   await loadContacts("/contacts");

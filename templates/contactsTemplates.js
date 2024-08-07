@@ -30,7 +30,9 @@ function contactDetailsHTML(index) {
         <div id="editOrDeleteMenu" class="edit-or-delete-toggle-div"style="display: none;">
         <!-- Inhalt des Toggle-Menüs -->
         <button onclick="editContactOverlay(${index})">Edit</button>
-        <button onclick="deleteContact('contacts/${contacts[index]["id"]}')">Delete</button>
+        <button onclick="deleteContact('contacts/${
+          contacts[index]["id"]
+        }')">Delete</button>
       </div>
         `;
 }
@@ -114,16 +116,24 @@ function editContactOverlayLeftHTML() {
 }
 
 function editContactOverlayRightHTML(i) {
-  return `
+  return /*html*/ `
        <div class="add-contact-right-left">
-          <span class="profil_replacement_img_big_edit">${profileInitials(i)}</span>
+          <span class="profil_replacement_img_big_edit">${profileInitials(
+            i
+          )}</span>
         </div>
         <div class="add-contact-right-right">
           <div class="input-new-contact">
             <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}">
-             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]["email"]}">
-             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}">
+             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
+               contacts[i]["name"]
+             }">
+             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
+               contacts[i]["email"]
+             }">
+             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
+               contacts[i]["phone"]
+             }">
           </div>
           <div class="save-or-delete-buttons">
              <button class="delete-button" onclick="cancelAdding()">
@@ -139,10 +149,13 @@ function editContactOverlayRightHTML(i) {
         `;
 }
 
-function openNewContactOverlayHTML(){
-  return  `
+function openNewContactOverlayHTML() {
+  return /*html*/ `
     <div class="add-contact-container" id="addContactContainer">
             <div class="add-contact-left" id="addContactLeft">
+              <div class="cancel-button-top">
+                <button onclick="cancelAdding()"><img class="icon-cancel" src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+              </div>
               <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
               <h2>Add Contact</h2>
               <p><span class="underline">Tasks are</span> better with a team!</p>
@@ -153,8 +166,11 @@ function openNewContactOverlayHTML(){
     `;
 }
 
-function openNewContactOverlayRightHTML(){
+function openNewContactOverlayRightHTML() {
   return /*html*/ `
+  <div class="cancel-button-over">
+    <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+  </div>
   <div class="add-contact-right-left">
           <img class="profile-picture" src="../assets/icon-overlay-contact/profile-big.svg" alt="">
       </div>
@@ -169,11 +185,11 @@ function openNewContactOverlayRightHTML(){
                   <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber">
                   <div class="save-or-delete-buttons">
                       <button type="button" class="delete-button" onclick="cancelAdding()">
-                          <p>Cancel</p>
+                          <p>Delete</p>
                           <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
                       </button>
                       <button type="submit" class="save-button">
-                          <p>Create contact</p>
+                          <p>Save</p>
                           <img src="../assets/icon-overlay-contact/check.svg" alt="">
                       </button> 
                   </div>
@@ -181,5 +197,5 @@ function openNewContactOverlayRightHTML(){
               <p id="error-message" style="color: red; display: none;">Please fill in all required fields.</p>
           </div>
       </div>
-  `
+  `;
 }

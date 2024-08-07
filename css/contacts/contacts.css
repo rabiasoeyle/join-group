@@ -13,7 +13,7 @@
 
 .contact-details {
   background-color: #f6f7f8;
-  height: 57vh;
+  height: 93vh;
   flex: 1;
 }
 
@@ -306,11 +306,37 @@ span {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  padding-right: 1vw;
+}
+
+.cancel-button-over {
+  display: none;
+  width: 100%;
   padding-bottom: 24px;
+}
+
+.cancel-button-top {
+  display: none;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.icon-cancel{
+  filter: contrast(0.1);
 }
 
 .cancel-button button {
   background-color: white;
+  border: none;
+}
+
+.cancel-button-over button {
+  background-color: white;
+  border: none;
+}
+
+.cancel-button-top button {
+  background-color: #2a3647;
   border: none;
 }
 

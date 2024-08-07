@@ -29,5 +29,3 @@ function includeHTML() {
     }
   }
 }
-
-includeHTML();

@@ -17,17 +17,16 @@
   .form-style-top{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     padding:16px;
-    gap:20px;
+    gap:15vW;
   }
   /* Add some basic styling for the dropdown */
   .dropdown {
     position: relative;
     display: inline-block;
   }
-
   .dropdown-content {
     display: none;
     position: absolute;
@@ -35,7 +34,6 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
   }
-
   .dropdown-content a {
     color: black;
     padding: 10px 16px;
@@ -44,11 +42,9 @@
     display: block;
      background-color: #c6cbcf;
   }
-
   .dropdown:hover .dropdown-content {
     display: block;
   }
-
   .dropdown-assigned-to{
     height:10px;
     width:80%;
@@ -61,3 +57,59 @@
     background-color: blue;
     color:white;
   }
+  .subtask-input-and-span{
+    background-color: white;
+  }
+  .subtask-input{
+    border:none;
+  }
+  .add-subtask-button:hover{
+    background-color: #c6cbcf;
+    cursor: pointer;
+  }
+  .prio-content a{
+    text-decoration: none;
+    color:black;
+    height: 56px;
+    padding: 16px 10px 16px 10px;
+    gap: 8px;
+    border-radius: 10px;
+    opacity: 0px;
+    background-color: white;
+  }
+  .prio-content-parent{
+    height:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:24px;
+  }
+  .form-right{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    gap:16px;
+  }
+  .form-left{
+    display:flex;
+    flex-direction: column;
+    gap:16px;
+  }
+  .task-title{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .description-title{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .assigned-to-input-and-button{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100px;
+  }
+  

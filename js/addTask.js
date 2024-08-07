@@ -16,18 +16,49 @@ async function renderMainForm(){
     await loadContacts();
     // let content = document.getElementById('content');
     // content.innerHTML='';
-    // content.innerHTML=
-    assignedTo();
+    // content.innerHTML=``
+    // assignedTo();
 }
 
 function showAssignedPersons(){
-    let showAssignedPersons = document.getElementById('assignedPersons');
-    showAssignedPersons.innerHTML='';
-    for(i=0; i<assignedPersons.length; i++){
-        showAssignedPersons.innerHTML+=`<div class="assigned-person-initials">${profileInitials(i)}</div>`
+    if(this == clicked){
+        let showAssignedPersons = document.getElementById('assignedPersons');
+        showAssignedPersons.innerHTML='';
+        for(i=0; i<assignedPersons.length; i++){
+            showAssignedPersons.innerHTML+=`<div class="assigned-person-initials">${profileInitials(i)}</div>`
+        }
+    }else if(this !== clicked){
+
     }
 }
 
+function rollContactsList(){
+    console.log('allesklar');
+    let assignContactsList = document.getElementById('assignContactsList');
+    assignContactsList.classList.remove('d-none');
+    assignContactsList.innerHTML='';
+    for(i=0; i<contacts.length; i++){
+        assignContactsList.innerHTML +=`
+        <div>
+            <div class="assigned-person-initials">${profileInitials(i)}</div>
+            <div>${contacts[i]['name']}</div>
+            <input id="inputCheckbox"type="checkbox" onclick="showAssignedPersons(this, ${i})">
+        </div>`
+    }
+}
+
+/**
+ * Diese Funktion rendert alle Personen aus der Kontaktliste, damit man sie im Projekt verbinden kann.
+ */
+function assignedTo(){
+    let list = document.getElementById('dropdownAssignedTo');
+    list.innerHTML='';
+    for(i=0; i<contacts.length; i++){
+        list.innerHTML+=`
+            <a id='category1' href="#">${contacts[i]['name']}<input id="inputCheckbox"type="checkbox"></a>`
+    }  
+}
+// onclick="selectPerson(${i})"
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
  *
@@ -43,17 +74,7 @@ function profileInitials(i) {
     return initials;
   }
 
-/**
- * Diese Funktion rendert alle Personen aus der Kontaktliste, damit man sie im Projekt verbinden kann.
- */
-function assignedTo(){
-    let list = document.getElementById('dropdownAssignedTo');
-    list.innerHTML='';
-    for(i=0; i<contacts.length; i++){
-        list.innerHTML+=`
-            <a id='category1' href="#" onclick="selectPerson(${i})">${contacts[i]['name']}</a>`
-    }  
-}
+
 
 /**
  * Diese Funktion soll dazu dienen, die Personen auszuwählen und die Personendaten 
@@ -61,6 +82,9 @@ function assignedTo(){
  * @param {*} i 
  */
 function selectPerson(i){
+    let inputCheckbox = document.getElementById('inputCheckbox');
+
+    inputCheckbox.innerHTML=
     assignedPersons += contacts[i]['name'];
     showAssignedPersons();
 }
@@ -115,13 +139,6 @@ async function createTask(){
     }
     await postData("/tasks", newTaskInformation);
     clearForm();
-}
-
-/**
- * Diese Funktion soll dazu dienen, dass die Kontakte aufgezeigt werden
- */
-function rollContactsList(){
-
 }
 
 async function postData(path="", data){

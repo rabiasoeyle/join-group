@@ -4,7 +4,6 @@ let users = [];
 async function loadUsers(path = "/names") {
   let userResponse = await fetch(FIREBASE_URL + path + ".json");
   let responseToJson = await userResponse.json();
-  console.log(responseToJson);
 
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
@@ -14,7 +13,6 @@ async function loadUsers(path = "/names") {
         phone: responseToJson[key]["phone"],
       });
     });
-    console.log(users);
   }
 }
 

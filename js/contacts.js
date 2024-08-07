@@ -68,7 +68,6 @@ async function renderContacts() {
 async function loadContacts(path = "/contacts") {
   let response = await fetch(firebase_URL + path + ".json");
   let responseToJson = await response.json();
-  console.log(responseToJson);
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
       contacts.push({
@@ -224,7 +223,6 @@ async function addContact() {
     nameValue = "";
     emailValue = "";
     numberValue = "";
-    console.log(newContact);
     contacts = [];
     await postData("/contacts", newContact);
     await loadContacts("/contacts");
@@ -278,7 +276,6 @@ function groupContactsByInitial(contacts) {
     }
     groupedContacts[initial].push(contact);
   });
-  console.log(groupedContacts);
   return groupedContacts;
 }
 
@@ -324,7 +321,6 @@ function closeContactDetails(){
  * @param {*} i
  */
 async function deleteContact(path = "") {
-  console.log(`deleteContact-${path}`);
   await fetch(firebase_URL + path + ".json", {
     method: "DELETE",
   });

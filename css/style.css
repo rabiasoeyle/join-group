@@ -335,6 +335,12 @@ button {
   }
 }
 
+@media (max-width: 360px) {
+  .sidebar_mobile_part {
+    font-size: 12px;
+  }
+}
+
 @media (max-height: 340px) {
   .contacts-list {
     height: 73vh;
@@ -344,11 +350,5 @@ button {
 @media (max-height: 320px) {
   .contacts-list {
     height: 72vh;
-  }
-}
-
-@media (max-width: 360px) {
-  .sidebar_mobile_part {
-    font-size: 12px;
   }
 }

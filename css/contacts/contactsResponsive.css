@@ -116,7 +116,6 @@
     position: relative;
     top: -60px;
   }
-
   .overlay-new-contact {
     height: 78%;
     top: 10vh;
@@ -146,9 +145,12 @@
     display: none;
   }
 }
-
+ 
 @media (max-height: 800px) {
   .contacts-list {
+    height: 82vh;
+  }
+  .contact-details {
     height: 82vh;
   }
 }

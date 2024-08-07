@@ -33,14 +33,20 @@ function rollContactsList(){
     assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
     for(i=0; i<contacts.length; i++){
-        let isChecked = assignedPersons.includes(contacts[i].name) ? 'checked' : '';
+        let isChecked = assignedPersons.includes(contacts[i]['name']) ? 'checked' : '';
+
         assignContactsList.innerHTML +=`
         <div class="one-person-div">
             <div class="assigned-person-initials">${profileInitials(i)}</div>
             <div>${contacts[i]['name']}</div>
-            <input id="inputCheckbox-${i}"type="checkbox" onclick="addAssignedPersons(${i})">
+            <input id="inputCheckbox-${i}"type="checkbox" onclick="addAssignedPersons(${i})"${isChecked}>
         </div>`
     }
+}
+
+function showAssignedPersons() {
+    let showAssignedPersons = document.getElementById('assignedPersons');
+    showAssignedPersons.value = assignedPersons.join(", ");
 }
 
 /**

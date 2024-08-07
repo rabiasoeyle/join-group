@@ -1,5 +1,5 @@
 function contactDetailsHTML(index) {
-  return `
+  return /*html*/ `
         <div id="contactInformations">
             <div class="one-contact-container">
                 <div>
@@ -12,12 +12,14 @@ function contactDetailsHTML(index) {
                       contacts[index]["name"]
                     }</span>
                     <div class="edit_delete_icon">
+                      <div onclick="editContactOverlay(${index})">
                         <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
-                        <button class="margin_left edit-delete-contact-button" onclick="editContactOverlay(${index})">Edit</button>
+                        <button class="margin_left edit-delete-contact-button">Edit</button>
+                      </div>
+                      <div onclick="deleteContact('contacts/${contacts[index]["id"]}')">
                         <img class="margin_left" src="../assets/img/delete.png" alt="Delete Icon">
-                        <button class="margin_left edit-delete-contact-button" onclick="deleteContact('contacts/${
-                          contacts[index]["id"]
-                        }')">Delete</button>
+                        <button class="margin_left edit-delete-contact-button">Delete</button>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -30,9 +32,7 @@ function contactDetailsHTML(index) {
         <div id="editOrDeleteMenu" class="edit-or-delete-toggle-div"style="display: none;">
         <!-- Inhalt des Toggle-Menüs -->
         <button onclick="editContactOverlay(${index})">Edit</button>
-        <button onclick="deleteContact('contacts/${
-          contacts[index]["id"]
-        }')">Delete</button>
+        <button onclick="deleteContact('contacts/${contacts[index]["id"]}')">Delete</button>
       </div>
         `;
 }
@@ -110,6 +110,9 @@ function editContactOverlayHTML() {
 
 function editContactOverlayLeftHTML() {
   return `
+        <div class="cancel-button-top">
+          <button onclick="cancelAdding()"><img class="icon-cancel" src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+        </div>
         <img class="add-contact-left-img" src="../assets/icon-overlay-contact/Join Logo.svg" alt="">
         <h2>Edit Contact</h2>
         `;
@@ -117,7 +120,10 @@ function editContactOverlayLeftHTML() {
 
 function editContactOverlayRightHTML(i) {
   return /*html*/ `
-       <div class="add-contact-right-left">
+        <div class="cancel-button-over">
+          <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+        </div>
+        <div class="add-contact-right-left">
           <span class="profil_replacement_img_big_edit">${profileInitials(
             i
           )}</span>
@@ -189,7 +195,7 @@ function openNewContactOverlayRightHTML() {
                           <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
                       </button>
                       <button type="submit" class="save-button">
-                          <p>Save</p>
+                          <p>Create contact</p>
                           <img src="../assets/icon-overlay-contact/check.svg" alt="">
                       </button> 
                   </div>

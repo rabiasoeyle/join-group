@@ -20,7 +20,60 @@
         <div class="body_right">
             <div class="header" w3-include-html="header.html"></div>
             <div class="content" id="content">
-                <!-- Hier kommen die Infos zu add Task von JS -->
+                <h1>Add Task</h1>
+                <form class="form-style" id="formId" onsubmit="createTask()">
+                    <div class="form-style-top">
+                        <div class="form-left" id="formLeft">
+                            <div>
+                                <label>Title</label>
+                                <input required id="titleOfTask"type="name"/>
+                            </div>
+                            <div>
+                                <label for="story">Tell us your story:</label>
+                                <textarea id="descriptionOfTask"></textarea>
+                            </div>
+                            <div class="dropdown" id="categoryDropdown">
+                                <span>Assigned to</span>
+                                <span id="assignedPersons"></span>
+                                <div class="dropdown-assigned-to dropdown-content" onclick="rollContactsList()" id="dropdownAssignedTo">  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-right" id="formRight">
+                            <div>
+                                <label>Due date</label>
+                                <input required id="dateOfTask"type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"/>
+                            </div>
+                            <div class="prio-content-parent" id="prioContent">
+                                <span>Prio</span>
+                                <div class="prio-content">
+                                    <a id='category1' href="#" onclick="selectPrio('urgent')">Urgent</a>
+                                    <a id='category2' href="#" onclick="selectPrio('medium')">Medium</a>
+                                    <a id='category3'href="#" onclick="selectPrio('low')">Low</a>
+                                </div>
+                            </div>
+                            <div class="dropdown" id="categoryDropdown">
+                                <span>Category</span>
+                                <div class="dropdown-content">
+                                    <a id='category1' href="#" onclick="selectCategory('Category 1')">Category 1</a>
+                                    <a id='category2' href="#" onclick="selectCategory('Category 2')">Category 2</a>
+                                    <a id='category3'href="#" onclick="selectCategory('Category 3')">Category 3</a>
+                                    <!-- Add more categories as needed -->
+                                </div>
+                            </div>
+                            <div>
+                                <label>Subtasks</label>
+                                <input id="subtask"type="text"/>
+                                    <span onclick="addSubtask()">+</span>
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cancel-submit-buttons">
+                        <button type="reset" onclick="clearForm()">x Cancel</button>
+                        <button type="submit">Create Task</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ let category;
 let priority;
 let subtaskList=[];
 let taskInformation=[];
+let initials=[];
 
 function initAddTask() {
     renderMainForm();
@@ -13,66 +14,34 @@ function initAddTask() {
 
 async function renderMainForm(){
     await loadContacts();
-    let content = document.getElementById('content');
-    content.innerHTML='';
-    content.innerHTML=`
-    <h1>Add Task</h1>
-    <form class="form-style" id="formId" onsubmit="createTask()">
-        <div class="form-style-top">
-            <div class="form-left" id="formLeft">
-                <div>
-                    <label>Title</label>
-                    <input required id="titleOfTask"type="name"/>
-                </div>
-                <div>
-                    <label for="story">Tell us your story:</label>
-                    <textarea id="descriptionOfTask"></textarea>
-                </div>
-                <div class="dropdown" id="categoryDropdown">
-                    <span>Assigned to</span>
-                    <span>${assignedPersons}</span>
-                    <div class="dropdown-assigned-to dropdown-content" onclick="rollContactsList()" id="dropdownAssignedTo">  
-                    </div>
-                </div>
-            </div>
-            <div class="form-right" id="formRight">
-                <div>
-                    <label>Due date</label>
-                    <input required id="dateOfTask"type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31"/>
-                </div>
-                <div class="prio-content-parent" id="prioContent">
-                    <span>Prio</span>
-                    <div class="prio-content">
-                        <a id='category1' href="#" onclick="selectPrio('urgent')">Urgent</a>
-                        <a id='category2' href="#" onclick="selectPrio('medium')">Medium</a>
-                        <a id='category3'href="#" onclick="selectPrio('low')">Low</a>
-                    </div>
-                </div>
-                <div class="dropdown" id="categoryDropdown">
-                    <span>Category</span>
-                    <div class="dropdown-content">
-                        <a id='category1' href="#" onclick="selectCategory('Category 1')">Category 1</a>
-                        <a id='category2' href="#" onclick="selectCategory('Category 2')">Category 2</a>
-                        <a id='category3'href="#" onclick="selectCategory('Category 3')">Category 3</a>
-                        <!-- Add more categories as needed -->
-                    </div>
-                </div>
-                <div>
-                    <label>Subtasks</label>
-                    <input id="subtask"type="text"/>
-                        <span onclick="addSubtask()">+</span>
-                    </input>
-                </div>
-            </div>
-        </div>
-        <div class="cancel-submit-buttons">
-            <button type="reset" onclick="clearForm()">x Cancel</button>
-            <button type="submit">Create Task</button>
-        </div>
-    </form>
-    `
+    // let content = document.getElementById('content');
+    // content.innerHTML='';
+    // content.innerHTML=
     assignedTo();
 }
+
+function showAssignedPersons(){
+    let showAssignedPersons = document.getElementById('assignedPersons');
+    showAssignedPersons.innerHTML='';
+    for(i=0; i<assignedPersons.length; i++){
+        showAssignedPersons.innerHTML+=`<div class="assigned-person-initials">${profileInitials(i)}</div>`
+    }
+}
+
+/**
+ * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
+ *
+ * @param {*} i
+ * @returns
+ */
+function profileInitials(i) {
+    let names = assignedPersons[i].split(" "),
+      initials = names[0].substring(0, 1).toUpperCase();
+    if (names.length > 1) {
+      initials += names[names.length - 1].substring(0, 1).toUpperCase();
+    }
+    return initials;
+  }
 
 /**
  * Diese Funktion rendert alle Personen aus der Kontaktliste, damit man sie im Projekt verbinden kann.
@@ -93,6 +62,7 @@ function assignedTo(){
  */
 function selectPerson(i){
     assignedPersons += contacts[i]['name'];
+    showAssignedPersons();
 }
 
 /**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
@@ -107,6 +77,7 @@ function clearForm(){
     category='';
     subtaskList='';
     priority='';
+    showAssignedPersons();
 }
 
 /**
@@ -143,6 +114,7 @@ async function createTask(){
         subtaskList:subtaskList,
     }
     await postData("/tasks", newTaskInformation);
+    clearForm();
 }
 
 /**

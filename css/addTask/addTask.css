@@ -141,3 +141,16 @@
     justify-content: space-between;
     align-items: center;
   }
+  .show-assigned-persons-initials{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:4px;
+  }
+  .selected-person-initals-div{
+    padding:4px;
+    border:solid 1px black;
+    background-color: rgb(168, 100, 11);
+    color:white;
+    border-radius: 100%;
+  }

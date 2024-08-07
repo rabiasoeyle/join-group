@@ -7,6 +7,7 @@ let priority;
 let subtaskList=[];
 let taskInformation=[];
 let initials=[];
+let initialsAssignedPersons=[];
 
 /**
  * Diese Funktion ist zum rendern der Hauptbausteine.
@@ -60,10 +61,21 @@ function rollContactsList(){
  * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
  */
 function showAssignedPersons() {
-    let showAssignedPersons = document.getElementById('assignedPersons');
-    showAssignedPersons.value = assignedPersons.join(", ");
+    let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
+    showAssignedPersons.innerHTML='';
+    for(i=0;i<assignedPersons.length;i++){
+        showAssignedPersons.innerHTML += `<div class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
+    }
 }
 
+function assignedPersonsInitials(i){
+    let names = assignedPersons[i].split(" "),
+      initialsAssignedPersons = names[0].substring(0, 1).toUpperCase();
+    if (names.length > 1) {
+        initialsAssignedPersons += names[names.length - 1].substring(0, 1).toUpperCase();
+    }
+    return initialsAssignedPersons;
+}
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
  *
@@ -121,13 +133,14 @@ function rollCategories(){
 function clearForm(){
     assignedPersons=[];
     category='';
-    subtaskList='';
+    subtaskList=[];
     priority='';
     document.getElementById('urgent').style.backgroundColor = "white";
     document.getElementById('medium').style.backgroundColor = "white";
     document.getElementById('low').style.backgroundColor = "white";
     document.getElementById('category1').style.backgroundColor ='white';
     document.getElementById('category2').style.backgroundColor = 'white';
+    document.getElementById('showAssignedPersonInitial').innerHTML='';
 }
 
 /**

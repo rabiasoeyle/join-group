@@ -14,51 +14,35 @@ function initAddTask() {
 
 async function renderMainForm(){
     await loadContacts();
-    // let content = document.getElementById('content');
-    // content.innerHTML='';
-    // content.innerHTML=``
-    // assignedTo();
 }
 
-function showAssignedPersons(){
-    if(this == clicked){
-        let showAssignedPersons = document.getElementById('assignedPersons');
-        showAssignedPersons.innerHTML='';
-        for(i=0; i<assignedPersons.length; i++){
-            showAssignedPersons.innerHTML+=`<div class="assigned-person-initials">${profileInitials(i)}</div>`
+function addAssignedPersons(i){
+    let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
+    if (inputCheckbox.checked) {
+        if (!assignedPersons.includes(contacts[i].name)) {
+            assignedPersons.push(contacts[i].name);
         }
-    }else if(this !== clicked){
-
+    } else {
+        assignedPersons = assignedPersons.filter(name => name !== contacts[i].name);
     }
+    showAssignedPersons();
 }
 
 function rollContactsList(){
-    console.log('allesklar');
     let assignContactsList = document.getElementById('assignContactsList');
-    assignContactsList.classList.remove('d-none');
+    assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
     for(i=0; i<contacts.length; i++){
+        let isChecked = assignedPersons.includes(contacts[i].name) ? 'checked' : '';
         assignContactsList.innerHTML +=`
-        <div>
+        <div class="one-person-div">
             <div class="assigned-person-initials">${profileInitials(i)}</div>
             <div>${contacts[i]['name']}</div>
-            <input id="inputCheckbox"type="checkbox" onclick="showAssignedPersons(this, ${i})">
+            <input id="inputCheckbox-${i}"type="checkbox" onclick="addAssignedPersons(${i})">
         </div>`
     }
 }
 
-/**
- * Diese Funktion rendert alle Personen aus der Kontaktliste, damit man sie im Projekt verbinden kann.
- */
-function assignedTo(){
-    let list = document.getElementById('dropdownAssignedTo');
-    list.innerHTML='';
-    for(i=0; i<contacts.length; i++){
-        list.innerHTML+=`
-            <a id='category1' href="#">${contacts[i]['name']}<input id="inputCheckbox"type="checkbox"></a>`
-    }  
-}
-// onclick="selectPerson(${i})"
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
  *
@@ -66,7 +50,7 @@ function assignedTo(){
  * @returns
  */
 function profileInitials(i) {
-    let names = assignedPersons[i].split(" "),
+    let names = contacts[i]['name'].split(" "),
       initials = names[0].substring(0, 1).toUpperCase();
     if (names.length > 1) {
       initials += names[names.length - 1].substring(0, 1).toUpperCase();
@@ -83,15 +67,31 @@ function profileInitials(i) {
  */
 function selectPerson(i){
     let inputCheckbox = document.getElementById('inputCheckbox');
-
-    inputCheckbox.innerHTML=
-    assignedPersons += contacts[i]['name'];
+    inputCheckbox.innerHTML= assignedPersons += contacts[i]['name'];
     showAssignedPersons();
 }
 
 /**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
 function selectPrio(x){
+    if(x =='urgent'){
+        document.getElementById('urgent').style.backgroundColor = "red";
+        document.getElementById('medium').style.backgroundColor = "white";
+        document.getElementById('low').style.backgroundColor = "white";
+    }else if(x =='medium'){
+        document.getElementById('urgent').style.backgroundColor = "white";
+        document.getElementById('medium').style.backgroundColor = "yellow";
+        document.getElementById('low').style.backgroundColor = "white";
+    }else if(x =='low'){
+        document.getElementById('urgent').style.backgroundColor = "white";
+        document.getElementById('medium').style.backgroundColor = "white";
+        document.getElementById('low').style.backgroundColor = "green";
+    }
     priority= x;
+}
+
+function rollCategories(){
+    let dropdownCategories = document.getElementById('dropdownCategories');
+    dropdownCategories.classList.toggle('d-none');     
 }
 /**
  * Diese Funktion sorgt dafür, dass alle Inputfelder wieder geleert werden
@@ -109,13 +109,22 @@ function clearForm(){
  * @param {*} x 
  */
 function selectCategory(x){
+    if(x =='Technical Task'){
+        document.getElementById('category1').style.backgroundColor ='grey';
+        document.getElementById('category2').style.backgroundColor = 'white';
+    }else if(x=='User Story'){
+        document.getElementById('category1').style.backgroundColor ='white';
+        document.getElementById('category2').style.backgroundColor = 'grey';
+    }
     category=x;
 }
 
 function addSubtask(){
     let subtask= document.getElementById('subtask').value.trim();
-    subtaskList += subtask;
-    subtask.value='';
+    if (subtask) {
+        subtaskList.push(subtask);
+        subtask.value = '';
+    }
 }
 /**
  * Diese Funktion speichert die ausgewählten Daten in einem Array und schickt sie an die Funktion, die sie an den Server verschickt.
@@ -160,6 +169,7 @@ async function loadContacts(path = "/contacts") {
     let response = await fetch(firebase_URL + path + ".json");
     let responseToJson = await response.json();
     if (responseToJson) {
+        contacts = [];
       Object.keys(responseToJson).forEach((key) => {
         contacts.push({
           id: key,

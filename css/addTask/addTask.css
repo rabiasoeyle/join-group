@@ -112,4 +112,29 @@
     align-items: center;
     height:100px;
   }
-  
+  .assign-contacts-list{
+    overflow-y: scroll;
+    height:20vh;
+    width:100%;
+  }
+  .one-person-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .dropdown-categories{
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: white;
+    width:100%;
+    
+  }
+  .dropdown-categories a{
+    text-decoration: none;
+    color:black;
+    padding:16px;
+    
+  }

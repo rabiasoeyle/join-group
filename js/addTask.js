@@ -8,14 +8,24 @@ let subtaskList=[];
 let taskInformation=[];
 let initials=[];
 
+/**
+ * Diese Funktion ist zum rendern der Hauptbausteine.
+ */
 function initAddTask() {
     renderMainForm();
 }
 
+/**
+ * Diese Funktion sorgt dafür, dass die Funktionen für den Hauptteil geladen werden.
+ */
 async function renderMainForm(){
     await loadContacts();
 }
 
+/**
+ * Diese Funktion soll die Personen, die einen Haken in der Checkbox erhalten feststellen und im Array assignedPersons abspeichern.
+ * @param {*} i 
+ */
 function addAssignedPersons(i){
     let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
     if (inputCheckbox.checked) {
@@ -28,6 +38,9 @@ function addAssignedPersons(i){
     showAssignedPersons();
 }
 
+/**
+ * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
+ */
 function rollContactsList(){
     let assignContactsList = document.getElementById('assignContactsList');
     assignContactsList.classList.toggle('d-none');
@@ -43,6 +56,9 @@ function rollContactsList(){
     }
 }
 
+/**
+ * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
+ */
 function showAssignedPersons() {
     let showAssignedPersons = document.getElementById('assignedPersons');
     showAssignedPersons.value = assignedPersons.join(", ");
@@ -92,6 +108,9 @@ function selectPrio(x){
     priority= x;
 }
 
+/**
+ * Diese Funktion soll zum Toggeln der d-none Klasse bei dem Kategoriefeld sein
+ */
 function rollCategories(){
     let dropdownCategories = document.getElementById('dropdownCategories');
     dropdownCategories.classList.toggle('d-none');     
@@ -104,7 +123,11 @@ function clearForm(){
     category='';
     subtaskList='';
     priority='';
-    showAssignedPersons();
+    document.getElementById('urgent').style.backgroundColor = "white";
+    document.getElementById('medium').style.backgroundColor = "white";
+    document.getElementById('low').style.backgroundColor = "white";
+    document.getElementById('category1').style.backgroundColor ='white';
+    document.getElementById('category2').style.backgroundColor = 'white';
 }
 
 /**
@@ -124,6 +147,9 @@ function selectCategory(x){
     category=x;
 }
 
+/**
+ * Diese Funktion dient dazu Unteraufgaben zu erstellen und speichern.
+ */
 function addSubtask(){
     let subtask = document.getElementById('subtask').value.trim();
     if (subtask) {
@@ -133,6 +159,9 @@ function addSubtask(){
     renderSubtasks();
 }
 
+/**
+ * Diese Funktion soll die erstellten Unteraufgaben, die im array subtaskList gespeichert sind rendern.
+ */
 function renderSubtasks(){
     let subtaskListDiv= document.getElementById('subtaskList');
     subtaskListDiv.innerHTML='';
@@ -151,6 +180,10 @@ function renderSubtasks(){
     }
 }
 
+/**
+ * Mit dieser Funktion soll man die Subtask an genau der entsprechenden stelle ändern können.
+ * @param {*} i 
+ */
 function editSubtask(i){
     let subtaskListText = document.getElementById(`subtaskListText-${i}`);
     subtaskListText.classList.add('d-none');
@@ -165,17 +198,29 @@ function editSubtask(i){
     `
 }
 
+/**
+ * Durch Aktivierung dieser Funktion können Änderungen an Unteraufgaben gespeichert werden.
+ * @param {*} i 
+ */
 function saveChangedSubtask(i){
     let editInput = document.getElementById(`editInput-${i}`).value.trim();
     subtaskList.splice(i,1, editInput);
     renderSubtasks();
 }
 
+/**
+ * Diese Funktion dient zum Löschen von subtasks.
+ * @param {*} i 
+ */
 function deleteSubtask(i){
     subtaskList.splice(i,1);
     renderSubtasks();
 }
 
+/**
+ * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.
+ * @param {*} i 
+ */
 function subtaskNoHoverEffekt(i){
     let oneSubtask = document.getElementById(`oneSubtask-${i}`);
     oneSubtask.style.backgroundColor ="white";
@@ -183,6 +228,10 @@ function subtaskNoHoverEffekt(i){
     trashAndEdit.classList.add('d-none');
 }
 
+/**
+ * Diese Funktion soll den onmouseover effekt hinzufügen.
+ * @param {*} i 
+ */
 function subtaskHoverEffekt(i){
     let oneSubtask = document.getElementById(`oneSubtask-${i}`);
     oneSubtask.style.backgroundColor ="grey";
@@ -214,6 +263,11 @@ async function createTask(){
     clearForm();
 }
 
+/**
+ * Mit dieser Funktion werden Daten im Firebase gespeichert.
+ * @param {*} path 
+ * @param {*} data 
+ */
 async function postData(path="", data){
     await fetch(firebase_URL + path + ".json", {
         method: "POST",

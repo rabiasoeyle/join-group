@@ -34,7 +34,6 @@ function rollContactsList(){
     assignContactsList.innerHTML='';
     for(i=0; i<contacts.length; i++){
         let isChecked = assignedPersons.includes(contacts[i]['name']) ? 'checked' : '';
-
         assignContactsList.innerHTML +=`
         <div class="one-person-div">
             <div class="assigned-person-initials">${profileInitials(i)}</div>
@@ -63,8 +62,6 @@ function profileInitials(i) {
     }
     return initials;
   }
-
-
 
 /**
  * Diese Funktion soll dazu dienen, die Personen auszuwählen und die Personendaten 
@@ -118,9 +115,11 @@ function selectCategory(x){
     if(x =='Technical Task'){
         document.getElementById('category1').style.backgroundColor ='grey';
         document.getElementById('category2').style.backgroundColor = 'white';
+        document.getElementById('categoryInput').value = x;
     }else if(x=='User Story'){
         document.getElementById('category1').style.backgroundColor ='white';
         document.getElementById('category2').style.backgroundColor = 'grey';
+        document.getElementById('categoryInput').value = x;
     }
     category=x;
 }

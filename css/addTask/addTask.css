@@ -110,7 +110,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height:100px;
   }
   .assign-contacts-list{
     overflow-y: scroll;

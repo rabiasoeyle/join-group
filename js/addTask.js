@@ -159,7 +159,6 @@ async function postData(path="", data){
 async function loadContacts(path = "/contacts") {
     let response = await fetch(firebase_URL + path + ".json");
     let responseToJson = await response.json();
-    console.log(responseToJson);
     if (responseToJson) {
       Object.keys(responseToJson).forEach((key) => {
         contacts.push({

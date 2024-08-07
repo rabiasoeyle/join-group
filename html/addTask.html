@@ -26,14 +26,14 @@
                         <div class="form-left" id="formLeft">
                             <div class="task-title">
                                 <label>Title</label>
-                                <input required placeholder="Title" id="titleOfTask"type="name"/>
+                                <input required placeholder="Title" id="titleOfTask" type="name"/>
                             </div>
                             <div class="description-title">
-                                <label for="story">Tell us your story:</label>
-                                <textarea placeholder="Describe your Task" id="descriptionOfTask"></textarea>
+                                <label for="story">Description</label>
+                                <textarea placeholder="Enter your Description" id="descriptionOfTask"></textarea>
                             </div>
-                            <div class="" id="assignDropdown">
-                                <span>Assigned to</span>
+                            <div class="assign-to" id="assignDropdown">
+                                <label>Assigned to</label>
                                 <div onclick="rollContactsList()" class="assigned-to-input-and-button">
                                     <input id="assignedPersons" value="Select Contacts to assign">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,12 +50,12 @@
                             </div>
                         </div>
                         <div class="form-right" id="formRight">
-                            <div>
+                            <div class="due-date">
                                 <label>Due date</label>
                                 <input required id="dateOfTask"type="date" id="start" name="trip-start" placehlder="dd/mm/jjjj"min="2024-08-07"/>
                             </div>
                             <div class="prio-content-parent" id="prioContent">
-                                <span>Prio</span>
+                                <label>Prio</label>
                                 <div class="prio-content">
                                     <a id='urgent' href="#" onclick="selectPrio('urgent')">Urgent 
                                         <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="dropdown" id="categoryDropdown">
-                                <span>Category</span>
+                                <label>Category</label>
                                     <div class="assigned-to-input-and-button" onclick="rollCategories()">
                                         <input id="categoryInput" value="Select Task Category">
                                         <svg onclick="selectTaskCategory()" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,11 +96,13 @@
                                         </div>  
                                     </div>
                            
-                            <div>
+                            <div class="subtask">
                                 <label>Subtasks</label>
-                                <div class="subtask-input-and-span">
-                                    <input class="subtask-input"id="subtask"type="text"/>
-                                    <span class="add-subtask-button"onclick="addSubtask()">+</span>
+                                <div class="subtask-container"">
+                                    <input placeholder="Add new task" class="subtask-input"id="subtask"type="text"/>
+                                   <div class="subtask-add-button">
+                                     <img onclick="addSubtask()" src="../assets/svg/addButton.svg" alt="">
+                                   </div>
                                 </div>
                                 <div class="subtask-list" id="subtaskList"></div>
                             </div>

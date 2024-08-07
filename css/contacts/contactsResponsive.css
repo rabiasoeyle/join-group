@@ -189,10 +189,6 @@
     top: -135px;
   }
 }
-@media (max-height: 600px) {
-  .contacts-link-color
-}
-
 
 @media (max-width: 550px) {
   .go-back-to-contacts {

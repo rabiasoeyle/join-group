@@ -125,23 +125,82 @@ function selectCategory(x){
 }
 
 function addSubtask(){
-    let subtask= document.getElementById('subtask').value.trim();
+    let subtask = document.getElementById('subtask').value.trim();
     if (subtask) {
         subtaskList.push(subtask);
-        subtask.value = '';
+        subtask.value = "";
+    }
+    renderSubtasks();
+}
+
+function renderSubtasks(){
+    let subtaskListDiv= document.getElementById('subtaskList');
+    subtaskListDiv.innerHTML='';
+    for(i=0; i<subtaskList.length; i++){
+        subtaskListDiv.innerHTML +=`
+        <div class="oneSubtask" id="oneSubtask-${i}" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
+            <div class="" id="subtaskListText-${i}">${subtaskList[i]}</div>
+            <input class="d-none" value="${subtaskList[i]}" id="editInput-${i}">
+            <div class="d-none" id="editAndTrash-${i}">
+                <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})">
+                |
+                <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})">
+            </div>
+        </div>
+        `;
     }
 }
+
+function editSubtask(i){
+    let subtaskListText = document.getElementById(`subtaskListText-${i}`);
+    subtaskListText.classList.add('d-none');
+    let editInput = document.getElementById(`editInput-${i}`);
+    editInput.classList.remove('d-none');
+    let editAndTrash = document.getElementById(`editAndTrash-${i}`);
+    editAndTrash.innerHTML='';
+    editAndTrash.innerHTML= `
+    <img src="../assets/img/deleteTask.png" id="leftImage-${i}" onclick="deleteSubtask(${i})">
+    |
+    <img src="../assets/img/checkTask.png" id="rightImage-${i}" onclick="saveChangedSubtask(${i})">
+    `
+}
+
+function saveChangedSubtask(i){
+    let editInput = document.getElementById(`editInput-${i}`).value.trim();
+    subtaskList.splice(i,1, editInput);
+    renderSubtasks();
+}
+
+function deleteSubtask(i){
+    subtaskList.splice(i,1);
+    renderSubtasks();
+}
+
+function subtaskNoHoverEffekt(i){
+    let oneSubtask = document.getElementById(`oneSubtask-${i}`);
+    oneSubtask.style.backgroundColor ="white";
+    let trashAndEdit = document.getElementById(`editAndTrash-${i}`);
+    trashAndEdit.classList.add('d-none');
+}
+
+function subtaskHoverEffekt(i){
+    let oneSubtask = document.getElementById(`oneSubtask-${i}`);
+    oneSubtask.style.backgroundColor ="grey";
+    let trashAndEdit = document.getElementById(`editAndTrash-${i}`);
+    trashAndEdit.classList.remove('d-none');
+}
+
 /**
  * Diese Funktion speichert die ausgewählten Daten in einem Array und schickt sie an die Funktion, die sie an den Server verschickt.
  */
 async function createTask(){
     let titleOfTask = document.getElementById('titleOfTask').value.trim();
     let descriptionOfTask = document.getElementById('descriptionOfTask').value.trim();
-    assignedPersons;
+    // assignedPersons;
     let dateOfTask = document.getElementById('dateOfTask').value.trim();
-    category;
-    priority;
-    subtaskList;
+    // category;
+    // priority;
+    // subtaskList;
     let newTaskInformation ={
         title: titleOfTask,
         description: descriptionOfTask,

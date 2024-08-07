@@ -135,5 +135,9 @@
     text-decoration: none;
     color:black;
     padding:16px;
-    
+  }
+  .oneSubtask{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
   }

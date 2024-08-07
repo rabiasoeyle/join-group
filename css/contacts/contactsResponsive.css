@@ -114,62 +114,85 @@
     margin-left: 0%;
     margin-top: -115%;
     position: relative;
-        top: -60px;
+    top: -60px;
   }
 
   .overlay-new-contact {
     height: 78%;
     top: 10vh;
-    width:75%;
-    left:12vW;
-    right:12vW;
+    width: 75%;
+    left: 12vw;
+    right: 12vw;
   }
 }
 
-@media(max-width:840px){
-  .contact-details{
-    display:none;
+@media (max-width: 840px) {
+  .contact-details {
+    display: none;
   }
-  .contacts-list{
-    width:100%;
+  .contacts-list {
+    width: 100%;
   }
-  .go-back-to-contacts{
-    display:flex;
+  .go-back-to-contacts {
+    display: flex;
   }
-  .add-contacts-button{
-    display:none;
+  .add-contacts-button {
+    display: none;
   }
-  .add-contacts-button-mobile{
-    display:flex;
+  .add-contacts-button-mobile {
+    display: flex;
   }
-  .edit_delete_icon{
-    display:none;
+  .edit_delete_icon {
+    display: none;
   }
 }
 
-@media(max-width:600px){
+@media (max-height: 800px) {
+  .contacts-list {
+    height: 82vh;
+  }
+}
+
+@media (max-height: 740px) {
+  .contacts-list {
+    height: 80vh;
+  }
+}
+
+@media (max-height: 650px) {
+  .sidebar_mobile_part {
+    flex-direction: row;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
   .overlay-new-contact {
     height: 100dvh;
     top: 0vh;
-    bottom:0vh;
-    left:0vw;
-    right:0vw;
-    width:100%;
-    border-radius:0px;
+    bottom: 0vh;
+    left: 0vw;
+    right: 0vw;
+    width: 100%;
+    border-radius: 0px;
     max-height: 1500px;
   }
-  .add-contact-left{
-    border-radius:0px;
+  .add-contact-left {
+    border-radius: 0px;
   }
-  .profil_replacement_img_big_edit{
-   display:flex;
-   align-items: center;
-   justify-content: center;
+  .profil_replacement_img_big_edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .profile-picture {
     top: -135px;
   }
 }
+@media (max-height: 600px) {
+  .contacts-link-color
+}
+
 
 @media (max-width: 550px) {
   .go-back-to-contacts {

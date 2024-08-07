@@ -76,13 +76,6 @@
   border-radius: 10px;
 }
 
-.add-contact-right {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
 .input-new-contact {
   width: 100%;
   display: flex;

@@ -3,7 +3,9 @@ function contactDetailsHTML(index) {
         <div id="contactInformations">
             <div class="one-contact-container">
                 <div>
-                    <span style="background-color:${contacts[index]['color']};"class="profil_replacement_img_big">${profileInitials(index)}</span>
+                    <span style="background-color:${contacts[index]['color']};"class="profil_replacement_img_big">${profileInitials(
+                      index
+                    )}</span>
                 </div>
                 <div class="two-contact-container">
                     <span class="contact_font_big">${contacts[index]["name"]}</span>
@@ -79,9 +81,13 @@ function renderAllGroupinitialsHTML(initial) {
 
 function renderAllContactsHTML(contact) {
   return `
-        <div class="one-contact-container"  onclick="contactDetails(${contacts.indexOf(contact)})">
+        <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(
+          contact
+        )})">
             <div>
-                <span style="background-color:${contacts[contacts.indexOf(contact)]['color']}; color:white" class="profil_replacement_img">${profileInitials(contacts.indexOf(contact))}</span>
+                <span class="profil_replacement_img">${profileInitials(
+                  contacts.indexOf(contact)
+                )}</span>
             </div>
             <div class="two-contact-container">
                 <span class="contact_font">${contact.name}</span>
@@ -116,14 +122,22 @@ function editContactOverlayRightHTML(i) {
           <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
         </div>
         <div class="add-contact-right-left">
-          <span class="profil_replacement_img_big_edit" style="background-color:${contacts[i]['color']};">${profileInitials(i)}</span>
+          <span class="profil_replacement_img_big_edit">${profileInitials(
+            i
+          )}</span>
         </div>
         <div class="add-contact-right-right">
           <div class="input-new-contact">
             <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input required type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}">
-             <input required type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${contacts[i]["email"]}">
-             <input required type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}">
+             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
+               contacts[i]["name"]
+             }">
+             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
+               contacts[i]["email"]
+             }">
+             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
+               contacts[i]["phone"]
+             }">
           </div>
           <div class="save-or-delete-buttons">
              <button class="delete-button" onclick="cancelAdding()">

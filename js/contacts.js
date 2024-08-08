@@ -71,10 +71,11 @@ async function loadContacts(path = "/contacts") {
   if (responseToJson) {
     Object.keys(responseToJson).forEach((key) => {
       contacts.push({
-        id: key,
-        name: responseToJson[key]["name"],
-        email: responseToJson[key]["email"],
-        phone: responseToJson[key]["phone"],
+        id:key,
+        name:responseToJson[key]["name"],
+        email:responseToJson[key]["email"],
+        phone:responseToJson[key]["phone"],
+        color:responseToJson[key]["color"] || getRandomColor(),
       });
     });
     // Sortiere die Kontakte alphabetisch nach Name
@@ -203,13 +204,21 @@ async function editContact(i) {
  * @param {*} data
  */
 async function putData(path = "", data) {
-  await fetch(firebase_URL + path + ".json", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+    try {
+      let response = await fetch(firebase_URL + path + ".json", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+      console.log('Data successfully updated:', response);
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
 }
 
 /**
@@ -219,7 +228,8 @@ async function addContact() {
   let nameValue = document.getElementById('inputFieldName').value.trim();
   let emailValue = document.getElementById('inputFieldEmail').value.trim();
   let numberValue = document.getElementById('inputFieldNumber').value.trim();
-    let newContact = { name: nameValue, email: emailValue, phone: numberValue};
+  let colorValue = getRandomColor();
+    let newContact = { name: nameValue, email: emailValue, phone: numberValue, color: colorValue};
     nameValue = "";
     emailValue = "";
     numberValue = "";
@@ -228,6 +238,15 @@ async function addContact() {
     await loadContacts("/contacts");
     renderAllContacts();
     cancelAdding();
+}
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 /**
@@ -252,13 +271,19 @@ function cancelAdding() {
  * @param {*} data
  */
 async function postData(path = "", data) {
-  await fetch(firebase_URL + path + ".json", {
+  try {
+   let response = await fetch(firebase_URL + path + ".json", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  });
+  });if (!response.ok) {
+    throw new Error('Network response was not ok' + response.statusText);
+  }
+} catch (error) {
+  console.error('There has been a problem with your fetch operation:', error);
+}
 }
 
 /**

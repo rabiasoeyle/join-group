@@ -57,6 +57,7 @@ async function deleteContact(path = "") {
     await loadContacts("/contacts");
     renderAllContacts();
   }
+  
 /**
  * Diese Funktion dient dazu um die neu erhaltenen Daten im Firebase zu speichern.
  *

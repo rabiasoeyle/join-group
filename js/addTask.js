@@ -264,7 +264,7 @@ async function createTask(){
         category:category,
         priority:priority,
         subtaskList:subtaskList,
-        status:"Backlog",
+        status:"todo",
     }
     await postData("/tasks", newTaskInformation);
     clearForm();

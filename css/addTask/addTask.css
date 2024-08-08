@@ -1,5 +1,4 @@
-* 
-{
+* {
   box-sizing: border-box;
   margin: 0;
 }
@@ -279,8 +278,6 @@
   margin-top: 4px;
 }
 
-
-
 .subtask-container {
   display: flex;
   justify-content: space-between;
@@ -297,7 +294,6 @@
   border-right: 0;
   margin-top: 4px;
   font-size: 16px;
-
 }
 
 .subtask-add-button {
@@ -343,10 +339,74 @@
   display: flex;
   padding-left: 48px;
   padding-top: 64px;
-  
 }
 .editAndTrash {
   display: flex;
   align-items: center;
+}
 
+.urgentPrio {
+  background-color: white;
+  color: black;
+  fill: #ff3d00;
+}
+
+.urgentPrio:hover {
+  box-shadow:  0px 3px 3px 1px #00000061;
+  background-color: #ff3d00;
+  color: white;
+  fill: white;
+  stroke: white;
+}
+
+.urgentPrio_click {
+  background-color: #ff3d00 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+
+.mediumPrio {
+  background-color: white;
+  color: black;
+  fill: #ffa800;
+  stroke: #ffa800;
+}
+
+.mediumPrio:hover {
+  box-shadow:  0px 3px 3px 1px #00000061;
+  background-color: #ffa800;
+  color: white;
+  fill: white;
+  stroke: white;
+}
+
+
+.mediumPrio_click {
+  background-color: #ffa800 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+.lowPrio {
+  background-color: white;
+  color: black;
+  fill: #7ae229;
+}
+
+.lowPrio:hover {
+  box-shadow:  0px 3px 3px 1px #00000061;
+  background-color: #7ae229;
+  color: white;
+  fill: white;
+  stroke: white;
+}
+
+.lowPrio_click {
+  background-color: #7ae229 !important; 
+  color: white !important; 
+  fill: white;
+  stroke: white;
 }

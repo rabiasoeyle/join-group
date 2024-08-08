@@ -53,7 +53,7 @@ function rollContactsList(){
         <div class="one-person-div">
             <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
             <div>${contacts[i]['name']}</div>
-            <input id="inputCheckbox-${i}"type="checkbox" onclick="addAssignedPersons(${i})"${isChecked}>
+            <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addAssignedPersons(${i})" ${isChecked}>
         </div>`
     }
 }

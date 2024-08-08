@@ -353,10 +353,6 @@
 
 .urgentPrio:hover {
   box-shadow:  0px 3px 3px 1px #00000061;
-  background-color: #ff3d00;
-  color: white;
-  fill: white;
-  stroke: white;
 }
 
 .urgentPrio_click {
@@ -366,6 +362,9 @@
   stroke: white;
 }
 
+.svgUrgentPrio {
+  color: rgb(255, 255, 255);
+}
 
 .mediumPrio {
   background-color: white;
@@ -376,10 +375,6 @@
 
 .mediumPrio:hover {
   box-shadow:  0px 3px 3px 1px #00000061;
-  background-color: #ffa800;
-  color: white;
-  fill: white;
-  stroke: white;
 }
 
 
@@ -390,6 +385,10 @@
   stroke: white;
 }
 
+.svgMediumPrio {
+  color: rgb(255, 255, 255);
+}
+
 .lowPrio {
   background-color: white;
   color: black;
@@ -398,10 +397,6 @@
 
 .lowPrio:hover {
   box-shadow:  0px 3px 3px 1px #00000061;
-  background-color: #7ae229;
-  color: white;
-  fill: white;
-  stroke: white;
 }
 
 .lowPrio_click {
@@ -409,4 +404,8 @@
   color: white !important; 
   fill: white;
   stroke: white;
+}
+
+.svgLowPrio {
+  color: rgb(255, 255, 255);
 }

@@ -111,7 +111,7 @@ function selectPrio(x){
         document.getElementById('urgent').classList.add('urgentPrio_click');
         document.getElementById('urgent').classList.remove('urgentPrio');
         document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('urgent').classList.remove('mediumPrio_click');
+        document.getElementById('medium').classList.remove('mediumPrio_click');
         document.getElementById('low').classList.add('lowPrio');
         document.getElementById('low').classList.remove('lowPrio_click');
     }else if(x =='medium'){

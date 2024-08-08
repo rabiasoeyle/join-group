@@ -141,8 +141,6 @@ function clearForm(){
     document.getElementById('urgent').style.backgroundColor = "white";
     document.getElementById('medium').style.backgroundColor = "white";
     document.getElementById('low').style.backgroundColor = "white";
-    document.getElementById('category1').style.backgroundColor ='white';
-    document.getElementById('category2').style.backgroundColor = 'white';
     document.getElementById('showAssignedPersonInitial').innerHTML='';
 }
 
@@ -151,13 +149,9 @@ function clearForm(){
  * @param {*} x 
  */
 function selectCategory(x){
-    if(x =='Technical Task'){
-        document.getElementById('category1').style.backgroundColor ='grey';
-        document.getElementById('category2').style.backgroundColor = 'white';
+    if(x =='Technical Task'){;
         document.getElementById('categoryInput').value = x;
     }else if(x=='User Story'){
-        document.getElementById('category1').style.backgroundColor ='white';
-        document.getElementById('category2').style.backgroundColor = 'grey';
         document.getElementById('categoryInput').value = x;
     }
     category=x;
@@ -186,7 +180,7 @@ function renderSubtasks(){
         <div class="oneSubtask" id="oneSubtask-${i}" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
             <div class="" id="subtaskListText-${i}">${subtaskList[i]}</div>
             <input class="d-none" value="${subtaskList[i]}" id="editInput-${i}">
-            <div class="d-none" id="editAndTrash-${i}">
+            <div class="d-none editAndTrash" id="editAndTrash-${i}">
                 <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})">
                 |
                 <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})">
@@ -238,8 +232,6 @@ function deleteSubtask(i){
  * @param {*} i 
  */
 function subtaskNoHoverEffekt(i){
-    let oneSubtask = document.getElementById(`oneSubtask-${i}`);
-    oneSubtask.style.backgroundColor ="white";
     let trashAndEdit = document.getElementById(`editAndTrash-${i}`);
     trashAndEdit.classList.add('d-none');
 }
@@ -249,8 +241,6 @@ function subtaskNoHoverEffekt(i){
  * @param {*} i 
  */
 function subtaskHoverEffekt(i){
-    let oneSubtask = document.getElementById(`oneSubtask-${i}`);
-    oneSubtask.style.backgroundColor ="grey";
     let trashAndEdit = document.getElementById(`editAndTrash-${i}`);
     trashAndEdit.classList.remove('d-none');
 }

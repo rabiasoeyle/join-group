@@ -131,13 +131,13 @@ function editContactOverlayRightHTML(i) {
         <div class="add-contact-right-right">
           <div class="input-new-contact">
             <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
+             <input required type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
                contacts[i]["name"]
              }">
-             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
+             <input required type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
                contacts[i]["email"]
              }">
-             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
+             <input required type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
                contacts[i]["phone"]
              }">
           </div>

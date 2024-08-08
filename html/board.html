@@ -43,7 +43,7 @@
                                 </svg>
                         </div>
                     </div>
-                    <div id="todoBoard"></div>
+                    <div id="todoBoard" ondrop="moveTo('inProgressBoard')" ondragleave="removeHighlight('todoBoard')" ondragover="allowDrop(event); highlight('todoBoard')"></div>
                 </div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
@@ -56,7 +56,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div id="inProgressBoard"></div>
+                    <div class="min-height-board"id="inProgressBoard" ondrop="moveTo('awaitFeedbackBoard')" ondragleave="removeHighlight('inProgressBoard')" ondragover="allowDrop(event); highlight('inProgressBoard')"></div>
                 </div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
@@ -69,7 +69,7 @@
                                 </svg>
                         </div>
                     </div>
-                    <div id="awaitFeedbackBoard"></div>
+                    <div id="awaitFeedbackBoard" ondrop="moveTo('doneBoard')" ondragleave="removeHighlight('awaitFeedbackBoard')" ondragover="allowDrop(event); highlight('open')"></div>
                 </div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
@@ -82,7 +82,7 @@
                             </svg>
                         </div>
                     </div>
-                    <div id="doneBoard"></div>
+                    <div id="doneBoard" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')"></div>
                 </div>
             </div>
         </div>

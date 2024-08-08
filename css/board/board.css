@@ -41,7 +41,7 @@
   }
   .one-task-div{
     height:250px;
-    width:250px;
+    width:200px;
     border-radius: 24px;
     background-color: bisque;
   }
@@ -56,4 +56,28 @@
     display:flex;
     align-items: center;
     gap:-6px;
+  }
+  .category-div{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .category-div-child{
+    border-radius: 24px;
+    padding:4px;
+  }
+  .load-subtask{
+    background-color: blue;
+    width:50%;
+    height:2px;
+  }
+  .load-subtask-div{
+    width:50%;
+    height:2px;
+    background-color: white;
+  }
+  .min-height-board{
+    background-color: aqua;
+    min-height: 100px;
+    width:100px;
   }

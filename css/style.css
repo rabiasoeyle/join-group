@@ -263,6 +263,22 @@ button {
   }
 }
 
+@media (max-height: 750px) {
+  .sidebar_mobile {
+    height: 9vh;
+  }
+  .icons_sidebar {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media (max-height: 660px) {
+  .sidebar_mobile {
+    height: 8vh;
+  }
+}
+
 @media (max-height: 600px) {
   .icons_sidebar {
     height: 30px;

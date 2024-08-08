@@ -31,7 +31,8 @@ function addAssignedPersons(i){
     let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
     if (inputCheckbox.checked) {
         if (!assignedPersons.includes(contacts[i].name)) {
-            assignedPersons.push(contacts[i].name);
+            let newAssign ={name: contacts[i].name, color:contacts[i].color}
+            assignedPersons.push(newAssign);
         }
     } else {
         assignedPersons = assignedPersons.filter(name => name !== contacts[i].name);
@@ -50,7 +51,7 @@ function rollContactsList(){
         let isChecked = assignedPersons.includes(contacts[i]['name']) ? 'checked' : '';
         assignContactsList.innerHTML +=`
         <div class="one-person-div">
-            <div class="assigned-person-initials">${profileInitials(i)}</div>
+            <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
             <div>${contacts[i]['name']}</div>
             <input id="inputCheckbox-${i}"type="checkbox" onclick="addAssignedPersons(${i})"${isChecked}>
         </div>`
@@ -64,12 +65,14 @@ function showAssignedPersons() {
     let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
     showAssignedPersons.innerHTML='';
     for(i=0;i<assignedPersons.length;i++){
-        showAssignedPersons.innerHTML += `<div class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
-    }
+        showAssignedPersons.innerHTML += `<div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
+        // console.error('Contact not found for assigned person ID:', assignedPersons[i]);
 }
+} 
+
 
 function assignedPersonsInitials(i){
-    let names = assignedPersons[i].split(" "),
+    let names = assignedPersons[i].name.split(" "),
       initialsAssignedPersons = names[0].substring(0, 1).toUpperCase();
     if (names.length > 1) {
         initialsAssignedPersons += names[names.length - 1].substring(0, 1).toUpperCase();
@@ -258,11 +261,7 @@ function subtaskHoverEffekt(i){
 async function createTask(){
     let titleOfTask = document.getElementById('titleOfTask').value.trim();
     let descriptionOfTask = document.getElementById('descriptionOfTask').value.trim();
-    // assignedPersons;
     let dateOfTask = document.getElementById('dateOfTask').value.trim();
-    // category;
-    // priority;
-    // subtaskList;
     let newTaskInformation ={
         title: titleOfTask,
         description: descriptionOfTask,
@@ -307,9 +306,19 @@ async function loadContacts(path = "/contacts") {
           name: responseToJson[key]["name"],
           email: responseToJson[key]["email"],
           phone: responseToJson[key]["phone"],
+          color: responseToJson[key]["color"] || getRandomColor(),
         });
       });
       // Sortiere die Kontakte alphabetisch nach Name
       contacts.sort((a, b) => a.name.localeCompare(b.name));
     }
+  }
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }

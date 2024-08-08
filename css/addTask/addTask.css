@@ -1,5 +1,4 @@
-* 
-{
+* {
   box-sizing: border-box;
   margin: 0;
 }
@@ -95,15 +94,24 @@
   cursor: pointer;
 }
 
+.prio-content {
+  display: flex;
+  gap: 16px;
+  min-width: 440px;
+  width: 100%;
+}
+
 .prio-content a {
   text-decoration: none;
   color: black;
   height: 56px;
+  width: 100%;
   padding: 16px 10px 16px 10px;
-  gap: 8px;
   border-radius: 10px;
-  opacity: 0px;
   background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .prio-content-parent {
@@ -111,7 +119,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  gap: 24px;
+  gap: 6px;
 }
 
 .form-right {
@@ -270,22 +278,9 @@
   margin-top: 4px;
 }
 
-.prio-content-parent {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.prio-content {
-  display: flex;
-  gap: 16px;
-  width: min(440px, 100%);
-}
-
 .subtask-container {
   display: flex;
   justify-content: space-between;
-
   width: 100%;
   height: 100%;
 }
@@ -299,7 +294,6 @@
   border-right: 0;
   margin-top: 4px;
   font-size: 16px;
-
 }
 
 .subtask-add-button {
@@ -345,10 +339,73 @@
   display: flex;
   padding-left: 48px;
   padding-top: 64px;
-  
 }
 .editAndTrash {
   display: flex;
   align-items: center;
+}
 
+.urgentPrio {
+  background-color: white;
+  color: black;
+  fill: #ff3d00;
+}
+
+.urgentPrio:hover {
+  box-shadow:  0px 3px 3px 1px #00000061;
+}
+
+.urgentPrio_click {
+  background-color: #ff3d00 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+.svgUrgentPrio {
+  color: rgb(255, 255, 255);
+}
+
+.mediumPrio {
+  background-color: white;
+  color: black;
+  fill: #ffa800;
+  stroke: #ffa800;
+}
+
+.mediumPrio:hover {
+  box-shadow:  0px 3px 3px 1px #00000061;
+}
+
+
+.mediumPrio_click {
+  background-color: #ffa800 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+.svgMediumPrio {
+  color: rgb(255, 255, 255);
+}
+
+.lowPrio {
+  background-color: white;
+  color: black;
+  fill: #7ae229;
+}
+
+.lowPrio:hover {
+  box-shadow:  0px 3px 3px 1px #00000061;
+}
+
+.lowPrio_click {
+  background-color: #7ae229 !important; 
+  color: white !important; 
+  fill: white;
+  stroke: white;
+}
+
+.svgLowPrio {
+  color: rgb(255, 255, 255);
 }

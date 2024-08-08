@@ -8,7 +8,9 @@ function contactDetailsHTML(index) {
                     )}</span>
                 </div>
                 <div class="two-contact-container">
-                    <span class="contact_font_big">${contacts[index]["name"]}</span>
+                    <span class="contact_font_big">${
+                      contacts[index]["name"]
+                    }</span>
                     <div class="edit_delete_icon">
                       <div onclick="editContactOverlay(${index})">
                         <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
@@ -81,11 +83,11 @@ function renderAllGroupinitialsHTML(initial) {
 
 function renderAllContactsHTML(contact) {
   return `
-        <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(
+        <div class="one-contact-container"  onclick="contactDetails(${contacts.indexOf(
           contact
         )})">
             <div>
-                <span class="profil_replacement_img">${profileInitials(
+                <span style="background-color:${contacts[contacts.indexOf(contact)]['color']}; color:white" class="profil_replacement_img">${profileInitials(
                   contacts.indexOf(contact)
                 )}</span>
             </div>
@@ -122,20 +124,20 @@ function editContactOverlayRightHTML(i) {
           <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
         </div>
         <div class="add-contact-right-left">
-          <span class="profil_replacement_img_big_edit">${profileInitials(
+          <span class="profil_replacement_img_big_edit" style="background-color:${contacts[i]['color']};">${profileInitials(
             i
           )}</span>
         </div>
         <div class="add-contact-right-right">
           <div class="input-new-contact">
             <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
+             <input required type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
                contacts[i]["name"]
              }">
-             <input type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
+             <input required type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
                contacts[i]["email"]
              }">
-             <input type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
+             <input required type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
                contacts[i]["phone"]
              }">
           </div>

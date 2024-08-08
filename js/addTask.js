@@ -141,8 +141,6 @@ function clearForm(){
     document.getElementById('urgent').style.backgroundColor = "white";
     document.getElementById('medium').style.backgroundColor = "white";
     document.getElementById('low').style.backgroundColor = "white";
-    document.getElementById('category1').style.backgroundColor ='white';
-    document.getElementById('category2').style.backgroundColor = 'white';
     document.getElementById('showAssignedPersonInitial').innerHTML='';
 }
 
@@ -151,13 +149,9 @@ function clearForm(){
  * @param {*} x 
  */
 function selectCategory(x){
-    if(x =='Technical Task'){
-        document.getElementById('category1').style.backgroundColor ='grey';
-        document.getElementById('category2').style.backgroundColor = 'white';
+    if(x =='Technical Task'){;
         document.getElementById('categoryInput').value = x;
     }else if(x=='User Story'){
-        document.getElementById('category1').style.backgroundColor ='white';
-        document.getElementById('category2').style.backgroundColor = 'grey';
         document.getElementById('categoryInput').value = x;
     }
     category=x;

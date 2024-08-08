@@ -198,20 +198,27 @@
   justify-content: flex-start;
 }
 
+.dropdownCategories {
+  position: absolute;
+}
+
 .dropdown-categories {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   background-color: white;
-  width: 36vw;
 }
 
 .dropdown-categories a {
   text-decoration: none;
   color: black;
   padding: 16px;
-  width: 36vw;
+  width: 24.4vh;
+}
+
+.dropdown-categories a:hover {
+  background-color: #ebebeb;
 }
 
 .oneSubtask {

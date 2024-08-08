@@ -21,7 +21,67 @@
         <div class="body_right">
             <div class="header" w3-include-html="header.html"></div>
             <div class="content" id="content">
-                <!-- Hier kommen die Infos zu den Kontakten von JS -->
+                <div class="header-board">
+                    <h1>Board</h1>
+                    <div>
+                        <div>
+                            <input type="text">
+                            <img class="search-img" src="">
+                        </div>
+                    </div>
+                </div>
+                <div class="board-part-div">
+                    <div class="name-of-board-add">
+                        <h2>To do</h2>
+                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                        </div>
+                    </div>
+                    <div id="todoBoard"></div>
+                </div>
+                <div class="board-part-div">
+                    <div class="name-of-board-add">
+                        <h2>In Progress</h2>
+                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                        </div>
+                    </div>
+                    <div id="inProgressBoard"></div>
+                </div>
+                <div class="board-part-div">
+                    <div class="name-of-board-add">
+                        <h2>Await Feedback</h2>
+                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                        </div>
+                    </div>
+                    <div id="awaitFeedbackBoard"></div>
+                </div>
+                <div class="board-part-div">
+                    <div class="name-of-board-add">
+                        <h2>Done</h2>
+                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="doneBoard"></div>
+                </div>
             </div>
         </div>
     </div>

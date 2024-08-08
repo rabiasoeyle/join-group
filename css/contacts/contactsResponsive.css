@@ -152,6 +152,9 @@
   .add-contacts-button-mobile {
     display: flex;
   }
+  .edit_delete_icon {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {

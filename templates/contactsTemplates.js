@@ -3,7 +3,7 @@ function contactDetailsHTML(index) {
         <div id="contactInformations">
             <div class="one-contact-container">
                 <div>
-                    <span class="profil_replacement_img_big">${profileInitials(
+                    <span style="background-color:${contacts[index]['color']};"class="profil_replacement_img_big">${profileInitials(
                       index
                     )}</span>
                 </div>
@@ -124,7 +124,7 @@ function editContactOverlayRightHTML(i) {
           <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
         </div>
         <div class="add-contact-right-left">
-          <span class="profil_replacement_img_big_edit">${profileInitials(
+          <span class="profil_replacement_img_big_edit" style="background-color:${contacts[i]['color']};">${profileInitials(
             i
           )}</span>
         </div>

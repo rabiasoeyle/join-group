@@ -62,6 +62,23 @@ async function deleteContact(path = "") {
     renderAllContacts();
   }
 
+  /**
+ * Diese Funktion soll dazu dienen, dass eine Task aus der Firebase und dem tasksArray gelöscht wird
+ * @param {*} i
+ */
+async function deleteTask(path = "") {
+  await fetch(firebase_URL + path + ".json", {
+    method: "DELETE",
+  });
+  tasks = [];
+  await loadTasks("/tasks");
+  closeDetailsOverlay();
+  todoBoard();
+  inProgressBoard();
+  awaitFeedbackBoard();
+  doneBoard();
+}
+
 /**
  * Diese Funktion dient dazu um die neu erhaltenen Daten im Firebase zu speichern.
  *

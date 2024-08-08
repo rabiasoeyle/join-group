@@ -85,7 +85,7 @@
   .drag-area-highlight{
     background-color: antiquewhite;
   }
-  .plus-svg:hover path {
+.plus-svg:hover path {
     stroke: rgb(138, 213, 235); /* Ändert die Rahmenfarbe beim Hover */
 }
 .plus-svg:hover rect {
@@ -95,4 +95,8 @@
   width:100%;
   height:100px;
   background-color: rgb(160, 213, 70);
+}
+.input-and-button{
+  display:flex;
+  align-items: center;
 }

@@ -8,7 +8,8 @@ let firebase_URL =
 let tasks =[];
 let contacts=[];
 let currentDraggedElement;
-let idNumberStartValue =0;
+let idNumberStartValue = 0;
+let checkedSubTaskList = [];
 
 async function initBoard() {
     await loadTasks();
@@ -29,6 +30,7 @@ function showAssignedPersonsInitial(element){
     `;
   }
 }
+
 
 function categorySign(element){
   let category = document.getElementById(`categorySign-${element['idNumber']}`);
@@ -79,18 +81,24 @@ function todoBoard(){
         let element = todo[i];
         content.innerHTML += 
         `
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
           <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
           <div>${element['title']}</div>
-          <div>${element['description']}</div>
+          <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div>
               <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-              <div> 1/2-Subtasks</div>
+              <div> ${checkedSubTaskList.length}/${element['subtaskList'].length}-Subtasks</div>
           </div>
           <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
         </div>`;
         showAssignedPersonsInitial(element);
         categorySign(element);
+        if(!element['category']){
+          document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
+        }
+        if(!element['description']){
+          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
+        }
     }}
 }
 
@@ -107,18 +115,24 @@ function inProgressBoard(){
       for(i=0; i<inProgress.length;i++){
         let element = inProgress[i];
         content.innerHTML +=`
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
           <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
           <div>${element['title']}</div>
-          <div>${element['description']}</div>
+          <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div>
               <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-              <div> 1/2-Subtasks</div>
+              <div> ${checkedSubTaskList.length}/${element['subtaskList'].length}-Subtasks</div>
           </div>
           <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
         </div>`;
         showAssignedPersonsInitial(element);
         categorySign(element);
+        if(!element['category']){
+          document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
+        }
+        if(!element['description']){
+          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
+        }
     }}
 }
 
@@ -134,18 +148,24 @@ function awaitFeedbackBoard(){
     for(i=0; i<awaitFeedback.length;i++){
       let element = awaitFeedback[i];
       content.innerHTML +=`
-      <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+      <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
         <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
         <div>${element['title']}</div>
-        <div>${element['description']}</div>
+        <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
         <div>
             <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-            <div> 1/2-Subtasks</div>
+            <div> ${checkedSubTaskList.lenght}/${element['subtaskList'].length}-Subtasks</div>
         </div>
         <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
       </div>`;
       showAssignedPersonsInitial(element);
       categorySign(element);
+      if(!element['category']){
+        document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
+      }
+      if(!element['description']){
+        document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
+      }
     }}
 }
 
@@ -161,19 +181,121 @@ function doneBoard(){
       for(i=0; i<doneTask.length;i++){
         let element = doneTask[i];
         content.innerHTML +=`
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
-          <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
-          <div>${element['title']}</div>
-          <div>${element['description']}</div>
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
+          <div class="category-div">
+            <div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
+            <div id="titleSign-${element['idNumber']}">${element['title']}</div>
+            <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div>
               <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-              <div> 1/2-Subtasks</div>
+              <div> ${checkedSubTaskList.lenght}/${element['subtaskList'].length}-Subtasks</div>
           </div>
           <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
         </div>`;
         showAssignedPersonsInitial(element);
         categorySign(element);
+        if(!element['category']){
+          document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
+        }
+        if(!element['description']){
+          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
+        }
     }}
+    
+}
+
+function openDetailedTaskOverlay(i){
+  let editOverlayParent = document.getElementById('editOverlayParent');
+  editOverlayParent.classList.remove('d-none');
+  let editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
+  editTaskOverlayContent.innerHTML='';
+  editTaskOverlayContent.innerHTML=`
+            <div class="task-category-and-close-button">
+                <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
+                <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div id="showDetailTaskOverlayTitle">
+            ${tasks[i]['title']}
+            </div>
+            <div id="showDetailTaskOverlayDescription">
+            ${tasks[i]['description']}
+            </div>
+            <div>
+                <div>Due Date:</div>
+                <div id="showDetailTaskOverlayDueDate">${tasks[i]['dueDate']}</div>
+            </div>
+            <div>
+                <div>Priority:</div>
+                <div id="showDetailTaskOverlayPriority">${tasks[i]['priority']}</div>
+            </div>
+            <div id="showDetailTaskOverlayAssignedTo">
+                <div>Assigned to:</div>
+                <div id="showDetailTaskOverlayAssignedToChild"></div>
+            </div>
+            <div id="showDetailTaskOverlaySubtasks">
+                <div>Subtasks:</div>
+                <div id="showDetailTaskOverlaySubtasksChild"></div>
+            </div>
+            <div class="delete-or-edit-task-buttons">
+                <div onclick="deleteTask('tasks/${tasks[i]['id']}')">
+                    Delete
+                </div>
+                <div onclick="openEditTaskOverlay(${i})">
+                    Edit
+                </div>
+            </div>
+  `;
+  showDetailTaskOverlayAssignedTo(i);
+  showDetailTaskOverlaySubtasks(i);
+}
+
+function showDetailTaskOverlayAssignedTo(i){
+  let content = document.getElementById('showDetailTaskOverlayAssignedToChild');
+  content.innerHTML='';
+  let element = tasks[i];
+  for(j=0; j<element['assigned'].length; j++){
+    content.innerHTML +=`
+    <div class="overlay-initals-parent">
+    <div id="overlayInitials-${j}"></div>
+    <div>${tasks[i]['assigned'][j]['name']}</div>
+    </div>
+    `;
+    showAssignedPersonsInitalsInOverlay(element, j);
+  }
+}
+
+function showAssignedPersonsInitalsInOverlay(element, j){
+  let personsOverlay = document.getElementById(`overlayInitials-${j}`);
+  personsOverlay.innerHTML='';
+  assignedPersons = element['assigned'];
+    personsOverlay.innerHTML +=` 
+    <div class="initals-div-in-task"style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>
+    `
+}
+
+function showDetailTaskOverlaySubtasks(i){
+  let content = document.getElementById('showDetailTaskOverlaySubtasksChild');
+  content.innerHTML='';
+  for(j=0; j<tasks[i]['subtaskList'].length; j++){
+    let isChecked = checkedSubTaskList.includes(tasks[i]['subtaskList'][j]) ? 'checked' : '';
+    content.innerHTML=`
+    <div class="subtask-and-checkbox">
+        <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i})" ${isChecked}>
+        <div>${tasks[i]['subtaskList'][j]}</div>
+    </div>
+    `
+  }
+}
+
+function addCheckedSubtasks(){
+  
+}
+
+function closeDetailsOverlay(){
+  let editOverlayParent = document.getElementById('editOverlayParent');
+  editOverlayParent.classList.add('d-none');
 }
 
 function changeFillColor(){

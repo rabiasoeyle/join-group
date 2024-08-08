@@ -83,11 +83,11 @@ function renderAllGroupinitialsHTML(initial) {
 
 function renderAllContactsHTML(contact) {
   return `
-        <div class="one-contact-container" onclick="contactDetails(${contacts.indexOf(
+        <div class="one-contact-container"  onclick="contactDetails(${contacts.indexOf(
           contact
         )})">
             <div>
-                <span class="profil_replacement_img">${profileInitials(
+                <span style="background-color:${contacts[contacts.indexOf(contact)]['color']}; color:white" class="profil_replacement_img">${profileInitials(
                   contacts.indexOf(contact)
                 )}</span>
             </div>

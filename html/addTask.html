@@ -20,8 +20,10 @@
         <div class="body_right">
             <div class="header" w3-include-html="header.html"></div>
             <div class="content" id="content">
-                <h1>Add Task</h1>
                 <form class="form-style" id="formId" onsubmit="createTask()">
+                    <div class="headline">
+                      <h1>Add Task</h1>
+                    </div>
                     <div class="form-style-top">
                         <div class="form-left" id="formLeft">
                             <div class="task-title">
@@ -109,8 +111,14 @@
                         </div>
                     </div>
                     <div class="cancel-submit-buttons">
-                        <button type="reset" onclick="clearForm()">Clear x</button>
-                        <button type="submit">Create Task</button>
+                        <button class="clear-button" type="reset" onclick="clearForm()">
+                            <p>Clear</p>
+                            <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+                        </button>
+                        <button class="create-button" type="submit">
+                            <p>Create Task</p>
+                            <img src="../assets/icon-overlay-contact/check.svg" alt="">
+                        </button>
                     </div>
                 </form>
             </div>

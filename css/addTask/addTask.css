@@ -13,6 +13,7 @@ margin: 0;
     fill:white;
   }
   .form-style{
+    max-width: 1920px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -27,6 +28,17 @@ margin: 0;
     align-items: flex-start;
     padding:16px;
     gap:15vW;
+  }
+
+  .form-style h1{
+    font-size: 61px;
+    padding-left: 16px;
+  }
+
+  .headline {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
   }
   /* Add some basic styling for the dropdown */
   .dropdown {
@@ -256,5 +268,38 @@ margin: 0;
   border: 1px solid #D1D1D1;
   border-radius: 0 10px 10px 0;
   border-left: 0;
+}
+
+.cancel-submit-buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  width: 100%;
+  padding-right: 16px;
+}
+
+.clear-button, .create-button { 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 16px;
+ 
+}
+
+.create-button {
+  background-color: #2a3647;
+  color: white;
+}
+
+.clear-button {
+  background-color: white;
+}
+
+.content {
+display: flex;
+padding-left: 48px;
+padding-top: 64px;
 }
 

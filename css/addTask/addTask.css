@@ -28,7 +28,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 16px;
-  gap: 15vw;
+  gap: 16vw;
 }
 
 .form-style h1 {
@@ -177,6 +177,7 @@
   border-radius: 10px;
   background-color: #fff;
   font-size: 20px;
+  margin-top: 4px;
 }
 
 .assign-to-input,
@@ -214,17 +215,22 @@
   text-decoration: none;
   color: black;
   padding: 16px;
-  width: 24.4vh;
+  width: 25vh;
 }
 
 .dropdown-categories a:hover {
-  background-color: #ebebeb;
+  background-color: #e0e0e0;
 }
 
 .oneSubtask {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 16px;
+}
+
+.oneSubtask:hover {
+  background-color: #e0e0e0;
 }
 
 .show-assigned-persons-initials {
@@ -261,6 +267,7 @@
   height: 48px;
   cursor: pointer;
   width: min(440px, 100%);
+  margin-top: 4px;
 }
 
 .prio-content-parent {
@@ -290,6 +297,9 @@
   border-radius: 10px 0 0 10px;
   border: 1px solid #d1d1d1;
   border-right: 0;
+  margin-top: 4px;
+  font-size: 16px;
+
 }
 
 .subtask-add-button {
@@ -301,6 +311,7 @@
   border: 1px solid #d1d1d1;
   border-radius: 0 10px 10px 0;
   border-left: 0;
+  margin-top: 4px;
 }
 
 .cancel-submit-buttons {
@@ -334,4 +345,10 @@
   display: flex;
   padding-left: 48px;
   padding-top: 64px;
+  
+}
+.editAndTrash {
+  display: flex;
+  align-items: center;
+
 }

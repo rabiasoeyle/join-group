@@ -14,29 +14,36 @@ async function initBoard() {
     awaitFeedbackBoard();
     doneBoard();
 }
-
-async function loadTasks(path="/tasks"){
-    let response = await fetch(firebase_URL + path + ".json");
-    let responseToJson = await response.json();
-    if (responseToJson) {
-      Object.keys(responseToJson).forEach((key) => {
-        tasks.push({
-            id:key,
-            title:responseToJson[key]["title"],
-            description: responseToJson[key]["decription"],
-            assigned: responseToJson[key]["assigned"],
-            dueDate: responseToJson[key]["dueDate"],
-            category:responseToJson[key]["category"],
-            priority:responseToJson[key]["priority"],
-            subtaskList:responseToJson[key]["subtaskList"],
-            status:responseToJson[key]["status"],
-        });
-      });
-  }
-}
  
 function todoBoard(){
-    
+    let content = document.getElementById('todoBoard');
+    content.innerHTML='';
+    for(i=0; i<tasks.length;i++){
+      content.innerHTML +=`
+      <div class="one-task-div">
+        <div>${tasks[i]['priority']}</div>
+        <div>${tasks[i]['title']}</div>
+        <div>${tasks[i]['description']}</div>
+        <div>
+            <div></div>
+            <div> 0/0-Subtasks</div>
+        </div>
+        <div id="assignedPerson-${i}"></div>
+      </div>`;
+      showAssignedPersonsInitial(i);
+    }
+}
+
+function showAssignedPersonsInitial(i){
+  let persons = document.getElementById(`assignedPerson-${i}`);
+  persons.innerHTML ='';
+  assignedPersons = tasks[i]['assigned']
+  for(j=0; j<assignedPersons.length; j++){
+    persons.innerHTML +=`
+    <div>${assignedPersons[j]['name']}</div>
+    `;
+  }
+
 }
 function inProgressBoard(){
 

@@ -277,45 +277,6 @@ async function createTask(){
     window.location.href ='../html/board.html?msg=Du hast eine neue Task erstellt';
 }
 
-/**
- * Mit dieser Funktion werden Daten im Firebase gespeichert.
- * @param {*} path 
- * @param {*} data 
- */
-async function postData(path="", data){
-    await fetch(firebase_URL + path + ".json", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-}
-
-/**
- * In dieser Funktion werden die Daten aus dem Firebase geladen.
- *
- * @param {*} path
- */
-async function loadContacts(path = "/contacts") {
-    let response = await fetch(firebase_URL + path + ".json");
-    let responseToJson = await response.json();
-    if (responseToJson) {
-        contacts = [];
-      Object.keys(responseToJson).forEach((key) => {
-        contacts.push({
-          id: key,
-          name: responseToJson[key]["name"],
-          email: responseToJson[key]["email"],
-          phone: responseToJson[key]["phone"],
-          color: responseToJson[key]["color"] || getRandomColor(),
-        });
-      });
-      // Sortiere die Kontakte alphabetisch nach Name
-      contacts.sort((a, b) => a.name.localeCompare(b.name));
-    }
-  }
-
   function getRandomColor() {
     const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
     let color = '#';

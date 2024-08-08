@@ -273,6 +273,7 @@ async function createTask(){
     }
     await postData("/tasks", newTaskInformation);
     clearForm();
+    window.location.href ='../html/board.html?msg=Du hast eine neue Task erstellt';
 }
 
 /**

@@ -8,6 +8,7 @@ let firebase_URL =
 let tasks =[];
 let contacts=[];
 let currentDraggedElement;
+let idNumberStartValue =0;
 
 async function initBoard() {
     await loadTasks();
@@ -18,32 +19,10 @@ async function initBoard() {
     doneBoard();
 }
  
-function todoBoard(){
-  let todo = tasks.filter(t => t['status'] == 'todo');
-    let content = document.getElementById('todoBoard');
-    content.innerHTML='';
-
-    for(i=0; i<todo.length;i++){
-      content.innerHTML +=`
-      <div class="one-task-div" ondrop="moveTo('inProgressBoard')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')">
-        <div class="category-div"><div class="category-div-child"id="categorySign-${i}">${tasks[i]['category']}</div></div>
-        <div>${tasks[i]['title']}</div>
-        <div>${tasks[i]['description']}</div>
-        <div>
-            <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-            <div> 1/2-Subtasks</div>
-        </div>
-        <div class="assigned-persons-initals"id="assignedPerson-${i}"></div>
-      </div>`;
-      showAssignedPersonsInitial(i);
-      categorySign(i);
-    }
-}
-
-function showAssignedPersonsInitial(i){
-  let persons = document.getElementById(`assignedPerson-${i}`);
+function showAssignedPersonsInitial(element){
+  let persons = document.getElementById(`assignedPerson-${element['idNumber']}`);
   persons.innerHTML ='';
-  assignedPersons = tasks[i]['assigned']
+  assignedPersons = element['assigned'];
   for(j=0; j<assignedPersons.length; j++){
     persons.innerHTML +=`
     <div class="initals-div-in-task"style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>
@@ -51,12 +30,12 @@ function showAssignedPersonsInitial(i){
   }
 }
 
-function categorySign(){
-  let category = document.getElementById(`categorySign-${i}`);
-  if(tasks[i]['category'] =='Technical Task'){
+function categorySign(element){
+  let category = document.getElementById(`categorySign-${element['idNumber']}`);
+  if(element['category'] =='Technical Task'){
     category.style.backgroundColor = '#1FD7C1';
     category.style.color = 'white';
-  }else if(tasks[i]['category'] =='User Story'){
+  }else if(element['category'] =='User Story'){
     category.style.backgroundColor ='#0038FF';
     category.style.color = 'white';
   }
@@ -86,46 +65,123 @@ function profileInitials(name) {
   return initials;
 }
 
+function todoBoard(){
+  let todo = tasks.filter(t => t['status'] == 'todo');
+  console.log(todo);
+    let content = document.getElementById('todoBoard');
+    content.innerHTML='';
+    if(todo.length==0){
+      content.innerHTML=`
+      <div class="no-task-available">No tasks To do</div>
+      `
+    }else{
+      for(i=0; i<todo.length;i++){
+        let element = todo[i];
+        content.innerHTML += 
+        `
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+          <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
+          <div>${element['title']}</div>
+          <div>${element['description']}</div>
+          <div>
+              <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
+              <div> 1/2-Subtasks</div>
+          </div>
+          <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
+        </div>`;
+        showAssignedPersonsInitial(element);
+        categorySign(element);
+    }}
+}
+
 function inProgressBoard(){
-
+  let inProgress = tasks.filter(t => t['status'] == 'inProgress');
+  console.log(inProgress);
+    let content = document.getElementById('inProgressBoard');
+    content.innerHTML='';
+    if(inProgress.length == 0){
+      content.innerHTML=`
+      <div class="no-task-available">No tasks in Progress</div>
+      `
+    }else{
+      for(i=0; i<inProgress.length;i++){
+        let element = inProgress[i];
+        content.innerHTML +=`
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+          <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
+          <div>${element['title']}</div>
+          <div>${element['description']}</div>
+          <div>
+              <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
+              <div> 1/2-Subtasks</div>
+          </div>
+          <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
+        </div>`;
+        showAssignedPersonsInitial(element);
+        categorySign(element);
+    }}
 }
+
 function awaitFeedbackBoard(){
-
+  let awaitFeedback = tasks.filter(t => t['status'] == 'awaitFeedback');
+    let content = document.getElementById('awaitFeedbackBoard');
+    content.innerHTML='';
+    if(awaitFeedback.length == 0){
+      content.innerHTML=`
+      <div class="no-task-available">No tasks await Feedback</div>
+      `
+    }else{
+    for(i=0; i<awaitFeedback.length;i++){
+      let element = awaitFeedback[i];
+      content.innerHTML +=`
+      <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+        <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
+        <div>${element['title']}</div>
+        <div>${element['description']}</div>
+        <div>
+            <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
+            <div> 1/2-Subtasks</div>
+        </div>
+        <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
+      </div>`;
+      showAssignedPersonsInitial(element);
+      categorySign(element);
+    }}
 }
+
 function doneBoard(){
-
+  let doneTask = tasks.filter(t => t['status'] == 'done');
+    let content = document.getElementById('doneBoard');
+    content.innerHTML='';
+    if(doneTask.length == 0){
+      content.innerHTML=`
+      <div class="no-task-available">No tasks await Feedback</div>
+      `
+    }else{
+      for(i=0; i<doneTask.length;i++){
+        let element = doneTask[i];
+        content.innerHTML +=`
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+          <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
+          <div>${element['title']}</div>
+          <div>${element['description']}</div>
+          <div>
+              <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
+              <div> 1/2-Subtasks</div>
+          </div>
+          <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
+        </div>`;
+        showAssignedPersonsInitial(element);
+        categorySign(element);
+    }}
 }
+
 function changeFillColor(){
 
 }
 function changeFillColorBack(){
 
 }
-
-
-
-function updateHTML() {
-    //oberer container
-    let open = todos.filter(t => t['category'] == 'open'); //zum rausfiltern aller objecte mit der kategorie open
-    document.getElementById('open').innerHTML = '';
-    for (let index = 0; index < open.length; index++) {
-        const element = open[index];
-        document.getElementById('open').innerHTML += generateTodoHTML(element);
-    }// alle objekte mit der kategorie open werden dem div zugeordnet
-    //unterer container
-    let closed = todos.filter(t => t['category'] == 'closed');
-    document.getElementById('closed').innerHTML = '';
-    for (let index = 0; index < closed.length; index++) {
-        const element = closed[index];
-        document.getElementById('closed').innerHTML += generateTodoHTML(element);
-    }
-}
-
-
-
-function generateTodoHTML(element) {
-    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
-}//draggable= true sagt aus, dass es bewegbar sein soll
 
 /**
  * Wird aufgerufen, sobald man anfängt den Container zu packen.
@@ -145,13 +201,22 @@ function allowDrop(ev) {
 }
 
 /**
- * Diese Funktion soll die category anpassen
+ * Diese Funktion soll den Status anpassen
  * @param {*} category 
  */
-function moveTo(category) {
-    todos[currentDraggedElement]['category'] = category;
-    //der inhalt von category ändert sich zu dem jeweiligen Parameter
-    updateHTML();
+async function moveTo(event) {
+  let status = event.currentTarget.id.replace('Board', '');
+  //mit event.currentTarget.id finden wir die id heraus, auf dem sich das gedropte element befindet.
+  //da die Ids genauso wie die statuse heißen, nur mit Board am ende, wird board entfernt
+    tasks[currentDraggedElement]['status'] = status;
+    console.log('yes'+ tasks[currentDraggedElement]['status']);
+    await putData(`/tasks/${tasks[currentDraggedElement]['id']}/status`, status);
+    tasks=[];
+    await loadTasks();
+    todoBoard();
+    inProgressBoard();
+    awaitFeedbackBoard();
+    doneBoard();
 }
 
 /**

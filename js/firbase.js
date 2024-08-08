@@ -25,10 +25,12 @@ async function loadContacts(path = "/contacts") {
   async function loadTasks(path="/tasks"){
     let response = await fetch(firebase_URL + path + ".json");
     let responseToJson = await response.json();
+    idNumberStartValue =0;
     if (responseToJson) {
       Object.keys(responseToJson).forEach((key) => {
         tasks.push({
             id:key,
+            idNumber:idNumberStartValue,
             title:responseToJson[key]["title"],
             description: responseToJson[key]["description"],
             assigned: responseToJson[key]["assigned"],
@@ -38,8 +40,10 @@ async function loadContacts(path = "/contacts") {
             subtaskList:responseToJson[key]["subtaskList"],
             status:responseToJson[key]["status"],
         });
+        idNumberStartValue ++;
       });
   }
+  idNumberStartValue = idNumberStartValue + 1;
 }
 
 /**
@@ -57,7 +61,7 @@ async function deleteContact(path = "") {
     await loadContacts("/contacts");
     renderAllContacts();
   }
-  
+
 /**
  * Diese Funktion dient dazu um die neu erhaltenen Daten im Firebase zu speichern.
  *

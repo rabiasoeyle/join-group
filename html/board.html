@@ -29,60 +29,61 @@
                             <input type="text">
                             <img class="search-img" src="">
                         </div>
+                        <button>Add Task +</button>
                     </div>
                 </div>
             <div class="all-boards">
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>To do</h2>
-                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
-                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
+                        <div  onclick="openAddTaskOverlay()">
+                            <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                         </div>
                     </div>
-                    <div id="todoBoard" ondrop="moveTo('inProgressBoard')" ondragleave="removeHighlight('todoBoard')" ondragover="allowDrop(event); highlight('todoBoard')"></div>
+                    <div class="board-content" id="todoBoard" ondrop="moveTo(event)" ondragleave="removeHighlight('todoBoard')" ondragover="allowDrop(event); highlight('todoBoard')"></div>
                 </div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>In Progress</h2>
-                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
-                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                        <div onclick="openAddTaskOverlay()">
+                            <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="min-height-board"id="inProgressBoard" ondrop="moveTo('awaitFeedbackBoard')" ondragleave="removeHighlight('inProgressBoard')" ondragover="allowDrop(event); highlight('inProgressBoard')"></div>
+                    <div class="board-content"id="inProgressBoard" ondrop="moveTo(event)" ondragleave="removeHighlight('inProgressBoard')" ondragover="allowDrop(event); highlight('inProgressBoard')"></div>
                 </div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>Await Feedback</h2>
-                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
-                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
+                        <div onclick="openAddTaskOverlay()">
+                            <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                         </div>
                     </div>
-                    <div id="awaitFeedbackBoard" ondrop="moveTo('doneBoard')" ondragleave="removeHighlight('awaitFeedbackBoard')" ondragover="allowDrop(event); highlight('open')"></div>
+                    <div class="board-content"id="awaitFeedbackBoard" ondrop="moveTo(event)" ondragleave="removeHighlight('awaitFeedbackBoard')" ondragover="allowDrop(event); highlight('awaitFeedbackBoard')"></div>
                 </div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>Done</h2>
-                        <div onclick="addTask()" onmouseover="changeFillColor()" onmouseout="changeFillColorBack()">
-                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1.5" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
-                                <path d="M12 8.5V16.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M16 12.5754L8 12.5754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                        <div onclick="openAddTaskOverlay()">
+                            <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                         </div>
                     </div>
-                    <div id="doneBoard" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')"></div>
+                    <div class="board-content" id="doneBoard" ondrop="moveTo(event)" ondragleave="removeHighlight('doneBoard')" ondragover="allowDrop(event); highlight('doneBoard')"></div>
                 </div>
             </div>
         </div>

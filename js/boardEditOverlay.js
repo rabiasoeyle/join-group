@@ -84,7 +84,7 @@ function openEditTaskOverlay(i){
                                         </g>
                                     </svg>
                             </div>
-                                <div id="showAssignedPersonInitial" class="show-assigned-persons-initials"></div>
+                                <div id="showAssignedPersonInitial-${i}" class="show-assigned-persons-initials"></div>
                                 <div class="d-none assign-contacts-list" id="edit-assignContactsList"></div>
                     </div>
                     <div class="subtask">
@@ -118,6 +118,7 @@ function openEditTaskOverlay(i){
     `;
     colorOfPriority(i);
     renderAllAvaillableSubtasks(i);
+    editOvShowAssignedPersons(i);
 }
 
 /**
@@ -203,7 +204,11 @@ function saveChangedSubtask(j,i){
  * Diese Funktion dient zum Löschen von subtasks.
  * @param {*} i 
  */
-function editOverlayDeleteSubtask(j,i){
+function editOverlayDeleteSubtask(i,j){
+    let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
+    if(index !=-1){
+        tasks[i]['checkedSubtasks'].splice(index,1);
+    }
     tasks[i]['subtaskList'].splice(j,1);
     renderAllAvaillableSubtasks(i);
 }
@@ -304,7 +309,34 @@ function rollContactsListEdit(i){
 }
 
 /**
- * 
+ * Diese Funktion soll die Div Container für die Initalien der ausgewählten Personen rendern.
+ * @param {*} i 
+ */
+function editOvShowAssignedPersons(i) {
+    let showAssignedPersons = document.getElementById(`showAssignedPersonInitial-${i}`);
+    showAssignedPersons.innerHTML='';
+    for(j=0;j<tasks[i]['assigned'].length;j++){
+        showAssignedPersons.innerHTML += `<div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">${editAssignedPersonsInitials(i, j)}</div>`;
+}
+} 
+
+/**
+ * Diese Funktion rendert die initalien der ausgewählten Personen
+ * @param {*} i 
+ * @param {*} j 
+ * @returns 
+ */
+function editAssignedPersonsInitials(i,j){
+    let names = tasks[i]['assigned'][j].name.split(" "),
+      initialsAssignedPersons = names[0].substring(0, 1).toUpperCase();
+    if (names.length > 1) {
+        initialsAssignedPersons += names[names.length - 1].substring(0, 1).toUpperCase();
+    }
+    return initialsAssignedPersons;
+}
+
+/**
+ * In dieser Funktion werden Personen zur Task hinzugefügt.
  * @param {*} j 
  * @param {*} i 
  */
@@ -321,6 +353,7 @@ function editAddAssignedPersons(j, i){
         // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
         tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
     }
+    editOvShowAssignedPersons(i);
 }
 
 /**
@@ -336,17 +369,6 @@ function editOverlayProfileInitials(i){
   }
   return initials;
 }
-
-/**
- * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
- */
-function showAssignedPersons() {
-    let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
-    showAssignedPersons.innerHTML='';
-    for(i=0;i<assignedPersons.length;i++){
-        showAssignedPersons.innerHTML += `<div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
-    }
-} 
 
 /**
  * Dies ist die abschließende Speicherfunktion beim Edit-Overlay, die dafür sorgt, dass alle bisher geänderten Infos auch gespeichert werden.

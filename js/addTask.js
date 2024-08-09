@@ -8,6 +8,7 @@ let subtaskList=[];
 let taskInformation=[];
 let initials=[];
 let initialsAssignedPersons=[];
+let checkedSubtasks=[];
 
 /**
  * Diese Funktion ist zum rendern der Hauptbausteine.
@@ -270,6 +271,8 @@ async function createTask(){
         priority:priority,
         subtaskList:subtaskList,
         status:"todo",
+        checkedSubtasks:checkedSubtasks,
+        checkedSubtasksCount: 0,
     }
     await postData("/tasks", newTaskInformation);
     clearForm();

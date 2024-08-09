@@ -9,7 +9,7 @@ let tasks =[];
 let contacts=[];
 let currentDraggedElement;
 let idNumberStartValue = 0;
-let checkedSubTaskList = [];
+let checkedSubTaskNumber = 0;//vorerst ersatznummer für den eigentlichen wert
 
 async function initBoard() {
     await loadTasks();
@@ -79,6 +79,7 @@ function todoBoard(){
     }else{
       for(i=0; i<todo.length;i++){
         let element = todo[i];
+        let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
         content.innerHTML += 
         `
         <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
@@ -86,8 +87,8 @@ function todoBoard(){
           <div>${element['title']}</div>
           <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div>
-              <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-              <div> ${checkedSubTaskList.length}/${element['subtaskList'].length}-Subtasks</div>
+              <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+              <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
           </div>
           <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
         </div>`;
@@ -114,14 +115,15 @@ function inProgressBoard(){
     }else{
       for(i=0; i<inProgress.length;i++){
         let element = inProgress[i];
+        let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
         content.innerHTML +=`
         <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
           <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
           <div>${element['title']}</div>
           <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div>
-              <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-              <div> ${checkedSubTaskList.length}/${element['subtaskList'].length}-Subtasks</div>
+              <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+              <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
           </div>
           <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
         </div>`;
@@ -147,14 +149,15 @@ function awaitFeedbackBoard(){
     }else{
     for(i=0; i<awaitFeedback.length;i++){
       let element = awaitFeedback[i];
+      let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
       content.innerHTML +=`
       <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
         <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
         <div>${element['title']}</div>
         <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
         <div>
-            <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-            <div> ${checkedSubTaskList.lenght}/${element['subtaskList'].length}-Subtasks</div>
+            <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+            <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
         </div>
         <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
       </div>`;
@@ -180,6 +183,7 @@ function doneBoard(){
     }else{
       for(i=0; i<doneTask.length;i++){
         let element = doneTask[i];
+        let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
         content.innerHTML +=`
         <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
           <div class="category-div">
@@ -187,8 +191,8 @@ function doneBoard(){
             <div id="titleSign-${element['idNumber']}">${element['title']}</div>
             <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div>
-              <div class="load-subtask-div"><div class="load-subtask" style="width:50%"></div></div>
-              <div> ${checkedSubTaskList.lenght}/${element['subtaskList'].length}-Subtasks</div>
+              <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+              <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
           </div>
           <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
         </div>`;
@@ -278,19 +282,51 @@ function showAssignedPersonsInitalsInOverlay(element, j){
 function showDetailTaskOverlaySubtasks(i){
   let content = document.getElementById('showDetailTaskOverlaySubtasksChild');
   content.innerHTML='';
-  for(j=0; j<tasks[i]['subtaskList'].length; j++){
-    let isChecked = checkedSubTaskList.includes(tasks[i]['subtaskList'][j]) ? 'checked' : '';
+  for(j= 0; j<tasks[i]['subtaskList'].length; j++){
+    let subtask=tasks[i]['subtaskList'][j];
+    let isChecked = tasks[i]['checkedSubTasks'] && tasks[i]['checkedSubTasks'].includes(subtask) ? 'checked' : '';
     content.innerHTML=`
     <div class="subtask-and-checkbox">
-        <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i})" ${isChecked}>
+        <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i}, ${j})" ${isChecked}>
         <div>${tasks[i]['subtaskList'][j]}</div>
     </div>
     `
   }
 }
 
-function addCheckedSubtasks(){
-  
+function addCheckedSubtasks(i, j){
+  let subtask = tasks[i]['subtaskList'][j]
+  if(!tasks[i].checkedSubtasks){
+    tasks[i].checkedSubtasks=[];//zum hinzufügen einer checkedsubtaskArrays
+  }
+  let checkbox = document.getElementById(`inputCheckbox-${i}`)
+  if(checkbox.checked){
+    if (!tasks[i].checkedSubtasks.includes(subtask)) {
+      tasks[i].checkedSubtasks.push(subtask);
+  }
+} else {
+  // Entferne die Subtask aus der Liste der abgehakten Subtasks
+  let index = tasks[i].checkedSubtasks.indexOf(subtask);
+  if (index > -1) {
+      tasks[i].checkedSubtasks.splice(index, 1);
+  }
+  tasks[i].checkedSubtasksCount = tasks[i].checkedSubtasks.length;
+  }
+  saveCheckedsubtasks(i);
+}
+
+async function saveCheckedsubtasks(){
+    // let checkedSubtasksCount = tasks[i]['checkedSubtasks'].length;
+    // let checkedSubtasks = tasks[i]['checkedSubtasks'];
+  await putData(`/tasks/${tasks[i]['id']}`, tasks[i]);
+  // await putData(`tasks/${tasks[i]['id']}/checkedSubtasksCount`, checkedSubtasksCount);
+  tasks=[];
+  await loadTasks();
+  showDetailTaskOverlaySubtasks(i);
+  todoBoard();
+  inProgressBoard();
+  awaitFeedbackBoard();
+  doneBoard();
 }
 
 function closeDetailsOverlay(){

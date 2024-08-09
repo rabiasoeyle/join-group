@@ -39,6 +39,8 @@ async function loadContacts(path = "/contacts") {
             priority:responseToJson[key]["priority"],
             subtaskList:responseToJson[key]["subtaskList"],
             status:responseToJson[key]["status"],
+            checkedSubtasks: [],
+            checkedSubtasksCount: 0,
         });
         idNumberStartValue ++;
       });

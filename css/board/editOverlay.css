@@ -40,6 +40,9 @@
     align-items: center;
     gap:16px;
 }
+.delete-or-edit-task-buttons div:hover{
+   cursor: pointer;
+}
 .task-category-and-close-button{
     display: flex;
     align-items: center;

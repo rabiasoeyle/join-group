@@ -47,3 +47,11 @@
     display: flex;
     align-items: center;
 }
+/* Overlay überschrift */
+h3{
+    font-size: 61px;
+    font-weight: 700;
+}
+h4{
+    font-size: 20px;
+}

@@ -36,11 +36,9 @@ function categorySign(element){
   let category = document.getElementById(`categorySign-${element['idNumber']}`);
   if(element['category'] =='Technical Task'){
     category.style.backgroundColor = '#1FD7C1';
-    category.style.color = 'white';
   }else if(element['category'] =='User Story'){
     category.style.backgroundColor ='#0038FF';
-    category.style.color = 'white';
-  }
+  }category.style.color = 'white';
 }
 
 function getRandomColor() {
@@ -220,12 +218,12 @@ function openDetailedTaskOverlay(i){
                   <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
-            <div id="showDetailTaskOverlayTitle">
+            <h3 id="showDetailTaskOverlayTitle">
             ${tasks[i]['title']}
-            </div>
-            <div id="showDetailTaskOverlayDescription">
+            </h3>
+            <h4 id="showDetailTaskOverlayDescription">
             ${tasks[i]['description']}
-            </div>
+            </h4>
             <div>
                 <div>Due Date:</div>
                 <div id="showDetailTaskOverlayDueDate">${tasks[i]['dueDate']}</div>
@@ -251,8 +249,18 @@ function openDetailedTaskOverlay(i){
                 </div>
             </div>
   `;
+  categorySignOverlay(i)
   showDetailTaskOverlayAssignedTo(i);
   showDetailTaskOverlaySubtasks(i);
+}
+
+function categorySignOverlay(i){
+  let category = document.getElementById(`showDetailTaskOverlayCategory`);
+  if(tasks[i]['category'] =='Technical Task'){
+    category.style.backgroundColor = '#1FD7C1';
+  }else if(tasks[i]['category'] =='User Story'){
+    category.style.backgroundColor ='#0038FF';
+  }category.style.color = 'white';
 }
 
 function showDetailTaskOverlayAssignedTo(i){
@@ -284,11 +292,11 @@ function showDetailTaskOverlaySubtasks(i){
   content.innerHTML='';
   for(j= 0; j<tasks[i]['subtaskList'].length; j++){
     let subtask=tasks[i]['subtaskList'][j];
-    let isChecked = tasks[i]['checkedSubTasks'] && tasks[i]['checkedSubTasks'].includes(subtask) ? 'checked' : '';
-    content.innerHTML=`
+    let isChecked = tasks[i]['checkedSubtasks'] && tasks[i]['checkedSubtasks'].includes(subtask) ? 'checked' : '';
+    content.innerHTML +=`
     <div class="subtask-and-checkbox">
-        <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i}, ${j})" ${isChecked}>
-        <div>${tasks[i]['subtaskList'][j]}</div>
+        <input id="inputCheckbox-${i}-${j}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i}, ${j})" ${isChecked}>
+        <div>${subtask}</div>
     </div>
     `
   }
@@ -297,36 +305,33 @@ function showDetailTaskOverlaySubtasks(i){
 function addCheckedSubtasks(i, j){
   let subtask = tasks[i]['subtaskList'][j]
   if(!tasks[i].checkedSubtasks){
-    tasks[i].checkedSubtasks=[];//zum hinzufügen einer checkedsubtaskArrays
+    tasks[i]['checkedSubtasks']=[];//zum hinzufügen einer checkedsubtaskArrays
   }
-  let checkbox = document.getElementById(`inputCheckbox-${i}`)
+  let checkbox = document.getElementById(`inputCheckbox-${i}-${j}`)
   if(checkbox.checked){
     if (!tasks[i].checkedSubtasks.includes(subtask)) {
-      tasks[i].checkedSubtasks.push(subtask);
+      tasks[i]['checkedSubtasks'].push(subtask);
   }
 } else {
   // Entferne die Subtask aus der Liste der abgehakten Subtasks
   let index = tasks[i].checkedSubtasks.indexOf(subtask);
   if (index > -1) {
       tasks[i].checkedSubtasks.splice(index, 1);
-  }
+  }  
+}
   tasks[i].checkedSubtasksCount = tasks[i].checkedSubtasks.length;
-  }
   saveCheckedsubtasks(i);
 }
 
-async function saveCheckedsubtasks(){
-    // let checkedSubtasksCount = tasks[i]['checkedSubtasks'].length;
-    // let checkedSubtasks = tasks[i]['checkedSubtasks'];
+async function saveCheckedsubtasks(i){
   await putData(`/tasks/${tasks[i]['id']}`, tasks[i]);
-  // await putData(`tasks/${tasks[i]['id']}/checkedSubtasksCount`, checkedSubtasksCount);
   tasks=[];
   await loadTasks();
-  showDetailTaskOverlaySubtasks(i);
   todoBoard();
   inProgressBoard();
   awaitFeedbackBoard();
   doneBoard();
+  showDetailTaskOverlaySubtasks(i);
 }
 
 function closeDetailsOverlay(){

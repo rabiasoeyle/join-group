@@ -307,13 +307,6 @@ function prioritySign(element){
   `
 }
 
-function changeFillColor(){
-
-}
-function changeFillColorBack(){
-
-}
-
 /**
  * Wird aufgerufen, sobald man anfängt den Container zu packen.
  * Die Id soll gloabal definiert sein, damit man sie bei dem nächsten feld einfügen kann.

@@ -1,3 +1,7 @@
+/**
+ * Diese Funktion dient zum rendern des Edit Overlays der Aufgaben
+ * @param {*} i 
+ */
 function openEditTaskOverlay(i){
     let editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
     editTaskOverlayContent.classList.remove('edit-task-overlay-content');
@@ -12,21 +16,21 @@ function openEditTaskOverlay(i){
                     </div>
                     <div>
                     <label>Title</label>
-                    <input required type="text"id="editTaskOverlayTitle" value="${tasks[i]['title']}">
+                    <input required type="text"id="editTaskOverlayTitle-${i}" value="${tasks[i]['title']}">
                     </div>
                     <div>
                     <label>Description</label>
-                    <textarea required type="text"id="editTaskOverlayDescription" >${tasks[i]['description']}</textarea>
+                    <textarea required type="text"id="editTaskOverlayDescription-${i}" >${tasks[i]['description']}</textarea>
                     </div>
                     <div>
                         <label>Due date</label>
-                        <input required type="date" id="editOverlayDueDate" value="${tasks[i]['dueDate']}">
+                        <input required type="date" id="editOverlayDueDate-${i}" value="${tasks[i]['dueDate']}">
                     </div>
                     <div>
                     <div class="prio-content-parent" id="prioContent">
                                 <label>Priority:</label>
                                 <div class="prio-content">
-                                    <a id='urgentButtonOverlay' class="urgentPrio" href="#" onclick="selectPrio('urgent')">Urgent
+                                    <a id='urgentButtonOverlay' class="urgentPrio" href="#" onclick="selectPrio(${i},'urgent')">Urgent
                                         <svg class="svgUrgentPrio" width="21" height="16" viewBox="0 0 21 16" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -37,7 +41,7 @@ function openEditTaskOverlay(i){
                                                 fill="#currentColor" />
                                         </svg>
                                     </a>
-                                    <a id='mediumButtonOverlay' class="mediumPrio" href="#" onclick="selectPrio('medium')">Medium
+                                    <a id='mediumButtonOverlay' class="mediumPrio" href="#" onclick="selectPrio(${i},'medium')">Medium
                                         <svg class="svgMediumPrio" width="21" height="8" viewBox="0 0 21 8" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -48,7 +52,7 @@ function openEditTaskOverlay(i){
                                                 fill="#currentColor" />
                                         </svg>
                                     </a>
-                                    <a id='lowButtonOverlay' class="lowPrio" href="#" onclick="selectPrio('low')">Low
+                                    <a id='lowButtonOverlay' class="lowPrio" href="#" onclick="selectPrio(${i},'low')">Low
                                         <svg class="svgLowPrio" width="21" height="16" viewBox="0 0 21 16" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -83,9 +87,16 @@ function openEditTaskOverlay(i){
                                 <div id="showAssignedPersonInitial" class="show-assigned-persons-initials"></div>
                                 <div class="d-none assign-contacts-list" id="edit-assignContactsList"></div>
                     </div>
-                    <div id="showDetailTaskOverlaySubtasks">
-                        <div>Subtasks:</div>
-                        <div id="showDetailTaskOverlaySubtasksChild"></div>
+                    <div class="subtask">
+                                <label>Subtasks</label>
+                            <div class="subtask-container">
+                                    <input placeholder=" Add new task" class="subtask-input" id="subtaskInput-${i}"
+                                    type="text" />
+                                <div class="subtask-add-button">
+                                    <img onclick="editAddSubtask(${i})" src="../assets/svg/addButton.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="subtask-list" id="editOverlaySubtaskList"></div>
                     </div>
                     <div class="delete-or-save-task-buttons">
                         <button type="submit">
@@ -106,10 +117,99 @@ function openEditTaskOverlay(i){
               
     `;
     colorOfPriority(i);
+    renderAllAvaillableSubtasks(i);
+}
+
+/**
+ * Diese Funktion dient dazu im Overlay neue subtasks hinzufügen zu können.
+ * @param {*} i 
+ */
+function editAddSubtask(i){
+    let subtask = document.getElementById(`subtaskInput-${i}`).value.trim();
+    if (subtask) {
+        tasks[i]['subtaskList'].push(subtask);
+        document.getElementById(`subtaskInput-${i}`).value = "";
+    }
+    renderAllAvaillableSubtasks(i);
+}
+
+/**
+ * Diese Funktion dient dazu, dass alle Subtasks der Task gerendert werden
+ * @param {*} i 
+ */
+function renderAllAvaillableSubtasks(i){
+    let subtaskListDiv= document.getElementById('editOverlaySubtaskList');
+    subtaskListDiv.innerHTML='';
+    for(j=0; j<tasks[i]['subtaskList'].length; j++){
+        subtaskListDiv.innerHTML +=`
+        <ul class="edit-one-subtask" id="oneSubtask-${j}" class="oneSubtask" onmouseover="editSubtaskHoverEffekt(${j})" onmouseout= "editSubtaskNoHoverEffekt(${j})">
+            <li class="" id="editSubtaskListText-${i}-${j}">${tasks[i]['subtaskList'][j]}</li>
+            <input class="d-none" value="${tasks[i]['subtaskList'][j]}" id="editInput-${j}">
+            <div class="d-none editAndTrash" id="editEditAndTrash-${j}">
+                <img src="../assets/img/editTask.png" id="leftImage-${j}" onclick="editEditSubtask(${i},${j})">
+                |
+                <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="editOverlayDeleteSubtask(${i},${j})">
+            </div>
+        </ul>
+        `;
+    }
+}
+/**
+ * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.(Bei den Subtasks)
+ * @param {*} i 
+ */
+function editSubtaskNoHoverEffekt(j){
+    let trashAndEdit = document.getElementById(`editEditAndTrash-${j}`);
+    trashAndEdit.classList.add('d-none');
+}
+
+/**
+ * Diese Funktion soll den onmouseover effekt hinzufügen.(Bei den Subtasks)
+ * @param {*} i 
+ */
+function editSubtaskHoverEffekt(j){
+    let trashAndEdit = document.getElementById(`editEditAndTrash-${j}`);
+    trashAndEdit.classList.remove('d-none');
+}
+/**
+ * Mit dieser Funktion soll man die Subtask an genau der entsprechenden stelle ändern können.
+ * @param {*} i 
+ */
+function editEditSubtask(i ,j ){
+    let subtaskListText = document.getElementById(`editSubtaskListText-${i}-${j}`);
+    subtaskListText.classList.add('d-none');
+    let editInput = document.getElementById(`editInput-${j}`);
+    editInput.classList.remove('d-none');
+    let editAndTrash = document.getElementById(`editEditAndTrash-${j}`);
+    editAndTrash.innerHTML='';
+    editAndTrash.innerHTML= `
+    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${j},${i})">
+    |
+    <img src="../assets/img/checkTask.png" id="rightImage-${j}" onclick="saveChangedSubtask(${j},${i})">
+    `
+}
+
+/**
+ * Durch Aktivierung dieser Funktion können Änderungen an Unteraufgaben gespeichert werden.
+ * @param {*} i 
+ */
+function saveChangedSubtask(j,i){
+    let editInput = document.getElementById(`editInput-${j}`).value.trim();
+    tasks[i]['subtaskList'].splice(j,1, editInput);
+    renderAllAvaillableSubtasks(i);
+}
+
+/**
+ * Diese Funktion dient zum Löschen von subtasks.
+ * @param {*} i 
+ */
+function editOverlayDeleteSubtask(j,i){
+    tasks[i]['subtaskList'].splice(j,1);
+    renderAllAvaillableSubtasks(i);
 }
 
 /**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
-function selectPrio(x){
+function selectPrio(i,x){
     let urgent = document.getElementById('urgentButtonOverlay');
     let medium = document.getElementById('mediumButtonOverlay');
     let low = document.getElementById('lowButtonOverlay');
@@ -135,7 +235,7 @@ function selectPrio(x){
         low.classList.add('lowPrio_click');
         low.classList.remove('lowPrio');
     }
-    tasks[i]['priority']= x;
+    tasks[i]['priority'] = x;
 }
 
 /**
@@ -157,17 +257,31 @@ function colorOfPriority(i){
     }}else{}
 }
 
+/**
+ * In dieser Funktion soll der Titel geändert und gespeichert werden.
+ * @param {*} i 
+ */
 function changeTitle(i){
- let editTaskOverlayTitle = document.getElementById('editTaskOverlayTitle').value.trim();
- editTaskOverlayTitle = tasks[i]['title'];
+ let editTaskOverlayTitle = document.getElementById(`editTaskOverlayTitle-${i}`).value.trim();
+ tasks[i]['title'] =  editTaskOverlayTitle;
 }
+
+/**
+ * In dieser Funktion soll die Description geändert werden können.
+ * @param {*} i 
+ */
 function changeDescription(i){
-    let editTaskOverlayDescription = document.getElementById('editTaskOverlayDescription').value.trim();
-    editTaskOverlayDescription = tasks[i]['description'];
+    let editTaskOverlayDescription = document.getElementById(`editTaskOverlayDescription-${i}`).value.trim();
+    tasks[i]['description'] = editTaskOverlayDescription;
 }
+
+/**
+ * In dieser Funktion soll das Datum geändert werden.
+ * @param {*} i 
+ */
 function changeDueDate(i){
-    let editOverlayDueDate = document.getElementById('editOverlayDueDate').value;
-    editOverlayDueDate= tasks[i]['dueDate'];
+    let editOverlayDueDate = document.getElementById(`editOverlayDueDate-${i}`).value;
+    tasks[i]['dueDate']= editOverlayDueDate;
 }
 
 /**
@@ -189,6 +303,11 @@ function rollContactsListEdit(i){
     }
 }
 
+/**
+ * 
+ * @param {*} j 
+ * @param {*} i 
+ */
 function editAddAssignedPersons(j, i){
     let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
     let personName = contacts[j].name;
@@ -204,6 +323,11 @@ function editAddAssignedPersons(j, i){
     }
 }
 
+/**
+ * Diese Funktion dient dazu, die Profilinitalien der Kontakte zu erstellen.
+ * @param {*} i 
+ * @returns 
+ */
 function editOverlayProfileInitials(i){
     let names = contacts[i]['name'].split(" "),
     initials = names[0].substring(0, 1).toUpperCase();
@@ -224,6 +348,10 @@ function showAssignedPersons() {
     }
 } 
 
+/**
+ * Dies ist die abschließende Speicherfunktion beim Edit-Overlay, die dafür sorgt, dass alle bisher geänderten Infos auch gespeichert werden.
+ * @param {*} i 
+ */
 async function saveTasksChanges(i){
     changeTitle(i);
     changeDescription(i);

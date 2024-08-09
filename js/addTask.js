@@ -187,15 +187,15 @@ function renderSubtasks(){
     subtaskListDiv.innerHTML='';
     for(i=0; i<subtaskList.length; i++){
         subtaskListDiv.innerHTML +=`
-        <div class="oneSubtask" id="oneSubtask-${i}" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
-            <div class="" id="subtaskListText-${i}">${subtaskList[i]}</div>
+        <ul class="oneSubtask" id="oneSubtask-${i}" class="oneSubtask" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
+            <li class="" id="subtaskListText-${i}">${subtaskList[i]}</li>
             <input class="d-none" value="${subtaskList[i]}" id="editInput-${i}">
             <div class="d-none editAndTrash" id="editAndTrash-${i}">
                 <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})">
                 |
                 <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})">
             </div>
-        </div>
+        </ul>
         `;
     }
 }

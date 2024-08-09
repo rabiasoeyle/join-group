@@ -38,34 +38,41 @@
   .content {
     padding-left: 0;
     justify-content: center;
-}
+  }
 }
 
 @media (max-width: 400px) {
-    .form-style {
-        padding: 0;
-    }
-    .task-title input {
-        width: 250px;
-    }
-    .description-title textarea {
-        width: 250px;
-    }
-    .due-date input {
-        width: 250px;
-    }
-    .due-date input {
-        min-width: 250px;
-    }
-    .prio-content a {
-        font-size: 12px;
-        padding: 0 !important;
-    }
-    .prio-content {
-        gap: 10px;
-    }
-    .svgMediumPrio {
-        width: 20px;
-        height: 20px;
-    }
+  .form-style {
+    padding: 0;
+  }
+  .task-title input {
+    width: 250px;
+  }
+  .description-title textarea {
+    width: 250px;
+  }
+  .due-date input {
+    width: 250px;
+  }
+  .due-date input {
+    min-width: 250px;
+  }
+  .prio-content a {
+    font-size: 12px;
+    padding: 0 !important;
+    width: 250px;
+  }
+  .prio-content {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .prio-content-parent {
+    width: 250px;
+  }
+  .assigned-to-input-and-button {
+    width: 250px;
+  }
+  .subtask-container {
+    width: 250px;
+  }
 }

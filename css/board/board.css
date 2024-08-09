@@ -1,3 +1,48 @@
+.header-board > h1 {
+  font-size: 61px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border: solid 1px #A8A8A8;
+  border-radius: 10px;
+  padding: 4px 8px;
+  background-color: #ffffff;
+  gap: 8px;
+
+}
+.search-bar {
+  height: 40px;
+  border: unset;
+  outline: none;
+  width:  312px;
+}
+
+.seperator {
+    height: 32px;
+    width: 1px;
+    background-color: #D1D1D1;
+}
+
+.header-board button{
+  height: 48px;
+  border: unset;
+  border-radius: 10px;
+  background-color:  #2A3647;
+  color: white;
+  font-size: 21px;
+  font-weight: 500  ;
+}
+
+.input-and-button {
+  display: flex;
+  gap: 32px;
+}
+
+.name-of-board-add h2 {
+  font-size: 24px;
+}
 .board-link-color{
     background-color:
     #091931;
@@ -79,6 +124,7 @@
     background-color: white;
   }
   .board-content{
+    background-color: ;
     min-height: 60vh;
     min-width:20vW;
     border:solid 1px red;

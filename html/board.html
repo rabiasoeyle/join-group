@@ -27,9 +27,10 @@
                 <div class="header-board">
                     <h1>Board</h1>
                     <div class="input-and-button">
-                        <div>
-                            <input type="text">
-                            <img class="search-img" src="">
+                        <div class="search-container">
+                            <input class="search-bar" type="search" placeholder="Find Task">
+                            <div class="seperator"></div>
+                            <img class="search-img" src="../assets/svg/search.svg">
                         </div>
                         <button>Add Task +</button>
                     </div>
@@ -77,13 +78,13 @@
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>Done</h2>
-                        <div onclick="openAddTaskOverlay()">
+                        <!-- <div onclick="openAddTaskOverlay()">
                             <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                                 <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
                             </svg>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="board-content" id="doneBoard" ondrop="moveTo(event)" ondragleave="removeHighlight('doneBoard')" ondragover="allowDrop(event); highlight('doneBoard')"></div>
                 </div>

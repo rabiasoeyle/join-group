@@ -211,4 +211,7 @@ function prioritySignOverlay(i){
 function closeDetailsOverlay(){
     let editOverlayParent = document.getElementById('editOverlayParent');
     editOverlayParent.classList.add('d-none');
+    let editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
+    editTaskOverlayContent.classList.add('edit-task-overlay-content');
+    editTaskOverlayContent.classList.remove('edit-task-overlay-edit');
   }

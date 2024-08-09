@@ -178,18 +178,30 @@ function rollContactsListEdit(i){
     assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
     for(j=0; j<contacts.length; j++){
-        let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
+        // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
+        let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
         assignContactsList.innerHTML +=`
         <div class="one-person-div">
             <div class="assigned-person-initials" style="background-color:${contacts[j]['color']}; color:white">${editOverlayProfileInitials(j)}</div>
             <div>${contacts[j]['name']}</div>
-            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j})" ${isChecked}>
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})" ${isChecked}>
         </div>`
     }
 }
 
-function editAddAssignedPersons(j){
-
+function editAddAssignedPersons(j, i){
+    let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
+    let personName = contacts[j].name;
+    if (inputCheckbox.checked) {
+        // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
+        if (!tasks[i]['assigned'].includes(person => person.name === personName)) {
+            let newAssign = { name: contacts[j].name, color: contacts[j].color };
+            tasks[i]['assigned'].push(newAssign);
+        }
+    } else {
+        // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
+        tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
+    }
 }
 
 function editOverlayProfileInitials(i){
@@ -200,6 +212,17 @@ function editOverlayProfileInitials(i){
   }
   return initials;
 }
+
+/**
+ * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
+ */
+function showAssignedPersons() {
+    let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
+    showAssignedPersons.innerHTML='';
+    for(i=0;i<assignedPersons.length;i++){
+        showAssignedPersons.innerHTML += `<div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
+    }
+} 
 
 async function saveTasksChanges(i){
     changeTitle(i);

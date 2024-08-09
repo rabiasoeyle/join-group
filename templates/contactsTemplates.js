@@ -16,7 +16,7 @@ function contactDetailsHTML(index) {
                         <img class="margin_left" src="../assets/img/editColor.png" alt="Edit Icon">
                         <button class="margin_left edit-delete-contact-button">Edit</button>
                       </div>
-                      <div onclick="deleteContact('contacts/${contacts[index]["id"]}')">
+                      <div onclick="deleteContact('contacts/${contacts[index]['id']}')">
                         <img class="margin_left" src="../assets/img/delete.png" alt="Delete Icon">
                         <button class="margin_left edit-delete-contact-button">Delete</button>
                       </div>

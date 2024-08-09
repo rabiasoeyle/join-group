@@ -139,6 +139,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 4px;
 }
 
 .task-title input {
@@ -156,6 +157,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 4px;
 }
 
 .description-title label {
@@ -191,7 +193,7 @@
 .assign-to-input,
 .categoryInput {
   border: none;
-  padding-bottom: 8px;
+  gap: 4px;
 }
 
 .assign-contacts-list {
@@ -300,6 +302,8 @@
   border-right: 0;
   margin-top: 4px;
   font-size: 16px;
+  padding-left: 12px;
+  outline: 0px;
 }
 
 .subtask-add-button {
@@ -358,7 +362,7 @@
 }
 
 .urgentPrio:hover {
-  box-shadow:  0px 3px 3px 1px #00000061;
+  box-shadow: 0px 3px 3px 1px #00000061;
 }
 
 .urgentPrio_click {
@@ -380,9 +384,8 @@
 }
 
 .mediumPrio:hover {
-  box-shadow:  0px 3px 3px 1px #00000061;
+  box-shadow: 0px 3px 3px 1px #00000061;
 }
-
 
 .mediumPrio_click {
   background-color: #ffa800 !important;
@@ -402,16 +405,28 @@
 }
 
 .lowPrio:hover {
-  box-shadow:  0px 3px 3px 1px #00000061;
+  box-shadow: 0px 3px 3px 1px #00000061;
 }
 
 .lowPrio_click {
-  background-color: #7ae229 !important; 
-  color: white !important; 
+  background-color: #7ae229 !important;
+  color: white !important;
   fill: white;
   stroke: white;
 }
 
 .svgLowPrio {
   color: rgb(255, 255, 255);
+}
+
+.oneSubtask {
+  border-radius: 12px;
+  padding: 4px 12px 4px 18px;
+  list-style-position: inside;
+}
+
+.subtask-list {
+  max-height: 130px;
+  overflow: auto;
+  scrollbar-width: thin;
 }

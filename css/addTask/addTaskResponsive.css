@@ -19,12 +19,29 @@
   }
 }
 
+@media (max-height: 900px){
+  .clear-button, .create-button {
+    font-size: 18px;
+    padding: 2vh;
+  }
+}
+
 @media (max-width: 840px) {
   .due-date input {
     width: min(325px, 100%);
   }
   .prio-content {
     min-width: 300px;
+  }
+}
+
+@media (max-height: 800px){
+  .form-style {
+    height:60vh;
+  }
+  .clear-button, .create-button {
+    font-size: 18px;
+    padding: 2vh;
   }
 }
 
@@ -41,20 +58,35 @@
   }
 }
 
+@media (max-height: 700px){
+  .form-style {
+    height:60vh;
+  }
+  .clear-button, .create-button {
+    font-size: 18px;
+    padding: 2vh;
+  }
+}
+
 @media (max-height: 600px){
   .form-style h1 {
     font-size: 32px;
   }
-}
-@media (max-height: 400px){
-  .content {
-    padding: 0;
+  .form-style {
+    height: 45vh;
   }
   .clear-button, .create-button {
-    font-size: 16px;
-    padding: 4px;
+    font-size: 18px;
+    padding: 2vh;
   }
 }
+
+@media (max-height: 500px){
+  .form-style {
+    height: 45vh;
+  }
+}
+
 @media (max-width: 400px) {
   .form-style {
     padding: 0;
@@ -89,5 +121,22 @@
   }
   .subtask-container {
     width: 250px;
+  }
+  .clear-button, .create-button {
+    font-size: 16px;
+    padding: 4px;
+  }
+}
+
+@media (max-height: 400px){
+  .content {
+    padding: 0;
+  }
+  .clear-button, .create-button {
+    font-size: 16px;
+    padding: 4px;
+  }
+  .form-style {
+    height: 60vh;
   }
 }

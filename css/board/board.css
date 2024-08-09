@@ -136,7 +136,7 @@
     background-color: white;
   }
   .board-content{
-    background-color: ;
+    background-color: red;
     min-height: 60vh;
     min-width:20vW;
     border:solid 1px red;

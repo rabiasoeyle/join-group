@@ -65,40 +65,60 @@ function profileInitials(name) {
   return initials;
 }
 
-/**
- * Diese Funktion soll die Tasks mit dem status todo rendern
- */
-function todoBoard(){
-  let todo = tasks.filter(t => t['status'] == 'todo');
-  console.log(todo);
-    let content = document.getElementById('todoBoard');
-    content.innerHTML='';
-    if(todo.length==0){
-      content.innerHTML=`
-      <div class="no-task-available">No tasks To do</div>
-      `
-    }else{
-      for(i=0; i<todo.length;i++){
-        let element = todo[i];
-        let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
-        content.innerHTML += 
-        `
+function boardHTML(i, status){
+  let element = status[i];
+  return`
         <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
           <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
           <div>${element['title']}</div>
           <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
-          <div>
-              <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-              <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
+          <div id="subtaskLoadboardAndText-${element['idNumber']}"class="subtask-loadboard-and-text d-none">
           </div>
           <div class="assigned-and-priority">
             <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
             <div id="prioritySVG-${element['idNumber']}"></div>
           </div> 
-        </div>`;
-        showAssignedPersonsInitial(element);
-        categorySign(element);
-        prioritySign(element);
+        </div>
+  `
+}
+
+function elseBoardContent(status){
+  
+}
+/**
+ * Diese Funktion soll die Tasks mit dem status todo rendern
+ */
+function todoBoard(){
+  let status = tasks.filter(t => t['status'] == 'todo');
+    let content = document.getElementById('todoBoard');
+    content.innerHTML='';
+    if(status.length==0){
+      content.innerHTML=`
+      <div class="no-task-available">No tasks To do</div>
+      `
+    }else{ elseBoardContent(status);
+
+      for(i=0; i<status.length;i++){
+        let element = status[i]
+        content.innerHTML += boardHTML(i, status)
+        // / Überprüfen, ob Subtasks vorhanden sind
+          if (element['subtaskList'] && element['subtaskList'].length > 0) {
+            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
+            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
+            subtaskContent.innerHTML = `
+                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                subtaskContent.classList.remove('d-none');
+          }
+        if(element['assigned']){
+        showAssignedPersonsInitial(element);  
+        }
+        if(element['category']){
+          categorySign(element);
+        }
+        if(element['priority']){
+           prioritySign(element);
+        }
         if(!element['category']){
           document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
         }
@@ -123,24 +143,25 @@ function inProgressBoard(){
     }else{
       for(i=0; i<inProgress.length;i++){
         let element = inProgress[i];
-        let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
-        content.innerHTML +=`
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
-          <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
-          <div>${element['title']}</div>
-          <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
-          <div>
-              <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-              <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
-          </div>
-          <div class="assigned-and-priority">
-            <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
-            <div id="prioritySVG-${element['idNumber']}"></div>
-          </div> 
-        </div>`;
-        showAssignedPersonsInitial(element);
-        categorySign(element);
-        prioritySign(element);
+        content.innerHTML += boardHTML(i, inProgress)
+        // / Überprüfen, ob Subtasks vorhanden sind
+          if (element['subtaskList'] && element['subtaskList'].length > 0) {
+            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
+            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
+            subtaskContent.innerHTML = `
+                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                subtaskContent.classList.remove('d-none');
+              }
+            if(element['assigned']){
+            showAssignedPersonsInitial(element);  
+            }
+            if(element['category']){
+              categorySign(element);
+            }
+            if(element['priority']){
+               prioritySign(element);
+            }
         if(!element['category']){
           document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
         }
@@ -154,41 +175,43 @@ function inProgressBoard(){
  * Diese Funktion soll die Tasks mit dem status awaitFeedback rendern
  */
 function awaitFeedbackBoard(){
-  let awaitFeedback = tasks.filter(t => t['status'] == 'awaitFeedback');
+  let status = tasks.filter(t => t['status'] == 'awaitFeedback');
     let content = document.getElementById('awaitFeedbackBoard');
     content.innerHTML='';
-    if(awaitFeedback.length == 0){
+    if(status.length == 0){
       content.innerHTML=`
       <div class="no-task-available">No tasks await Feedback</div>
       `
     }else{
-    for(i=0; i<awaitFeedback.length;i++){
-      let element = awaitFeedback[i];
-      let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
-      content.innerHTML +=`
-      <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
-        <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
-        <div>${element['title']}</div>
-        <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
-        <div>
-            <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-            <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
-        </div>
-        <div class="assigned-and-priority">
-            <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
-            <div id="prioritySVG-${element['idNumber']}"></div>
-          </div> 
-      </div>`;
-      showAssignedPersonsInitial(element);
-      categorySign(element);
-      prioritySign(element);
+    for(i=0; i<status.length;i++){
+      let element = status[i];
+      content.innerHTML += boardHTML(i, status)
+        // / Überprüfen, ob Subtasks vorhanden sind
+          if (element['subtaskList'] && element['subtaskList'].length > 0) {
+            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
+            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
+            subtaskContent.innerHTML = `
+                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                subtaskContent.classList.remove('d-none');
+              }
+            if(element['assigned']){
+            showAssignedPersonsInitial(element);  
+            }
+            if(element['category']){
+              categorySign(element);
+            }
+            if(element['priority']){
+               prioritySign(element);
+            }
       if(!element['category']){
         document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
       }
       if(!element['description']){
         document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
-      }
-    }}
+    }
+  }
+  }
 }
 
 /**
@@ -205,31 +228,33 @@ function doneBoard(){
     }else{
       for(i=0; i<doneTask.length;i++){
         let element = doneTask[i];
-        let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
-        content.innerHTML +=`
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
-          <div class="category-div">
-            <div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
-            <div id="titleSign-${element['idNumber']}">${element['title']}</div>
-            <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
-          <div>
-              <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-              <div> ${element.checkedSubtasksCount}/${element['subtaskList'].length}-Subtasks</div>
-          </div>
-          <div class="assigned-and-priority">
-            <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
-            <div id="prioritySVG-${element['idNumber']}"></div>
-          </div>  
-        </div>`;
-        showAssignedPersonsInitial(element);
-        categorySign(element);
-        prioritySign(element);
+        if(element['subtaskList']){
+          let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
+        }
+        content.innerHTML += boardHTML(i, doneTask)
+        // / Überprüfen, ob Subtasks vorhanden sind
+          if (element['subtaskList'] && element['subtaskList'].length > 0) {
+            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
+            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
+            subtaskContent.innerHTML = `
+                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
+                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                subtaskContent.classList.remove('d-none');
+              }
+            if(element['assigned']){
+            showAssignedPersonsInitial(element);  
+            }
+            if(element['category']){
+              categorySign(element);
+            }
+            if(element['priority']){
+               prioritySign(element);
+            }
         if(!element['category']){
           document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
         }
         if(!element['description']){
-          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
-        }
+          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');}
     }}
     
 }

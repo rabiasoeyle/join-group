@@ -4,10 +4,8 @@ function openEditTaskOverlay(i){
     editTaskOverlayContent.classList.add('edit-task-overlay-edit');
     editTaskOverlayContent.innerHTML='';
     editTaskOverlayContent.innerHTML=`
-              
             <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i})">
-                    <div class="task-category-and-close-button">
-                        <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
+                    <div class="close-button-top">
                         <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -18,11 +16,11 @@ function openEditTaskOverlay(i){
                     </div>
                     <div>
                     <label>Description</label>
-                    <textarea required type="text"id="showDetailTaskOverlayDescription" >${tasks[i]['description']}</textarea>
+                    <textarea required type="text"id="editTaskOverlayDescription" >${tasks[i]['description']}</textarea>
                     </div>
                     <div>
                         <label>Due date</label>
-                        <input id="editOverlayDueDate" value="${tasks[i]['dueDate']}">
+                        <input required type="date" id="editOverlayDueDate" value="${tasks[i]['dueDate']}">
                     </div>
                     <div>
                     <div class="prio-content-parent" id="prioContent">
@@ -143,13 +141,28 @@ function colorOfPriority(i){
 }
 
 function changeTitle(i){
-
+ let editTaskOverlayTitle = document.getElementById('editTaskOverlayTitle').value.trim();
+ editTaskOverlayTitle = tasks[i]['title'];
 }
 function changeDescription(i){
-    
+    let editTaskOverlayDescription = document.getElementById('editTaskOverlayDescription').value.trim();
+    editTaskOverlayDescription = tasks[i]['description'];
+}
+function changeDueDate(i){
+    let editOverlayDueDate = document.getElementById('editOverlayDueDate').value;
+    editOverlayDueDate= tasks[i]['dueDate'];
 }
 
-function saveTasksChanges(i){
+async function saveTasksChanges(i){
     changeTitle(i);
     changeDescription(i);
+    changeDueDate(i);
+    await putData(`/tasks/${tasks[i]['id']}`, tasks[i]);
+    tasks=[];
+    await loadTasks();
+    todoBoard();
+    inProgressBoard();
+    awaitFeedbackBoard();
+    doneBoard();
+    openDetailedTaskOverlay(i);
 }

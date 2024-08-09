@@ -3,9 +3,14 @@
  * @param {*} i 
  */
 function openDetailedTaskOverlay(i){
-    let editOverlayParent = document.getElementById('editOverlayParent');
-    editOverlayParent.classList.remove('d-none');
     let editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
+    editTaskOverlayContent.classList.add('edit-task-overlay-content');
+    editTaskOverlayContent.classList.remove('edit-task-overlay-edit');
+    let editOverlayParent = document.getElementById('editOverlayParent');
+    if(editOverlayParent.classList.contains('d-none')){
+        editOverlayParent.classList.remove('d-none');
+    }
+    // <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
     editTaskOverlayContent.innerHTML='';
     editTaskOverlayContent.innerHTML=`
               <div class="task-category-and-close-button">

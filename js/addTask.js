@@ -174,7 +174,7 @@ function addSubtask(){
     let subtask = document.getElementById('subtask').value.trim();
     if (subtask) {
         subtaskList.push(subtask);
-        subtask.value = "";
+        document.getElementById('subtask').value = "";
     }
     renderSubtasks();
 }

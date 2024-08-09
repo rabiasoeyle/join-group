@@ -4,8 +4,7 @@
     right:0;
     top:0;
     bottom:0;
-    background-color: black;
-    /* opacity:0.2; */
+    background-color: rgba(0,0,0,0.7);
     z-index:44;
     display:flex;
     justify-content: center;
@@ -22,6 +21,21 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
+  }
+  .edit-task-overlay-edit{
+    height:80vh;
+    width:40vW;
+    background-color: white;
+    border-radius: 24px;
+    z-index: 46;
+    /* opacity: 0.9; */
+    display: flex;
+    flex-direction: unset;
+  }
+  .form-edit-overlay{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
   }
 .overlay-initals-parent{
     display:flex;
@@ -55,3 +69,92 @@ h3{
 h4{
     font-size: 20px;
 }
+.prio-content {
+    display: flex;
+    gap: 16px;
+    min-width: 440px;
+    width: 100%;
+  }
+  
+  .prio-content a {
+    text-decoration: none;
+    color: black;
+    height: 56px;
+    width: 100%;
+    padding: 16px 10px 16px 10px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .prio-content-parent {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .urgentPrio {
+    background-color: white;
+    color: black;
+    fill: #ff3d00;
+  }
+  
+  .urgentPrio:hover {
+    box-shadow:  0px 3px 3px 1px #00000061;
+  }
+  
+  .urgentPrio_click {
+    background-color: #ff3d00 !important;
+    color: white !important;
+    fill: white;
+    stroke: white;
+  }
+  .svgUrgentPrio {
+    color: rgb(255, 255, 255);
+  }
+  
+  .mediumPrio {
+    background-color: white;
+    color: black;
+    fill: #ffa800;
+    stroke: #ffa800;
+  }
+  
+  .mediumPrio:hover {
+    box-shadow:  0px 3px 3px 1px #00000061;
+  }
+  
+  
+  .mediumPrio_click {
+    background-color: #ffa800 !important;
+    color: white !important;
+    fill: white;
+    stroke: white;
+  }
+  
+  .svgMediumPrio {
+    color: rgb(255, 255, 255);
+  }
+  
+  .lowPrio {
+    background-color: white;
+    color: black;
+    fill: #7ae229;
+  }
+  
+  .lowPrio:hover {
+    box-shadow:  0px 3px 3px 1px #00000061;
+  }
+  
+  .lowPrio_click {
+    background-color: #7ae229 !important; 
+    color: white !important; 
+    fill: white;
+    stroke: white;
+  }
+  
+  .svgLowPrio {
+    color: rgb(255, 255, 255);
+  }

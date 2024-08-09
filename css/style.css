@@ -260,6 +260,7 @@ button {
   }
   .sidebar_mobile {
     display: flex;
+    width: 100%;
   }
 }
 

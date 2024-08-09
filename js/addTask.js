@@ -30,13 +30,16 @@ async function renderMainForm(){
  */
 function addAssignedPersons(i){
     let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
+    let personName = contacts[i].name;
     if (inputCheckbox.checked) {
-        if (!assignedPersons.includes(contacts[i].name)) {
-            let newAssign ={name: contacts[i].name, color:contacts[i].color}
+        // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
+        if (!assignedPersons.includes(person => person.name === personName)) {
+            let newAssign = { name: contacts[i].name, color: contacts[i].color };
             assignedPersons.push(newAssign);
         }
     } else {
-        assignedPersons = assignedPersons.filter(name => name !== contacts[i].name);
+        // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
+        assignedPersons = assignedPersons.filter(person => person.name !== personName);
     }
     showAssignedPersons();
 }

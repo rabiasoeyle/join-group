@@ -158,3 +158,9 @@ h4{
   .svgLowPrio {
     color: rgb(255, 255, 255);
   }
+  .one-person-div{
+    display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  }

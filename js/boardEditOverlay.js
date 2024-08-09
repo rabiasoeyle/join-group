@@ -62,9 +62,26 @@ function openEditTaskOverlay(i){
                                 </div>
                             </div>
                     </div>
-                    <div id="showDetailTaskOverlayAssignedTo">
-                        <div>Assigned to:</div>
-                        <div id="showDetailTaskOverlayAssignedToChild"></div>
+                    <div class="assign-to" id="assignDropdown">
+                                <label>Assigned to</label>
+                            <div onclick="rollContactsListEdit(${i})" class="assigned-to-input-and-button">
+                                    <input class="assign-to-input" id="assignedPersons"
+                                        value="Select Contacts to assign">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <mask id="mask0_210222_6030" style="mask-type:alpha" maskUnits="userSpaceOnUse"
+                                            x="0" y="0" width="24" height="24">
+                                            <rect width="24" height="24" fill="#D9D9D9" />
+                                        </mask>
+                                        <g mask="url(#mask0_210222_6030)">
+                                            <path
+                                                d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z"
+                                                fill="#2A3647" />
+                                        </g>
+                                    </svg>
+                            </div>
+                                <div id="showAssignedPersonInitial" class="show-assigned-persons-initials"></div>
+                                <div class="d-none assign-contacts-list" id="edit-assignContactsList"></div>
                     </div>
                     <div id="showDetailTaskOverlaySubtasks">
                         <div>Subtasks:</div>
@@ -151,6 +168,37 @@ function changeDescription(i){
 function changeDueDate(i){
     let editOverlayDueDate = document.getElementById('editOverlayDueDate').value;
     editOverlayDueDate= tasks[i]['dueDate'];
+}
+
+/**
+ * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
+ */
+function rollContactsListEdit(i){
+    let assignContactsList = document.getElementById('edit-assignContactsList');
+    assignContactsList.classList.toggle('d-none');
+    assignContactsList.innerHTML='';
+    for(j=0; j<contacts.length; j++){
+        let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
+        assignContactsList.innerHTML +=`
+        <div class="one-person-div">
+            <div class="assigned-person-initials" style="background-color:${contacts[j]['color']}; color:white">${editOverlayProfileInitials(j)}</div>
+            <div>${contacts[j]['name']}</div>
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j})" ${isChecked}>
+        </div>`
+    }
+}
+
+function editAddAssignedPersons(j){
+
+}
+
+function editOverlayProfileInitials(i){
+    let names = contacts[i]['name'].split(" "),
+    initials = names[0].substring(0, 1).toUpperCase();
+  if (names.length > 1) {
+    initials += names[names.length - 1].substring(0, 1).toUpperCase();
+  }
+  return initials;
 }
 
 async function saveTasksChanges(i){

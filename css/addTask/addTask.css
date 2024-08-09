@@ -19,8 +19,8 @@
   align-items: center;
   padding: 16px;
   gap: 20px;
-  height: 50vh;
-  overflow-y: scroll;
+  overflow: overlay;
+  scrollbar-width: none;
 }
 
 .form-style-top {

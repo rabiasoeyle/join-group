@@ -35,7 +35,7 @@
   }
 }
 
-@media (max-height: 800px){
+@media (max-height: 850px){
   .form-style {
     height:60vh;
   }
@@ -56,12 +56,15 @@
     padding-left: 0;
     justify-content: center;
   }
+  .cancel-submit-buttons {
+    justify-content: center;
+  }
+  .form-style {
+    height: 76vh;
+  }
 }
 
 @media (max-height: 700px){
-  .form-style {
-    height:60vh;
-  }
   .clear-button, .create-button {
     font-size: 18px;
     padding: 2vh;
@@ -73,7 +76,7 @@
     font-size: 32px;
   }
   .form-style {
-    height: 45vh;
+    height: 66vh;
   }
   .clear-button, .create-button {
     font-size: 18px;
@@ -83,7 +86,7 @@
 
 @media (max-height: 500px){
   .form-style {
-    height: 45vh;
+    height: 61vh;
   }
 }
 
@@ -137,6 +140,6 @@
     padding: 4px;
   }
   .form-style {
-    height: 60vh;
+    height: 70vh;
   }
 }

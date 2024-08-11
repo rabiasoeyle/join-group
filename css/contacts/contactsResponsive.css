@@ -253,6 +253,18 @@
   .contacts-list {
     height: 78vh;
   }
+  .add-contact-left h2 {
+    font-size: 28px;
+  }
+  .add-contact-left p, span {
+    font-size: 14px;
+  }
+  .add-contact-left img {
+    width: 36px;
+  }
+  .cancel-button-top {
+    height: 6px;
+  }
 }
 
 @media (max-width: 500px) {

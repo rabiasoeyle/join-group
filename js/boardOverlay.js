@@ -14,39 +14,42 @@ function openDetailedTaskOverlay(i){
     editTaskOverlayContent.innerHTML='';
     editTaskOverlayContent.innerHTML=/*html*/`
               <div class="task-category-and-close-button">
-                  <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
+                  <div class="showDetailTaskOverlayCategory" id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
                   <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
               </div>
-              <h3 id="showDetailTaskOverlayTitle">
+              <h3 class="showDetailTaskOverlayTitle" id="showDetailTaskOverlayTitle">
               ${tasks[i]['title']}
               </h3>
-              <h4 id="showDetailTaskOverlayDescription">
+              <h4 class="showDetailTaskOverlayDescription" id="showDetailTaskOverlayDescription">
               ${tasks[i]['description']}
               </h4>
-              <div>
+              <div class="showDetailTaskOverlayDate">
                   <div>Due Date:</div>
                   <div id="showDetailTaskOverlayDueDate">${tasks[i]['dueDate']}</div>
               </div>
-              <div>
+              <div class="showDetailTaskOverlayPriority">
                   <div>Priority:</div>
                   <div id="showDetailTaskOverlayPriority">${tasks[i]['priority']}</div>
                   <div id="prioritySVGOverlay"></div>
               </div>
-              <div id="showDetailTaskOverlayAssignedTo">
+              <div class="showDetailTaskOverlayAssignedTo" id="showDetailTaskOverlayAssignedTo">
                   <div>Assigned to:</div>
-                  <div id="showDetailTaskOverlayAssignedToChild"></div>
+                  <div class="showDetailTaskOverlayAssignedToChild" id="showDetailTaskOverlayAssignedToChild"></div>
               </div>
               <div id="showDetailTaskOverlaySubtasks">
                   <div>Subtasks:</div>
                   <div id="showDetailTaskOverlaySubtasksChild"></div>
               </div>
               <div class="delete-or-edit-task-buttons">
-                  <div onclick="deleteTask('tasks/${tasks[i]['id']}')">
+                  <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]['id']}')">
+                      <img src="../assets/img/deleteTask.png">
                       Delete
                   </div>
-                  <div onclick="openEditTaskOverlay(${i})">
+                  <div class="separator"></div>
+                  <div class="edit-task-button" onclick="openEditTaskOverlay(${i})">
+                      <img src="../assets/img/editTask.png">
                       Edit
                   </div>
               </div>

@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 .edit-task-overlay{
     position:absolute;
     left:0;
@@ -11,16 +14,64 @@
     align-items: center;
   }
   .edit-task-overlay-content{
-    height:80vh;
-    width:40vW;
+    height: 90%;
+    padding: 30px 30px;
     background-color: white;
     border-radius: 24px;
     z-index:46;
-    /* opacity:0.9; */
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: flex-start;
+    
+  }
+
+  .showDetailTaskOverlayCategory{
+    padding: 4px 24px;
+    border-radius: 8px;
+  }
+
+  showDetailTaskOverlayTitle{
+    font-size: 61px;
+    font-weight: 700;
+  }
+
+  .showDetailTaskOverlayDescription{
+    font-size: 20px;
+    font-weight: 400;
+    padding-bottom:24px;
+
+  }
+  .showDetailTaskOverlayAssignedTo{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .overlay-initals-parent{
+    display:flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.showDetailTaskOverlayAssignedToChild{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+  .showDetailTaskOverlayDate{
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    padding-bottom: 24px;
+  }
+
+  .showDetailTaskOverlayPriority{
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    padding-bottom: 24px;
   }
   .edit-task-overlay-edit{
     height:80vh;
@@ -37,15 +88,12 @@
     flex-direction: column;
     gap: 4rem;
   }
-.overlay-initals-parent{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
 .subtask-and-checkbox{
     display:flex;
     align-items: center;
     justify-content: flex-start;
+    gap: 8px;
     padding:8px;
 }
 .delete-or-edit-task-buttons{
@@ -54,11 +102,19 @@
     align-items: center;
     gap:16px;
 }
+
+.delete-task-button , .edit-task-button{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .delete-or-edit-task-buttons div:hover{
    cursor: pointer;
 }
 .task-category-and-close-button{
     display: flex;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
 }
 /* Overlay überschrift */
@@ -195,7 +251,7 @@ h4{
     margin-top: 4px;
   }
   .edit-one-subtask{
-    border-radius: 12px;
+  border-radius: 12px;
   padding: 4px 12px 4px 18px;
   list-style-position: inside;
   }

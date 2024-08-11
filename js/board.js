@@ -67,11 +67,11 @@ function profileInitials(name) {
 
 function boardHTML(i, status){
   let element = status[i];
-  return`
+  return/*html*/`
         <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
           <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
-          <div>${element['title']}</div>
-          <div id="descriptionSign-${element['idNumber']}">${element['description']}</div>
+          <div class="task-headline">${element['title']}</div>
+          <div class="task-description"id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div id="subtaskLoadboardAndText-${element['idNumber']}"class="subtask-loadboard-and-text d-none">
           </div>
           <div class="assigned-and-priority">
@@ -107,7 +107,7 @@ function todoBoard(){
             let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
             subtaskContent.innerHTML = `
                 <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
                 subtaskContent.classList.remove('d-none');
           }
         if(element['assigned']){
@@ -150,7 +150,7 @@ function inProgressBoard(){
             let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
             subtaskContent.innerHTML = `
                 <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
                 subtaskContent.classList.remove('d-none');
               }
             if(element['assigned']){
@@ -192,7 +192,7 @@ function awaitFeedbackBoard(){
             let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
             subtaskContent.innerHTML = `
                 <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
                 subtaskContent.classList.remove('d-none');
               }
             if(element['assigned']){
@@ -238,7 +238,7 @@ function doneBoard(){
             let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
             subtaskContent.innerHTML = `
                 <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div>${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
+                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
                 subtaskContent.classList.remove('d-none');
               }
             if(element['assigned']){

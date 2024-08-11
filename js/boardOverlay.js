@@ -12,7 +12,7 @@ function openDetailedTaskOverlay(i){
     }
     // <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
     editTaskOverlayContent.innerHTML='';
-    editTaskOverlayContent.innerHTML=`
+    editTaskOverlayContent.innerHTML=/*html*/`
               <div class="task-category-and-close-button">
                   <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
                   <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">

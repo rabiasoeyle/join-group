@@ -45,6 +45,12 @@
   }
 }
 
+@media (max-width: 800px) {
+  .form-style {
+    height: 73vh;
+  }
+}
+
 @media (max-width: 750px) {
   .form-style-top {
     flex-direction: column;
@@ -60,7 +66,7 @@
     justify-content: center;
   }
   .form-style {
-    height: 76vh;
+    height: 73vh;
   }
 }
 
@@ -68,6 +74,18 @@
   .clear-button, .create-button {
     font-size: 18px;
     padding: 2vh;
+  }
+}
+
+@media (max-height: 670px) {
+  .form-style {
+    height: 72vh;
+  }
+}
+
+@media (max-height: 650px) {
+  .form-style {
+    height: 71vh;
   }
 }
 

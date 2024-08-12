@@ -1,0 +1,14 @@
+.datenschutzContent {
+    display: flex;
+    flex-direction: column;
+    padding-left: 48px;
+    padding-top: 64px;
+    gap: 12px;
+}
+
+h1 {
+    font-size: 54px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    margin-bottom: 32px;
+}

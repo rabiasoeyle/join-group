@@ -117,7 +117,7 @@
   justify-content: center;
   font-size: 46px;
   font-weight: 500;
-  color:white;
+  color: white;
 }
 
 .edit_delete_icon {
@@ -314,7 +314,7 @@ span {
   padding-bottom: 24px;
 }
 
-.icon-cancel{
+.icon-cancel {
   filter: contrast(0.1);
 }
 
@@ -407,16 +407,15 @@ span {
   border: none;
 }
 
-.contacts-link-color{
-  background-color:
-  #091931;
+.contacts-link-color {
+  background-color: #091931;
   border-radius: 16px;
 }
-.contacts-link-color .icons_sidebar{
-  fill:white;
+.contacts-link-color .icons_sidebar {
+  fill: white;
 }
 
-.profil_replacement_img_big_edit{
+.profil_replacement_img_big_edit {
   background-color: burlywood;
   border-radius: 100%;
   border: solid #ffff;
@@ -427,5 +426,18 @@ span {
   justify-content: center;
   font-size: 46px;
   font-weight: 500;
-  color:white;
+  color: white;
+}
+
+.pleaseTurnOnEdge {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.705);
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
 }

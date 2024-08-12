@@ -61,6 +61,7 @@
   .content {
     padding-left: 0;
     justify-content: center;
+    padding-top: 42px;
   }
   .cancel-submit-buttons {
     justify-content: center;

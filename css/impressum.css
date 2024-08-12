@@ -48,6 +48,12 @@ h1 {
 
 @media (max-height: 463px) {
   .impressumContent {
-    height: 75vh;
+    height: 74vh;
+  }
+}
+
+@media (max-height: 350px) {
+  .impressumContent {
+    height: 73vh;
   }
 }

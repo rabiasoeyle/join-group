@@ -97,8 +97,13 @@
   .one-contact-container {
     gap: 4%;
   }
+  .contact-details {
+    height: 83vh;
+  }
+  .contact-list {
+    height: 83vh;
+  }
 }
-
 
 @media (max-width: 980px) {
   .add-contact-container {
@@ -160,7 +165,6 @@
   .add-contact-left {
     display: block;
   }
-
 }
 
 @media (max-width: 840px) {
@@ -184,9 +188,18 @@
   }
 }
 
-@media (max-height: 840px) {
+@media (max-height: 850px) {
   .profile-picture {
     top: 0vh;
+  }
+  .contacts-list {
+    height: 82vh;
+  }
+  .cancel-button-over {
+    padding-bottom: 0;
+  }
+  .contact-details {
+    height: 82vh;
   }
 }
 
@@ -196,6 +209,15 @@
   }
   .cancel-button-top {
     height: 40px;
+  }
+  .contacts-list {
+    height: 81vh;
+  }
+  .add-contact-right {
+    gap: 0;
+  }
+  .contact-details {
+    height: 81vh;
   }
 }
 
@@ -212,6 +234,12 @@
   .profile-picture {
     top: 4vh;
     height: 80px;
+  }
+  .contacts-list {
+    height: 80vh;
+  }
+  .contact-details {
+    height: 80vh;
   }
 }
 
@@ -239,13 +267,21 @@
   }
 }
 
+@media (max-height: 600px) {
+  .contacts-list {
+    height: 79vh;
+  }
+  .contact-details {
+    height: 79vh;
+  }
+}
 
 @media (max-width: 550px) {
   .go-back-to-contacts {
     margin-left: 12px;
   }
   .contact-details {
-    height: 81vh;
+    height: 78vh;
   }
 }
 
@@ -256,7 +292,8 @@
   .add-contact-left h2 {
     font-size: 28px;
   }
-  .add-contact-left p, span {
+  .add-contact-left p,
+  span {
     font-size: 14px;
   }
   .add-contact-left img {
@@ -264,6 +301,12 @@
   }
   .cancel-button-top {
     height: 6px;
+  }
+  .contact-details {
+    height: 78vh;
+  }
+  .pleaseTurnOnEdge {
+    display: flex;
   }
 }
 
@@ -291,6 +334,12 @@
   .profile-picture {
     top: 5vh;
   }
+  .contacts-list {
+    height: 77vh;
+  }
+  .contact-details {
+    height: 77vh;
+  }
 }
 
 @media (max-height: 470px) {
@@ -302,18 +351,9 @@
   }
 }
 
-@media (max-height: 450px) {
-  .contacts-list {
-    height: 75vh;
-  }
-}
-
 @media (max-height: 430px) {
-  .contacts-list {
-    height: 75vh;
-  }
   .contact-details {
-    height: 77vh;
+    height: 75vh;
   }
 }
 
@@ -326,11 +366,35 @@
   }
 }
 
+@media (max-height: 400px) {
+  .contacts-list {
+    height: 74vh;
+  }
+  .contact-details {
+    height: 74vh;
+  }
+}
+
+@media (max-height: 374px) {
+  .contacts-list {
+    height: 72vh;
+  }
+  .contact-details {
+    height: 73vh;
+  }
+}
+
 @media (max-width: 360px) {
   .contacts-list {
     min-width: 300px;
   }
   .contact_details_H2 {
     font-size: 18px;
+  }
+}
+
+@media (max-height: 330px) {
+  .contacts-list {
+    height: 70vh;
   }
 }

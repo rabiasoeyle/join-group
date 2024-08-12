@@ -24,7 +24,6 @@ body {
 
 .sidebar {
   width: 232px;
-  height: 100vh;
   position: sticky;
   top: 0;
   left: 0;
@@ -34,6 +33,10 @@ body {
   align-items: center;
   padding: 64px 0px;
   background-color: #f6f7f8;
+}
+
+.headerLogoJoin {
+  display: none
 }
 
 .sidebar_links a {
@@ -208,7 +211,7 @@ body {
 
 .checkbox_container {
   display: flex;
-  margin: 12px 240px 16px 0px;
+  margin: 12px 27vw 16px 0px;
 }
 
 .checkbox_font {
@@ -216,4 +219,41 @@ body {
   font-size: 16px;
   color: #000000;
   margin-left: 8px;
+}
+
+/* Responsive */
+
+@media (max-width: 1020px) {
+  .sidebar {
+    display: none;
+  }
+  .headerLogoJoin {
+    display: block;
+    margin-left: 16px;
+  }
+  .help_initials {
+    display: none;
+  }
+  .header {
+    justify-content: flex-start;
+    margin-left: 20vw;
+    height: 17vh;
+  }
+  .login_base {
+    width: 80vw;
+  }
+  .join_Logo {
+    height: 65px;
+  }
+}
+@media (max-height: 700px) {
+  .login_base {
+    height: 64vh;
+  }
+  .join_Logo {
+    height: 6vh
+  }
+  .font_color {
+    font-size: 42px;
+  }
 }

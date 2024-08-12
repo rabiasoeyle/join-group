@@ -1,14 +1,41 @@
 .datenschutzContent {
-    display: flex;
-    flex-direction: column;
-    padding-left: 48px;
-    padding-top: 64px;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 48px;
+  padding-top: 64px;
+  gap: 12px;
 }
 
 h1 {
-    font-size: 54px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    margin-bottom: 32px;
+  font-size: 54px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
+
+a {
+    display: inline-block;
+    width: 80vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 1020px) {
+  .datenschutzContent {
+    overflow-y: scroll;
+    height: 83vh;
+    scrollbar-width: none;
+  }
+}
+
+ @media (max-width: 650px) {
+    h1 {
+        font-size: 36px;
+    }
+ }
+
+ @media (max-width: 450px) {
+    h1 {
+        font-size: 24px;
+    }
+ }

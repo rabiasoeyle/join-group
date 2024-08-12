@@ -120,39 +120,35 @@ function editContactOverlayLeftHTML() {
 
 function editContactOverlayRightHTML(i) {
   return /*html*/ `
-        <div class="cancel-button-over">
-          <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
-        </div>
-        <div class="add-contact-right-left">
-          <span class="profil_replacement_img_big_edit" style="background-color:${contacts[i]['color']};">${profileInitials(
-            i
-          )}</span>
-        </div>
-        <div class="add-contact-right-right">
-          <div class="input-new-contact">
-            <div class="cancel-button"><button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button></button></div>
-             <input required type="text" placeholder="Name"class="input-field-name" id="inputFieldName" value="${
-               contacts[i]["name"]
-             }">
-             <input required type="email" placeholder="E-Mail"class="input-field-mail" id="inputFieldEmail" value="${
-               contacts[i]["email"]
-             }">
-             <input required type="tel" placeholder="Phone"class="input-field-phone" id="inputFieldNumber" value="${
-               contacts[i]["phone"]
-             }">
+  <div class="cancel-button-over">
+    <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+  </div>
+  <div class="add-contact-right-left">
+      <span class="profil_replacement_img_big_edit" style="background-color:${contacts[i]['color']};">${profileInitials(i)}</span>
+  </div>
+  <div class="add-contact-right-right">
+      <div class="input-new-contact">
+          <div class="cancel-button">
+              <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
           </div>
-          <div class="save-or-delete-buttons">
-             <button class="delete-button" onclick="cancelAdding()">
-             <p>Cancel</p>
-             <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
-             </button>
-             <button class="save-button" onclick="editContact(${i})">
-                <p>Save</p>
-                <img src="../assets/icon-overlay-contact/check.svg" alt="">
-             </button> 
-         </div>
-        </div>
-        `;
+          <form class="add-contact-form" id="addContactForm" onsubmit="editContact(${i})">
+              <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}">
+              <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail" value="${contacts[i]["email"]}">
+              <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}">
+              <div class="save-or-delete-buttons">
+                <button class="delete-button" onclick="cancelAdding()" type="button">
+                  <p>Cancel</p>
+                  <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
+                </button>
+                <button class="save-button" type="submit">
+                  <p>Save</p>
+                  <img src="../assets/icon-overlay-contact/check.svg" alt="">
+                </button> 
+              </div>
+          </form>
+          <p id="error-message" style="color: red; display: none;">Please fill in all required fields.</p>
+      </div>
+  </div>`
 }
 
 function openNewContactOverlayHTML() {

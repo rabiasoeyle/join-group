@@ -292,9 +292,6 @@ button {
 }
 
 @media (max-height: 550px) {
-  .sidebar_mobile {
-    height: 55px;
-  }
   .icons_sidebar {
     height: 26px;
   }

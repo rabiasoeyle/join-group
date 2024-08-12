@@ -306,18 +306,6 @@ button {
   }
 }
 
-@media (max-height: 430px) {
-  .sidebar_mobile {
-    height: 43px;
-  }
-}
-
-@media (max-height: 410px) {
-  .sidebar_mobile {
-    height: 43px;
-  }
-}
-
 @media (max-height: 400px) {
   .contacts-list {
     height: 76vh;

@@ -26,28 +26,28 @@ h1 {
 }
 
 @media (max-height: 860px) {
-    .impressumContent {
-        height: 80vh;
-    }
+  .impressumContent {
+    height: 80vh;
+  }
 }
 
 @media (max-height: 650px) {
-    .impressumContent {
-        height: 79vh;
-    }
+  .impressumContent {
+    height: 79vh;
+  }
 }
 
 @media (max-height: 550px) {
-    .impressumContent {
-        height: 76vh;
-    }
-    h1 {
-        font-size: 38px;
-    }
+  .impressumContent {
+    height: 76vh;
+  }
+  h1 {
+    font-size: 38px;
+  }
 }
 
 @media (max-height: 463px) {
-    .impressumContent {
-        height: 75vh;
-    }
+  .impressumContent {
+    height: 75vh;
+  }
 }

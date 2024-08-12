@@ -1,23 +1,21 @@
 .datenschutzContent {
   display: flex;
   flex-direction: column;
-  padding-left: 48px;
-  padding-top: 64px;
+  padding: 64px 38px 0px 38px;
   gap: 12px;
 }
 
 h1 {
   font-size: 54px;
   font-weight: 700;
-  margin-bottom: 16px;
   margin-bottom: 32px;
 }
 
 a {
-    display: inline-block;
-    width: 80vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  display: inline-block;
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 1020px) {
@@ -28,14 +26,24 @@ a {
   }
 }
 
- @media (max-width: 650px) {
-    h1 {
-        font-size: 36px;
-    }
- }
+@media (max-width: 650px) {
+  h1 {
+    font-size: 34px;
+  }
+}
 
- @media (max-width: 450px) {
-    h1 {
-        font-size: 24px;
-    }
- }
+@media (max-width: 450px) {
+  h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .datenschutzContent {
+    padding: 44px 20px 0px 20px;
+  }
+}
+
+@media (max-height: 900px) {
+  .datenschutzContent {
+    height: 80vh;
+  }
+}

@@ -1,0 +1,59 @@
+.impressumContent {
+  display: flex;
+  flex-direction: column;
+  padding: 64px 38px 24px 38px;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 54px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 1020px) {
+  .impressumContent {
+    overflow-y: scroll;
+    height: 83vh;
+    scrollbar-width: none;
+  }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: 42px;
+  }
+}
+
+@media (max-height: 860px) {
+  .impressumContent {
+    height: 80vh;
+  }
+}
+
+@media (max-height: 650px) {
+  .impressumContent {
+    height: 79vh;
+  }
+}
+
+@media (max-height: 550px) {
+  .impressumContent {
+    height: 76vh;
+  }
+  h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-height: 463px) {
+  .impressumContent {
+    height: 74vh;
+  }
+}
+
+@media (max-height: 350px) {
+  .impressumContent {
+    height: 73vh;
+  }
+}

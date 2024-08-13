@@ -233,12 +233,6 @@ button {
   .main {
     min-height: 90vh;
   }
-  .contact-details {
-    height: 83vh;
-  }
-  .contact-list {
-    height: 83vh;
-  }
   .icons_sidebar {
     display: flex;
     justify-content: center;
@@ -292,9 +286,6 @@ button {
 }
 
 @media (max-height: 550px) {
-  .sidebar_mobile {
-    height: 55px;
-  }
   .icons_sidebar {
     height: 26px;
   }
@@ -309,45 +300,6 @@ button {
   }
 }
 
-@media (max-height: 430px) {
-  .sidebar_mobile {
-    height: 43px;
-  }
-}
-
-@media (max-height: 410px) {
-  .sidebar_mobile {
-    height: 43px;
-  }
-}
-
-@media (max-height: 400px) {
-  .contacts-list {
-    height: 76vh;
-  }
-  .contact-details {
-    height: 76vh;
-  }
-}
-
-@media (max-height: 380px) {
-  .contacts-list {
-    height: 75vh;
-  }
-  .contact-details {
-    height: 75vh;
-  }
-}
-
-@media (max-height: 360px) {
-  .contacts-list {
-    height: 74vh;
-  }
-  .contact-details {
-    height: 74vh;
-  }
-}
-
 @media (max-width: 360px) {
   .sidebar_mobile_part {
     font-size: 12px;
@@ -355,19 +307,7 @@ button {
 }
 
 @media (max-height: 340px) {
-  .contacts-list {
-    height: 73vh;
-  }
-  .contact-details {
-    height: 73vh;
-  }
   .sidebar_mobile {
     height: 33px;
-  }
-}
-
-@media (max-height: 320px) {
-  .contacts-list {
-    height: 72vh;
   }
 }

@@ -1,8 +1,10 @@
 .datenschutzContent {
   display: flex;
   flex-direction: column;
-  padding: 64px 38px 0px 38px;
+  padding: 64px 38px 24px 38px;
   gap: 12px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 h1 {
@@ -45,5 +47,17 @@ a {
 @media (max-height: 900px) {
   .datenschutzContent {
     height: 80vh;
+  }
+}
+
+@media (max-height: 500px) {
+  .datenschutzContent {
+    height: 74vh;
+  }
+}
+
+@media (max-height: 350px) {
+  .datenschutzContent {
+    height: 70vh;
   }
 }

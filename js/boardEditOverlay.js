@@ -7,23 +7,23 @@ function openEditTaskOverlay(i){
     editTaskOverlayContent.classList.remove('edit-task-overlay-content');
     editTaskOverlayContent.classList.add('edit-task-overlay-edit');
     editTaskOverlayContent.innerHTML='';
-    editTaskOverlayContent.innerHTML=`
+    editTaskOverlayContent.innerHTML=/*html*/`
             <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i})">
                     <div class="close-button-top">
                         <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div>
-                    <label>Title</label>
+                    <div class="task-title">
+                    <label for="editTaskOverlayTitle-${i}">Title</label>
                     <input required type="text"id="editTaskOverlayTitle-${i}" value="${tasks[i]['title']}">
                     </div>
-                    <div>
-                    <label>Description</label>
+                    <div class="description-title">
+                    <label for="editTaskOverlayDescription-${i}">Description</label>
                     <textarea required type="text"id="editTaskOverlayDescription-${i}" >${tasks[i]['description']}</textarea>
                     </div>
-                    <div>
-                        <label>Due date</label>
+                    <div class="due-date">
+                        <label for="editOverlayDueDate-${i}">Due date</label>
                         <input required type="date" id="editOverlayDueDate-${i}" value="${tasks[i]['dueDate']}">
                     </div>
                     <div>
@@ -69,8 +69,8 @@ function openEditTaskOverlay(i){
                     <div class="assign-to" id="assignDropdown">
                                 <label>Assigned to</label>
                             <div onclick="rollContactsListEdit(${i})" class="assigned-to-input-and-button">
-                                    <input class="assign-to-input" id="assignedPersons"
-                                        value="Select Contacts to assign">
+                                    <!-- <input class="assign-to-input" id="assignedPersons"
+                                        value="Select Contacts to assign"> -->
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_210222_6030" style="mask-type:alpha" maskUnits="userSpaceOnUse"
@@ -98,7 +98,7 @@ function openEditTaskOverlay(i){
                             </div>
                             <div class="subtask-list" id="editOverlaySubtaskList"></div>
                     </div>
-                    <div class="delete-or-save-task-buttons">
+                    <div class="ok-button">
                         <button type="submit">
                             OK
                             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@ function openEditTaskOverlay(i){
                             </svg>
                         </button>
                     </div>
-            </form
+                </form>
         
                   
               
@@ -299,11 +299,11 @@ function rollContactsListEdit(i){
     for(j=0; j<contacts.length; j++){
         // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
         let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML +=`
+        assignContactsList.innerHTML +=/*html*/`
         <div class="one-person-div">
-            <div class="assigned-person-initials" style="background-color:${contacts[j]['color']}; color:white">${editOverlayProfileInitials(j)}</div>
-            <div>${contacts[j]['name']}</div>
+            <!-- <div class="assigned-person-initials" style="background-color:${contacts[j]['color']}; color:white">${editOverlayProfileInitials(j)}</div> -->
             <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})" ${isChecked}>
+            <div>${contacts[j]['name']}</div>
         </div>`
     }
 }

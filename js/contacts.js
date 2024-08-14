@@ -29,6 +29,7 @@ function initContacts() {
   renderMainContacts();
   renderContacts();
   renderContactDetails();
+  checkWindowWidth()
 }
 
 /**
@@ -283,3 +284,21 @@ function toggleEditOrDelete(){
       menu.style.display = "none";
   }
 }
+
+/* Die functon schaut nach wie die Breiter des gesamt Fenster ist und ändern einige klassen.*/
+
+function checkWindowWidth() {
+  let windowWidth = window.innerWidth;
+  let contactID = document.getElementById('contactsList');
+  if (windowWidth > 1019) {
+    contactID.classList.add('contacts-list-desktop');
+    contactID.classList.remove('contacts-list-mobile');
+  } else {
+    contactID.classList.add('contacts-list-mobile');
+    contactID.classList.remove('contacts-list-desktop');
+  }
+}
+
+/** addEventListener Schaut noch ob die Breite sich verändert hat. */
+
+window.addEventListener('resize', checkWindowWidth);

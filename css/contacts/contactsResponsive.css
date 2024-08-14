@@ -91,7 +91,7 @@
 }
 
 @media (max-width: 1020px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 83vh;
   }
   .one-contact-container {
@@ -171,7 +171,7 @@
   .contact-details {
     display: none;
   }
-  .contacts-list {
+  .contacts-list-mobile {
     width: 100%;
   }
   .go-back-to-contacts {
@@ -192,7 +192,7 @@
   .profile-picture {
     top: 0vh;
   }
-  .contacts-list {
+  .contacts-list-mobile {
     height: 82vh;
   }
   .cancel-button-over {
@@ -200,6 +200,9 @@
   }
   .contact-details {
     height: 82vh;
+  }
+  .contacts-list-desktop {
+    height: 91vh;
   }
 }
 
@@ -210,7 +213,7 @@
   .cancel-button-top {
     height: 40px;
   }
-  .contacts-list {
+  .contacts-list-mobile {
     height: 81vh;
   }
   .add-contact-right {
@@ -222,7 +225,7 @@
 }
 
 @media (max-height: 700px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 81vh;
   }
   .profile-picture {
@@ -235,11 +238,14 @@
     top: 4vh;
     height: 80px;
   }
-  .contacts-list {
+  .contacts-list-mobile {
     height: 80vh;
   }
   .contact-details {
     height: 80vh;
+  }
+  .contacts-list-desktop {
+    height: 90vh;
   }
 }
 
@@ -265,14 +271,20 @@
   .profile-picture {
     top: -13vh;
   }
+  .contacts-list-desktop {
+    height: 89vh;
+  }
 }
 
 @media (max-height: 600px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 79vh;
   }
   .contact-details {
     height: 79vh;
+  }
+  .contacts-list-desktop {
+    height: 89vh;
   }
 }
 
@@ -283,10 +295,11 @@
   .contact-details {
     height: 78vh;
   }
+
 }
 
 @media (max-height: 550px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 78vh;
   }
   .add-contact-left h2 {
@@ -305,8 +318,8 @@
   .contact-details {
     height: 78vh;
   }
-  .pleaseTurnOnEdge {
-    display: flex;
+  .contacts-list-desktop {
+    height: 88vh;
   }
 }
 
@@ -334,26 +347,39 @@
   .profile-picture {
     top: 5vh;
   }
-  .contacts-list {
+  .contacts-list-mobile {
     height: 77vh;
   }
   .contact-details {
     height: 77vh;
   }
+  .contacts-list-desktop {
+    height: 87vh;
+  }
 }
 
 @media (max-height: 470px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 75vh;
   }
   .contact-details {
     height: 76vh;
   }
+  .contacts-list-desktop {
+    height: 86vh;
+  }
+  .sidebar {
+    height: 112vh!important;
+  }
 }
+
 
 @media (max-height: 430px) {
   .contact-details {
     height: 75vh;
+  }
+  .contacts-list-desktop {
+    height: 84vh;
   }
 }
 
@@ -367,7 +393,7 @@
 }
 
 @media (max-height: 400px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 74vh;
   }
   .contact-details {
@@ -376,16 +402,19 @@
 }
 
 @media (max-height: 374px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 72vh;
   }
   .contact-details {
     height: 73vh;
   }
+  .contacts-list-desktop {
+    height: 82vh;
+  }
 }
 
 @media (max-width: 360px) {
-  .contacts-list {
+  .contacts-list-mobile {
     min-width: 300px;
   }
   .contact_details_H2 {
@@ -394,7 +423,7 @@
 }
 
 @media (max-height: 330px) {
-  .contacts-list {
+  .contacts-list-mobile {
     height: 70vh;
   }
 }

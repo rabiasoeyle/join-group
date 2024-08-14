@@ -32,7 +32,7 @@
     border-radius: 8px;
   }
 
-  showDetailTaskOverlayTitle{
+  .showDetailTaskOverlayTitle{
     font-size: 61px;
     font-weight: 700;
   }
@@ -41,8 +41,7 @@
     font-size: 20px;
     font-weight: 400;
     padding-bottom:24px;
-    overflow-x: scroll;
-
+    overflow-y: scroll;
   }
   .showDetailTaskOverlayAssignedTo{
     display: flex;

@@ -41,6 +41,7 @@
     font-size: 20px;
     font-weight: 400;
     padding-bottom:24px;
+    overflow-x: scroll;
 
   }
   .showDetailTaskOverlayAssignedTo{

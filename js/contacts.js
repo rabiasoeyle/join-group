@@ -160,6 +160,7 @@ async function editContact(i) {
       name: nameValue,
       email: emailValue,
       phone: numberValue,
+      color: contacts[i]['color'],
     };
     nameValue = "";
     emailValue = "";
@@ -171,7 +172,13 @@ async function editContact(i) {
     renderAllContacts();
     contactDetails(i);
   }
-  // cancelAdding();
+  cancelEdit();
+}
+
+function cancelEdit(){
+  let overlay = document.getElementById('overlayNewContact');
+  overlay.classList.add("d-none");
+  overlay.classList.remove("d-flex");
 }
 
 /**

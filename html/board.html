@@ -27,14 +27,22 @@
             <div class="header" w3-include-html="header.html"></div>
             <div class="content" id="content">
                 <div class="header-board">
-                    <h1>Board</h1>
+                    <div class="headline-and-button">
+                        <h1>Board</h1>
+                        <button class="add-task-big-button-responsive" id="addTaskBigButtonResponsive"onclick="addTask()">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 1V21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M21 11L1.00048 11.138" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>                                 
+                        </button>
+                    </div>
                     <div class="input-and-button">
                         <div class="search-container">
                             <input class="search-bar" type="search" placeholder="Find Task">
                             <div class="seperator"></div>
                             <img class="search-img" src="../assets/svg/search.svg">
                         </div>
-                        <button>Add Task +</button>
+                        <button id="assTaskBigButton">Add Task +</button>
                     </div>
                 </div>
             <div class="all-boards">

@@ -1,0 +1,70 @@
+@media(max-width:1300px){
+    .all-boards{
+        flex-direction: column;
+        gap:24px;
+    }
+    .board-content{
+        flex-wrap: wrap;
+        min-height: 10vH;
+        flex-direction: unset;
+        align-items: unset;
+        width: 100%;
+    }
+    .board-part-div{
+        align-items: flex-start;
+        width: 100%;
+    }
+    .name-of-board-add{
+        width:100%;
+    }
+}
+@media(max-width:720px){
+    .add-task-big-button-responsive{
+        display: flex;
+        background-color: #2a3647;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+    } 
+    .input-and-button button {
+        display: none;
+    }
+    .header-board{
+        flex-direction: column;
+        gap:24px;
+    }
+    .headline-and-button{
+        display:flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        width:100%;
+    }
+    .no-task-available{
+        width:100%;
+    }
+    .search-bar{
+        width:60vW;
+    }
+    .one-task-div{
+        width:220px;
+        height:231px;
+        gap:24px;
+    }
+    .initals-div-in-task:nth-of-type(1) {
+        width: 32px;
+        height: 32px;
+      }
+      
+      .initals-div-in-task:nth-of-type(n+2){
+        width: 32px;
+        height: 32px;
+      }
+      .subtask-loadboard-and-text{
+        padding-bottom:10px;
+      }
+      .task-description{
+        padding-bottom:10px;
+      }
+}

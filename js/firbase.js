@@ -9,14 +9,22 @@ async function loadContacts(path = "/contacts") {
     if (responseToJson) {
         contacts = [];
       Object.keys(responseToJson).forEach((key) => {
-        contacts.push({
-          id: key,
-          name: responseToJson[key]["name"],
-          email: responseToJson[key]["email"],
-          phone: responseToJson[key]["phone"],
-          color: responseToJson[key]["color"] || getRandomColor(),
-        });
-      });
+        if(responseToJson[key]["color"]){
+            contacts.push({
+              id: key,
+              name: responseToJson[key]["name"],
+              email: responseToJson[key]["email"],
+              phone: responseToJson[key]["phone"],
+              color: responseToJson[key]["color"]  
+        })}else{
+            contacts.push({
+              id: key,
+              name: responseToJson[key]["name"],
+              email: responseToJson[key]["email"],
+              phone: responseToJson[key]["phone"],
+              color: getRandomColor(),  
+          })
+        }});
       // Sortiere die Kontakte alphabetisch nach Name
       contacts.sort((a, b) => a.name.localeCompare(b.name));
     }

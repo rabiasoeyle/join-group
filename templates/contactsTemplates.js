@@ -83,16 +83,14 @@ function renderAllGroupinitialsHTML(initial) {
 
 function renderAllContactsHTML(contact) {
   return `
-        <div class="one-contact-container"  onclick="contactDetails(${contacts.indexOf(
-          contact
-        )})">
+        <div class="one-contact-container"  id="contactsContainer-${contacts.indexOf(contact)}" onclick="contactDetails(${contacts.indexOf(contact)})">
             <div>
                 <span style="background-color:${contacts[contacts.indexOf(contact)]['color']}; color:white" class="profil_replacement_img">${profileInitials(
                   contacts.indexOf(contact)
                 )}</span>
             </div>
             <div class="two-contact-container">
-                <span class="contact_font">${contact.name}</span>
+                <span class="contact_font" id="contactFont-${contacts.indexOf(contact)}">${contact.name}</span>
                 <span class="contact_link">${contact.email}</span>
             </div>
         </div>
@@ -129,14 +127,15 @@ function editContactOverlayRightHTML(i) {
   <div class="add-contact-right-right">
       <div class="input-new-contact">
           <div class="cancel-button">
-              <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
+              <button onclick="cancelEdit()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
           </div>
           <form class="add-contact-form" id="addContactForm" onsubmit="editContact(${i}); return false">
-              <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}">
+              <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}" pattern="[A-Za-zÀ-ÖØ-öø-ÿ\\s]+" 
+              title="Bitte nur Buchstaben verwenden.">
               <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail" value="${contacts[i]["email"]}">
-              <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}">
+              <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}" pattern="[0-9]*" title="Bitte nur Zahlen verwenden.">
               <div class="save-or-delete-buttons">
-                <button class="delete-button" onclick="cancelAdding()" type="button">
+                <button class="delete-button" onclick="cancelEdit()" type="button">
                   <p>Cancel</p>
                   <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
                 </button>
@@ -182,9 +181,10 @@ function openNewContactOverlayRightHTML() {
                   <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
               </div>
               <form class="add-contact-form" id="addContactForm" onsubmit="addContact(); return false">
-                  <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName">
+                  <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName"  pattern="[A-Za-zÀ-ÖØ-öø-ÿ\\s]+"
+                  title="Bitte nur Buchstaben und Leerzeichen verwenden.">
                   <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail">
-                  <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber">
+                  <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber" pattern="[0-9]*" title="Bitte nur Zahlen verwenden.">
                   <div class="save-or-delete-buttons">
                       <button type="button" class="delete-button" onclick="cancelAdding()">
                           <p>Delete</p>

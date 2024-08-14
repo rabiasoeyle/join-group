@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 .edit-task-overlay{
-    position:absolute;
+    position:fixed;
     left:0;
     right:0;
     top:0;
@@ -23,6 +23,7 @@
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
+    overflow-y: scroll;
     
   }
 
@@ -40,6 +41,7 @@
     font-size: 20px;
     font-weight: 400;
     padding-bottom:24px;
+    overflow-x: scroll;
 
   }
   .showDetailTaskOverlayAssignedTo{
@@ -116,7 +118,6 @@ h4{
 .prio-content {
     display: flex;
     gap: 16px;
-    min-width: 440px;
     width: 100%;
   }
   
@@ -125,7 +126,7 @@ h4{
     color: black;
     height: 56px;
     width: 100%;
-    padding: 16px 10px 16px 10px;
+    padding: 8px 4px 8px 4px;
     border-radius: 10px;
     background-color: white;
     display: flex;
@@ -139,11 +140,11 @@ h4{
     flex-direction: column;
     gap: 6px;
   }
-  .urgentPrio {
+  /* .urgentPrio {
     background-color: white;
     color: black;
     fill: #ff3d00;
-  }
+  } */
   
   .urgentPrio:hover {
     box-shadow:  0px 3px 3px 1px #00000061;
@@ -155,16 +156,18 @@ h4{
     fill: white;
     stroke: white;
   }
+
   .svgUrgentPrio {
     color: rgb(255, 255, 255);
+    background-color: #ff3d00;
   }
   
-  .mediumPrio {
+  /* .mediumPrio {
     background-color: white;
     color: black;
     fill: #ffa800;
     stroke: #ffa800;
-  }
+  } */
   
   .mediumPrio:hover {
     box-shadow:  0px 3px 3px 1px #00000061;
@@ -182,11 +185,11 @@ h4{
     color: rgb(255, 255, 255);
   }
   
-  .lowPrio {
+  /* .lowPrio {
     background-color: white;
     color: black;
     fill: #7ae229;
-  }
+  } */
   
   .lowPrio:hover {
     box-shadow:  0px 3px 3px 1px #00000061;
@@ -256,6 +259,7 @@ h4{
     z-index:46;
     display:flex;
     flex-direction: column;
+    overflow-y: scroll;
   }
 
 .form-edit-overlay{
@@ -346,7 +350,7 @@ h4{
 }
 
 .assign-to{
-  height: 26%;
+  height: auto;
 }
 
 .assign-contacts-list{
@@ -379,4 +383,19 @@ h4{
 .editAndTrash img{
   width: 18px;
   height: 18px;
+}
+.initials-div-in-task{
+  color:white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid 1px white;
+}
+
+.svg-prio-click{
+  fill:white;
+  background-color: unset;
 }

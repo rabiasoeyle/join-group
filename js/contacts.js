@@ -200,6 +200,7 @@ async function addContact() {
     await loadContacts("/contacts");
     renderAllContacts();
     cancelAdding();
+  document.getElementById('contactDetailsBottom').innerHTML = '';
 }
 
 function getRandomColor() {
@@ -260,6 +261,7 @@ function contactDetails(i) {
     previouslyHighlighted.classList.add('one-contact-container');
     previouslyHighlightedName.classList.remove('highlighted-name');
   }
+  //füge die highlights dem aktuellen container zu
   previouslyHighlighted = container;
   previouslyHighlightedName= name;
   previouslyHighlighted.classList.remove('one-contact-container');

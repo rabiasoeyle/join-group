@@ -3,7 +3,6 @@ let firebase_URL =
 let contacts = [];
 let initialArray = [];
 
-
 /**
  * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
  */
@@ -171,7 +170,7 @@ async function editContact(i) {
     renderAllContacts();
     contactDetails(i);
   }
-  cancelAdding();
+  // cancelAdding();
 }
 
 /**

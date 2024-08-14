@@ -131,7 +131,7 @@ function editContactOverlayRightHTML(i) {
           <div class="cancel-button">
               <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
           </div>
-          <form class="add-contact-form" id="addContactForm" onsubmit="editContact(${i})">
+          <form class="add-contact-form" id="addContactForm" onsubmit="editContact(${i}); return false">
               <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName" value="${contacts[i]["name"]}">
               <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail" value="${contacts[i]["email"]}">
               <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber" value="${contacts[i]["phone"]}">
@@ -181,7 +181,7 @@ function openNewContactOverlayRightHTML() {
               <div class="cancel-button">
                   <button onclick="cancelAdding()"><img src="../assets/icon-overlay-contact/cancel.svg" alt=""></button>
               </div>
-              <form class="add-contact-form" id="addContactForm" onsubmit="addContact()">
+              <form class="add-contact-form" id="addContactForm" onsubmit="addContact(); return false">
                   <input required type="text" placeholder="Name" class="input-field-name" id="inputFieldName">
                   <input required type="email" placeholder="E-Mail" class="input-field-mail" id="inputFieldEmail">
                   <input required type="tel" placeholder="Phone" class="input-field-phone" id="inputFieldNumber">
@@ -190,7 +190,7 @@ function openNewContactOverlayRightHTML() {
                           <p>Delete</p>
                           <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
                       </button>
-                      <button type="submit" class="save-button">
+                      <button type="submit" class="save-button" id="createContactButton">
                           <p>Create contact</p>
                           <img src="../assets/icon-overlay-contact/check.svg" alt="">
                       </button> 

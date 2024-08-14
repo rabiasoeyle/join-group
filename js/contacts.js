@@ -2,6 +2,8 @@ let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let initialArray = [];
+let previouslyHighlighted;
+let previouslyHighlightedName;
 
 /**
  * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
@@ -250,6 +252,19 @@ function groupContactsByInitial(contacts) {
 function contactDetails(i) {
   let rightSide = document.getElementById('contactDetails');
   let leftSide = document.getElementById('contactsList');
+  let container = document.getElementById(`contactsContainer-${i}`);
+  let name = document.getElementById(`contactFont-${i}`);
+  // Wenn es einen vorherigen Highlight gibt, entfernen Sie die Highlight-Klasse
+  if (previouslyHighlighted) {
+    previouslyHighlighted.classList.remove('highlighted');
+    previouslyHighlighted.classList.add('one-contact-container');
+    previouslyHighlightedName.classList.remove('highlighted-name');
+  }
+  previouslyHighlighted = container;
+  previouslyHighlightedName= name;
+  previouslyHighlighted.classList.remove('one-contact-container');
+  previouslyHighlighted.classList.add('highlighted');
+  previouslyHighlightedName.classList.add('highlighted-name');
   if(document.documentElement.clientWidth > 840) {
     rightSide.style.display = "flex";
     rightSide.style.flexDirection = "column";

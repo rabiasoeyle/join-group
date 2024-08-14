@@ -1,4 +1,4 @@
-.contacts-list {
+.contacts-list-desktop {
   background-color: white;
   height: 93vh;
   width: 30vw;
@@ -10,6 +10,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+.contacts-list-mobile {
+  background-color: white;
+  height: 93vh;
+  width: 30vw;
+  min-width: 360px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a8a8a8 #f6f7f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .contact-details {
   background-color: #f6f7f8;

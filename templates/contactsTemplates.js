@@ -39,7 +39,7 @@ function contactDetailsHTML(index) {
 
 function renderMainContactsHTML() {
   return `
-      <div class="contacts-list" id="contactsList"></div>
+      <div class="contacts-list-desktop" id="contactsList"></div>
       <div class="contact-details" id="contactDetails"></div
       `;
 }

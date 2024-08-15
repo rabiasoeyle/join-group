@@ -90,6 +90,11 @@ body {
   align-items: center;
 }
 
+.help_initials_mobile {
+  display: none;
+  align-items: center;
+}
+
 .content {
   background-color: #f6f7f8;
   height: 70vh;
@@ -247,6 +252,9 @@ body {
   }
   .help_initials {
     display: none;
+  }
+  .help_initials_mobile {
+    display: flex;
   }
   .header {
     justify-content: flex-start;

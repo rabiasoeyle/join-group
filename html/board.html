@@ -90,13 +90,6 @@
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>Done</h2>
-                        <!-- <div onclick="openAddTaskOverlay()">
-                            <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
-                                <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </div> -->
                     </div>
                     <div class="board-content" id="doneBoard" ondrop="moveTo(event),removeHighlight('doneBoard')" ondragleave="removeHighlight('doneBoard')" ondragover="allowDrop(event); highlight('doneBoard')"></div>
                 </div>
@@ -109,7 +102,7 @@
         <div class="edit-task-overlay-content" id="editTaskOverlayContent">
         </div>
     </div>
-    <div class="d-none add-task-overlay-parent">
+    <div class="d-none add-task-overlay-parent" id="addTaskOverlayParent">
         <div class="add-task-overlay" id="addTaskOverlay">
            
         </div>

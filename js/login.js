@@ -13,4 +13,5 @@ function singUp() {
   document.getElementById("sing_up_content").classList.toggle("d-none");
   document.getElementById("help_initials").classList.toggle("d-none");
   document.getElementById("blue_signed_up").classList.toggle("d-none");
+  document.getElementById("help_initials_mobile").classList.toggle("d-none");
 }

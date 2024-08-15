@@ -7,3 +7,10 @@ function goToSummary() {
     console.log(msg);
   }
 }
+
+function singUp() {
+  document.getElementById("login_Content").classList.toggle("d-none");
+  document.getElementById("sing_up_content").classList.toggle("d-none");
+  document.getElementById("help_initials").classList.toggle("d-none");
+  document.getElementById("blue_signed_up").classList.toggle("d-none");
+}

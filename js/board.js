@@ -1,8 +1,8 @@
-const urlParams = new URLSearchParams(window.location.search);
-const msg = urlParams.get('msg');
-if(msg){
-    console.log(msg);
-} 
+// const urlParams = new URLSearchParams(window.location.search);
+// const msg = urlParams.get('msg');
+// if(msg){
+//     console.log(msg);
+// } 
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasks =[];
@@ -25,6 +25,20 @@ async function initBoard() {
     doneBoard();
 }
 
+function filterTasks(){
+  let searchBar = document.getElementById('searchBar');
+  console.log('filter starten');
+   // Suchbegriff bereinigen
+   let searchQuery = searchBar.value.trim().toLowerCase();
+  // Filter die Aufgaben, ohne das ursprüngliche tasks-Array zu überschreiben
+  let filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(searchQuery));
+  console.log(filteredTasks)
+  // Wenn du die gefilterten Aufgaben anzeigen möchtest, kannst du hier entsprechende Funktionen aufrufen
+  todoBoard(filteredTasks);
+  inProgressBoard(filteredTasks);
+  awaitFeedbackBoard(filteredTasks);
+  doneBoard(filteredTasks);
+}
 /**
  * Diese Funktion dient dazu die Initalien der zugeschriebenen Personen darzustellen
  * @param {*} element 
@@ -140,8 +154,13 @@ async function changeStatusToDone(id){
 /**
  * Diese Funktion soll die Tasks mit dem status todo rendern
  */
-function todoBoard(){
-  let status = tasks.filter(t => t['status'] == 'todo');
+function todoBoard(filteredTasks){
+  let status =[];
+  if(filteredTasks && filteredTasks.length >= 1){
+    status = filteredTasks.filter(t => t['status'] == 'todo');
+  }else{
+  status = tasks.filter(t => t['status'] == 'todo');
+}
     let content = document.getElementById('todoBoard');
     content.innerHTML='';
     if(status.length==0){
@@ -183,19 +202,23 @@ function todoBoard(){
 /**
  * Diese Funktion soll die Tasks mit dem status inProgress rendern
  */
-function inProgressBoard(){
-  let inProgress = tasks.filter(t => t['status'] == 'inProgress');
-  console.log(inProgress);
+function inProgressBoard(filteredTasks){
+  let status =[];
+  if(filteredTasks && filteredTasks.length >= 1){
+    status = filteredTasks.filter(t => t['status'] == 'inProgress');
+  }else{
+  status = tasks.filter(t => t['status'] == 'inProgress');
+}
     let content = document.getElementById('inProgressBoard');
     content.innerHTML='';
-    if(inProgress.length == 0){
+    if(status.length == 0){
       content.innerHTML=`
       <div class="no-task-available">No tasks in Progress</div>
       `
     }else{
-      for(i=0; i<inProgress.length;i++){
-        let element = inProgress[i];
-        content.innerHTML += boardHTML(i, inProgress)
+      for(i=0; i<status.length;i++){
+        let element = status[i];
+        content.innerHTML += boardHTML(i, status)
         // / Überprüfen, ob Subtasks vorhanden sind
           if (element['subtaskList'] && element['subtaskList'].length > 0) {
             let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
@@ -226,8 +249,13 @@ function inProgressBoard(){
 /**
  * Diese Funktion soll die Tasks mit dem status awaitFeedback rendern
  */
-function awaitFeedbackBoard(){
-  let status = tasks.filter(t => t['status'] == 'awaitFeedback');
+function awaitFeedbackBoard(filteredTasks){
+  let status =[];
+  if(filteredTasks && filteredTasks.length >= 1){
+    status = filteredTasks.filter(t => t['status'] == 'awaitFeedback');
+  }else{
+  status = tasks.filter(t => t['status'] == 'awaitFeedback');
+  }
     let content = document.getElementById('awaitFeedbackBoard');
     content.innerHTML='';
     if(status.length == 0){
@@ -269,21 +297,26 @@ function awaitFeedbackBoard(){
 /**
  * Diese Funktion soll die Tasks mit dem status done rendern
  */
-function doneBoard(){
-  let doneTask = tasks.filter(t => t['status'] == 'done');
+function doneBoard(filteredTasks){
+  let status =[];
+  if(filteredTasks && filteredTasks.length >= 1){
+    status = filteredTasks.filter(t => t['status'] == 'done');
+  }else{
+  status = tasks.filter(t => t['status'] == 'done');
+  }
     let content = document.getElementById('doneBoard');
     content.innerHTML='';
-    if(doneTask.length == 0){
+    if(status.length == 0){
       content.innerHTML=`
       <div class="no-task-available">No tasks await Feedback</div>
       `
     }else{
-      for(i=0; i<doneTask.length;i++){
-        let element = doneTask[i];
+      for(i=0; i<status.length;i++){
+        let element = status[i];
         if(element['subtaskList']){
           let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
         }
-        content.innerHTML += boardHTML(i, doneTask)
+        content.innerHTML += boardHTML(i, status)
         // / Überprüfen, ob Subtasks vorhanden sind
           if (element['subtaskList'] && element['subtaskList'].length > 0) {
             let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
@@ -382,7 +415,6 @@ async function moveTo(event) {
   //mit event.currentTarget.id finden wir die id heraus, auf dem sich das gedropte element befindet.
   //da die Ids genauso wie die statuse heißen, nur mit Board am ende, wird board entfernt
     tasks[currentDraggedElement]['status'] = status;
-    console.log('yes'+ tasks[currentDraggedElement]['status']);
     await putData(`/tasks/${tasks[currentDraggedElement]['id']}/status`, status);
     tasks=[];
     await loadTasks();

@@ -39,7 +39,7 @@
                     </div>
                     <div class="input-and-button">
                         <div class="search-container">
-                            <input class="search-bar" type="search" placeholder="Find Task">
+                            <input id="searchBar" class="search-bar" type="search" placeholder="Find Task" onkeydown="filterTasks()">
                             <div class="seperator"></div>
                             <img class="search-img" src="../assets/svg/search.svg">
                         </div>
@@ -47,6 +47,7 @@
                     </div>
                 </div>
             <div class="all-boards">
+                <div class="show-filtered-task" id="showFilteredTask"></div>
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>To do</h2>

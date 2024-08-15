@@ -1,8 +1,127 @@
-.summary-link-color{
-    background-color:
-    #091931;
-    border-radius: 16px;
-  }
-  .summary-link-color .icons_sidebar{
-    fill:white;
-  }
+.summary-link-color {
+  background-color: #091931;
+  border-radius: 16px;
+}
+.summary-link-color .icons_sidebar {
+  fill: white;
+}
+
+.summary_content {
+  padding-left: 48px;
+  padding-top: 64px;
+}
+
+.summary_header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.summary_header h2 {
+  font-size: 62px;
+  margin-right: 18px;
+}
+
+.summary_header p {
+  font-size: 28px;
+  margin-right: 18px;
+}
+
+.summary_header_dividing_line {
+  width: 1px;
+  height: 60px;
+  background-color: #29abe2;
+  margin-right: 18px;
+}
+
+.summary_header_dividing_line_prio {
+  height: 100px;
+  width: 1px;
+  margin: 18px;
+  background-color: #D1D1D1;
+}
+
+.summary_borad {
+  display: flex;
+  align-items: center;
+}
+
+.summary_larger_part {
+  display: flex;
+}
+
+.summary_part_top {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 264px;
+  height: 168px;
+  border-radius: 30px;
+  margin: 24px 24px 24px 0;
+}
+
+.summary_icon {
+  background-color: #2a3647;
+  border-radius: 100%;
+  object-fit: cover;
+  height: 62px;
+  width: 62px;
+  padding: 18px;
+  margin-right: 18px;
+}
+
+.summary_part_bottom {
+  background-color: white;
+  width: 168px;
+  height: 168px;
+  border-radius: 30px;
+  margin: 24px 24px 24px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.summary_part_number {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.summary_part_text {
+  font-size: 18px;
+  color: #2a3647;
+}
+
+.summary_calendar {
+  font-size: 22px;
+  font-weight: bolder;
+  color: #2a3647;
+  margin-bottom: 12px;
+}
+
+.summary_calendar_details {
+  font-size: 16px;
+  color: #2a3647;
+}
+
+.summary_prio {
+  background-color: white;
+  width: 560px;
+  height: 168px;
+  border-radius: 30px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.wilcome_user {
+  color: #2a3647;
+  font-size: 48px;
+}
+
+.user_name {
+  color: #29abe2;
+  font-size: 64px;
+}

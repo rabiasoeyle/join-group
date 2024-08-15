@@ -30,7 +30,6 @@ function initContacts() {
   renderMainContacts();
   renderContacts();
   renderContactDetails();
-  checkWindowWidth()
 }
 
 /**
@@ -307,34 +306,3 @@ function toggleEditOrDelete(){
       menu.style.display = "none";
   }
 }
-
-/* Die functon schaut nach wie die Breiter des gesamt Fenster ist und ändern einige klassen.*/
-
-function checkWindowWidth() {
-  let windowWidth = window.innerWidth;
-  let contactListID = document.getElementById('contactsList');
-  let addContactRight = document.getElementById('addContactRight')
-  let letcancelButtonOver = document.getElementById('cancel-button-over');
-  let canceBbuttonTop = document.getElementById('cancel-button-top');
-
- if (windowWidth >= 1281) {
-    addContactRight.classList.add('add-contact-right');
-    letcancelButtonOver.classList.add('cancel-button');
-    addContactRight.classList.remove('add-contact-right-desktop');
-  } if (windowWidth >= 980 && windowWidth <= 1280) {
-    addContactRight.classList.add('add-contact-right-desktop');
-    addContactRight.classList.remove('add-contact-right');
-    letcancelButtonOver.classList.remove('cancel-button');
-  } if (windowWidth > 1019) {
-    contactListID.classList.add('contacts-list-desktop');
-    contactListID.classList.remove('contacts-list-mobile');
-  }
-  else {
-    contactListID.classList.add('contacts-list-mobile');
-    contactListID.classList.remove('contacts-list-desktop');
-  }
-}
-
-/** addEventListener Schaut noch ob die Breite sich verändert hat. */
-
-window.addEventListener('resize', checkWindowWidth);

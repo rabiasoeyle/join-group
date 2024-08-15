@@ -31,9 +31,9 @@ function contactDetailsHTML(index) {
         <p class="contact_font margin_contact">${contacts[index]["phone"]}</p>
         <div id="editOrDeleteMenu" class="edit-or-delete-toggle-div"style="display: none;">
         <!-- Inhalt des Toggle-Menüs -->
-        <button onclick="editContactOverlay(${index})">Edit</button>
-        <button onclick="deleteContact('contacts/${contacts[index]['id']}')">Delete</button>
-      </div>
+          <button onclick="editContactOverlay(${index})">Edit</button>
+          <button onclick="deleteContact('contacts/${contacts[index]['id']}')">Delete</button>
+        </div>
         `;
 }
 

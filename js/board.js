@@ -8,8 +8,10 @@ let firebase_URL =
 let tasks =[];
 let contacts=[];
 let currentDraggedElement;
+let isTouchDevice = ('ontouchstart' in document.documentElement);
 let idNumberStartValue = 0;
-let checkedSubTaskNumber = 0;//vorerst ersatznummer für den eigentlichen wert
+let checkedSubTaskNumber = 0;//vorerst ersatznummer für den eigentlichen wert;
+
 
 /**
  * Diese Funktion dient dazu, um die benötigten Daten zu laden und zu rendern
@@ -31,11 +33,17 @@ function showAssignedPersonsInitial(element){
   let persons = document.getElementById(`assignedPerson-${element['idNumber']}`);
   persons.innerHTML ='';
   assignedPersons = element['assigned'];
+  // Arrow-Funktion zum Filtern von Personen, die noch in den Kontakten existieren
+  assignedPersons = assignedPersons.filter(assignedPerson => 
+    contacts.some(contact => contact.name === assignedPerson.name)
+);
   for(j=0; j<assignedPersons.length; j++){
     persons.innerHTML +=`
     <div class="initals-div-in-task"style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>
     `;
   }
+   // Optional: Aktualisieren des 'assigned' Felds im Element, falls nötig
+   element['assigned'] = assignedPersons;
 }
 
 /**
@@ -68,9 +76,21 @@ function profileInitials(name) {
 function boardHTML(i, status){
   let element = status[i];
   return/*html*/`
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" onclick="openDetailedTaskOverlay(${element['idNumber']})">
-          <div class="category-div"><div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div></div>
-          <div class="task-headline">${element['title']}</div>
+        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+           <div class="toggle-content-change-status"style="display:none;" id="changeStatusMenu-${element['idNumber']}" >
+              <button onclick="changeStatusToTodo(${element['idNumber']})">Todo</button>
+              <button onclick="changeStatusToInProgress(${element['idNumber']})">In Progress</button>
+              <button onclick="changeStatusToAwaitFeedback(${element['idNumber']})">Await Feedback</button>
+              <button onclick="changeStatusToDone(${element['idNumber']})">Done</button>
+            </div>
+            <div class="category-div">
+            <div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div>
+           
+            <div class="change-status-menu" id="changeStatusMenu" onclick="changeStatusToggle(${element['idNumber']})">:
+            </div>
+            
+          </div>
+          <div class="task-headline" onclick="openDetailedTaskOverlay(${element['idNumber']})">${element['title']}</div>
           <div class="task-description"id="descriptionSign-${element['idNumber']}">${element['description']}</div>
           <div id="subtaskLoadboardAndText-${element['idNumber']}"class="subtask-loadboard-and-text d-none">
           </div>
@@ -82,9 +102,41 @@ function boardHTML(i, status){
   `
 }
 
-function elseBoardContent(status){
-  
+function changeStatusToggle(id){
+  let menu = document.getElementById(`changeStatusMenu-${id}`);
+  if (menu.style.display === "none" || menu.style.display === "") {
+    menu.style.display = "flex";
+} else {
+    menu.style.display = "none";
 }
+}
+
+async function changeStatusPutData(id){
+  await putData(`/tasks/${tasks[id]['id']}`, tasks[id]);
+  tasks=[];
+  await loadTasks();
+  todoBoard();
+  inProgressBoard();
+  awaitFeedbackBoard();
+  doneBoard()
+}
+async function changeStatusToTodo(id){
+  tasks[id]['status'] = "todo";
+  changeStatusPutData(id);
+}
+async function changeStatusToInProgress(id){
+  tasks[id]['status'] = "inProgress";
+  changeStatusPutData(id);
+}
+async function changeStatusToAwaitFeedback(id){
+  tasks[id]['status'] = "awaitFeedback";
+  changeStatusPutData(id);
+}
+async function changeStatusToDone(id){
+  tasks[id]['status'] = "done";
+  changeStatusPutData(id);
+}
+
 /**
  * Diese Funktion soll die Tasks mit dem status todo rendern
  */
@@ -96,7 +148,7 @@ function todoBoard(){
       content.innerHTML=`
       <div class="no-task-available">No tasks To do</div>
       `
-    }else{ elseBoardContent(status);
+    }else{ 
 
       for(i=0; i<status.length;i++){
         let element = status[i]
@@ -288,9 +340,7 @@ function prioritySign(element){
           <path
           d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z"
           fill="#currentColor" />
-    </svg>
-  
-  `
+    </svg>`
   }else
   if(element['priority']=="low")
     priority.innerHTML = `
@@ -303,7 +353,6 @@ function prioritySign(element){
         d="M10.2485 15.2544C10.0139 15.2548 9.7854 15.18 9.59655 15.0409L0.693448 8.47117C0.459502 8.29839 0.30383 8.03981 0.260675 7.75233C0.217521 7.46485 0.290421 7.17201 0.463337 6.93824C0.636253 6.70446 0.895021 6.54891 1.18272 6.50578C1.47041 6.46266 1.76347 6.53551 1.99741 6.7083L10.2485 12.7908L18.4997 6.7083C18.7336 6.53551 19.0267 6.46266 19.3144 6.50578C19.602 6.54891 19.8608 6.70446 20.0337 6.93824C20.2066 7.17201 20.2795 7.46485 20.2364 7.75233C20.1932 8.03981 20.0376 8.29839 19.8036 8.47117L10.9005 15.0409C10.7117 15.18 10.4831 15.2548 10.2485 15.2544Z"
         fill="#currentColor" />
     </svg>
-  
   `
 }
 
@@ -342,6 +391,7 @@ async function moveTo(event) {
     awaitFeedbackBoard();
     doneBoard();
 }
+
 
 /**
  * Um den Container über den man ist hightliten zu können

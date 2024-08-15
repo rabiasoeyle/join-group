@@ -153,6 +153,7 @@ align-items: center;
   font-weight: 700;
   line-height: 19.2px;
   padding-bottom: 8px;
+  cursor: pointer;
 }
 
 .task-description {
@@ -258,3 +259,42 @@ font-weight: 400;
   background-color: #2A3647;
   color: white;
 } 
+.change-status-menu{
+  border-radius: 10px;
+  padding:4px;
+  background-color: #fcf4f4;
+  height:32px;
+  width:20px;
+  display:none;
+  justify-content: center;
+  align-items: center;
+  z-index:30;
+}
+.change-status-menu:hover{
+  background-color: #A8A8A8;
+  cursor: pointer;
+}
+.toggle-content-change-status{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position:absolute;
+  width:160px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fcf4f4;
+}
+
+.toggle-content-change-status button{
+  width:140px;
+  height:20px;
+  border: none;
+  text-align: left;
+  background-color: #fcf4f4;
+  border-radius: 10px;
+}
+.toggle-content-change-status button:hover{
+  background-color: #A8A8A8;
+  border-radius: 10px;
+}

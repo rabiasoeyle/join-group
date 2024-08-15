@@ -67,4 +67,10 @@
       .task-description{
         padding-bottom:10px;
       }
+    .category-div{
+        justify-content: space-between;
+    }
+    .change-status-menu{
+        display:flex;
+    }
 }

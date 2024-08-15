@@ -221,6 +221,19 @@ body {
   margin-left: 8px;
 }
 
+.pleaseTurnOnEdge {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.705);
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Responsive */
 
 @media (max-width: 1020px) {
@@ -268,7 +281,6 @@ body {
   }
 }
 
-
 @media (max-height: 600px) {
   .sidebar_bottom {
     height: 9vh;
@@ -278,9 +290,21 @@ body {
     padding: 2px;
   }
   .pricacy_policy_font {
-    margin: 8px o o o ;
+    margin: 8px o o o;
   }
   .login_button_blue {
     margin-bottom: 20px;
+  }
+}
+
+@media (max-height: 500px) {
+  .login_input {
+    margin: 0;
+  }
+}
+
+@media (max-height: 400px) {
+  .pleaseTurnOnEdge {
+    display: flex;
   }
 }

@@ -25,6 +25,9 @@ async function initBoard() {
     doneBoard();
 }
 
+/**
+ * Diese Funktion dient zum filtern der Aufgaben.
+ */
 function filterTasks(){
   let searchBar = document.getElementById('searchBar');
   console.log('filter starten');
@@ -39,6 +42,7 @@ function filterTasks(){
   awaitFeedbackBoard(filteredTasks);
   doneBoard(filteredTasks);
 }
+
 /**
  * Diese Funktion dient dazu die Initalien der zugeschriebenen Personen darzustellen
  * @param {*} element 
@@ -87,35 +91,10 @@ function profileInitials(name) {
   return initials;
 }
 
-function boardHTML(i, status){
-  let element = status[i];
-  return/*html*/`
-        <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
-           <div class="toggle-content-change-status"style="display:none;" id="changeStatusMenu-${element['idNumber']}" >
-              <button onclick="changeStatusToTodo(${element['idNumber']})">Todo</button>
-              <button onclick="changeStatusToInProgress(${element['idNumber']})">In Progress</button>
-              <button onclick="changeStatusToAwaitFeedback(${element['idNumber']})">Await Feedback</button>
-              <button onclick="changeStatusToDone(${element['idNumber']})">Done</button>
-            </div>
-            <div class="category-div">
-            <div class="category-div-child"id="categorySign-${element['idNumber']}">${element['category']}</div>
-           
-            <div class="change-status-menu" id="changeStatusMenu" onclick="changeStatusToggle(${element['idNumber']})">:
-            </div>
-            
-          </div>
-          <div class="task-headline" onclick="openDetailedTaskOverlay(${element['idNumber']})">${element['title']}</div>
-          <div class="task-description"id="descriptionSign-${element['idNumber']}">${element['description']}</div>
-          <div id="subtaskLoadboardAndText-${element['idNumber']}"class="subtask-loadboard-and-text d-none">
-          </div>
-          <div class="assigned-and-priority">
-            <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
-            <div id="prioritySVG-${element['idNumber']}"></div>
-          </div> 
-        </div>
-  `
-}
-
+/**
+ * Diese Funktion dient zum toggeln des Menüs, wo die Staten in der responsive Ansicht geändert werden können.
+ * @param {*} id 
+ */
 function changeStatusToggle(id){
   let menu = document.getElementById(`changeStatusMenu-${id}`);
   if (menu.style.display === "none" || menu.style.display === "") {
@@ -125,6 +104,10 @@ function changeStatusToggle(id){
 }
 }
 
+/**
+ * In dieser Funktion wird bei der jeweiligen Aufgabe der status im Firebase geändert.
+ * @param {*} id 
+ */
 async function changeStatusPutData(id){
   await putData(`/tasks/${tasks[id]['id']}`, tasks[id]);
   tasks=[];
@@ -134,18 +117,39 @@ async function changeStatusPutData(id){
   awaitFeedbackBoard();
   doneBoard()
 }
+
+/**
+ *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu todo umgeändert.
+ * @param {*} id 
+ */
 async function changeStatusToTodo(id){
   tasks[id]['status'] = "todo";
   changeStatusPutData(id);
 }
+
+/**
+ *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu inProgress umgeändert.
+ * @param {*} id 
+ */
 async function changeStatusToInProgress(id){
   tasks[id]['status'] = "inProgress";
   changeStatusPutData(id);
 }
+
+/**
+ *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu awaitFeedback umgeändert.
+ * @param {*} id 
+ */
 async function changeStatusToAwaitFeedback(id){
   tasks[id]['status'] = "awaitFeedback";
   changeStatusPutData(id);
 }
+
+/**
+ * /**
+ *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu done umgeändert.
+ * @param {*} id 
+ */
 async function changeStatusToDone(id){
   tasks[id]['status'] = "done";
   changeStatusPutData(id);

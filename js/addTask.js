@@ -14,7 +14,20 @@ let checkedSubtasks=[];
  * Diese Funktion ist zum rendern der Hauptbausteine.
  */
 function initAddTask() {
-    renderMainForm();
+    renderMainForm(); 
+    setMinDate();
+   
+}
+
+/**
+ * Diese Funktion soll das aktuelle Datum holen und im Inputfeld min einstellen.
+ */
+function setMinDate(){
+    // Hole das heutige Datum
+    let today = new Date().toISOString().split('T')[0];
+    console.log(today);
+    // Setze das min-Attribut auf das heutige Datum
+    document.getElementById('dateOfTask').setAttribute('min', today);
 }
 
 /**
@@ -74,7 +87,11 @@ function showAssignedPersons() {
 }
 } 
 
-
+/**
+ * Diese Funktion filtert die Initialien der für die jeweiligen Aufgaben ausgewählten Personen.
+ * @param {*} i 
+ * @returns 
+ */
 function assignedPersonsInitials(i){
     let names = assignedPersons[i].name.split(" "),
       initialsAssignedPersons = names[0].substring(0, 1).toUpperCase();
@@ -143,6 +160,7 @@ function rollCategories(){
     let dropdownCategories = document.getElementById('dropdownCategories');
     dropdownCategories.classList.toggle('d-none');     
 }
+
 /**
  * Diese Funktion sorgt dafür, dass alle Inputfelder wieder geleert werden
  */
@@ -282,7 +300,11 @@ async function createTask(){
     window.location.href ='../html/board.html?msg=Du hast eine neue Task erstellt';
 }
 
-  function getRandomColor() {
+/**
+ * Diese Funktion dient zur Erstellung von Farben, falls die Kontakte keine zugeschriebenen Farben haben.
+ * @returns 
+ */
+function getRandomColor() {
     const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
     let color = '#';
     for (let i = 0; i < 6; i++) {

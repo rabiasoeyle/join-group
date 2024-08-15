@@ -16,7 +16,6 @@ let checkedSubtasks=[];
 function initAddTask() {
     renderMainForm(); 
     setMinDate();
-   
 }
 
 /**

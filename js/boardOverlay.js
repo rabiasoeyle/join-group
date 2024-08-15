@@ -22,6 +22,7 @@ function openDetailedTaskOverlay(i){
               <h3 class="showDetailTaskOverlayTitle" id="showDetailTaskOverlayTitle">
               ${tasks[i]['title']}
               </h3>
+              <div class="scroll-container">
               <h4 class="showDetailTaskOverlayDescription" id="showDetailTaskOverlayDescription">
               ${tasks[i]['description']}
               </h4>
@@ -41,6 +42,7 @@ function openDetailedTaskOverlay(i){
               <div id="showDetailTaskOverlaySubtasks">
                   <div>Subtasks:</div>
                   <div id="showDetailTaskOverlaySubtasksChild"></div>
+              </div>
               </div>
               <div class="delete-or-edit-task-buttons">
                   <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]['id']}')">

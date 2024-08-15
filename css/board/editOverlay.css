@@ -23,7 +23,6 @@
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    overflow-y: scroll;
     
   }
 
@@ -41,7 +40,6 @@
     font-size: 20px;
     font-weight: 400;
     padding-bottom:24px;
-    overflow-y: scroll;
   }
   .showDetailTaskOverlayAssignedTo{
     display: flex;
@@ -397,4 +395,11 @@ h4{
 .svg-prio-click{
   fill:white;
   background-color: unset;
+}
+
+.scroll-container{
+  height: 100%;
+  overflow-y: auto;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
 }

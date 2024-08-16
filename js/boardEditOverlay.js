@@ -112,9 +112,6 @@ function openEditTaskOverlay(i){
                         </button>
                     </div>
                 </form>
-        
-                  
-              
     `;
     if(tasks[i]['priority']){
          colorOfPriority(i);
@@ -183,6 +180,7 @@ function renderAllAvaillableSubtasks(i){
         `;
     }
 }
+
 /**
  * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.(Bei den Subtasks)
  * @param {*} i 
@@ -409,30 +407,14 @@ function editAssignedPersonsInitials(i,j){
  * @param {*} i 
  */
 function editAddAssignedPersons(j, i){
-    // let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
-    // let personName = contacts[j].name;
-    // if (inputCheckbox.checked) {
-    //     // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
-    //     if (!tasks[i]['assigned'].includes(person => person.name === personName)) {
-    //         let newAssign = { name: contacts[j].name, color: contacts[j].color };
-    //         tasks[i]['assigned'].push(newAssign);
-    //     }
-    // } else {
-    //     // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
-    //     tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
-    // }
-    // Stelle sicher, dass 'assigned' initialisiert ist
     if (!tasks[i].hasOwnProperty('assigned') || !Array.isArray(tasks[i]['assigned'])) {
         tasks[i]['assigned'] = [];
     }
-
     // Der Kontakt, der zugewiesen oder entfernt werden soll
     let contact = contacts[j];
-
     // Checkbox-Status abrufen
     let checkbox = document.getElementById(`editInputCheckbox-${j}`);
     let isChecked = checkbox.checked;
-
     if (isChecked) {
         // Überprüfen, ob der Kontakt bereits zugewiesen ist
         let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);

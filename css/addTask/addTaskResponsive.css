@@ -51,6 +51,9 @@
   .form-style {
     height: 73vh;
   }
+  .subtask-container{
+    height:auto;
+  }
 }
 
 @media (max-height: 700px){

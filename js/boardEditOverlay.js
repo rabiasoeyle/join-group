@@ -85,7 +85,7 @@ function openEditTaskOverlay(i){
                                     </svg>
                             </div>
                                 <div id="showAssignedPersonInitial-${i}" class="show-assigned-persons-initials"></div>
-                                <div class="d-none assign-contacts-list" id="edit-assignContactsList"></div>
+                                <div class="d-none assign-contacts-list" id="edit-assignContactsList-${i}"></div>
                     </div>
                     <div class="subtask">
                                 <label>Subtasks</label>
@@ -352,18 +352,27 @@ function changeDueDate(i){
  * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
  */
 function rollContactsListEdit(i){
-    let assignContactsList = document.getElementById('edit-assignContactsList');
+    let assignContactsList = document.getElementById(`edit-assignContactsList-${i}`);
     assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
     for(j=0; j<contacts.length; j++){
         // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
-        let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML +=/*html*/`
+        if(tasks[i]['assigned']){
+            let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
+            assignContactsList.innerHTML +=/*html*/`
         <div class="one-person-div">
-            <!-- <div class="assigned-person-initials" style="background-color:${contacts[j]['color']}; color:white">${editOverlayProfileInitials(j)}</div> -->
             <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})" ${isChecked}>
             <div>${contacts[j]['name']}</div>
         </div>`
+        }
+        else{
+            assignContactsList.innerHTML +=/*html*/`
+        <div class="one-person-div">
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})">
+            <div>${contacts[j]['name']}</div>
+        </div>`
+        }
+        
     }
 }
 
@@ -400,17 +409,39 @@ function editAssignedPersonsInitials(i,j){
  * @param {*} i 
  */
 function editAddAssignedPersons(j, i){
-    let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
-    let personName = contacts[j].name;
-    if (inputCheckbox.checked) {
-        // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
-        if (!tasks[i]['assigned'].includes(person => person.name === personName)) {
-            let newAssign = { name: contacts[j].name, color: contacts[j].color };
-            tasks[i]['assigned'].push(newAssign);
+    // let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
+    // let personName = contacts[j].name;
+    // if (inputCheckbox.checked) {
+    //     // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
+    //     if (!tasks[i]['assigned'].includes(person => person.name === personName)) {
+    //         let newAssign = { name: contacts[j].name, color: contacts[j].color };
+    //         tasks[i]['assigned'].push(newAssign);
+    //     }
+    // } else {
+    //     // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
+    //     tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
+    // }
+    // Stelle sicher, dass 'assigned' initialisiert ist
+    if (!tasks[i].hasOwnProperty('assigned') || !Array.isArray(tasks[i]['assigned'])) {
+        tasks[i]['assigned'] = [];
+    }
+
+    // Der Kontakt, der zugewiesen oder entfernt werden soll
+    let contact = contacts[j];
+
+    // Checkbox-Status abrufen
+    let checkbox = document.getElementById(`editInputCheckbox-${j}`);
+    let isChecked = checkbox.checked;
+
+    if (isChecked) {
+        // Überprüfen, ob der Kontakt bereits zugewiesen ist
+        let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);
+        if (!alreadyAssigned) {
+            tasks[i]['assigned'].push(contact);
         }
     } else {
-        // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
-        tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
+        // Entferne den Kontakt aus dem assigned-Array
+        tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== contact.name);
     }
     editOvShowAssignedPersons(i);
 }

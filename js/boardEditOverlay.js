@@ -8,7 +8,7 @@ function openEditTaskOverlay(i){
     editTaskOverlayContent.classList.add('edit-task-overlay-edit');
     editTaskOverlayContent.innerHTML='';
     editTaskOverlayContent.innerHTML=/*html*/`
-            <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i})">
+            <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i}); return false">
                     <div class="close-button-top">
                         <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -116,9 +116,33 @@ function openEditTaskOverlay(i){
                   
               
     `;
-    colorOfPriority(i);
-    renderAllAvaillableSubtasks(i);
-    editOvShowAssignedPersons(i);
+    if(tasks[i]['priority']){
+         colorOfPriority(i);
+    }else{
+        noChosenPriority(i);
+    }if(tasks[i]['subtaskList']){
+        renderAllAvaillableSubtasks(i);
+    }if(tasks[i]['assigned']){
+        editOvShowAssignedPersons(i);
+    }
+}
+
+/**
+ * Diese Funktion fügt die passenden Klassen für die PriorityButtons hinzu, wenn keine Priorität vorliegt
+ */
+function noChosenPriority(){
+    let urgent = document.getElementById('urgentButtonOverlay');
+    let medium = document.getElementById('mediumButtonOverlay');
+    let low = document.getElementById('lowButtonOverlay');
+    let urgentSVG = document.getElementById('svgUrgentPrio');
+    let mediumSVG = document.getElementById('svgMediumPrio');
+    let lowSVG = document.getElementById('svgLowPrio');
+        urgentSVG.classList.add('svgUrgentPrio');
+        mediumSVG.classList.add('svgMediumPrio');
+        lowSVG.classList.add('svgLowPrio');
+        urgent.classList.add('urgentPrio');
+        medium.classList.add('mediumPrio');
+        low.classList.add('lowPrio');
 }
 
 /**

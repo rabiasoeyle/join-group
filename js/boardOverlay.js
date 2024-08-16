@@ -57,9 +57,15 @@ function openDetailedTaskOverlay(i){
               </div>
     `;
     categorySignOverlay(i);
-    showDetailTaskOverlayAssignedTo(i);
-    showDetailTaskOverlaySubtasks(i);
-    prioritySignOverlay(i);
+    if(tasks[i]['assigned']){
+      showDetailTaskOverlayAssignedTo(i);
+    }
+    if(tasks[i]['subtaskList']){
+       showDetailTaskOverlaySubtasks(i);
+    }
+    if(tasks[i]['priority']){
+      prioritySignOverlay(i);
+    }
   }
   
   /**

@@ -24,7 +24,6 @@ function initAddTask() {
 function setMinDate(){
     // Hole das heutige Datum
     let today = new Date().toISOString().split('T')[0];
-    console.log(today);
     // Setze das min-Attribut auf das heutige Datum
     document.getElementById('dateOfTask').setAttribute('min', today);
 }

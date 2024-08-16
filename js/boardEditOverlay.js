@@ -173,7 +173,7 @@ function renderAllAvaillableSubtasks(i){
         subtaskListDiv.innerHTML +=`
         <ul class="edit-one-subtask" id="oneSubtask-${j}" class="oneSubtask" onmouseover="editSubtaskHoverEffekt(${j})" onmouseout= "editSubtaskNoHoverEffekt(${j})">
             <li class="" id="editSubtaskListText-${i}-${j}">${tasks[i]['subtaskList'][j]}</li>
-            <input class="d-none" value="${tasks[i]['subtaskList'][j]}" id="editInput-${j}">
+            <input class="d-none" value="${tasks[i]['subtaskList'][j]}" id="editInput-${j}-${i}">
             <div class="d-none editAndTrash" id="editEditAndTrash-${j}">
                 <img src="../assets/img/editTask.png" id="leftImage-${j}" onclick="editEditSubtask(${i},${j})">
                 |
@@ -207,12 +207,12 @@ function editSubtaskHoverEffekt(j){
 function editEditSubtask(i ,j ){
     let subtaskListText = document.getElementById(`editSubtaskListText-${i}-${j}`);
     subtaskListText.classList.add('d-none');
-    let editInput = document.getElementById(`editInput-${j}`);
+    let editInput = document.getElementById(`editInput-${j}-${i}`);
     editInput.classList.remove('d-none');
     let editAndTrash = document.getElementById(`editEditAndTrash-${j}`);
     editAndTrash.innerHTML='';
     editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${j},${i})">
+    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${i},${j})">
     |
     <img src="../assets/img/checkTask.png" id="rightImage-${j}" onclick="saveChangedSubtask(${j},${i})">
     `
@@ -223,7 +223,7 @@ function editEditSubtask(i ,j ){
  * @param {*} i 
  */
 function saveChangedSubtask(j,i){
-    let editInput = document.getElementById(`editInput-${j}`).value.trim();
+    let editInput = document.getElementById(`editInput-${j}-${i}`).value.trim();
     tasks[i]['subtaskList'].splice(j,1, editInput);
     renderAllAvaillableSubtasks(i);
 }

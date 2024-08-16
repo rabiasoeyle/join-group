@@ -82,6 +82,7 @@
 
 .content {
   padding: 40px;
+  scrollbar-width: none;
 }
 
 .board-part-div {

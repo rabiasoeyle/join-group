@@ -18,7 +18,7 @@
     
     .showDetailTaskOverlayDescription{
         font-size: 16px;
-        overflow-y: scroll;
+        overflow-wrap: break-word;
         min-height: 80px;
       }
       .description-title textarea{
@@ -27,5 +27,8 @@
       .form-edit-overlay{
         height:unset;
         gap: 16px;
+      }
+      .delete-or-edit-task-buttons{
+        justify-content: center;
       }
 }

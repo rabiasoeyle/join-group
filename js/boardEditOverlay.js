@@ -85,7 +85,7 @@ function openEditTaskOverlay(i){
                                     </svg>
                             </div>
                                 <div id="showAssignedPersonInitial-${i}" class="show-assigned-persons-initials"></div>
-                                <div class="d-none assign-contacts-list" id="edit-assignContactsList"></div>
+                                <div class="d-none assign-contacts-list" id="edit-assignContactsList-${i}"></div>
                     </div>
                     <div class="subtask">
                                 <label>Subtasks</label>
@@ -152,6 +152,10 @@ function noChosenPriority(){
 function editAddSubtask(i){
     let subtask = document.getElementById(`subtaskInput-${i}`).value.trim();
     if (subtask) {
+        // Initialisiere subtaskList, falls es nicht existiert
+    if (!tasks[i].hasOwnProperty('subtaskList') || !Array.isArray(tasks[i]['subtaskList'])) {
+        tasks[i]['subtaskList'] = [];
+    }
         tasks[i]['subtaskList'].push(subtask);
         document.getElementById(`subtaskInput-${i}`).value = "";
     }
@@ -169,7 +173,7 @@ function renderAllAvaillableSubtasks(i){
         subtaskListDiv.innerHTML +=`
         <ul class="edit-one-subtask" id="oneSubtask-${j}" class="oneSubtask" onmouseover="editSubtaskHoverEffekt(${j})" onmouseout= "editSubtaskNoHoverEffekt(${j})">
             <li class="" id="editSubtaskListText-${i}-${j}">${tasks[i]['subtaskList'][j]}</li>
-            <input class="d-none" value="${tasks[i]['subtaskList'][j]}" id="editInput-${j}">
+            <input class="d-none" value="${tasks[i]['subtaskList'][j]}" id="editInput-${j}-${i}">
             <div class="d-none editAndTrash" id="editEditAndTrash-${j}">
                 <img src="../assets/img/editTask.png" id="leftImage-${j}" onclick="editEditSubtask(${i},${j})">
                 |
@@ -203,12 +207,12 @@ function editSubtaskHoverEffekt(j){
 function editEditSubtask(i ,j ){
     let subtaskListText = document.getElementById(`editSubtaskListText-${i}-${j}`);
     subtaskListText.classList.add('d-none');
-    let editInput = document.getElementById(`editInput-${j}`);
+    let editInput = document.getElementById(`editInput-${j}-${i}`);
     editInput.classList.remove('d-none');
     let editAndTrash = document.getElementById(`editEditAndTrash-${j}`);
     editAndTrash.innerHTML='';
     editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${j},${i})">
+    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${i},${j})">
     |
     <img src="../assets/img/checkTask.png" id="rightImage-${j}" onclick="saveChangedSubtask(${j},${i})">
     `
@@ -219,7 +223,7 @@ function editEditSubtask(i ,j ){
  * @param {*} i 
  */
 function saveChangedSubtask(j,i){
-    let editInput = document.getElementById(`editInput-${j}`).value.trim();
+    let editInput = document.getElementById(`editInput-${j}-${i}`).value.trim();
     tasks[i]['subtaskList'].splice(j,1, editInput);
     renderAllAvaillableSubtasks(i);
 }
@@ -229,10 +233,11 @@ function saveChangedSubtask(j,i){
  * @param {*} i 
  */
 function editOverlayDeleteSubtask(i,j){
-    let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
+    if (!tasks[i].hasOwnProperty('checkedSubtasks') || !Array.isArray(tasks[i]['checkedSubtasks'])){
+        let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
     if(index !=-1){
         tasks[i]['checkedSubtasks'].splice(index,1);
-    }
+    }}
     tasks[i]['subtaskList'].splice(j,1);
     renderAllAvaillableSubtasks(i);
 }
@@ -347,18 +352,27 @@ function changeDueDate(i){
  * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
  */
 function rollContactsListEdit(i){
-    let assignContactsList = document.getElementById('edit-assignContactsList');
+    let assignContactsList = document.getElementById(`edit-assignContactsList-${i}`);
     assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
     for(j=0; j<contacts.length; j++){
         // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
-        let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML +=/*html*/`
+        if(tasks[i]['assigned']){
+            let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
+            assignContactsList.innerHTML +=/*html*/`
         <div class="one-person-div">
-            <!-- <div class="assigned-person-initials" style="background-color:${contacts[j]['color']}; color:white">${editOverlayProfileInitials(j)}</div> -->
             <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})" ${isChecked}>
             <div>${contacts[j]['name']}</div>
         </div>`
+        }
+        else{
+            assignContactsList.innerHTML +=/*html*/`
+        <div class="one-person-div">
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})">
+            <div>${contacts[j]['name']}</div>
+        </div>`
+        }
+        
     }
 }
 
@@ -395,17 +409,39 @@ function editAssignedPersonsInitials(i,j){
  * @param {*} i 
  */
 function editAddAssignedPersons(j, i){
-    let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
-    let personName = contacts[j].name;
-    if (inputCheckbox.checked) {
-        // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
-        if (!tasks[i]['assigned'].includes(person => person.name === personName)) {
-            let newAssign = { name: contacts[j].name, color: contacts[j].color };
-            tasks[i]['assigned'].push(newAssign);
+    // let inputCheckbox = document.getElementById(`editInputCheckbox-${j}`);
+    // let personName = contacts[j].name;
+    // if (inputCheckbox.checked) {
+    //     // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
+    //     if (!tasks[i]['assigned'].includes(person => person.name === personName)) {
+    //         let newAssign = { name: contacts[j].name, color: contacts[j].color };
+    //         tasks[i]['assigned'].push(newAssign);
+    //     }
+    // } else {
+    //     // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
+    //     tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
+    // }
+    // Stelle sicher, dass 'assigned' initialisiert ist
+    if (!tasks[i].hasOwnProperty('assigned') || !Array.isArray(tasks[i]['assigned'])) {
+        tasks[i]['assigned'] = [];
+    }
+
+    // Der Kontakt, der zugewiesen oder entfernt werden soll
+    let contact = contacts[j];
+
+    // Checkbox-Status abrufen
+    let checkbox = document.getElementById(`editInputCheckbox-${j}`);
+    let isChecked = checkbox.checked;
+
+    if (isChecked) {
+        // Überprüfen, ob der Kontakt bereits zugewiesen ist
+        let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);
+        if (!alreadyAssigned) {
+            tasks[i]['assigned'].push(contact);
         }
     } else {
-        // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
-        tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== personName);
+        // Entferne den Kontakt aus dem assigned-Array
+        tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== contact.name);
     }
     editOvShowAssignedPersons(i);
 }

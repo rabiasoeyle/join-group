@@ -257,6 +257,7 @@ h4{
     display:flex;
     flex-direction: column;
     overflow-y: scroll;
+    scrollbar-width: none;
   }
 
 .form-edit-overlay{

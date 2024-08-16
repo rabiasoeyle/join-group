@@ -246,6 +246,12 @@
   background-color: #e0e0e0;
 }
 
+.editInput {
+  border: none;
+  background-color: transparent;
+  outline: 0px;
+}
+
 .show-assigned-persons-initials {
   display: flex;
   align-items: center;
@@ -319,6 +325,11 @@
   border-radius: 0 10px 10px 0;
   border-left: 0;
   margin-top: 4px;
+}
+
+.subtask-add-button:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
 }
 
 .cancel-submit-buttons {
@@ -432,4 +443,28 @@
   max-height: 130px;
   overflow: auto;
   scrollbar-width: thin;
+}
+
+.deleteSubtask:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.137);
+  border-radius: 8px;
+}
+
+.editSubtask:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.137);
+  border-radius: 8px;
+}
+
+.saveChangedSubtask:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.137);
+  border-radius: 8px;
+}
+
+.saveSubtask:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.137);
+  border-radius: 8px;
 }

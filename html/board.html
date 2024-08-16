@@ -31,7 +31,7 @@
                 <div class="header-board">
                     <div class="headline-and-button">
                         <h1>Board</h1>
-                        <button class="add-task-big-button-responsive" id="addTaskBigButtonResponsive"onclick="addTask()">
+                        <button class="add-task-big-button-responsive" id="addTaskBigButtonResponsive"onclick="atOaddTask()">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11 1V21" stroke="white" stroke-width="2" stroke-linecap="round"/>
                                 <path d="M21 11L1.00048 11.138" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -44,7 +44,7 @@
                             <div class="seperator"></div>
                             <img class="search-img" src="../assets/svg/search.svg">
                         </div>
-                        <button id="assTaskBigButton" onclick="addTaskBoard()">Add Task +</button>
+                        <button id="assTaskBigButton" onclick="atOaddTask()">Add Task +</button>
                     </div>
                 </div>
             <div class="all-boards">
@@ -52,7 +52,7 @@
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>To do</h2>
-                        <div  onclick="openAddTaskOverlay()">
+                        <div  onclick="addTaskBoard()()">
                             <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
@@ -65,7 +65,7 @@
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>In Progress</h2>
-                        <div onclick="openAddTaskOverlay()">
+                        <div onclick="addTaskBoard()">
                             <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
@@ -78,7 +78,7 @@
                 <div class="board-part-div">
                     <div class="name-of-board-add">
                         <h2>Await Feedback</h2>
-                        <div onclick="openAddTaskOverlay()">
+                        <div onclick="addTaskBoard()">
                             <svg class="plus-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
                                 <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
@@ -103,8 +103,8 @@
         <div class="edit-task-overlay-content" id="editTaskOverlayContent">
         </div>
     </div>
-    <div class="d-none add-task-overlay-parent" id="addTaskOverlayParent">
-        <div class="add-task-overlay" id="addTaskOverlay">
+    <div class="d-none atOadd-task-overlay-parent" id="atOaddTaskOverlayParent">
+        <div class="atOadd-task-overlay" id="atOaddTaskOverlay">
            
         </div>
     </div>

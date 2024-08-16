@@ -28,4 +28,27 @@
       height:unset;
       gap: 16px;
     }
+<<<<<<< HEAD
+=======
+    .showDetailTaskOverlayTitle{
+        font-size: 32px;
+        font-weight: 700;
+      }
+    
+    .showDetailTaskOverlayDescription{
+        font-size: 16px;
+        overflow-wrap: break-word;
+        min-height: 80px;
+      }
+      .description-title textarea{
+        font-size: 16px;
+      }
+      .form-edit-overlay{
+        height:unset;
+        gap: 16px;
+      }
+      .delete-or-edit-task-buttons{
+        justify-content: center;
+      }
+>>>>>>> c3e20321d0cd9b5fe3bec70816a1bac40b0169d4
 }

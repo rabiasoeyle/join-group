@@ -83,37 +83,37 @@
 }
 
 @media (max-height: 850px) {
-    .content {
-        height: 81vh;
-    }
+  .content {
+    height: 81vh;
+  }
 }
 
 @media (max-height: 662px) {
-    .content {
-        height: 79vh;
-    }
+  .content {
+    height: 79vh;
+  }
 }
 
 @media (max-height: 540px) {
-    .content {
-        height: 77vh;
-    }
+  .content {
+    height: 77vh;
+  }
 }
 
 @media (max-height: 460px) {
-    .content {
-        height: 75vh;
-    }
+  .content {
+    height: 75vh;
+  }
 }
 
 @media (max-height: 400px) {
-    .content {
-        height: 73vh;
-    }
+  .content {
+    height: 73vh;
+  }
 }
 
 @media (max-height: 350px) {
-    .content {
-        height: 70vh;
-    }
+  .content {
+    height: 70vh;
+  }
 }

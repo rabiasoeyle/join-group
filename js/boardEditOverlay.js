@@ -20,7 +20,7 @@ function openEditTaskOverlay(i){
                     </div>
                     <div class="description-title">
                     <label for="editTaskOverlayDescription-${i}">Description</label>
-                    <textarea required type="text"id="editTaskOverlayDescription-${i}" >${tasks[i]['description']}</textarea>
+                    <textarea type="text"id="editTaskOverlayDescription-${i}" >${tasks[i]['description']}</textarea>
                     </div>
                     <div class="due-date">
                         <label for="editOverlayDueDate-${i}">Due date</label>

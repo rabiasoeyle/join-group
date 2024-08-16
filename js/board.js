@@ -432,7 +432,7 @@ function atOcancelAddingBoard(){
   nameValue = "";
   emailValue = "";
   numberValue = "";
-  let overlay = document.getElementById('addTaskOverlayParent');
+  let overlay = document.getElementById('atOaddTaskOverlayParent');
   overlay.classList.add("d-none");
   overlay.classList.remove("d-flex");
 }

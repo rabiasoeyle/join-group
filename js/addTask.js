@@ -168,10 +168,21 @@ function clearForm(){
     category='';
     subtaskList=[];
     priority='';
+    renderSubtasks();
+    renderStartClassPrio();
     document.getElementById('urgent').style.backgroundColor = "white";
     document.getElementById('medium').style.backgroundColor = "white";
     document.getElementById('low').style.backgroundColor = "white";
     document.getElementById('showAssignedPersonInitial').innerHTML='';
+}
+
+function renderStartClassPrio(){
+    document.getElementById('urgent').classList.add('urgentPrio');
+    document.getElementById('urgent').classList.remove('urgentPrio_click');
+    document.getElementById('medium').classList.add('mediumPrio');
+    document.getElementById('medium').classList.remove('mediumPrio_click');
+    document.getElementById('low').classList.remove('lowPrio_click');
+    document.getElementById('low').classList.add('lowPrio');
 }
 
 /**

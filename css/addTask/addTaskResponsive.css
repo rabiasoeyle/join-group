@@ -10,28 +10,10 @@
   }
 }
 
-@media (max-width: 950px) {
-  .due-date input {
-    width: min(375px, 100%);
-  }
-  .prio-content {
-    min-width: 370px;
-  }
-}
-
 @media (max-height: 900px){
   .clear-button, .create-button {
     font-size: 18px;
     padding: 2vh;
-  }
-}
-
-@media (max-width: 840px) {
-  .due-date input {
-    width: min(325px, 100%);
-  }
-  .prio-content {
-    min-width: 300px;
   }
 }
 
@@ -51,7 +33,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
   .form-style-top {
     flex-direction: column;
   }
@@ -109,7 +91,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .form-style {
     padding: 0;
   }

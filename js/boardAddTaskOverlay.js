@@ -280,16 +280,16 @@ async function atOcreateTask(){
     let atOdescriptionOfTask = document.getElementById('atOdescriptionOfTask').value.trim();
     let atOdateOfTask = document.getElementById('atOdateOfTask').value.trim();
     let atOnewTaskInformation ={
-        atOtitle: atOtitleOfTask,
-        atOdescription: atOdescriptionOfTask,
-        atOassigned: atOassignedPersons,
-        atOdueDate: atOdateOfTask,
-        atOcategory:atOcategory,
-        atOpriority:atOpriority,
-        atOsubtaskList:atOsubtaskList,
-        atOstatus:"todo",
-        atOcheckedSubtasks:atOcheckedSubtasks,
-        atOcheckedSubtasksCount: 0,
+        title: atOtitleOfTask,
+        description: atOdescriptionOfTask,
+        assigned: atOassignedPersons,
+        dueDate: atOdateOfTask,
+        category:atOcategory,
+        priority:atOpriority,
+        subtaskList:atOsubtaskList,
+        status:"todo",
+        checkedSubtasks:atOcheckedSubtasks,
+        checkedSubtasksCount: 0,
     }
     await postData("/tasks", atOnewTaskInformation);
     clearForm();
@@ -356,7 +356,7 @@ function atOaddTask() {
                         <div class="atOform-right" id="atOformRight">
                             <div class="due-date">
                                 <label>Due date</label>
-                                <input required id="dateOfTask" type="date" id="start" name="trip-start"
+                                <input required id="atOdateOfTask" type="date" id="start" name="trip-start"
                                     placeholder="dd/mm/jjjj">
                             </div>
                             <div class="atOprio-content-parent" id="atOprioContent">

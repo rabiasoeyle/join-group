@@ -185,7 +185,7 @@ function todoBoard(filteredTasks){
                 subtaskContent.classList.remove('d-none');
           }
         if(element['assigned']){
-        showAssignedPersonsInitial(element);  
+          showAssignedPersonsInitial(element);  
         }
         if(element['category']){
           categorySign(element);

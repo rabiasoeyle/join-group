@@ -22,10 +22,10 @@ function boardHTML(i, status){
               
             </div>
             <div class="task-headline" onclick="openDetailedTaskOverlay(${element['idNumber']})">${element['title']}</div>
-            <div class="task-description"id="descriptionSign-${element['idNumber']}">${element['description']}</div>
-            <div id="subtaskLoadboardAndText-${element['idNumber']}"class="subtask-loadboard-and-text d-none">
+            <div class="task-description"id="descriptionSign-${element['idNumber']}" onclick="openDetailedTaskOverlay(${element['idNumber']})">${element['description']}</div>
+            <div id="subtaskLoadboardAndText-${element['idNumber']}"class="subtask-loadboard-and-text d-none" onclick="openDetailedTaskOverlay(${element['idNumber']})">
             </div>
-            <div class="assigned-and-priority">
+            <div class="assigned-and-priority" onclick="openDetailedTaskOverlay(${element['idNumber']})">
               <div class="assigned-persons-initals"id="assignedPerson-${element['idNumber']}"></div>
               <div id="prioritySVG-${element['idNumber']}"></div>
             </div> 

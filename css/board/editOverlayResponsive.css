@@ -28,8 +28,6 @@
       height:unset;
       gap: 16px;
     }
-<<<<<<< HEAD
-=======
     .showDetailTaskOverlayTitle{
         font-size: 32px;
         font-weight: 700;
@@ -50,5 +48,4 @@
       .delete-or-edit-task-buttons{
         justify-content: center;
       }
->>>>>>> c3e20321d0cd9b5fe3bec70816a1bac40b0169d4
 }

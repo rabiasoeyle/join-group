@@ -176,6 +176,9 @@ function clearForm(){
     document.getElementById('showAssignedPersonInitial').innerHTML='';
 }
 
+/**
+ * Diese Funktion dient dazu, um das Startdesign bei den Prioritätsbutton bei clear wieder auf den Startzustand zu setzen.
+ */
 function renderStartClassPrio(){
     document.getElementById('urgent').classList.add('urgentPrio');
     document.getElementById('urgent').classList.remove('urgentPrio_click');

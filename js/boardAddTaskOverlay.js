@@ -177,9 +177,9 @@ function clearForm(){
  */
 function atOselectCategory(x){
     if(x =='Technical Task'){;
-        document.getElementById('categoryInput').value = x;
+        document.getElementById('atOcategoryInput').value = x;
     }else if(x=='User Story'){
-        document.getElementById('categoryInput').value = x;
+        document.getElementById('atOcategoryInput').value = x;
     }
     atOcategory=x;
 }

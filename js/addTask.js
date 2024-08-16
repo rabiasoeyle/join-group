@@ -209,11 +209,11 @@ function renderSubtasks(){
         subtaskListDiv.innerHTML +=`
         <ul class="oneSubtask" id="oneSubtask-${i}" class="oneSubtask" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
             <li class="" id="subtaskListText-${i}">${subtaskList[i]}</li>
-            <input class="d-none" value="${subtaskList[i]}" id="editInput-${i}">
+            <input class="d-none editInput" value="${subtaskList[i]}" id="editInput-${i}">
             <div class="d-none editAndTrash" id="editAndTrash-${i}">
-                <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})">
+                <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})"class="editSubtask">
                 |
-                <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})">
+                <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})"class="deleteSubtask">
             </div>
         </ul>
         `;
@@ -232,9 +232,9 @@ function editSubtask(i){
     let editAndTrash = document.getElementById(`editAndTrash-${i}`);
     editAndTrash.innerHTML='';
     editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="leftImage-${i}" onclick="deleteSubtask(${i})">
+    <img src="../assets/img/deleteTask.png" id="leftImage-${i}" onclick="deleteSubtask(${i})"class="deleteSubtask">
     |
-    <img src="../assets/img/checkTask.png" id="rightImage-${i}" onclick="saveChangedSubtask(${i})">
+    <img src="../assets/img/checkTask.png" id="rightImage-${i}" onclick="saveChangedSubtask(${i})"class="saveSubtask">
     `
 }
 

@@ -66,13 +66,8 @@
   .form-style {
     height: 73vh;
   }
-<<<<<<< HEAD
   .form-left {
-    width: 377px;
-=======
-  .subtask-container{
-    height:auto;
->>>>>>> da0e6a80ea7186563a3e0e78fb4c4b790ae3e98a
+    width: 377px
   }
 }
 

@@ -63,14 +63,17 @@ function rollContactsList(){
     let assignContactsList = document.getElementById('assignContactsList');
     assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
-    for(i=0; i<contacts.length; i++){
-        let isChecked = assignedPersons.includes(contacts[i]['name']) ? 'checked' : '';
+
+    for(let i=0; i<contacts.length; i++){
+        // Überprüfen, ob der Kontakt bereits zugewiesen wurde
+        //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
+        let isChecked = assignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
         assignContactsList.innerHTML +=`
         <div class="one-person-div">
             <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
             <div>${contacts[i]['name']}</div>
             <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addAssignedPersons(${i})" ${isChecked}>
-        </div>`
+        </div>`;
     }
 }
 

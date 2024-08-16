@@ -33,7 +33,7 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
   .form-style-top {
     flex-direction: column;
   }
@@ -91,7 +91,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .form-style {
     padding: 0;
   }

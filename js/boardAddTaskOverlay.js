@@ -1,35 +1,35 @@
-let assignedPersons=[];
-let category;
-let priority;
-let subtaskList=[];
-let taskInformation=[];
-let initials=[];
-let initialsAssignedPersons=[];
-let checkedSubtasks=[];
+let atOassignedPersons=[];
+let atOcategory;
+let atOpriority;
+let atOsubtaskList=[];
+let atOtaskInformation=[];
+let atOinitials=[];
+let atOinitialsAssignedPersons=[];
+let atOcheckedSubtasks=[];
 
 /**
  * Diese Funktion ist zum rendern der Hauptbausteine.
  */
-function initAddTask() {
-    renderMainForm(); 
-    setMinDate();
+function atOinitAddTask() {
+    atOrenderMainForm(); 
+    atOsetMinDate();
 }
 
 /**
  * Diese Funktion soll das aktuelle Datum holen und im Inputfeld min einstellen.
  */
-function setMinDate(){
+function atOsetMinDate(){
     // Hole das heutige Datum
-    let today = new Date().toISOString().split('T')[0];
-    console.log(today);
+    let atOtoday = new Date().toISOString().split('T')[0];
+    console.log(atOtoday);
     // Setze das min-Attribut auf das heutige Datum
-    document.getElementById('dateOfTask').setAttribute('min', today);
+    document.getElementById('atOdateOfTask').setAttribute('min', atOtoday);
 }
 
 /**
  * Diese Funktion sorgt dafür, dass die Funktionen für den Hauptteil geladen werden.
  */
-async function renderMainForm(){
+async function atOrenderMainForm(){
     await loadContacts();
 }
 
@@ -37,36 +37,36 @@ async function renderMainForm(){
  * Diese Funktion soll die Personen, die einen Haken in der Checkbox erhalten feststellen und im Array assignedPersons abspeichern.
  * @param {*} i 
  */
-function addAssignedPersons(i){
-    let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
-    let personName = contacts[i].name;
+function atOaddAssignedPersons(i){
+    let atOinputCheckbox = document.getElementById(`inputCheckbox-${i}`);
+    let atOpersonName = contacts[i].name;
     if (inputCheckbox.checked) {
         // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
-        if (!assignedPersons.includes(person => person.name === personName)) {
-            let newAssign = { name: contacts[i].name, color: contacts[i].color };
-            assignedPersons.push(newAssign);
+        if (!atOassignedPersons.includes(atOperson => atOperson.name === atOpersonName)) {
+            let atOnewAssign = { name: contacts[i].name, color: contacts[i].color };
+            atOassignedPersons.push(newAssign);
         }
     } else {
         // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
-        assignedPersons = assignedPersons.filter(person => person.name !== personName);
+        atOassignedPersons = atOassignedPersons.filter(atOperson => atOperson.name !== atOpersonName);
     }
-    showAssignedPersons();
+    atOshowAssignedPersons();
 }
 
 /**
  * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
  */
-function rollContactsList(){
-    let assignContactsList = document.getElementById('assignContactsList');
-    assignContactsList.classList.toggle('d-none');
-    assignContactsList.innerHTML='';
-    for(i=0; i<contacts.length; i++){
-        let isChecked = assignedPersons.includes(contacts[i]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML +=`
-        <div class="one-person-div">
-            <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
-            <div>${contacts[i]['name']}</div>
-            <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addAssignedPersons(${i})" ${isChecked}>
+function atOrollContactsList(){
+    let atOassignContactsList = document.getElementById('atOassignContactsList');
+    atOassignContactsList.classList.toggle('d-none');
+    atOassignContactsList.innerHTML='';
+    for(i=0; i<atOcontacts.length; i++){
+        let atOisChecked = atOassignedPersons.includes(atOcontacts[i]['atOname']) ? 'checked' : '';
+        atOassignContactsList.innerHTML +=`
+        <div class="atOone-person-div">
+            <div class="atOassigned-person-initials" style="background-color:${atOcontacts[i]['atOcolor']}; color:white">${atOprofileInitials(i)}</div>
+            <div>${atOcontacts[i]['atOname']}</div>
+            <input id="atOinputCheckbox-${i}" class="atOassigen_checkbox" type="checkbox" onclick="atOaddAssignedPersons(${i})" ${atOisChecked}>
         </div>`
     }
 }
@@ -74,11 +74,11 @@ function rollContactsList(){
 /**
  * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
  */
-function showAssignedPersons() {
-    let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
-    showAssignedPersons.innerHTML='';
-    for(i=0;i<assignedPersons.length;i++){
-        showAssignedPersons.innerHTML += `<div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
+function atOshowAssignedPersons() {
+    let atOshowAssignedPersons = document.getElementById('atOshowAssignedPersonInitial');
+    atOshowAssignedPersons.innerHTML='';
+    for(i=0;i<atOassignedPersons.length;i++){
+        atOshowAssignedPersons.innerHTML += `<div style="background-color:${atOassignedPersons[i]['atOcolor']}; color:white" class="atOselected-person-initals-div">${atOassignedPersonsInitials(i)}</div>`;
         // console.error('Contact not found for assigned person ID:', assignedPersons[i]);
 }
 } 
@@ -88,13 +88,13 @@ function showAssignedPersons() {
  * @param {*} i 
  * @returns 
  */
-function assignedPersonsInitials(i){
-    let names = assignedPersons[i].name.split(" "),
-      initialsAssignedPersons = names[0].substring(0, 1).toUpperCase();
-    if (names.length > 1) {
-        initialsAssignedPersons += names[names.length - 1].substring(0, 1).toUpperCase();
+function atOassignedPersonsInitials(i){
+    let atOnames = atOassignedPersons[i].name.split(" "),
+    atOinitialsAssignedPersons = names[0].substring(0, 1).toUpperCase();
+    if (atOnames.length > 1) {
+        atOinitialsAssignedPersons += atOnames[atOnames.length - 1].substring(0, 1).toUpperCase();
     }
-    return initialsAssignedPersons;
+    return atOinitialsAssignedPersons;
 }
 /**
  * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
@@ -102,11 +102,11 @@ function assignedPersonsInitials(i){
  * @param {*} i
  * @returns
  */
-function profileInitials(i) {
-    let names = contacts[i]['name'].split(" "),
-      initials = names[0].substring(0, 1).toUpperCase();
-    if (names.length > 1) {
-      initials += names[names.length - 1].substring(0, 1).toUpperCase();
+function atOprofileInitials(i) {
+    let atOnames = atOcontacts[i]['atOname'].split(" "),
+    atOinitials = atOnames[0].substring(0, 1).toUpperCase();
+    if (atOnames.length > 1) {
+        atOinitials += atOnames[atOnames.length - 1].substring(0, 1).toUpperCase();
     }
     return initials;
   }
@@ -116,101 +116,101 @@ function profileInitials(i) {
  * sowie der Kreis mit den Initialien drin sollen gesehen werden, wenn man draufklickt.
  * @param {*} i 
  */
-function selectPerson(i){
-    let inputCheckbox = document.getElementById('inputCheckbox');
-    inputCheckbox.innerHTML= assignedPersons += contacts[i]['name'];
-    showAssignedPersons();
+function atOselectPerson(i){
+    let atOinputCheckbox = document.getElementById('atOinputCheckbox');
+    atOinputCheckbox.innerHTML= atOassignedPersons += atOcontacts[i]['name'];
+    atOshowAssignedPersons();
 }
 
 /**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
-function selectPrio(x){
+function atOselectPrio(x){
     if(x =='urgent'){
-        document.getElementById('urgent').classList.add('urgentPrio_click');
-        document.getElementById('urgent').classList.remove('urgentPrio');
-        document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('medium').classList.remove('mediumPrio_click');
-        document.getElementById('low').classList.add('lowPrio');
-        document.getElementById('low').classList.remove('lowPrio_click');
+        document.getElementById('atOurgent').classList.add('urgentPrio_click');
+        document.getElementById('atOurgent').classList.remove('urgentPrio');
+        document.getElementById('atOmedium').classList.add('mediumPrio');
+        document.getElementById('atOmedium').classList.remove('mediumPrio_click');
+        document.getElementById('atOlow').classList.add('lowPrio');
+        document.getElementById('atOlow').classList.remove('lowPrio_click');
     }else if(x =='medium'){
-        document.getElementById('urgent').classList.add('urgentPrio');
-        document.getElementById('urgent').classList.remove('urgentPrio_click');
-        document.getElementById('medium').classList.add('mediumPrio_click');
-        document.getElementById('medium').classList.remove('mediumPrio');
-        document.getElementById('low').classList.add('lowPrio');
-        document.getElementById('low').classList.remove('lowPrio_click');
+        document.getElementById('atOurgent').classList.add('urgentPrio');
+        document.getElementById('atOurgent').classList.remove('urgentPrio_click');
+        document.getElementById('atOmedium').classList.add('mediumPrio_click');
+        document.getElementById('atOmedium').classList.remove('mediumPrio');
+        document.getElementById('atOlow').classList.add('lowPrio');
+        document.getElementById('atOlow').classList.remove('lowPrio_click');
     }else if(x =='low'){
-        document.getElementById('urgent').classList.add('urgentPrio');
-        document.getElementById('urgent').classList.remove('urgentPrio_click');
-        document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('medium').classList.remove('mediumPrio_click');
-        document.getElementById('low').classList.add('lowPrio_click');
-        document.getElementById('low').classList.remove('lowPrio');
+        document.getElementById('atOurgent').classList.add('urgentPrio');
+        document.getElementById('atOurgent').classList.remove('urgentPrio_click');
+        document.getElementById('atOmedium').classList.add('mediumPrio');
+        document.getElementById('atOmedium').classList.remove('mediumPrio_click');
+        document.getElementById('atOlow').classList.add('lowPrio_click');
+        document.getElementById('atOlow').classList.remove('lowPrio');
     }
-    priority= x;
+    atOpriority= x;
 }
 
 /**
  * Diese Funktion soll zum Toggeln der d-none Klasse bei dem Kategoriefeld sein
  */
-function rollCategories(){
-    let dropdownCategories = document.getElementById('dropdownCategories');
-    dropdownCategories.classList.toggle('d-none');     
+function atOrollCategories(){
+    let atOdropdownCategories = document.getElementById('atOdropdownCategories');
+    atOdropdownCategories.classList.toggle('d-none');     
 }
 
 /**
  * Diese Funktion sorgt dafür, dass alle Inputfelder wieder geleert werden
  */
 function clearForm(){
-    assignedPersons=[];
-    category='';
-    subtaskList=[];
-    priority='';
-    document.getElementById('urgent').style.backgroundColor = "white";
-    document.getElementById('medium').style.backgroundColor = "white";
-    document.getElementById('low').style.backgroundColor = "white";
-    document.getElementById('showAssignedPersonInitial').innerHTML='';
+    atOassignedPersons=[];
+    atOcategory='';
+    atOsubtaskList=[];
+    atOpriority='';
+    document.getElementById('atOurgent').style.backgroundColor = "white";
+    document.getElementById('atOmedium').style.backgroundColor = "white";
+    document.getElementById('atOlow').style.backgroundColor = "white";
+    document.getElementById('atOshowAssignedPersonInitial').innerHTML='';
 }
 
 /**
  * Diese Funktion dient zum abspeichern einer Kategorie.
  * @param {*} x 
  */
-function selectCategory(x){
+function atOselectCategory(x){
     if(x =='Technical Task'){;
         document.getElementById('categoryInput').value = x;
     }else if(x=='User Story'){
         document.getElementById('categoryInput').value = x;
     }
-    category=x;
+    atOcategory=x;
 }
 
 /**
  * Diese Funktion dient dazu Unteraufgaben zu erstellen und speichern.
  */
 function addSubtask(){
-    let subtask = document.getElementById('subtask').value.trim();
-    if (subtask) {
-        subtaskList.push(subtask);
-        document.getElementById('subtask').value = "";
+    let atOsubtask = document.getElementById('atOsubtask').value.trim();
+    if (atOsubtask) {
+        atOsubtaskList.push(atOsubtask);
+        document.getElementById('atOsubtask').value = "";
     }
-    renderSubtasks();
+    atOrenderSubtasks();
 }
 
 /**
  * Diese Funktion soll die erstellten Unteraufgaben, die im array subtaskList gespeichert sind rendern.
  */
-function renderSubtasks(){
-    let subtaskListDiv= document.getElementById('subtaskList');
-    subtaskListDiv.innerHTML='';
-    for(i=0; i<subtaskList.length; i++){
-        subtaskListDiv.innerHTML +=`
-        <ul class="oneSubtask" id="oneSubtask-${i}" class="oneSubtask" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
-            <li class="" id="subtaskListText-${i}">${subtaskList[i]}</li>
-            <input class="d-none" value="${subtaskList[i]}" id="editInput-${i}">
-            <div class="d-none editAndTrash" id="editAndTrash-${i}">
-                <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})">
+function atOrenderSubtasks(){
+    let atOsubtaskListDiv= document.getElementById('atOsubtaskList');
+    atOsubtaskListDiv.innerHTML='';
+    for(i=0; i<atOsubtaskList.length; i++){
+        atOsubtaskListDiv.innerHTML +=`
+        <ul class="atOoneSubtask" id="atOoneSubtask-${i}" class="atOoneSubtask" onmouseover="atOsubtaskHoverEffekt(${i})" onmouseout= "atOsubtaskNoHoverEffekt(${i})">
+            <li class="" id="atOsubtaskListText-${i}">${atOsubtaskList[i]}</li>
+            <input class="d-none" value="${atOsubtaskList[i]}" id="atOeditInput-${i}">
+            <div class="d-none editAndTrash" id="atOeditAndTrash-${i}">
+                <img src="../assets/img/editTask.png" id="atOleftImage-${i}" onclick="atOeditSubtask(${i})">
                 |
-                <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})">
+                <img src="../assets/img/deleteTask.png" id="atOrightImage-${i}" onclick="atOdeleteSubtask(${i})">
             </div>
         </ul>
         `;
@@ -221,17 +221,17 @@ function renderSubtasks(){
  * Mit dieser Funktion soll man die Subtask an genau der entsprechenden stelle ändern können.
  * @param {*} i 
  */
-function editSubtask(i){
-    let subtaskListText = document.getElementById(`subtaskListText-${i}`);
-    subtaskListText.classList.add('d-none');
-    let editInput = document.getElementById(`editInput-${i}`);
-    editInput.classList.remove('d-none');
-    let editAndTrash = document.getElementById(`editAndTrash-${i}`);
-    editAndTrash.innerHTML='';
-    editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="leftImage-${i}" onclick="deleteSubtask(${i})">
+function atOeditSubtask(i){
+    let atOsubtaskListText = document.getElementById(`atOsubtaskListText-${i}`);
+    atOsubtaskListText.classList.add('d-none');
+    let atOeditInput = document.getElementById(`atOeditInput-${i}`);
+    atOeditInput.classList.remove('d-none');
+    let atOeditAndTrash = document.getElementById(`atOeditAndTrash-${i}`);
+    atOeditAndTrash.innerHTML='';
+    atOeditAndTrash.innerHTML= `
+    <img src="../assets/img/deleteTask.png" id="atOleftImage-${i}" onclick="atOdeleteSubtask(${i})">
     |
-    <img src="../assets/img/checkTask.png" id="rightImage-${i}" onclick="saveChangedSubtask(${i})">
+    <img src="../assets/img/checkTask.png" id="atOrightImage-${i}" onclick="atOsaveChangedSubtask(${i})">
     `
 }
 
@@ -239,59 +239,59 @@ function editSubtask(i){
  * Durch Aktivierung dieser Funktion können Änderungen an Unteraufgaben gespeichert werden.
  * @param {*} i 
  */
-function saveChangedSubtask(i){
-    let editInput = document.getElementById(`editInput-${i}`).value.trim();
-    subtaskList.splice(i,1, editInput);
-    renderSubtasks();
+function atOsaveChangedSubtask(i){
+    let atOeditInput = document.getElementById(`atOeditInput-${i}`).value.trim();
+    atOsubtaskList.splice(i,1, atOeditInput);
+    atOrenderSubtasks();
 }
 
 /**
  * Diese Funktion dient zum Löschen von subtasks.
  * @param {*} i 
  */
-function deleteSubtask(i){
-    subtaskList.splice(i,1);
-    renderSubtasks();
+function atOdeleteSubtask(i){
+    atOsubtaskList.splice(i,1);
+    atOrenderSubtasks();
 }
 
 /**
  * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.
  * @param {*} i 
  */
-function subtaskNoHoverEffekt(i){
-    let trashAndEdit = document.getElementById(`editAndTrash-${i}`);
-    trashAndEdit.classList.add('d-none');
+function atOsubtaskNoHoverEffekt(i){
+    let atOtrashAndEdit = document.getElementById(`atOeditAndTrash-${i}`);
+    atOtrashAndEdit.classList.add('d-none');
 }
 
 /**
  * Diese Funktion soll den onmouseover effekt hinzufügen.
  * @param {*} i 
  */
-function subtaskHoverEffekt(i){
-    let trashAndEdit = document.getElementById(`editAndTrash-${i}`);
-    trashAndEdit.classList.remove('d-none');
+function atOsubtaskHoverEffekt(i){
+    let atOtrashAndEdit = document.getElementById(`atOeditAndTrash-${i}`);
+    atOtrashAndEdit.classList.remove('d-none');
 }
 
 /**
  * Diese Funktion speichert die ausgewählten Daten in einem Array und schickt sie an die Funktion, die sie an den Server verschickt.
  */
-async function createTask(){
-    let titleOfTask = document.getElementById('titleOfTask').value.trim();
-    let descriptionOfTask = document.getElementById('descriptionOfTask').value.trim();
-    let dateOfTask = document.getElementById('dateOfTask').value.trim();
-    let newTaskInformation ={
-        title: titleOfTask,
-        description: descriptionOfTask,
-        assigned: assignedPersons,
-        dueDate: dateOfTask,
-        category:category,
-        priority:priority,
-        subtaskList:subtaskList,
-        status:"todo",
-        checkedSubtasks:checkedSubtasks,
-        checkedSubtasksCount: 0,
+async function atOcreateTask(){
+    let atOtitleOfTask = document.getElementById('atOtitleOfTask').value.trim();
+    let atOdescriptionOfTask = document.getElementById('atOdescriptionOfTask').value.trim();
+    let atOdateOfTask = document.getElementById('atOdateOfTask').value.trim();
+    let atOnewTaskInformation ={
+        atOtitle: atOtitleOfTask,
+        atOdescription: atOdescriptionOfTask,
+        atOassigned: atOassignedPersons,
+        atOdueDate: atOdateOfTask,
+        atOcategory:atOcategory,
+        atOpriority:atOpriority,
+        atOsubtaskList:atOsubtaskList,
+        atOstatus:"todo",
+        atOcheckedSubtasks:atOcheckedSubtasks,
+        atOcheckedSubtasksCount: 0,
     }
-    await postData("/tasks", newTaskInformation);
+    await postData("/tasks", atOnewTaskInformation);
     clearForm();
     window.location.href ='../html/board.html?msg=Du hast eine neue Task erstellt';
 }
@@ -300,41 +300,41 @@ async function createTask(){
  * Diese Funktion dient zur Erstellung von Farben, falls die Kontakte keine zugeschriebenen Farben haben.
  * @returns 
  */
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
-    let color = '#';
+function atOgetRandomColor() {
+    const atOletters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
+    let atOcolor = '#';
     for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+        atOcolor += atOletters[Math.floor(Math.random() * 16)];
     }
     return color;
   }
 
-function addTaskBoard() {
-    let element = document.getElementById("addTaskOverlayParent");
+function atOaddTask() {
+    let element = document.getElementById("atOaddTaskOverlayParent");
     element.classList.remove("d-none");
     console.log("Für AddTask");
-    let content = document.getElementById('addTaskOverlay');
+    let content = document.getElementById('atOaddTaskOverlay');
     content.innerHTML = `
-            <div class="content" id="content">
-                <form class="form-style" id="formId" onsubmit="createTask(); return false">
-                    <div class="headlineBoard">
+            <div class="atOcontent" id="atOcontent">
+                <form class="atOform-style" id="atOformId" onsubmit="atOcreateTask(); return false">
+                    <div class="atOheadlineBoard">
                         <h1>Add Task</h1>
-                        <button onclick="cancelAddingBoard()"><img src="../assets/icon-overlay-contact/cancel.svg"></button>
+                        <button onclick="atOcancelAddingBoard()"><img src="../assets/icon-overlay-contact/cancel.svg"></button>
                     </div>
-                    <div class="form-style-top">
-                        <div class="form-left" id="formLeft">
-                            <div class="task-title">
+                    <div class="atOform-style-top">
+                        <div class="atOform-left" id="atOformLeft">
+                            <div class="atOtask-title">
                                 <label>Title</label>
-                                <input required placeholder="Title" id="titleOfTask" type="text" />
+                                <input required placeholder="Title" id="atOtitleOfTask" type="text" />
                             </div>
-                            <div class="description-title">
-                                <label for="story">Description</label>
-                                <textarea placeholder="Enter your Description" id="descriptionOfTask"></textarea>
+                            <div class="atOdescription-title">
+                                <label for="atOstory">Description</label>
+                                <textarea placeholder="Enter your Description" id="atOdescriptionOfTask"></textarea>
                             </div>
-                            <div class="assign-to" id="assignDropdown">
+                            <div class="atOassign-to" id="atOassignDropdown">
                                 <label>Assigned to</label>
-                                <div onclick="rollContactsList()" class="assigned-to-input-and-button">
-                                    <input class="assign-to-input" id="assignedPersons"
+                                <div onclick="atOrollContactsList()" class="atOassigned-to-input-and-button">
+                                    <input class="atOassign-to-input" id="atOassignedPersons"
                                         value="Select Contacts to assign">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -349,20 +349,20 @@ function addTaskBoard() {
                                         </g>
                                     </svg>
                                 </div>
-                                <div id="showAssignedPersonInitial" class="show-assigned-persons-initials"></div>
-                                <div class="d-none assign-contacts-list" id="assignContactsList"></div>
+                                <div id="atOshowAssignedPersonInitial" class="atOshow-assigned-persons-initials"></div>
+                                <div class="d-none atOassign-contacts-list" id="atOassignContactsList"></div>
                             </div>
                         </div>
-                        <div class="form-right" id="formRight">
+                        <div class="atOform-right" id="atOformRight">
                             <div class="due-date">
                                 <label>Due date</label>
                                 <input required id="dateOfTask" type="date" id="start" name="trip-start"
                                     placeholder="dd/mm/jjjj">
                             </div>
-                            <div class="prio-content-parent" id="prioContent">
+                            <div class="atOprio-content-parent" id="atOprioContent">
                                 <label>Prio</label>
-                                <div class="prio-content">
-                                    <a id='urgent' class="urgentPrio" href="#" onclick="selectPrio('urgent')">Urgent
+                                <div class="atOprio-content">
+                                    <a id='urgent' class="atOurgentPrio" href="#" onclick="atOselectPrio('urgent')">Urgent
                                         <svg class="svgUrgentPrio" width="21" height="16" viewBox="0 0 21 16" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -373,8 +373,8 @@ function addTaskBoard() {
                                                 fill="#currentColor" />
                                         </svg>
                                     </a>
-                                    <a id='medium' class="mediumPrio" href="#" onclick="selectPrio('medium')">Medium
-                                        <svg class="svgMediumPrio" width="21" height="8" viewBox="0 0 21 8" 
+                                    <a id='medium' class="atOmediumPrio" href="#" onclick="atOselectPrio('medium')">Medium
+                                        <svg class="atOsvgMediumPrio" width="21" height="8" viewBox="0 0 21 8" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z"
@@ -384,8 +384,8 @@ function addTaskBoard() {
                                                 fill="#currentColor" />
                                         </svg>
                                     </a>
-                                    <a id='low' class="lowPrio" href="#" onclick="selectPrio('low')">Low
-                                        <svg class="svgLowPrio" width="21" height="16" viewBox="0 0 21 16" 
+                                    <a id='low' class="atOlowPrio" href="#" onclick="atOselectPrio('low')">Low
+                                        <svg class="atOsvgLowPrio" width="21" height="16" viewBox="0 0 21 16" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M10.2485 9.50589C10.0139 9.5063 9.7854 9.43145 9.59655 9.29238L0.693448 2.72264C0.57761 2.63708 0.47977 2.52957 0.405515 2.40623C0.33126 2.28289 0.282043 2.14614 0.260675 2.00379C0.217521 1.71631 0.290421 1.42347 0.463337 1.1897C0.636253 0.955928 0.895022 0.800371 1.18272 0.757248C1.47041 0.714126 1.76347 0.786972 1.99741 0.95976L10.2485 7.04224L18.4997 0.95976C18.6155 0.874204 18.7471 0.812285 18.8869 0.777538C19.0266 0.742791 19.1719 0.735896 19.3144 0.757248C19.4568 0.7786 19.5937 0.82778 19.7171 0.901981C19.8405 0.976181 19.9481 1.07395 20.0337 1.1897C20.1194 1.30545 20.1813 1.43692 20.2161 1.57661C20.2509 1.71629 20.2578 1.86145 20.2364 2.00379C20.215 2.14614 20.1658 2.28289 20.0916 2.40623C20.0173 2.52957 19.9195 2.63708 19.8036 2.72264L10.9005 9.29238C10.7117 9.43145 10.4831 9.5063 10.2485 9.50589Z"
@@ -397,11 +397,11 @@ function addTaskBoard() {
                                     </a>
                                 </div>
                             </div>
-                            <div class="dropdown" id="categoryDropdown">
+                            <div class="atOdropdown" id="atOcategoryDropdown">
                                 <label>Category</label>
-                                <div class="assigned-to-input-and-button" onclick="rollCategories()">
-                                    <input class="categoryInput" id="categoryInput" placeholder="Select Task Category"  pattern="Technical Task|User Story" required title="Bitte wähle eines der Kategorien aus.">
-                                    <svg onclick="selectTaskCategory()" width="24" height="24" viewBox="0 0 24 24"
+                                <div class="atOassigned-to-input-and-button" onclick="atOrollCategories()">
+                                    <input class="atOcategoryInput" id="atOcategoryInput" placeholder="Select Task Category"  pattern="Technical Task|User Story" required title="Bitte wähle eines der Kategorien aus.">
+                                    <svg onclick="atOselectTaskCategory()" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_210222_6030" style="mask-type:alpha" maskUnits="userSpaceOnUse"
                                             x="0" y="0" width="24" height="24">
@@ -414,11 +414,11 @@ function addTaskBoard() {
                                         </g>
                                     </svg>
                                 </div>
-                                <div class="d-none dropdownCategories" id="dropdownCategories">
-                                    <div class="dropdown-categories" onclick="selectCategory('Technical Task')">
-                                        <a id='category1' href="#" >Technical Task</a>
+                                <div class="d-none atOdropdownCategories" id="atOdropdownCategories">
+                                    <div class="atOdropdown-categories" onclick="atOselectCategory('Technical Task')">
+                                        <a id='atOcategory1' href="#" >Technical Task</a>
                                     </div>
-                                    <div class="dropdown-categories" onclick="selectCategory('User Story')">
+                                    <div class="atOdropdown-categories" onclick="atOselectCategory('User Story')">
                                         <a id='category2' href="#" >User Story</a>
                                     </div>
                                     
@@ -426,25 +426,25 @@ function addTaskBoard() {
                                 </div>
                             </div>
 
-                            <div class="subtask">
+                            <div class="atOsubtask">
                                 <label>Subtasks</label>
-                                <div class="subtask-container">
-                                    <input placeholder=" Add new task" class="subtask-input" id="subtask"
+                                <div class="atOsubtask-container">
+                                    <input placeholder=" Add new task" class="atOsubtask-input" id="atOsubtask"
                                     type="text" />
-                                <div class="subtask-add-button">
-                                    <img onclick="addSubtask()" src="../assets/svg/addButton.svg" alt="">
+                                <div class="atOsubtask-add-button">
+                                    <img onclick="atOaddSubtask()" src="../assets/svg/addButton.svg" alt="">
                                 </div>
                             </div>
-                            <div class="subtask-list" id="subtaskList"></div>
+                            <div class="atOsubtask-list" id="subtaskList"></div>
                             </div>
                     </div>
                     </div>
-            <div class="cancel-submit-buttons">
-                <button class="clear-button" type="reset" onclick="clearForm()">
+            <div class="atOcancel-submit-buttons">
+                <button class="atOclear-button" type="reset" onclick="atOclearForm()">
                     <p>Clear</p>
                     <img src="../assets/icon-overlay-contact/cancel.svg" alt="">
                 </button>
-                <button class="create-button" type="submit">
+                <button class="atOcreate-button" type="submit">
                     <p>Create Task</p>
                     <img src="../assets/icon-overlay-contact/check.svg" alt="">
                 </button>
@@ -453,7 +453,7 @@ function addTaskBoard() {
         </div>
     </div>
     </div>
-    <div class="sidebar_mobile" w3-include-html="footerResponsive.html"></div>
+    <div class="atOsidebar_mobile" w3-include-html="footerResponsive.html"></div>
     `;
 }
   

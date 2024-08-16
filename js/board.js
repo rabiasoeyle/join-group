@@ -369,7 +369,7 @@ function prioritySign(element){
  * Die Id soll gloabal definiert sein, damit man sie bei dem nächsten feld einfügen kann.
  * @param {*} id 
  */
-function startDragging(id) {
+function atOstartDragging(id) {
     currentDraggedElement = id;
 }
 
@@ -377,7 +377,7 @@ function startDragging(id) {
  * Diese Funktion soll es ermöglichen, dass das Element außerhalb der div gelangen kann
  * @param {*} ev 
  */
-function allowDrop(ev) {
+function atOallowDrop(ev) {
     ev.preventDefault();
 }
 
@@ -385,7 +385,7 @@ function allowDrop(ev) {
  * Diese Funktion soll den Status anpassen
  * @param {*} category 
  */
-async function moveTo(event) {
+async function atOmoveTo(event) {
   let status = event.currentTarget.id.replace('Board', '');
   //mit event.currentTarget.id finden wir die id heraus, auf dem sich das gedropte element befindet.
   //da die Ids genauso wie die statuse heißen, nur mit Board am ende, wird board entfernt
@@ -403,7 +403,7 @@ async function moveTo(event) {
  * Um den Container über den man ist hightliten zu können
  * @param {*} id 
  */
-function highlight(id) {
+function atOhighlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
@@ -411,7 +411,7 @@ function highlight(id) {
  * Dies dient dazu den highlight effekt zu removen.
  * @param {*} id 
  */
-function removeHighlight(id) {
+function atOremoveHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
@@ -419,7 +419,7 @@ function removeHighlight(id) {
  * Diese Funktion sorgt dafür, dass eine zufällige Farbe erstellt wird
  * @returns 
  */
-function getRandomColor() {
+function atOgetRandomColor() {
   const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
   let color = '#';
   for (let i = 0; i < 6; i++) {
@@ -428,7 +428,7 @@ function getRandomColor() {
   return color;
 }
 
-function cancelAddingBoard(){
+function atOcancelAddingBoard(){
   nameValue = "";
   emailValue = "";
   numberValue = "";

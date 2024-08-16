@@ -265,6 +265,7 @@ h4{
   flex-direction: column;
   height: 100%;
   justify-content: space-evenly;
+  gap: 24px;
 }
 .task-title , .description-title{
   display: flex;
@@ -403,4 +404,7 @@ h4{
   overflow-y: auto;
   margin-bottom: 24px;
   scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

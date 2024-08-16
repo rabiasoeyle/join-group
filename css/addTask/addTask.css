@@ -309,7 +309,6 @@
   font-size: 20px;
   height: 48px;
   cursor: pointer;
-  width: min(440px, 100%);
   margin-top: 4px;
 }
 

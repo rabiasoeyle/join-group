@@ -22,6 +22,7 @@
 @media (max-width: 1020px) {
   .content {
     height: 83vh;
+    width: 100vw;
     overflow-x: hidden;
   }
 }

@@ -152,6 +152,10 @@ function noChosenPriority(){
 function editAddSubtask(i){
     let subtask = document.getElementById(`subtaskInput-${i}`).value.trim();
     if (subtask) {
+        // Initialisiere subtaskList, falls es nicht existiert
+    if (!tasks[i].hasOwnProperty('subtaskList') || !Array.isArray(tasks[i]['subtaskList'])) {
+        tasks[i]['subtaskList'] = [];
+    }
         tasks[i]['subtaskList'].push(subtask);
         document.getElementById(`subtaskInput-${i}`).value = "";
     }
@@ -229,10 +233,11 @@ function saveChangedSubtask(j,i){
  * @param {*} i 
  */
 function editOverlayDeleteSubtask(i,j){
-    let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
+    if (!tasks[i].hasOwnProperty('checkedSubtasks') || !Array.isArray(tasks[i]['checkedSubtasks'])){
+        let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
     if(index !=-1){
         tasks[i]['checkedSubtasks'].splice(index,1);
-    }
+    }}
     tasks[i]['subtaskList'].splice(j,1);
     renderAllAvaillableSubtasks(i);
 }

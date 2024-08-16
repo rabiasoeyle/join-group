@@ -66,8 +66,8 @@
   .form-style {
     height: 73vh;
   }
-  .subtask-container{
-    height:auto;
+  .form-left {
+    width: 377px
   }
 }
 

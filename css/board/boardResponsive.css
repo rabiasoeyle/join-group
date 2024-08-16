@@ -87,14 +87,15 @@
     .content {
       height: 81vh;
     }
+}
+
+@media (max-width: 1020px) {
+  .content {
+    height: 83vh;
+    width: 100vw;
+    overflow-x: hidden;
   }
-  
-  @media (max-height: 662px) {
-    .content {
-      height: 79vh;
-    }
-  }
-  
+}
   @media (max-height: 540px) {
     .content {
       height: 77vh;

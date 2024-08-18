@@ -268,6 +268,7 @@
   .contacts-list-desktop {
     height: 80vh;
   }
+}
 
 @media (max-height: 600px) {
   .contacts-list-desktop {

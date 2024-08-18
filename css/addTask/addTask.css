@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: flex-start;
   padding: 16px;
-  gap: 16vw;
+  gap: 5vw;
 }
 
 .form-style h1 {
@@ -105,7 +105,7 @@
   text-decoration: none;
   color: black;
   height: 56px;
-  width: 115px;
+  width: 100%;
   padding: 16px 10px 16px 10px;
   border-radius: 10px;
   background-color: white;
@@ -127,12 +127,14 @@
   justify-content: center;
   flex-direction: column;
   gap: 16px;
+  width: 30vw;
 }
 
 .form-left {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 30vw;
 }
 
 .task-title {
@@ -150,7 +152,6 @@
   font-size: 20px;
   height: 48px;
   cursor: pointer;
-  width: min(440px, 100%);
 }
 
 .description-title {
@@ -172,7 +173,6 @@
   font-family: inherit;
   font-size: 20px;
   cursor: pointer;
-  width: min(440px, 100%);
   resize: none;
 }
 

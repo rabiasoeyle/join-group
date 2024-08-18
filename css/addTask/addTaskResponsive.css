@@ -1,37 +1,16 @@
-@media (max-width: 1170px) {
-  .form-style-top {
-    gap: 10vw;
-  }
-}
 
-@media (max-width: 1100px) {
-  .form-style-top {
-    gap: 5vw;
+@media (max-width: 1020px) {
+  .form-left {
+    width: 377px;
   }
-}
-
-@media (max-width: 950px) {
-  .prio-content {
-    min-width: 370px;
-  }
-}
-
-@media (max-height: 900px){
-  .clear-button, .create-button {
-    font-size: 18px;
-    padding: 2vh;
-  }
-}
-
-@media (max-width: 840px) {
-  .prio-content {
-    min-width: 300px;
+  .form-right {
+    width: 377px;
   }
 }
 
 @media (max-height: 850px){
   .form-style {
-    height:60vh;
+    height: 70vh;
   }
   .clear-button, .create-button {
     font-size: 18px;
@@ -39,16 +18,7 @@
   }
 }
 
-@media (max-width: 800px) {
-  .form-style {
-    height: 73vh;
-  }
-  .form-style-top {
-    gap: 3vw;
-  }
-}
-
-@media (max-width: 750px) {
+@media (max-width: 950px) {
   .form-style-top {
     flex-direction: column;
   }
@@ -75,6 +45,9 @@
   .clear-button, .create-button {
     font-size: 18px;
     padding: 2vh;
+  }
+  .content {
+    height: 78vh;
   }
 }
 
@@ -107,9 +80,15 @@
   .form-style {
     height: 61vh;
   }
+  .content {
+    height: 76vh;
+  }
+  .content {
+    height: 74vh;
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .form-style {
     padding: 0;
   }
@@ -142,11 +121,21 @@
     font-size: 16px;
     padding: 4px;
   }
+  .due-date {
+    width: 250px;
+  }
+  .form-left {
+    width: 250px;
+  }
+  .form-right {
+    width: 250px;
+  }
 }
 
 @media (max-height: 400px){
   .content {
     padding: 0;
+    height: 70vh;
   }
   .clear-button, .create-button {
     font-size: 16px;

@@ -50,12 +50,16 @@
     }
 
     .keyMetrics{
-        text-decoration: underline;
-        text-decoration-color:#29abe2;
-        text-decoration-style: solid;
-        text-underline-offset: 8px;
-        
+        display: inline;
+    }
 
+    .highlighted {
+        color: #29abe2;           /* Set text color to blue */
+        text-decoration: underline; /* Underline the text */
+    }
+
+    .normal {
+        text-decoration: none; /* Remove underline */
     }
 
   }

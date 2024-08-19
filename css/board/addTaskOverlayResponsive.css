@@ -1,0 +1,148 @@
+
+@media (max-width: 1020px) {
+    .overlay-add-form-left {
+      width: 377px;
+    }
+    .overlay-add-form-right {
+      width: 377px;
+    }
+  }
+  
+  @media (max-height: 850px){
+    .overlay-add-form-style {
+      height: 70vh;
+    }
+    .overlay-add-clear-button, .overlay-add-create-button {
+      font-size: 18px;
+      padding: 2vh;
+    }
+  }
+  
+  @media (max-width: 950px) {
+    .overlay-add-form-style-top {
+      flex-direction: column;
+    }
+    .overlay-add-subtask-add-button {
+      height: 48px;
+    }
+    .overlay-add-content {
+      padding-left: 0;
+      justify-content: center;
+      padding-top: 42px;
+    }
+    .overlay-add-cancel-submit-buttons {
+      justify-content: center;
+    }
+    .overlay-add-form-style {
+      height: 73vh;
+    }
+    .overlay-add-form-left {
+      width: 377px
+    }
+  }
+  
+  @media (max-height: 700px){
+    .overlay-add-clear-button, .overlay-add-create-button {
+      font-size: 18px;
+      padding: 2vh;
+    }
+    .overlay-add-content {
+      height: 78vh;
+    }
+  }
+  
+  @media (max-height: 670px) {
+    .overlay-add-form-style {
+      height: 72vh;
+    }
+  }
+  
+  @media (max-height: 650px) {
+    .overlay-add-form-style {
+      height: 71vh;
+    }
+  }
+  
+  @media (max-height: 600px){
+    .overlay-add-form-style h1 {
+      font-size: 32px;
+    }
+    .overlay-add-form-style {
+      height: 66vh;
+    }
+    .overlay-add-clear-button, .overlay-add-create-button {
+      font-size: 18px;
+      padding: 2vh;
+    }
+  }
+  
+  @media (max-height: 500px){
+    .overlay-add-form-style {
+      height: 61vh;
+    }
+    .overlay-add-content {
+      height: 76vh;
+    }
+    .overlay-add-content {
+      height: 74vh;
+    }
+  }
+  
+  @media (max-width: 450px) {
+    .overlay-add-form-style {
+      padding: 0;
+    }
+    .overlay-add-task-title input {
+      width: 250px;
+    }
+    .overlay-add-description-title textarea {
+      width: 250px;
+    }
+    .overlay-add-prio-content a {
+      font-size: 12px;
+      padding: 0 !important;
+      width: 250px;
+    }
+    .overlay-add-prio-content {
+      gap: 10px;
+      flex-wrap: wrap;
+      min-width: 270px;
+    }
+    .overlay-add-prio-content-parent {
+      width: 250px;
+    }
+    .overlay-add-assigned-to-input-and-button {
+      width: 250px;
+    }
+    .overlay-add-subtask-container {
+      width: 250px;
+    }
+    .overlay-add-clear-button, .create-button {
+      font-size: 16px;
+      padding: 4px;
+    }
+    .overlay-add-due-date {
+      width: 250px;
+    }
+    .overlay-add-form-left {
+      width: 250px;
+    }
+    .overlay-add-form-right {
+      width: 250px;
+    }
+  }
+  
+  @media (max-height: 400px){
+    .overlay-add-content {
+      padding: 0;
+      height: 70vh;
+    }
+    .overlay-add-clear-button, .overlay-add-create-button {
+      font-size: 16px;
+      padding: 4px;
+    }
+    .overlay-add-form-style {
+      height: 70vh;
+    }
+  }
+  

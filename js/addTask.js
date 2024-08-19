@@ -3,7 +3,7 @@ let firebase_URL =
 let contacts=[];
 let assignedPersons=[];
 let category;
-let priority;
+let priority= 'medium';
 let subtaskList=[];
 let taskInformation=[];
 let initials=[];

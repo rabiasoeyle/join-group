@@ -379,7 +379,16 @@ function startDragging(id) {
  * @param {*} id 
  */
 function endDragging(id) {
-  rotateCard(id); // Karte zurückdrehen beim Beenden des Drag-Vorgangs
+   rotateCard(id); // Karte zurückdrehen beim Beenden des Drag-Vorgangs
+}
+
+function rotateCard(id) {
+  const element = document.getElementById(`oneTaskDiv-${id}`);
+  if (element) {
+      element.classList.toggle('rotate-card');
+  } else {
+      console.error(`Element mit ID ${id} wurde nicht gefunden.`);
+  }
 }
 
 /**
@@ -416,14 +425,6 @@ function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
-function rotateCard(id) {
-  const element = document.getElementById(id);
-  if (element) {
-      element.classList.toggle('rotate-card');
-  } else {
-      console.error(`Element mit ID ${id} wurde nicht gefunden.`);
-  }
-}
 /**
  * Dies dient dazu den highlight effekt zu removen.
  * @param {*} id 

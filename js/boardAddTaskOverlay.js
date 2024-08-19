@@ -18,11 +18,16 @@ function overlayAddTask(status){
     let overlayChild = document.getElementById('addTaskOverlay');
     overlayChild.innerHTML=``;
     overlayChild.innerHTML=`
-    <div class="overlay-add-close-button" onclick="closeAddOverlay()">x</div>
     <form class="overlay-add-form-style" id="overlayAddFormId" onsubmit="overlayAddCreateTask(); return false">
                     <div class="overlay-add-headline">
                         <h1>Add Task</h1>
+                         <div class="overlay-add-close-div" >
+                            <button class="overlay-add-close-button" type="button" onclick="closeAddOverlay()">
+                                <img src="../assets/img/close.png">
+                            </button>
+                        </div>
                     </div>
+                    
                     <div class="overlay-add-form-style-top">
                         <div class="overlay-add-form-left" id="overlayAddFormLeft">
                             <div class="overlay-add-task-title">

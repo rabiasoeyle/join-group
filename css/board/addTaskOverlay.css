@@ -6,13 +6,14 @@
     bottom:0;
     background-color: rgba(0,0,0,0.7);
     z-index:44;
-    display:flex;
-    justify-content: center;
-    align-items: center;
 }
 .add-task-overlay{
-    height: 90%;
-    width:80%;
+    position: relative;
+    top:10%;
+    left:10%;
+    bottom:10%;
+    max-width:80%;
+    right:10%;
     padding: 30px 30px;
     background-color: white;
     border-radius: 24px;
@@ -21,9 +22,21 @@
     flex-direction: column;
     justify-content: space-evenly;
 } 
+.overlay-add-close-div{
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 .overlay-add-close-button{
-    width:40px;
-    height:40px;
+    width:24px;
+    height:24px;
+    background-color: white;
+    border:none;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:0;
 }
 .overlay-add-close-button:hover{
     background-color: #c6cbcf;
@@ -66,7 +79,7 @@
   .overlay-add-headline {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
   
   /* Add some basic styling for the dropdown */

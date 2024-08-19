@@ -28,7 +28,8 @@
 }
 
 .summary_header_dividing_line {
-  width: 1px;
+  border-radius: 2px;
+  width: 3px;
   height: 60px;
   background-color: #29abe2;
   margin-right: 18px;
@@ -41,7 +42,8 @@
   background-color: #D1D1D1;
 }
 
-.summary_borad {
+.summary_board {
+  gap: 12px;
   display: flex;
   align-items: center;
 }
@@ -89,6 +91,7 @@
 }
 
 .summary_part_text {
+  text-align: center;
   font-size: 18px;
   color: #2a3647;
 }

@@ -62,17 +62,16 @@ async function initSummary() {
         document.getElementById('priority').textContent = "Urgent";
     } else if (priorityCounts.medium > 0) {
         displayedPriorityCount = priorityCounts.medium;
-        priorityIcon = "../assets/img/Prio media.png"; // 
+        priorityIcon = "../assets/img/Prio media.png"; 
         document.getElementById('priority').textContent = "Medium";
     } else if (priorityCounts.low > 0) {
         displayedPriorityCount = priorityCounts.low;
-        priorityIcon = "../assets/img/Prio baja.png"; // 
+        priorityIcon = "../assets/img/Prio baja.png"; 
         document.getElementById('priority').textContent = "Low";
     }
     else{
-        priorityIcon = "../assets/img/mail.png"; // 
+        priorityIcon = "../assets/img/mail.png"; 
         document.getElementById('priority').textContent = "None";
-
     }
 
     document.getElementById('urgentCount').textContent = displayedPriorityCount;
@@ -84,9 +83,26 @@ async function initSummary() {
     let year = today.getFullYear(); 
     let formattedDate = `${month}/${day}/${year}`; 
     document.getElementById('date').textContent = formattedDate;
+    setDaytimeGreeting();
 }
 
 async function getAllTasks(path) {
     let response = await fetch(BASE_URL + path + ".json");
     return response.json();
+}
+
+function setDaytimeGreeting() {
+    let now = new Date();
+    let hours = now.getHours();
+    let daytime;
+
+    if (hours >= 0 && hours < 10) {
+        daytime = "Guten Morgen";
+    } else if (hours >= 10 && hours < 20) {
+        daytime = "Guten Tag";
+    } else {
+        daytime = "Guten Abend";
+    }
+
+    document.getElementById('welcomeUser').textContent = daytime;
 }

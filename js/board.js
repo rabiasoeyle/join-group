@@ -371,6 +371,15 @@ function prioritySign(element){
  */
 function startDragging(id) {
     currentDraggedElement = id;
+    rotateCard(id); 
+}
+
+/**
+ * Diese Funktion wird aufgerufen, wenn das Draggen endet
+ * @param {*} id 
+ */
+function endDragging(id) {
+  rotateCard(id); // Karte zurückdrehen beim Beenden des Drag-Vorgangs
 }
 
 /**
@@ -407,6 +416,14 @@ function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
+function rotateCard(id) {
+  const element = document.getElementById(id);
+  if (element) {
+      element.classList.toggle('rotate-card');
+  } else {
+      console.error(`Element mit ID ${id} wurde nicht gefunden.`);
+  }
+}
 /**
  * Dies dient dazu den highlight effekt zu removen.
  * @param {*} id 

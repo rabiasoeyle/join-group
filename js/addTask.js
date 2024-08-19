@@ -82,9 +82,16 @@ function rollContactsList(){
 function showAssignedPersons() {
     let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
     showAssignedPersons.innerHTML='';
-    for(i=0;i<assignedPersons.length;i++){
-        showAssignedPersons.innerHTML += `<div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
+    for(i=0;i<=5;i++){
+        showAssignedPersons.innerHTML += `
+        <div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
         // console.error('Contact not found for assigned person ID:', assignedPersons[i]);
+} // Wenn es mehr als 6 zugewiesene Personen gibt, ein weiteres "Plus"-Div hinzufügen
+if (assignedPersons.length > 6) {
+    showAssignedPersons.innerHTML += `
+        <div style="background-color:white; color:black" class="selected-person-initals-div">
+            +${assignedPersons.length - 6}
+        </div>`;
 }
 } 
 

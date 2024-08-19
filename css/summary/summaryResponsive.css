@@ -113,12 +113,25 @@
         display:block;
     }
 
-
-
-
-
   }
 
+  @media (max-width: 402px){
+    .summary_header p{
+      font-size: 16px;
+    }
+
+    h2{
+      font-size: 38px;
+    }
+    .linkText{
+      display: none;
+    }
+
+    .header-content{
+      justify-content: center;
+    }
+
+  }
 
 
 

@@ -60,7 +60,7 @@
     .summary_header{
       padding: 16px;
       margin: 0px;
-      align-items: center;}
+      text-align: center;}
 
     .summary_header_dividing_line{
         display:none;

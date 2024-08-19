@@ -4,8 +4,7 @@ const BASE_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabas
 async function initSummary() {
     let tasksData = await getAllTasks("tasks");
     let tasksArray = Object.keys(tasksData);
-
-    //
+    
     let statusCounts = {
         todo: 0,
         done: 0,
@@ -60,15 +59,20 @@ async function initSummary() {
     if (priorityCounts.urgent > 0) {
         displayedPriorityCount = priorityCounts.urgent;
         priorityIcon = "../assets/img/Prio alta.png"; 
-        document.getElementById('priority').textContent = "urgent";
+        document.getElementById('priority').textContent = "Urgent";
     } else if (priorityCounts.medium > 0) {
         displayedPriorityCount = priorityCounts.medium;
         priorityIcon = "../assets/img/Prio media.png"; // 
-        document.getElementById('priority').textContent = "medium";
+        document.getElementById('priority').textContent = "Medium";
     } else if (priorityCounts.low > 0) {
         displayedPriorityCount = priorityCounts.low;
         priorityIcon = "../assets/img/Prio baja.png"; // 
-        document.getElementById('priority').textContent = "low";
+        document.getElementById('priority').textContent = "Low";
+    }
+    else{
+        priorityIcon = "../assets/img/mail.png"; // 
+        document.getElementById('priority').textContent = "None";
+
     }
 
     document.getElementById('urgentCount').textContent = displayedPriorityCount;

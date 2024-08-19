@@ -247,6 +247,7 @@ body {
 
 .pricacy_policy_font {
   color: #a8a8a8;
+  text-decoration: none;
 }
 
 .checkbox {
@@ -271,12 +272,12 @@ body {
 }
 
 .privacy_policy_button {
-  border: none;
-  background: white;
   color: #29ABE2;
   font-family: "Inter";
   font-size: 16px;
   cursor: pointer;
+  margin: 1em 0 1em 6px;
+  text-decoration: none;
 }
 
 .pleaseTurnOnEdge {

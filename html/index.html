@@ -35,8 +35,8 @@
                 <div id="login_Content" class="login_Content">
                     <form onsubmit="login()" class="login_base">
                         <h2 class="font_color">Log in</h2>
-                        <input id="loginEmail" class="login_input" placeholder="Email" type="email">
-                        <input id="loginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
+                        <input required id="loginEmail" class="login_input" placeholder="Email" type="email">
+                        <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>
@@ -55,14 +55,14 @@
                             <h2 class="font_color">Sign Up</h2>
                             <div></div>
                         </div>
-                        <input id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
-                        <input id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
-                        <input id="neuUserLoginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                        <input id="neuUserLoginConfirm_Passwort" class="login_input" placeholder="Confirm Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input required id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
+                        <input required id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
+                        <input required id="neuUserLoginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input required id="neuUserLoginConfirm_Passwort" class="login_input" placeholder="Confirm Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         <div class="checkbox_I_Acpept">
-                            <input class="checkbox" type="checkbox">
+                            <input required class="checkbox" type="checkbox">
                             <p class="checkbox_font" href="datenschutz.html">I accept the</p>
-                            <button class="privacy_policy_button" type="button">Privacy policy</button>
+                            <a href="datenschutzNotLogin.html" class="privacy_policy_button">Privacy policy</a>
                         </div>
                         <div>
                             <button type="submit" class="login_button_blue">Sign up</button>
@@ -76,8 +76,8 @@
                 </div>
 
                 <div class="sidebar_bottom">
-                    <p class="pricacy_policy_font pading" href="datenschutz.html">Datenschutz</p>
-                    <p class="pricacy_policy_font" href="impressum.html">Impressum</p>
+                    <a class="pricacy_policy_font pading" href="datenschutzNotLogin.html">Privacy Policy</a>
+                    <a class="pricacy_policy_font" href="impressumNotLogin.html">Legal notice</a>
                 </div>
             </div>
         </div>

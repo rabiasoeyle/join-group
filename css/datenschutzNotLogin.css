@@ -24,14 +24,6 @@ a {
   background-color: #091931;
 }
 
-@media (max-width: 1020px) {
-  .datenschutzContent {
-    overflow-y: scroll;
-    height: 83vh;
-    scrollbar-width: none;
-  }
-}
-
 @media (max-width: 650px) {
   h1 {
     font-size: 34px;
@@ -42,26 +34,5 @@ a {
   h1 {
     font-size: 24px;
     margin-bottom: 8px;
-  }
-  .datenschutzContent {
-    padding: 44px 20px 0px 20px;
-  }
-}
-
-@media (max-height: 900px) {
-  .datenschutzContent {
-    height: 80vh;
-  }
-}
-
-@media (max-height: 500px) {
-  .datenschutzContent {
-    height: 74vh;
-  }
-}
-
-@media (max-height: 350px) {
-  .datenschutzContent {
-    height: 70vh;
   }
 }

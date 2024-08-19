@@ -118,9 +118,11 @@ body {
 
 .sidebar_bottom {
   height: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .main {
@@ -183,6 +185,13 @@ body {
 
 button {
   cursor: pointer;
+}
+
+.sidebaLinks {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
 }
 
 .sidebar_mobile {

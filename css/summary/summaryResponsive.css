@@ -1,9 +1,15 @@
-@media (max-width: 1143px) {
+@media (max-width: 1300px) {
     .user_name{
-        font-size: 0px;
+        display: none;
     }
-    .wilcome_user{
-        font-size: 0px;
+    .welcome_user{
+        display: none;
+    }
+    .summary_content{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -12,8 +18,8 @@
     .user_name{
         font-size: 0px;
     }
-    .wilcome_user{
-        font-size: 0px;
+    .welcome_user{
+        display: none;
     }
 
   }
@@ -29,8 +35,8 @@
     }
 
     .summary_content{
-        padding-left: 0px;
-        padding-top: 0px;
+        padding-left: 24px;
+        padding-top: 32px;
     }
 
 

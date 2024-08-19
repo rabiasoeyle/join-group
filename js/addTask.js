@@ -248,10 +248,11 @@ function clearForm(){
 function renderStartClassPrio(){
     document.getElementById('urgent').classList.add('urgentPrio');
     document.getElementById('urgent').classList.remove('urgentPrio_click');
-    document.getElementById('medium').classList.add('mediumPrio');
-    document.getElementById('medium').classList.remove('mediumPrio_click');
+    document.getElementById('medium').classList.remove('mediumPrio');
+    document.getElementById('medium').classList.add('mediumPrio_click');
     document.getElementById('low').classList.remove('lowPrio_click');
     document.getElementById('low').classList.add('lowPrio');
+    priority ='medium';
 }
 
 /**

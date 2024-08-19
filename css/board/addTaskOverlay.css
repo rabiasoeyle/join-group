@@ -1,4 +1,4 @@
-.atOadd-task-overlay-parent{
+.add-task-overlay-parent{
     position:fixed;
     left:0;
     right:0;
@@ -10,9 +10,9 @@
     justify-content: center;
     align-items: center;
 }
-.atOadd-task-overlay{
+.add-task-overlay{
     height: 90%;
-    width: 512px;
+    width:80%;
     padding: 30px 30px;
     background-color: white;
     border-radius: 24px;
@@ -20,4 +20,496 @@
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
+} 
+.overlay-add-close-button{
+    width:40px;
+    height:40px;
 }
+.overlay-add-close-button:hover{
+    background-color: #c6cbcf;
+    cursor: pointer;
+}
+  .overlay-add-addTask-link-color {
+    background-color: #091931;
+    border-radius: 16px;
+  }
+  .overlay-add-addTask-link-color .overlay-add-icons_sidebar {
+    fill: white;
+  }
+  
+  .overlay-add-form-style {
+    max-width: 1920px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px;
+    gap: 20px;
+    overflow: overlay;
+    scrollbar-width: none;
+  }
+  
+  .overlay-add-form-style-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 5vw;
+  }
+  
+  .overlay-add-form-style h1 {
+    font-size: 61px;
+    padding-left: 16px;
+  }
+  
+  .overlay-add-headline {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  /* Add some basic styling for the dropdown */
+  .overlay-add-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .overlay-add-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .overlay-add-dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    width: 90px;
+    text-decoration: none;
+    display: block;
+    background-color: #c6cbcf;
+  }
+  
+  .overlay-add-dropdown:hover .overlay-add-dropdown-content {
+    display: block;
+  }
+  
+  .overlay-add-dropdown-assigned-to {
+    height: 10px;
+    width: 80%;
+    background-color: antiquewhite;
+  }
+  
+  .overlay-add-assigned-person-initials {
+    border: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin: 3px 6px 3px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px 2px #000000c4;
+  }
+  
+  .overlay-add-assigen_checkbox {
+    margin-left: 8px;
+  }
+  
+  .overlay-add-add-subtask-button:hover {
+    background-color: #c6cbcf;
+    cursor: pointer;
+  }
+  
+  .overlay-add-prio-content {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .overlay-add-prio-content a {
+    text-decoration: none;
+    color: black;
+    height: 56px;
+    width: 100%;
+    padding: 16px 10px 16px 10px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .overlay-add-prio-content-parent {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .overlay-add-form-right {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    width: 30vw;
+  }
+  
+  .overlay-add-form-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 30vw;
+  }
+  
+  .overlay-add-task-title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .overlay-add-task-title input {
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #d1d1d1;
+    font-family: inherit;
+    font-size: 20px;
+    height: 48px;
+    cursor: pointer;
+  }
+  
+  .overlay-add-description-title {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .overlay-add-description-title label {
+    font-size: 20px;
+  }
+  
+  .overlay-add-description-title textarea {
+    padding: 16px;
+    height: 120px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    font-family: inherit;
+    font-size: 20px;
+    cursor: pointer;
+    resize: none;
+  }
+  
+  .overlay-add-assigned-to-input-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    padding: 0 16px;
+    border: unset;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 20px;
+    margin-top: 4px;
+  }
+  
+  .overlay-add-assign-to-input,
+  .overlay-add-categoryInput {
+    border: none;
+    pointer-events: none;
+    width: 100%;
+  }
+  
+  .overlay-add-assign-contacts-list {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    height: 20vh;
+    width: 100%;
+  }
+  
+  .overlay-add-one-person-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .overlay-add-dropdownCategories {
+    position: absolute;
+  }
+  
+  .overlay-add-dropdown-categories {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: white;
+  }
+  
+  .overlay-add-dropdown-categories a {
+    text-decoration: none;
+    color: black;
+    padding: 16px;
+    width: 25vh;
+  }
+  
+  .overlay-add-dropdown-categories a:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .overlay-add-oneSubtask {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .overlay-add-oneSubtask:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .overlay-add-editInput {
+    border: none;
+    background-color: transparent;
+    outline: 0px;
+  }
+  
+  .overlay-add-show-assigned-persons-initials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 23vw;
+  }
+  
+  .overlay-add-selected-person-initals-div:nth-of-type(n+1) {
+    padding: 4px;
+    border: solid 1px transparent;
+    background-color: rgb(168, 100, 11);
+    color: white;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px 2px #000000c4;
+    font-size: 12px;
+    margin: 6px 2px 6px 0px;
+  }
+  
+  .overlay-add-selected-person-initals-div:nth-of-type(n+2) {
+    padding: 4px;
+    border: solid 1px transparent;
+    background-color: rgb(168, 100, 11);
+    color: white;
+    border-radius: 100%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px 2px #000000c4;
+    font-size: 12px;
+    margin: 6px 2px 6px 0px;
+    margin-left: -10px;
+  }
+  
+  
+  .overlay-add-due-date {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .overlay-add-content label {
+    font-size: 20px;
+  }
+  
+  .overlay-add-due-date input {
+    border-radius: 10px;
+    padding: 12px 21px;
+    border: 1px solid #d1d1d1;
+    font-family: inherit;
+    font-size: 20px;
+    height: 48px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  
+  .overlay-add-subtask-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .overlay-add-subtask-input {
+    width: 100%;
+    height: 48px;
+    border: unset;
+    border-radius: 10px 0 0 10px;
+    border: 1px solid #d1d1d1;
+    border-right: 0;
+    margin-top: 4px;
+    font-size: 16px;
+    padding-left: 12px;
+    outline: 0px;
+  }
+  
+  .overlay-add-subtask-add-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: white;
+    padding: 0 16px;
+    border: 1px solid #d1d1d1;
+    border-radius: 0 10px 10px 0;
+    border-left: 0;
+    margin-top: 4px;
+  }
+  
+  .overlay-add-subtask-add-button:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }
+  
+  .overlay-add-cancel-submit-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    width: 100%;
+    padding: 12px 16px 8px 0;
+  }
+  
+  .overlay-add-clear-button,
+  .overlay-add-create-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 16px;
+  }
+  
+  .overlay-add-create-button {
+    background-color: #2a3647;
+    color: white;
+  }
+  
+  .overlay-add-clear-button {
+    background-color: white;
+  }
+  
+  .overlay-add-content {
+    display: flex;
+    padding-left: 48px;
+    padding-top: 64px;
+  }
+  .overlay-add-editAndTrash {
+    display: flex;
+    align-items: center;
+  }
+  
+  .overlay-add-urgentPrio {
+    background-color: white;
+    color: black;
+    fill: #ff3d00;
+  }
+  
+  .overlay-add-urgentPrio:hover {
+    box-shadow: 0px 3px 3px 1px #00000061;
+  }
+  
+  .overlay-add-urgentPrio_click {
+    background-color: #ff3d00 !important;
+    color: white !important;
+    fill: white;
+    stroke: white;
+  }
+  
+  .overlay-add-svgUrgentPrio {
+    color: rgb(255, 255, 255);
+  }
+  
+  .overlay-add-mediumPrio {
+    background-color: white;
+    color: black;
+    fill: #ffa800;
+    stroke: #ffa800;
+  }
+  
+  .overlay-add-mediumPrio:hover {
+    box-shadow: 0px 3px 3px 1px #00000061;
+  }
+  
+  .overlay-add-mediumPrio_click {
+    background-color: #ffa800 !important;
+    color: white !important;
+    fill: white;
+    stroke: white;
+  }
+  
+  .overlay-add-svgMediumPrio {
+    color: rgb(255, 255, 255);
+  }
+  
+  .overlay-add-lowPrio {
+    background-color: white;
+    color: black;
+    fill: #7ae229;
+  }
+  
+  .overlay-add-lowPrio:hover {
+    box-shadow: 0px 3px 3px 1px #00000061;
+  }
+  
+  .overlay-add-lowPrio_click {
+    background-color: #7ae229 !important;
+    color: white !important;
+    fill: white;
+    stroke: white;
+  }
+  
+  .overlay-add-svgLowPrio {
+    color: rgb(255, 255, 255);
+  }
+  
+  .overlay-add-oneSubtask {
+    border-radius: 12px;
+    padding: 4px 12px 4px 18px;
+    list-style-position: inside;
+  }
+  
+  .overlay-add-subtask-list {
+    max-height: 130px;
+    overflow: auto;
+    scrollbar-width: thin;
+  }
+  
+  .overlay-add-deleteSubtask:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.137);
+    border-radius: 8px;
+  }
+  
+  .overlay-add-editSubtask:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.137);
+    border-radius: 8px;
+  }
+  
+  .overlay-add-saveChangedSubtask:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.137);
+    border-radius: 8px;
+  }
+  
+  .overlay-add-saveSubtask:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.137);
+    border-radius: 8px;
+  }
+  

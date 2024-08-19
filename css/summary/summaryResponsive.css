@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 @media (max-width: 1300px) {
     .user_name{
         display: none;
@@ -11,6 +16,9 @@
       flex-direction: column;
       align-items: center;
     }
+    .summary_board{
+      gap: 0px;
+    }
   }
 
 
@@ -21,6 +29,7 @@
     .welcome_user{
         display: none;
     }
+    
 
   }
 
@@ -43,27 +52,44 @@
   }
 
   @media (max-width: 675px){
+
+    .summary_content{
+      padding: 32px 24px;
+    }
+
+    .summary_header{
+      padding: 16px;
+      margin: 0px;
+      align-items: center;}
+
     .summary_header_dividing_line{
         display:none;
     }
+    .summary_board{
+      width: 100%;
+      gap: 0px;
+
+    }
+
+    .summary_container{
+      width: 100%;
+    }
+
 
     .summary_prio {
+        width: 100%;
         background-color: white;
-        width: 264px;
         height: 168px;
         border-radius: 30px;
         padding: 12px;
         display: flex;
         align-items: center;
         justify-content: space-around;
-        margin-top: 0px;
-        margin-left: 12px;
-        margin-right: 0px;
         margin-bottom: 24px;
       }
       
       .summary_part_bottom{
-        width: 264px;
+        width: 100%;
         margin-top: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -71,6 +97,7 @@
       }
 
       .summary_part_top{
+        width: 100%;
         margin-top: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -81,9 +108,15 @@
     .summary_header{
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        padding-left: 20px;
-        padding-top: 32px;
+        align-items: center  
+    }
+
+    .summary_header h2{
+      margin: 0px;
+    }
+
+    .summary_header p{
+      margin: 0px;
     }
 
     .keyMetrics{
@@ -101,6 +134,7 @@
     }
 
     .summary_larger_part{
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -108,13 +142,8 @@
 
   }
 
-  @media (min-width: 674px){
 
-    .summary_header_dividing_line{
-        display:block;
-    }
-
-  }
+  
 
   @media (max-width: 402px){
     .summary_header p{
@@ -128,9 +157,6 @@
       display: none;
     }
 
-    .header-content{
-      justify-content: center;
-    }
 
     .sidebar_mobile{
       justify-content: center;

@@ -47,7 +47,7 @@ async function initSummary() {
         }
     }
 
-    document.getElementById('taskCount').textContent = tasksArray.length;
+    document.getElementById('taskCount').textContent = tasksArray.length -1;
     document.getElementById('todoCount').textContent = statusCounts.todo;
     document.getElementById('doneCount').textContent = statusCounts.done;
     document.getElementById('inProgressCount').textContent = statusCounts.inProgress;
@@ -78,10 +78,19 @@ async function initSummary() {
     document.getElementById('prioIcon').src = priorityIcon; 
 
     let today = new Date();
-    let day = today.getDate().toString().padStart(2, '0'); 
-    let month = (today.getMonth() + 1).toString().padStart(2, '0'); 
-    let year = today.getFullYear(); 
-    let formattedDate = `${month}/${day}/${year}`; 
+    let day = today.getDate().toString().padStart(2, '0');
+    let monthIndex = today.getMonth(); // Monat ist 0-basiert
+    let year = today.getFullYear();
+    
+    // Array mit Monatsnamen
+    const months = [
+      'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+      'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+    ];
+    
+    let month = months[monthIndex];
+    let formattedDate = `${month} ${day}, ${year}`;
+    
     document.getElementById('date').textContent = formattedDate;
     setDaytimeGreeting();
 }

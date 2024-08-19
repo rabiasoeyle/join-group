@@ -55,11 +55,17 @@ function showAssignedPersonsInitial(element){
   assignedPersons = assignedPersons.filter(assignedPerson => 
     contacts.some(contact => contact.name === assignedPerson.name)
 );
-  for(j=0; j<assignedPersons.length; j++){
+  for(j=0; j<=assignedPersons.lenght&&4; j++){
     persons.innerHTML +=`
-    <div class="initals-div-in-task"style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>`;
+    <div class="initals-div-in-task" style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>`;
   }
-   // Optional: Aktualisieren des 'assigned' Felds im Element, falls nötig
+  if(assignedPersons.length>4){
+    persons.innerHTML +=`
+    <div style="background-color:white; color:black" class="initals-div-in-task">
+    +${assignedPersons.length-5}
+    </div>`
+  }
+   //Aktualisieren des 'assigned' Felds im Element
    element['assigned'] = assignedPersons;
 }
 
@@ -444,13 +450,4 @@ function getRandomColor() {
       color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
-}
-
-function cancelAddingBoard(){
-  nameValue = "";
-  emailValue = "";
-  numberValue = "";
-  let overlay = document.getElementById('atOaddTaskOverlayParent');
-  overlay.classList.add("d-none");
-  overlay.classList.remove("d-flex");
 }

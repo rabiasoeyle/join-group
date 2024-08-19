@@ -233,6 +233,9 @@ font-weight: 400;
   stroke: rgb(138, 213, 235);
   /* Ändert die Rahmenfarbe beim Hover */
 }
+.plus-svg-parent{
+  cursor: pointer;
+}
 
 .input-and-button {
   display: flex;

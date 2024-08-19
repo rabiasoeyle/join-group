@@ -1,0 +1,77 @@
+@media (max-width: 1143px) {
+    .user_name{
+        font-size: 0px;
+    }
+    .wilcome_user{
+        font-size: 0px;
+    }
+  }
+
+
+  @media (max-width: 858px){
+    .user_name{
+        font-size: 0px;
+    }
+    .wilcome_user{
+        font-size: 0px;
+    }
+
+  }
+
+  @media (max-width: 768px){
+
+    .summary_header{
+        justify-content: center;
+    }
+
+    .summary_borad{
+        justify-content: center;
+    }
+
+    .summary_content{
+        padding-left: 0px;
+        padding-top: 0px;
+    }
+
+
+  }
+
+  @media (max-width: 675px){
+    .summary_header_dividing_line{
+        display:none;
+    }
+
+    .summary_header{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+        padding-top: 32px;
+    }
+
+    .keyMetrics{
+        text-decoration: underline;
+        text-decoration-color:#29abe2;
+        text-decoration-style: solid;
+        text-underline-offset: 8px;
+        
+
+    }
+
+  }
+
+  @media (min-width: 674px){
+
+    .summary_header_dividing_line{
+        display:block;
+    }
+
+
+
+
+
+  }
+
+
+
+

@@ -32,10 +32,10 @@
 
             <div class="content" id="content">
                 <div id="login_Content" class="login_Content">
-                    <form onsubmit="" class="login_base">
+                    <form onsubmit="login()" class="login_base">
                         <h2 class="font_color">Log in</h2>
-                        <input class="login_input" placeholder="Email" type="email">
-                        <input class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
+                        <input id="loginEmail" class="login_input" placeholder="Email" type="email">
+                        <input id="loginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>
@@ -48,23 +48,23 @@
                 </div>
 
                 <div id="sing_up_content" class="sing_up_content d-none">
-                    <form onsubmit="" class="sing_up_base">
+                    <form onsubmit="neuUser()" class="sing_up_base">
                         <div class="sing_up_headline">
                             <img onclick="singUp()" src="../assets/img/blueArrow.png" alt="Blue Back Arrow">
-                            <h2 class="font_color">Sign up</h2>
+                            <h2 class="font_color">Sign Up</h2>
                             <div></div>
                         </div>
-                        <input class="login_input" placeholder="Name" type="text">
-                        <input class="login_input" placeholder="Email" type="email">
-                        <input class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                        <input class="login_input" placeholder="Confirm Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
+                        <input id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
+                        <input id="neuUserLoginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input id="neuUserLoginConfirm_Passwort" class="login_input" placeholder="Confirm Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         <div class="checkbox_I_Acpept">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font" href="datenschutz.html">I accept the</p>
                             <button class="privacy_policy_button">Privacy policy</button>
                         </div>
                         <div>
-                            <button class="login_button_blue" type="submit">Sign up</button>
+                            <button type="submit" class="login_button_blue" type="submit">Sign up</button>
                         </div>
                     </form>
                 </div>

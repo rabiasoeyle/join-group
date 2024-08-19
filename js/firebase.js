@@ -56,6 +56,18 @@ async function loadContacts(path = "/contacts") {
   idNumberStartValue = idNumberStartValue + 1;
 }
 
+// async function loadLogin(path="/login"){
+//   let response = await fetch(firebase_URL + path + ".json");
+//     let responseToJson = await response.json();
+//     if (responseToJson) {
+//       Object.keys(responseToJson).forEach((key) => {
+//         loginContact.push({
+//           // name: nameValue, email: emailValue, passwort: passwortValue, phone: numberValue, color: colorValue
+//           name:responseToJson[key]["name"],})
+//         })
+//     }
+// }
+
 /**
  * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
  * @param {*} i

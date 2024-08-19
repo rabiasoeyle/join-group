@@ -1,3 +1,6 @@
+let firebase_URL =
+  "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+
 function goToSummary() {
   window.location.href = "../html/summary.html?msg=";
 
@@ -26,15 +29,15 @@ async function neuUser() {
   let passwortValue = document.getElementById("neuUserLoginPasswort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
-  let newContact = {name: nameValue, email: emailValue, passwort: passwortValue, phone: numberValue, color: colorValue,};
+  let newLogin = {name: nameValue, email: emailValue, passwort: passwortValue, phone: numberValue, color: colorValue,};
   nameValue = "";
   emailValue = "";
   passwortValue = "";
   contacts = [];
-  await postData("/contacts", newContact);
-  await loadContacts("/contacts");
-  document.getElementById("contactDetailsBottom").innerHTML = "";
-  console.log(contacts);
+  await postData("/login", newLogin);
+  // await loadLogin("/login");
+  // document.getElementById("contactDetailsBottom").innerHTML = "";
+  console.log(newLogin);
 }
 
 function getRandomColor() {

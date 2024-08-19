@@ -7,7 +7,7 @@
 function boardHTML(i, status){
     let element = status[i];
     return/*html*/`
-          <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})">
+          <div class="one-task-div" draggable="true" ondragstart="startDragging(${element['idNumber']})" ondragend="endDragging(${element['idNumber']})">
              <div class="toggle-content-change-status"style="display:none;" id="changeStatusMenu-${element['idNumber']}" >
                 <button onclick="changeStatusToTodo(${element['idNumber']})">Todo</button>
                 <button onclick="changeStatusToInProgress(${element['idNumber']})">In Progress</button>

@@ -117,6 +117,10 @@ h2 {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
+.rotate-card{
+  transform: rotate(8deg);
+}
+
 .initals-div-in-task:nth-of-type(1) {
   width: 40px;
   height: 40px;

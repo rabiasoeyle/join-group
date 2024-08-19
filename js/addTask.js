@@ -42,6 +42,7 @@ async function renderMainForm(){
 function addAssignedPersons(i){
     let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
     let personName = contacts[i].name;
+    inputCheckbox.checked =!inputCheckbox.checked; 
     if (inputCheckbox.checked) {
         // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
         if (!assignedPersons.includes(person => person.name === personName)) {
@@ -68,10 +69,10 @@ function rollContactsList(){
         //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
         let isChecked = assignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
         assignContactsList.innerHTML +=`
-        <div class="one-person-div">
+        <div class="one-person-div" onclick="addAssignedPersons(${i})">
             <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
             <div>${contacts[i]['name']}</div>
-            <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" onclick="addAssignedPersons(${i})" ${isChecked}>
+            <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" ${isChecked}>
         </div>`;
     }
 }

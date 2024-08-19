@@ -26,18 +26,15 @@ function singUp() {
 async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
-  let passwortValue = document.getElementById("neuUserLoginPasswort").value.trim();
+  let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
-  let newLogin = {name: nameValue, email: emailValue, passwort: passwortValue, phone: numberValue, color: colorValue,};
+  let newLogin = {name: nameValue, email: emailValue, password: passwordValue, phone: numberValue, color: colorValue,};
   nameValue = "";
   emailValue = "";
-  passwortValue = "";
+  passwordValue = "";
   contacts = [];
   await postData("/login", newLogin);
-  // await loadLogin("/login");
-  // document.getElementById("contactDetailsBottom").innerHTML = "";
-  console.log(newLogin);
 }
 
 function getRandomColor() {

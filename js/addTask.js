@@ -3,12 +3,15 @@ let firebase_URL =
 let contacts=[];
 let assignedPersons=[];
 let category;
-let priority= 'medium';
+let priority = 'medium';
 let subtaskList=[];
 let taskInformation=[];
 let initials=[];
 let initialsAssignedPersons=[];
 let checkedSubtasks=[];
+let isDropDownOpenAssigned = false;
+let isDropDownOpenCategory = false;
+
 
 /**
  * Diese Funktion ist zum rendern der Hauptbausteine.
@@ -62,9 +65,11 @@ function addAssignedPersons(i){
 function rollContactsList(){
     let assignContactsList = document.getElementById('assignContactsList');
     assignContactsList.classList.toggle('d-none');
+    // Update true or false
+    isDropDownOpenAssigned = !assignContactsList.classList.contains('d-none');
     assignContactsList.innerHTML='';
-
-    for(let i=0; i<contacts.length; i++){
+    if(isDropDownOpenAssigned){
+         for(let i=0; i<contacts.length; i++){
         // Überprüfen, ob der Kontakt bereits zugewiesen wurde
         //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
         let isChecked = assignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
@@ -74,6 +79,31 @@ function rollContactsList(){
             <div>${contacts[i]['name']}</div>
             <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" ${isChecked}>
         </div>`;
+    }
+         // Add event listener to close the dropdown when clicking outside
+         document.addEventListener('click', closeDropdownOnOutsideClickAssigned);
+        } else {
+            // Remove event listener if dropdown is closed
+            document.removeEventListener('click', closeDropdownOnOutsideClickAssigned);
+        }
+}
+
+/**
+ * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
+ * @param {*} event 
+ */
+function closeDropdownOnOutsideClickAssigned(event) {
+    // Reference to the dropdown and toggle button
+    const assignContactsList = document.getElementById('assignContactsList');
+    const toggleButton = document.querySelector('.assigned-to-input-and-button');
+    // Check if the clicked element is not the dropdown or the toggle button
+    if (!assignContactsList.contains(event.target) && !toggleButton.contains(event.target)) {
+        // Close the dropdown
+        assignContactsList.classList.add('d-none');
+        // Update the flag
+        isDropDownOpenAssigned = false;
+        // Remove the event listener
+        document.removeEventListener('click', closeDropdownOnOutsideClick);
     }
 }
 
@@ -167,9 +197,35 @@ function selectPrio(x){
  */
 function rollCategories(){
     let dropdownCategories = document.getElementById('dropdownCategories');
-    dropdownCategories.classList.toggle('d-none');     
+    dropdownCategories.classList.toggle('d-none');  
+    isDropDownOpenCategory = !dropdownCategories.classList.contains('d-none');   
+    if(isDropDownOpenCategory){
+         // Add event listener to close the dropdown when clicking outside
+         document.addEventListener('click', closeDropdownOnOutsideClickCategory);
+        } else {
+            // Remove event listener if dropdown is closed
+            document.removeEventListener('click', closeDropdownOnOutsideClickCategory);
+    }
 }
 
+/**
+ * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
+ * @param {*} event 
+ */
+function closeDropdownOnOutsideClickCategory(event) {
+    // Reference to the dropdown and toggle button
+    const categories = document.getElementById('dropdownCategories');
+    const toggleButton = document.querySelector('.dropdown');
+    // Check if the clicked element is not the dropdown or the toggle button
+    if (!categories.contains(event.target) && !toggleButton.contains(event.target)) {
+        // Close the dropdown
+        categories.classList.add('d-none');
+        // Update the flag
+        isDropDownOpenCategory = false;
+        // Remove the event listener
+        document.removeEventListener('click', closeDropdownOnOutsideClickCategory);
+    }
+}
 /**
  * Diese Funktion sorgt dafür, dass alle Inputfelder wieder geleert werden
  */

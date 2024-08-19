@@ -105,9 +105,9 @@ function setDaytimeGreeting() {
     let hours = now.getHours();
     let daytime;
 
-    if (hours >= 0 && hours < 10) {
+    if (hours >= 6 && hours < 12) {
         daytime = "Guten Morgen";
-    } else if (hours >= 10 && hours < 20) {
+    } else if (hours >= 12 && hours < 20) {
         daytime = "Guten Tag";
     } else {
         daytime = "Guten Abend";

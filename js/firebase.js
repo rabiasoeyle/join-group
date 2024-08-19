@@ -148,7 +148,6 @@ async function putData(path = "", data) {
     if (!response.ok) {
       throw new Error("Network response was not ok " + response.statusText);
     }
-    console.log("Data successfully updated:", response);
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
   }

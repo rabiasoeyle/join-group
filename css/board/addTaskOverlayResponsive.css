@@ -6,6 +6,10 @@
     .overlay-add-form-right {
       width: 377px;
     }
+    .add-task-overlay{
+        max-width:100%;
+        left:0;
+    }
   }
   
   @media (max-height: 850px){
@@ -19,6 +23,9 @@
   }
   
   @media (max-width: 950px) {
+    .overlay-add-form-style{
+        width:100%;
+    }
     .overlay-add-form-style-top {
       flex-direction: column;
     }
@@ -34,11 +41,28 @@
       justify-content: center;
     }
     .overlay-add-form-style {
-      height: 73vh;
+      height: 90vh;
     }
     .overlay-add-form-left {
       width: 377px
     }
+    .add-task-overlay{
+        min-height:100%;
+        top:0;
+        border-radius: 0;
+    }
+    .overlay-add-headline{
+        flex-direction: column-reverse;
+    }
+    .overlay-add-form-style h1{
+        font-size: 47px;
+    }
+    .overlay-add-clear-button,
+  .overlay-add-create-button {
+    gap: 2px;
+    font-size: 16px;
+    padding: 4px;
+  }
   }
   
   @media (max-height: 700px){
@@ -90,7 +114,7 @@
   
   @media (max-width: 450px) {
     .overlay-add-form-style {
-      padding: 0;
+      padding: 0px;
     }
     .overlay-add-task-title input {
       width: 250px;
@@ -130,6 +154,9 @@
     .overlay-add-form-right {
       width: 250px;
     }
+    .overlay-add-form-style h1 {
+        padding-left: 0px;
+      }
   }
   
   @media (max-height: 400px){

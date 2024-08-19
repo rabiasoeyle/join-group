@@ -193,7 +193,8 @@
 .assign-to-input,
 .categoryInput {
   border: none;
-  gap: 4px;
+  pointer-events: none;
+  width: 100%;
 }
 
 .assign-contacts-list {

@@ -91,6 +91,7 @@
     }
 
     .highlighted {
+        text-underline-offset: 8px;
         text-decoration: underline; /* Underline the text */
         text-decoration-color: #29abe2 ;
     }

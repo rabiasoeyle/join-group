@@ -121,7 +121,6 @@
     height: 70%;
     text-align: left;
     align-items: flex-start;
-    /* padding-bottom: 48px; */
     padding-left: 16px;
     border-radius: 10px 10px 0 0;
   }
@@ -131,9 +130,9 @@
   }
   .profile-picture {
     margin-left: 0%;
-    margin-top: -115%;
-    position: relative;
-    top: -3vh;
+    margin-top: -130%;
+    /* position: relative;
+    top: -3vh; */
   }
   .overlay-new-contact {
     height: 78%;
@@ -263,7 +262,7 @@
     justify-content: center;
   }
   .profile-picture {
-    top: -13vh;
+    margin-top: -180%;
   }
   .contacts-list-desktop {
     height: 80vh;

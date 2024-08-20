@@ -106,11 +106,11 @@ function setDaytimeGreeting() {
     let daytime;
 
     if (hours >= 6 && hours < 12) {
-        daytime = "Guten Morgen";
+        daytime = "Good morning";
     } else if (hours >= 12 && hours < 20) {
-        daytime = "Guten Tag";
+        daytime = "Good day";
     } else {
-        daytime = "Guten Abend";
+        daytime = "Good evening";
     }
 
     document.getElementById('welcomeUser').textContent = daytime;

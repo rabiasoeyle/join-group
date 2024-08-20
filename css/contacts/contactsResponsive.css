@@ -255,6 +255,7 @@
   }
   .add-contact-left {
     border-radius: 0px;
+    height: 40%;
   }
   .profil_replacement_img_big_edit {
     display: flex;

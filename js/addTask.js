@@ -103,7 +103,7 @@ function closeDropdownOnOutsideClickAssigned(event) {
         // Update the flag
         isDropDownOpenAssigned = false;
         // Remove the event listener
-        document.removeEventListener('click', closeDropdownOnOutsideClick);
+        document.removeEventListener('click', closeDropdownOnOutsideClickAssigned);
     }
 }
 
@@ -113,10 +113,9 @@ function closeDropdownOnOutsideClickAssigned(event) {
 function showAssignedPersons() {
     let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
     showAssignedPersons.innerHTML='';
-    for(i=0;i<=5;i++){
+    for(i=0;i<Math.min(assignedPersons.length, 5);i++){
         showAssignedPersons.innerHTML += `
-        <div style="background-color:${assignedPersons[i]['color']}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
-        // console.error('Contact not found for assigned person ID:', assignedPersons[i]);
+        <div style="background-color:${assignedPersons[i].color}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
 } // Wenn es mehr als 6 zugewiesene Personen gibt, ein weiteres "Plus"-Div hinzufügen
 if (assignedPersons.length > 6) {
     showAssignedPersons.innerHTML += `

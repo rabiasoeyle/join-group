@@ -57,7 +57,7 @@ function showAssignedPersonsInitial(element){
 );
   for(j=0; j < Math.min(assignedPersons.length, 4); j++){//falls assignedPersons weniger als 4 ist
     persons.innerHTML +=`
-    <div class="initals-div-in-task" style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>`;
+    <div class="initals-div-in-task" style="background-color:${assignedPersons[j].color}">${profileInitials(assignedPersons[j]['name'])}</div>`;
   }
   if(assignedPersons.length>4){
     persons.innerHTML +=`

@@ -108,7 +108,7 @@ function overlayAddTask(status){
                                 <label>Category</label>
                                 <div class="overlay-add-assigned-to-input-and-button" onclick="overlayAddRollCategories()">
                                     <input class="overlay-add-categoryInput" id="overlayAddCategoryInput" placeholder="Select Task Category"  pattern="Technical Task|User Story" required title="Bitte wähle eines der Kategorien aus.">
-                                    <svg onclick="overlayAddselectTaskCategory()" width="24" height="24" viewBox="0 0 24 24"
+                                    <svg width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_210222_6030" style="mask-type:alpha" maskUnits="userSpaceOnUse"
                                             x="0" y="0" width="24" height="24">
@@ -383,7 +383,7 @@ function overlayAddSelectCategory(x){
     }else if(x=='User Story'){
         document.getElementById('overlayAddCategoryInput').value = x;
     }
-    category=x;
+    overlayAddCategory=x;
 }
 
 /**

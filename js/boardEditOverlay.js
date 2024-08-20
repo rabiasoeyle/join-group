@@ -116,11 +116,12 @@ function saveChangedSubtask(j,i){
  * @param {*} i 
  */
 function editOverlayDeleteSubtask(i,j){
-    if (!tasks[i].hasOwnProperty('checkedSubtasks') || !Array.isArray(tasks[i]['checkedSubtasks'])){
+    if (tasks[i]['checkedSubtasks']){
         let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
     if(index !=-1){
         tasks[i]['checkedSubtasks'].splice(index,1);
     }}
+    tasks[i]['checkedSubtasksCount']= tasks[i]['checkedSubtasks'].length;
     tasks[i]['subtaskList'].splice(j,1);
     renderAllAvaillableSubtasks(i);
 }

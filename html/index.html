@@ -33,7 +33,7 @@
 
             <div class="content" id="content">
                 <div id="login_Content" class="login_Content">
-                    <form onsubmit="login()" class="login_base">
+                    <form onsubmit="login(); return false" class="login_base">
                         <h2 class="font_color">Log in</h2>
                         <input required id="loginEmail" class="login_input" placeholder="Email" type="email">
                         <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">

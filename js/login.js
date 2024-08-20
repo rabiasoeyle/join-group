@@ -65,13 +65,30 @@ async function login(path = "login") {
   Object.keys(responseToJson).forEach((key) => {
     if (responseToJson[key]["email"] === emailValue && responseToJson[key]["password"] === passwordValue) {
       loginSuccessful = true;
-      // Weiterleitung zu einer anderen Seite, z.B.:
-      window.location.href = "../html/summary.html?msg=";
+      let nameElement = responseToJson[key]["name"]
+      loginCorrect(nameElement)      
     }
   });
 
   if (!loginSuccessful) {
-    // Fehlermeldung anzeigen
-    alert("Falsche E-Mail-Adresse oder Passwort. Bitte versuchen Sie es erneut.");
+    loginIncorrect()
   }
+}
+
+function loginCorrect(nameElement) {
+  window.location.href = "../html/summary.html?msg=";
+}
+
+function loginIncorrect() {
+  let content = document.getElementById("loginIncorrect");
+  content.classList.toggle("d-none");
+  content.classList.add('show');
+  setTimeout(function() {
+    content.classList.remove('show');
+    // Warte 1 Sekunde (bis der Fade-out abgeschlossen ist) bevor "d-none" hinzugefügt wird
+    setTimeout(function() {
+      content.classList.add('d-none');
+    }, 1000); // Wartezeit für die Dauer des Fade-out Effekts
+}, 5000);
+
 }

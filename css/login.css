@@ -272,7 +272,7 @@ body {
 }
 
 .privacy_policy_button {
-  color: #29ABE2;
+  color: #29abe2;
   font-family: "Inter";
   font-size: 16px;
   cursor: pointer;
@@ -294,8 +294,43 @@ body {
   z-index: 3;
 }
 
+.loginIncorrect_base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.loginIncorrect {
+  background-color: #2a3647;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 20px;
+}
+
 .d-none {
   display: none !important;
+}
+
+/* Fade-in und fade-out Effekt */
+.fade {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Sichtbares Element */
+.show {
+  display: block;
+  opacity: 1;
 }
 
 /* Responsive */
@@ -417,7 +452,7 @@ body {
   .not_user_mobile {
     margin: 16px 26px 16px 0;
   }
-  .pricacy_policy_font  {
+  .pricacy_policy_font {
     padding: 12px 16px 12px 16px;
   }
   .sing_up_base {

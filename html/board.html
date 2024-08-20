@@ -101,8 +101,8 @@
     </div>
     </div>
     <div class="sidebar_mobile" w3-include-html="footerResponsive.html"></div>
-    <div class="d-none edit-task-overlay" id="editOverlayParent">
-        <div class="edit-task-overlay-content" id="editTaskOverlayContent">
+    <div class="d-none edit-task-overlay" id="editOverlayParent" onclick="closeDetailsOverlay(event)">
+        <div class="edit-task-overlay-content" id="editTaskOverlayContent" onclick="event.stopPropagation();">
         </div>
     </div>
     <div class="d-none add-task-overlay-parent" id="atOaddTaskOverlayParent">

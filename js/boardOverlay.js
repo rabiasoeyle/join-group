@@ -1,41 +1,41 @@
-
-
 /**
  * Diese Funktion soll die Großansicht der Karte anzeigen.
- * @param {*} i 
+ * @param {*} i
  */
-function openDetailedTaskOverlay(i){
-    let editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
-    editTaskOverlayContent.classList.add('edit-task-overlay-content');
-    editTaskOverlayContent.classList.remove('edit-task-overlay-edit');
-    let editOverlayParent = document.getElementById('editOverlayParent');
-    // Zeige das Parent-Overlay an, wenn es ausgeblendet ist
-    if (editOverlayParent.classList.contains('d-none')) {
-        editOverlayParent.classList.remove('d-none');  
-    }
-   
-    editTaskOverlayContent.innerHTML='';
-    editTaskOverlayContent.innerHTML=/*html*/`
+function openDetailedTaskOverlay(i) {
+  let editTaskOverlayContent = document.getElementById(
+    "editTaskOverlayContent"
+  );
+  editTaskOverlayContent.classList.add("edit-task-overlay-content");
+  editTaskOverlayContent.classList.remove("edit-task-overlay-edit");
+  let editOverlayParent = document.getElementById("editOverlayParent");
+  // Zeige das Parent-Overlay an, wenn es ausgeblendet ist
+  if (editOverlayParent.classList.contains("d-none")) {
+    editOverlayParent.classList.remove("d-none");
+  }
+
+  editTaskOverlayContent.innerHTML = "";
+  editTaskOverlayContent.innerHTML = /*html*/ `
               <div class="task-category-and-close-button">
-                  <div class="showDetailTaskOverlayCategory" id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
-                  <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div class="showDetailTaskOverlayCategory" id="showDetailTaskOverlayCategory">${tasks[i]["category"]}</div>
+                  <svg onclick="closeDetailsOverlay(event)" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
               </div>
               <h3 class="showDetailTaskOverlayTitle" id="showDetailTaskOverlayTitle">
-              ${tasks[i]['title']}
+              ${tasks[i]["title"]}
               </h3>
               <div class="scroll-container">
               <h4 class="showDetailTaskOverlayDescription" id="showDetailTaskOverlayDescription">
-              ${tasks[i]['description']}
+              ${tasks[i]["description"]}
               </h4>
               <div class="showDetailTaskOverlayDate">
                   <div>Due Date:</div>
-                  <div id="showDetailTaskOverlayDueDate">${tasks[i]['dueDate']}</div>
+                  <div id="showDetailTaskOverlayDueDate">${tasks[i]["dueDate"]}</div>
               </div>
               <div class="showDetailTaskOverlayPriority">
                   <div>Priority:</div>
-                  <div id="showDetailTaskOverlayPriority">${tasks[i]['priority']}</div>
+                  <div id="showDetailTaskOverlayPriority">${tasks[i]["priority"]}</div>
                   <div id="prioritySVGOverlay"></div>
               </div>
               <div class="showDetailTaskOverlayAssignedTo" id="showDetailTaskOverlayAssignedTo">
@@ -48,7 +48,7 @@ function openDetailedTaskOverlay(i){
               </div>
               </div>
               <div class="delete-or-edit-task-buttons">
-                  <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]['id']}')">
+                  <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]["id"]}')">
                       <img src="../assets/img/deleteTask.png">
                       Delete
                   </div>
@@ -59,16 +59,16 @@ function openDetailedTaskOverlay(i){
                   </div>
               </div>
     `;
-    categorySignOverlay(i);
-    if(tasks[i]['assigned']){
-      showDetailTaskOverlayAssignedTo(i);
-    }
-    if(tasks[i]['subtaskList']){
-       showDetailTaskOverlaySubtasks(i);
-    }
-    if(tasks[i]['priority']){
-      prioritySignOverlay(i);
-    }
+  categorySignOverlay(i);
+  if (tasks[i]["assigned"]) {
+    showDetailTaskOverlayAssignedTo(i);
+  }
+  if (tasks[i]["subtaskList"]) {
+    showDetailTaskOverlaySubtasks(i);
+  }
+  if (tasks[i]["priority"]) {
+    prioritySignOverlay(i);
+  }
   //   // Füge den Event Listener hinzu, aber mit einer minimalen Verzögerung, um DOM-Änderungen zu berücksichtigen
   //   setTimeout(() => {
   //     isOverlayOpen = !editOverlayParent.classList.contains('d-none');
@@ -76,54 +76,55 @@ function openDetailedTaskOverlay(i){
   //         document.addEventListener('click', closeDropdownOnOutsideClickOverlay);
   //     }
   // }, 0);  // Verzögerung, um sicherzustellen, dass der Event Listener korrekt registriert wird
-  }
+}
 //   // Um zu verhindern, dass ein Klick innerhalb des Containers das Overlay schließt
 // document.getElementById('editTaskOverlayContent').addEventListener('click', function(event){
 //   event.stopPropagation();
 // });
-  
+
 /**
  * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
- * @param {*} event 
+ * @param {*} event
  */
 function closeDropdownOnOutsideClickOverlay(event) {
   // Referenz zum Overlay-Container
-  const editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
-  const editOverlayParent = document.getElementById('editOverlayParent');
+  const editTaskOverlayContent = document.getElementById(
+    "editTaskOverlayContent"
+  );
+  const editOverlayParent = document.getElementById("editOverlayParent");
 
   // Überprüfe, ob der Klick außerhalb des Containers erfolgt
   if (!editTaskOverlayContent.contains(event.target)) {
-      // Blende das Parent-Overlay aus
-      editOverlayParent.classList.add('d-none');
-      // Entferne den Event Listener, da das Overlay geschlossen ist
-      document.removeEventListener('click', closeDropdownOnOutsideClickOverlay);
+    // Blende das Parent-Overlay aus
+    editOverlayParent.classList.add("d-none");
+    // Entferne den Event Listener, da das Overlay geschlossen ist
+    document.removeEventListener("click", closeDropdownOnOutsideClickOverlay);
   }
 }
 
-
-  /**
+/**
  * Diese Funktion dient dazu, dass die geänderten Infos zu checkedSubtasks zum Firebase weitergeleitet werden und die Seite sich je nachdem anpasst
- * @param {*} i 
+ * @param {*} i
  */
-async function saveCheckedsubtasks(i){
-    await putData(`/tasks/${tasks[i]['id']}`, tasks[i]);
-    tasks=[];
-    await loadTasks();
-    todoBoard();
-    inProgressBoard();
-    awaitFeedbackBoard();
-    doneBoard();
-    showDetailTaskOverlaySubtasks(i);
-  }
+async function saveCheckedsubtasks(i) {
+  await putData(`/tasks/${tasks[i]["id"]}`, tasks[i]);
+  tasks = [];
+  await loadTasks();
+  todoBoard();
+  inProgressBoard();
+  awaitFeedbackBoard();
+  doneBoard();
+  showDetailTaskOverlaySubtasks(i);
+}
 
-  /**
+/**
  * Diese Funktion sorgt dafür, dass je nach priority, die richtige svg gerendert wird -in der Großansicht
- * @param {*} i 
+ * @param {*} i
  */
-function prioritySignOverlay(i){
-    let priority = document.getElementById('prioritySVGOverlay');
-    if(tasks[i]['priority']=="urgent"){
-      priority.innerHTML += `
+function prioritySignOverlay(i) {
+  let priority = document.getElementById("prioritySVGOverlay");
+  if (tasks[i]["priority"] == "urgent") {
+    priority.innerHTML += `
       <svg class="svgUrgentPrio" width="21" height="16" viewBox="0 0 21 16" 
         xmlns="http://www.w3.org/2000/svg">
         <path
@@ -133,10 +134,9 @@ function prioritySignOverlay(i){
         d="M19.6528 9.50568C19.4182 9.50609 19.1896 9.43124 19.0007 9.29214L10.7487 3.20898L2.49663 9.29214C2.26266 9.46495 1.96957 9.5378 1.68184 9.49468C1.39412 9.45155 1.13532 9.29597 0.962385 9.06218C0.789449 8.82838 0.716541 8.53551 0.7597 8.24799C0.802859 7.96048 0.95855 7.70187 1.19252 7.52906L10.0966 0.958588C10.2853 0.818997 10.5139 0.743652 10.7487 0.743652C10.9835 0.743652 11.212 0.818997 11.4007 0.958588L20.3048 7.52906C20.4908 7.66598 20.6286 7.85809 20.6988 8.07797C20.769 8.29785 20.7678 8.53426 20.6955 8.75344C20.6232 8.97262 20.4834 9.16338 20.2962 9.29847C20.1089 9.43356 19.8837 9.50608 19.6528 9.50568Z"
         fill="#currentColor" />
       </svg>
-    `
-    }else
-    if(tasks[i]['priority']=="medium"){
-      priority.innerHTML += `
+    `;
+  } else if (tasks[i]["priority"] == "medium") {
+    priority.innerHTML += `
        <svg class="svgMediumPrio" width="21" height="8" viewBox="0 0 21 8" 
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -146,10 +146,9 @@ function prioritySignOverlay(i){
             d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z"
             fill="#currentColor" />
       </svg>
-    `
-    }else
-    if(tasks[i]['priority']=="low")
-      priority.innerHTML += `
+    `;
+  } else if (tasks[i]["priority"] == "low")
+    priority.innerHTML += `
      <svg  class="svgLowPrio" width="21" height="16" viewBox="0 0 21 16" 
           xmlns="http://www.w3.org/2000/svg">
           <path
@@ -160,105 +159,113 @@ function prioritySignOverlay(i){
           fill="#currentColor" />
       </svg>
     
-    `
+    `;
+}
+
+/**
+ * Diese Funktion dient dazu, dass die div der Kategorie im Overlay je nach Kategorie gefärbt wird
+ * @param {*} i
+ */
+function categorySignOverlay(i) {
+  let category = document.getElementById(`showDetailTaskOverlayCategory`);
+  if (tasks[i]["category"] == "Technical Task") {
+    category.style.backgroundColor = "#1FD7C1";
+  } else if (tasks[i]["category"] == "User Story") {
+    category.style.backgroundColor = "#0038FF";
   }
-  
-  /**
-   * Diese Funktion dient dazu, dass die div der Kategorie im Overlay je nach Kategorie gefärbt wird
-   * @param {*} i 
-   */
-  function categorySignOverlay(i){
-    let category = document.getElementById(`showDetailTaskOverlayCategory`);
-    if(tasks[i]['category'] =='Technical Task'){
-      category.style.backgroundColor = '#1FD7C1';
-    }else if(tasks[i]['category'] =='User Story'){
-      category.style.backgroundColor ='#0038FF';
-    }category.style.color = 'white';
-  }
-  
-  /**
-   * Diese Funktion soll im Overlay anzeigen, welche Personen der Aufgabe zugeordnet wurden
-   * @param {*} i 
-   */
-  function showDetailTaskOverlayAssignedTo(i){
-    let content = document.getElementById('showDetailTaskOverlayAssignedToChild');
-    content.innerHTML='';
-    let element = tasks[i];
-    for(j=0; j<element['assigned'].length; j++){
-      content.innerHTML +=`
+  category.style.color = "white";
+}
+
+/**
+ * Diese Funktion soll im Overlay anzeigen, welche Personen der Aufgabe zugeordnet wurden
+ * @param {*} i
+ */
+function showDetailTaskOverlayAssignedTo(i) {
+  let content = document.getElementById("showDetailTaskOverlayAssignedToChild");
+  content.innerHTML = "";
+  let element = tasks[i];
+  for (j = 0; j < element["assigned"].length; j++) {
+    content.innerHTML += `
       <div class="overlay-initals-parent">
       <div id="overlayInitials-${j}"></div>
-      <div>${tasks[i]['assigned'][j]['name']}</div>
+      <div>${tasks[i]["assigned"][j]["name"]}</div>
       </div>
       `;
-      showAssignedPersonsInitalsInOverlay(element, j);
-    }
+    showAssignedPersonsInitalsInOverlay(element, j);
   }
-  
-  /**
-   * Diese Funktion zeigt die initialien der zugeordneten Personen im Overlay
-   * @param {*} element 
-   * @param {*} j 
-   */
-  function showAssignedPersonsInitalsInOverlay(element, j){
-    let personsOverlay = document.getElementById(`overlayInitials-${j}`);
-    personsOverlay.innerHTML='';
-    assignedPersons = element['assigned'];
-      personsOverlay.innerHTML +=` 
-      <div class="initials-div-in-task"style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>
-      `
-  }
-  
-  /**
-   * Diese Funktion rendert die Subtasks im Overlay
-   * @param {*} i 
-   */
-  function showDetailTaskOverlaySubtasks(i){
-    let content = document.getElementById('showDetailTaskOverlaySubtasksChild');
-    content.innerHTML='';
-    for(j= 0; j<tasks[i]['subtaskList'].length; j++){
-      let subtask=tasks[i]['subtaskList'][j];
-      let isChecked = tasks[i]['checkedSubtasks'] && tasks[i]['checkedSubtasks'].includes(subtask) ? 'checked' : '';
-      content.innerHTML +=`
+}
+
+/**
+ * Diese Funktion zeigt die initialien der zugeordneten Personen im Overlay
+ * @param {*} element
+ * @param {*} j
+ */
+function showAssignedPersonsInitalsInOverlay(element, j) {
+  let personsOverlay = document.getElementById(`overlayInitials-${j}`);
+  personsOverlay.innerHTML = "";
+  assignedPersons = element["assigned"];
+  personsOverlay.innerHTML += ` 
+      <div class="initials-div-in-task"style="background-color:${
+        assignedPersons[j]["color"]
+      }">${profileInitials(assignedPersons[j]["name"])}</div>
+      `;
+}
+
+/**
+ * Diese Funktion rendert die Subtasks im Overlay
+ * @param {*} i
+ */
+function showDetailTaskOverlaySubtasks(i) {
+  let content = document.getElementById("showDetailTaskOverlaySubtasksChild");
+  content.innerHTML = "";
+  for (j = 0; j < tasks[i]["subtaskList"].length; j++) {
+    let subtask = tasks[i]["subtaskList"][j];
+    let isChecked =
+      tasks[i]["checkedSubtasks"] &&
+      tasks[i]["checkedSubtasks"].includes(subtask)
+        ? "checked"
+        : "";
+    content.innerHTML += `
       <div class="subtask-and-checkbox">
           <input id="inputCheckbox-${i}-${j}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i}, ${j})" ${isChecked}>
           <div>${subtask}</div>
       </div>
-      `
-    }
+      `;
   }
-  
-  /**
-   * Diese Funktion wird ausgeführt, nachdem bei Subtasks eine Aufgabe abgehakt wurde
-   * @param {*} i 
-   * @param {*} j 
-   */
-  function addCheckedSubtasks(i, j){
-    let subtask = tasks[i]['subtaskList'][j]
-    if(!tasks[i].checkedSubtasks){
-      tasks[i]['checkedSubtasks']=[];//zum hinzufügen einer checkedsubtaskArrays
-    }
-    let checkbox = document.getElementById(`inputCheckbox-${i}-${j}`)
-    if(checkbox.checked){
-      if (!tasks[i].checkedSubtasks.includes(subtask)) {
-        tasks[i]['checkedSubtasks'].push(subtask);
+}
+
+/**
+ * Diese Funktion wird ausgeführt, nachdem bei Subtasks eine Aufgabe abgehakt wurde
+ * @param {*} i
+ * @param {*} j
+ */
+function addCheckedSubtasks(i, j) {
+  let subtask = tasks[i]["subtaskList"][j];
+  if (!tasks[i].checkedSubtasks) {
+    tasks[i]["checkedSubtasks"] = []; //zum hinzufügen einer checkedsubtaskArrays
+  }
+  let checkbox = document.getElementById(`inputCheckbox-${i}-${j}`);
+  if (checkbox.checked) {
+    if (!tasks[i].checkedSubtasks.includes(subtask)) {
+      tasks[i]["checkedSubtasks"].push(subtask);
     }
   } else {
     // Entferne die Subtask aus der Liste der abgehakten Subtasks
     let index = tasks[i].checkedSubtasks.indexOf(subtask);
     if (index > -1) {
-        tasks[i].checkedSubtasks.splice(index, 1);
-    }  
+      tasks[i].checkedSubtasks.splice(index, 1);
+    }
   }
-    tasks[i].checkedSubtasksCount = tasks[i].checkedSubtasks.length;
-    saveCheckedsubtasks(i);
-  }
+  tasks[i].checkedSubtasksCount = tasks[i].checkedSubtasks.length;
+  saveCheckedsubtasks(i);
+}
 
-  /**
+/**
  * Diese Funktion dient zum schließen des Overlays.
  */
-function closeDetailsOverlay(){
-    let editOverlayParent = document.getElementById('editOverlayParent');
-    editOverlayParent.classList.add('d-none');
-    isOverlayOpen=!isOverlayOpen;
-  }
+function closeDetailsOverlay(event) {
+  event.stopPropagation();
+  let editOverlayParent = document.getElementById("editOverlayParent");
+  editOverlayParent.classList.add("d-none");
+  isOverlayOpen = !isOverlayOpen;
+}

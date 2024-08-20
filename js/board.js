@@ -55,7 +55,7 @@ function showAssignedPersonsInitial(element){
   assignedPersons = assignedPersons.filter(assignedPerson => 
     contacts.some(contact => contact.name === assignedPerson.name)
 );
-  for(j=0; j<=assignedPersons.lenght&&4; j++){
+  for(j=0; j < Math.min(assignedPersons.length, 4); j++){//falls assignedPersons weniger als 4 ist
     persons.innerHTML +=`
     <div class="initals-div-in-task" style="background-color:${assignedPersons[j]['color']}">${profileInitials(assignedPersons[j]['name'])}</div>`;
   }

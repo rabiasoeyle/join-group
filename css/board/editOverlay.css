@@ -32,6 +32,7 @@
   }
 
   .showDetailTaskOverlayTitle{
+    padding-bottom: 8px;
     font-size: 61px;
     font-weight: 700;
     overflow-wrap: break-word;
@@ -40,7 +41,6 @@
   .showDetailTaskOverlayDescription{
     font-size: 20px;
     font-weight: 400;
-    padding-bottom:24px;
   }
   .showDetailTaskOverlayAssignedTo{
     display: flex;
@@ -100,6 +100,7 @@
    cursor: pointer;
 }
 .task-category-and-close-button{
+  padding: 8px;
     display: flex;
     width: 100%;
     justify-content: space-between;

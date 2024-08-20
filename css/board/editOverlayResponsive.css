@@ -1,4 +1,4 @@
-@media(max-width:800px){
+@media(max-width:544px){
   .edit-task-overlay-content{
       width:100%;
       min-height:100%;
@@ -26,7 +26,6 @@
     .showDetailTaskOverlayDescription{
         font-size: 16px;
         overflow-wrap: break-word;
-        min-height: 80px;
       }
       .delete-or-edit-task-buttons{
         justify-content: center;

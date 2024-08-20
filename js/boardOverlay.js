@@ -1,7 +1,4 @@
-// // Um zu verhindern, dass ein Klick innerhalb des Containers das Overlay schließt
-// document.getElementById('editTaskOverlayContent').addEventListener('click', function(event){
-//   event.stopPropagation();
-// });
+
 
 /**
  * Diese Funktion soll die Großansicht der Karte anzeigen.
@@ -80,6 +77,10 @@ function openDetailedTaskOverlay(i){
   //     }
   // }, 0);  // Verzögerung, um sicherzustellen, dass der Event Listener korrekt registriert wird
   }
+//   // Um zu verhindern, dass ein Klick innerhalb des Containers das Overlay schließt
+// document.getElementById('editTaskOverlayContent').addEventListener('click', function(event){
+//   event.stopPropagation();
+// });
   
 /**
  * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.

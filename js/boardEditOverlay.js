@@ -17,7 +17,17 @@ function openEditTaskOverlay(i){
     }if(tasks[i]['assigned']){
         editOvShowAssignedPersons(i);
     }
- 
+ setMinDate(i);
+}
+
+/**
+ * Diese Funktion soll das aktuelle Datum holen und im Inputfeld min einstellen.
+ */
+function setMinDate(i){
+    // Hole das heutige Datum
+    let today = new Date().toISOString().split('T')[0];
+    // Setze das min-Attribut auf das heutige Datum
+    document.getElementById(`editOverlayDueDate-${i}`).setAttribute('min', today);
 }
 
 /**

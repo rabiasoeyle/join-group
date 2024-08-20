@@ -1,4 +1,5 @@
-let firebase_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+let firebase_URL =
+  "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function goToSummary() {
   window.location.href = "../html/summary.html?msg=";
@@ -42,7 +43,7 @@ async function neuUser() {
   passwordValue = "";
   contacts = [];
   await postData("/login", newLogin);
-  // Es Fehlt noch eine weiter leitung nach dem mein Sein Acc erstellt wurde
+  // Es Fehlt noch eine weiter leitung nach dem mein Sein Acc gemacht wurde
 }
 
 function getRandomColor() {
@@ -57,12 +58,20 @@ function getRandomColor() {
 async function login(path = "login") {
   let response = await fetch(firebase_URL + path + ".json");
   let responseToJson = await response.json();
-  if (responseToJson) {
-    contacts = [];
-    Object.keys(responseToJson).forEach((key) => {
-      if (condition) {
-        
-      }
-    });
+  let emailValue = document.getElementById("loginEmail").value.trim();
+  let passwordValue = document.getElementById("loginPasswort").value.trim();
+  let loginSuccessful = false;
+
+  Object.keys(responseToJson).forEach((key) => {
+    if (responseToJson[key]["email"] === emailValue && responseToJson[key]["password"] === passwordValue) {
+      loginSuccessful = true;
+      // Weiterleitung zu einer anderen Seite, z.B.:
+      window.location.href = "../html/summary.html?msg=";
+    }
+  });
+
+  if (!loginSuccessful) {
+    // Fehlermeldung anzeigen
+    alert("Falsche E-Mail-Adresse oder Passwort. Bitte versuchen Sie es erneut.");
   }
 }

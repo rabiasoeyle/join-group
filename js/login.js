@@ -76,7 +76,8 @@ async function login(path = "login") {
 }
 
 function loginCorrect(nameElement) {
-  window.location.href = "../html/summary.html?msg=";
+  // Den Wert von nameElement in die URL-Parameter einfügen
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 }
 
 function loginIncorrect() {

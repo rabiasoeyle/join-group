@@ -239,6 +239,17 @@ button {
   height: 50px;
 }
 
+.backToLogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+.backToLogin_tap {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1020px) {
   .sidebar {
     display: none;

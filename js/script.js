@@ -29,3 +29,7 @@ function includeHTML() {
     }
   }
 }
+
+function backToLogin() {
+  window.location.href = "../html/index.html";
+}

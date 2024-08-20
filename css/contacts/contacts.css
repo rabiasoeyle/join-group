@@ -248,7 +248,7 @@ span {
   border: solid 1px;
   border-radius: 10px;
   border-color: #d1d1d1;
-  padding: 13px 21px;
+  padding: 13px 40px 13px 20px;
   background-repeat: no-repeat;
   background-position: calc(100% - 15px);
 }

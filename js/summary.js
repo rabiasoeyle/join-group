@@ -107,11 +107,11 @@ async function initSummary() {
     setDaytimeGreeting();
 
     // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
-    const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get("msg");
+    // Name aus dem localStorage auslesen und in die user_name-Div einfügen
+    const userName = localStorage.getItem('username');
     if (userName) {
         document.querySelector('.user_name').textContent = userName;
-    }
+}
 }
 
 async function getAllTasks(path) {

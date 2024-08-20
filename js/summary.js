@@ -18,9 +18,14 @@ async function initSummary() {
         medium: 0
     };
 
+    let nearestFutureDate = null;
+    let nearestTask = null;
+
     for (let j = 0; j < tasksArray.length; j++) {
         let task = tasksData[tasksArray[j]];
         tasks.push({ id: tasksArray[j], ...task });
+        
+        // Statuszählung
         switch (task.status) {
             case "todo":
                 statusCounts.todo++;
@@ -36,6 +41,7 @@ async function initSummary() {
                 break;
         }
 
+        // Prioritätszählung
         if (task.priority === "urgent") {
             priorityCounts.urgent++;
         }
@@ -45,9 +51,17 @@ async function initSummary() {
         if (task.priority === "medium") {
             priorityCounts.medium++;
         }
+
+        // Fälligkeitsdatum Überprüfung
+        let taskDueDate = new Date(task.dueDate);
+        if (taskDueDate > new Date() && (!nearestFutureDate || taskDueDate < nearestFutureDate)) {
+            nearestFutureDate = taskDueDate;
+            nearestTask = task;
+        }
     }
 
-    document.getElementById('taskCount').textContent = tasksArray.length -1;
+    // Metriken aktualisieren
+    document.getElementById('taskCount').textContent = tasksArray.length - 1;
     document.getElementById('todoCount').textContent = statusCounts.todo;
     document.getElementById('doneCount').textContent = statusCounts.done;
     document.getElementById('inProgressCount').textContent = statusCounts.inProgress;
@@ -69,7 +83,7 @@ async function initSummary() {
         priorityIcon = "../assets/img/Prio baja.png"; 
         document.getElementById('priority').textContent = "Low";
     }
-    else{
+    else {
         priorityIcon = "../assets/img/mail.png"; 
         document.getElementById('priority').textContent = "None";
     }
@@ -77,22 +91,27 @@ async function initSummary() {
     document.getElementById('urgentCount').textContent = displayedPriorityCount;
     document.getElementById('prioIcon').src = priorityIcon; 
 
-    let today = new Date();
-    let day = today.getDate().toString().padStart(2, '0');
-    let monthIndex = today.getMonth(); // Monat ist 0-basiert
-    let year = today.getFullYear();
-    
-    // Array mit Monatsnamen
-    const months = [
-      'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-      'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
-    ];
-    
-    let month = months[monthIndex];
-    let formattedDate = `${month} ${day}, ${year}`;
-    
-    document.getElementById('date').textContent = formattedDate;
+    // Datum des nächsten Fälligkeitsdatums in der Zukunft anzeigen
+    if (nearestFutureDate) {
+        const months = [
+            'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+            'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+        ];
+
+        let formattedDate = `${months[nearestFutureDate.getMonth()]} ${nearestFutureDate.getDate().toString().padStart(2, '0')}, ${nearestFutureDate.getFullYear()}`;
+        document.getElementById('date').textContent = formattedDate;
+    } else {
+        document.getElementById('date').textContent = "Kein bevorstehendes Datum";
+    }
+
     setDaytimeGreeting();
+
+    // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get("msg");
+    if (userName) {
+        document.querySelector('.user_name').textContent = userName;
+    }
 }
 
 async function getAllTasks(path) {

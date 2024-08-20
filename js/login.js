@@ -1,8 +1,8 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
-function goToSummary() {
-  window.location.href = "../html/summary.html?msg=";
+  function goToSummary() {
+    window.location.href = "../html/summary.html?msg=Gasterino";
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");
@@ -63,15 +63,26 @@ async function login(path = "login") {
   let loginSuccessful = false;
 
   Object.keys(responseToJson).forEach((key) => {
-    if (responseToJson[key]["email"] === emailValue && responseToJson[key]["password"] === passwordValue) {
+    if (
+      responseToJson[key]["email"] === emailValue &&
+      responseToJson[key]["password"] === passwordValue
+    ) {
       loginSuccessful = true;
-      // Weiterleitung zu einer anderen Seite, z.B.:
-      window.location.href = "../html/summary.html?msg=";
+      let nameElement = responseToJson[key]["name"];
+      loginCorrect(nameElement);
     }
   });
 
   if (!loginSuccessful) {
-    // Fehlermeldung anzeigen
-    alert("Falsche E-Mail-Adresse oder Passwort. Bitte versuchen Sie es erneut.");
+    loginIncorrect();
   }
+}
+
+function loginCorrect(nameElement) {
+  // Den Wert von nameElement in die URL-Parameter einfügen
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
+}
+
+function loginIncorrect() {
+  document.getElementById("error-message").classList.remove("d-none");
 }

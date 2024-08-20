@@ -116,6 +116,10 @@ h2 {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
+.one-task-div:hover {
+  cursor: pointer;
+}
+
 .rotate-card{
   transform: rotate(8deg);
 }
@@ -219,7 +223,12 @@ font-weight: 400;
 
 .drag-area-highlight {
   background-color: rgb(242, 243, 252);
-  border: 2px dashed rgba(138, 212, 235, 0.5);
+  border: 2px dashed rgba(138, 212, 235, 0.5) !important;
+  border-radius: 24px;
+}
+
+.board-content {
+  border: 2px dashed transparent;
   border-radius: 24px;
 }
 

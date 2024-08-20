@@ -21,7 +21,8 @@
 
         <div class="body_right">
             <div class="header">
-                <diV class="headerLogoJoin"><img class="join_Logo" src="../assets/img/join_logo_for_Favicon construction.png"></diV>
+                <diV class="headerLogoJoin"><img class="join_Logo"
+                        src="../assets/img/join_logo_for_Favicon construction.png"></diV>
                 <div id="help_initials" class="help_initials">
                     <p class="not_user" placeholder="Email">Not a Join user?</p>
                     <button class="button_blue" onclick="singUp()">Sing up</button>
@@ -35,8 +36,10 @@
                 <div id="login_Content" class="login_Content">
                     <form onsubmit="login(); return false" class="login_base">
                         <h2 class="font_color">Log in</h2>
+                        <div id="error-message" class="error-message ">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
                         <input required id="loginEmail" class="login_input" placeholder="Email" type="email">
-                        <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
+                        <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>
@@ -57,8 +60,11 @@
                         </div>
                         <input required id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
                         <input required id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
-                        <input required id="neuUserLoginPasswort" class="login_input" placeholder="Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                        <input required id="neuUserLoginConfirm_Passwort" class="login_input" placeholder="Confirm Passwort" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input required id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
+                            type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input required id="neuUserLoginConfirm_Passwort" class="login_input"
+                            placeholder="Confirm Passwort" type="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         <div class="checkbox_I_Acpept">
                             <input required class="checkbox" type="checkbox">
                             <p class="checkbox_font" href="datenschutz.html">I accept the</p>
@@ -81,11 +87,10 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="pleaseTurnOnEdge">
-        <h2>Bitte drehen sie ihr Gerät auf Hochkant drehen</h2>
-    </div>
+        <div class="pleaseTurnOnEdge">
+            <h2>Bitte drehen sie ihr Gerät auf Hochkant drehen</h2>
+        </div>
 </body>
 
 </html>

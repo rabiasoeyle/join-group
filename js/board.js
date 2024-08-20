@@ -28,15 +28,17 @@ async function initBoard() {
 /**
  * Diese Funktion dient zum filtern der Aufgaben.
  */
-function filterTasks(){
+function filterTasks() {
   let searchBar = document.getElementById('searchBar');
-  console.log('filter starten');
-   // Suchbegriff bereinigen
-   let searchQuery = searchBar.value.trim().toLowerCase();
+  let searchQuery = searchBar.value.trim().toLowerCase();
+
   // Filter die Aufgaben, ohne das ursprüngliche tasks-Array zu überschreiben
-  let filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(searchQuery));
-  console.log(filteredTasks)
-  // Wenn du die gefilterten Aufgaben anzeigen möchtest, kannst du hier entsprechende Funktionen aufrufen
+  let filteredTasks = tasks.filter(task =>
+      task.title.toLowerCase().includes(searchQuery) ||
+      (task.description && task.description.toLowerCase().includes(searchQuery))
+  );
+
+  // Aufgaben auf den Boards anzeigen
   todoBoard(filteredTasks);
   inProgressBoard(filteredTasks);
   awaitFeedbackBoard(filteredTasks);

@@ -1,8 +1,8 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
-function goToSummary() {
-  window.location.href = "../html/summary.html?msg=";
+  function goToSummary() {
+    window.location.href = "../html/summary.html?msg=Gasterino";
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");

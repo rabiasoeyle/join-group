@@ -1,5 +1,4 @@
-let firebase_URL =
-  "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+let firebase_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
 function goToSummary() {
   window.location.href = "../html/summary.html?msg=";
@@ -43,6 +42,7 @@ async function neuUser() {
   passwordValue = "";
   contacts = [];
   await postData("/login", newLogin);
+  // Es Fehlt noch eine weiter leitung nach dem mein Sein Acc erstellt wurde
 }
 
 function getRandomColor() {
@@ -54,14 +54,15 @@ function getRandomColor() {
   return color;
 }
 
-function login() {
-  let email = document.getElementById("loginEmail").value.trim();
-  let password = document.getElementById("loginPassword").value.trim();
-  let user = user.find(
-    (u) => u.email == email.value && u.password == password.value
-  );
-  console.log(user);
-  if (user) {
-    console.log("User gefunden");
+async function login(path = "login") {
+  let response = await fetch(firebase_URL + path + ".json");
+  let responseToJson = await response.json();
+  if (responseToJson) {
+    contacts = [];
+    Object.keys(responseToJson).forEach((key) => {
+      if (condition) {
+        
+      }
+    });
   }
 }

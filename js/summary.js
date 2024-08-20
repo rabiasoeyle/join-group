@@ -61,7 +61,7 @@ async function initSummary() {
     }
 
     // Metriken aktualisieren
-    document.getElementById('taskCount').textContent = tasksArray.length -1;
+    document.getElementById('taskCount').textContent = tasksArray.length - 1;
     document.getElementById('todoCount').textContent = statusCounts.todo;
     document.getElementById('doneCount').textContent = statusCounts.done;
     document.getElementById('inProgressCount').textContent = statusCounts.inProgress;
@@ -83,7 +83,7 @@ async function initSummary() {
         priorityIcon = "../assets/img/Prio baja.png"; 
         document.getElementById('priority').textContent = "Low";
     }
-    else{
+    else {
         priorityIcon = "../assets/img/mail.png"; 
         document.getElementById('priority').textContent = "None";
     }
@@ -105,6 +105,13 @@ async function initSummary() {
     }
 
     setDaytimeGreeting();
+
+    // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get("msg");
+    if (userName) {
+        document.querySelector('.user_name').textContent = userName;
+    }
 }
 
 async function getAllTasks(path) {

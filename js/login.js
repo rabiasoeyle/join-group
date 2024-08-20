@@ -1,8 +1,8 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
-function goToSummary() {
-  window.location.href = "../html/summary.html?msg=";
+  function goToSummary() {
+    window.location.href = "../html/summary.html?msg=Gasterino";
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");
@@ -79,7 +79,8 @@ async function login(path = "login") {
 }
 
 function loginCorrect(nameElement) {
-  window.location.href = "../html/summary.html?msg=";
+  // Den Wert von nameElement in die URL-Parameter einfügen
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 }
 
 function loginIncorrect() {

@@ -37,9 +37,9 @@
                     <form onsubmit="login(); return false" class="login_base">
                         <h2 class="font_color">Log in</h2>
                         <div id="error-message" class="error-message d-none">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
-                        <input required id="loginEmail" class="login_input" placeholder="Email" type="email">
+                        <input required id="loginEmail" class="login_input" placeholder="Email" type="email" autocomplete="email">
                         <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden." autocomplete="password">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>

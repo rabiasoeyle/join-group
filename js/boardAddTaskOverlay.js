@@ -182,7 +182,7 @@ function overlayAddRenderStartClassPrio(){
     document.getElementById('overlayAddMedium').classList.add('overlay-add-mediumPrio_click');
     document.getElementById('overlayAddLow').classList.remove('overlay-add-lowPrio_click');
     document.getElementById('overlayAddLow').classList.add('overlay-add-lowPrio');
-    priority ='medium';
+    overlayAddPriority ='medium';
 }
 
 /**

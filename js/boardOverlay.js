@@ -69,37 +69,7 @@ function openDetailedTaskOverlay(i){
     if(tasks[i]['priority']){
       prioritySignOverlay(i);
     }
-  //   // Füge den Event Listener hinzu, aber mit einer minimalen Verzögerung, um DOM-Änderungen zu berücksichtigen
-  //   setTimeout(() => {
-  //     isOverlayOpen = !editOverlayParent.classList.contains('d-none');
-  //     if (isOverlayOpen) {
-  //         document.addEventListener('click', closeDropdownOnOutsideClickOverlay);
-  //     }
-  // }, 0);  // Verzögerung, um sicherzustellen, dass der Event Listener korrekt registriert wird
   }
-//   // Um zu verhindern, dass ein Klick innerhalb des Containers das Overlay schließt
-// document.getElementById('editTaskOverlayContent').addEventListener('click', function(event){
-//   event.stopPropagation();
-// });
-  
-/**
- * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
- * @param {*} event 
- */
-function closeDropdownOnOutsideClickOverlay(event) {
-  // Referenz zum Overlay-Container
-  const editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
-  const editOverlayParent = document.getElementById('editOverlayParent');
-
-  // Überprüfe, ob der Klick außerhalb des Containers erfolgt
-  if (!editTaskOverlayContent.contains(event.target)) {
-      // Blende das Parent-Overlay aus
-      editOverlayParent.classList.add('d-none');
-      // Entferne den Event Listener, da das Overlay geschlossen ist
-      document.removeEventListener('click', closeDropdownOnOutsideClickOverlay);
-  }
-}
-
 
   /**
  * Diese Funktion dient dazu, dass die geänderten Infos zu checkedSubtasks zum Firebase weitergeleitet werden und die Seite sich je nachdem anpasst

@@ -36,6 +36,7 @@
                 <div id="login_Content" class="login_Content">
                     <form onsubmit="login(); return false" class="login_base">
                         <h2 class="font_color">Log in</h2>
+                        <div id="error-message" class="error-message ">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
                         <input required id="loginEmail" class="login_input" placeholder="Email" type="email">
                         <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password"
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden.">
@@ -85,15 +86,7 @@
                     <a class="pricacy_policy_font" href="impressumNotLogin.html">Legal notice</a>
                 </div>
             </div>
-            <div id="loginIncorrect" class="loginIncorrect_base d-none">
-                <div class="loginIncorrect">
-                    <span>The login data was incorrect</span>
-               </div>
-               <div></div>
-            </div>
         </div>
-
-
 
         <div class="pleaseTurnOnEdge">
             <h2>Bitte drehen sie ihr Gerät auf Hochkant drehen</h2>

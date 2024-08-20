@@ -200,7 +200,7 @@ body {
   color: #000000;
   font-size: 62px;
   font-family: "Inter";
-  padding-bottom: 24px;
+  padding: 24px 0 24px 0;
   border-bottom: #29abe2 2px solid;
 }
 
@@ -294,43 +294,20 @@ body {
   z-index: 3;
 }
 
-.loginIncorrect_base {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
-}
-
-.loginIncorrect {
-  background-color: #2a3647;
-  width: 300px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  border-radius: 20px;
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  background-color: #00000026;
+  border-radius: 10px;
+  padding: 12px 21px 12px 21px;
+  margin: 12px;
+  max-width: 440px;
+  width: 40vw;
 }
 
 .d-none {
-  display: none !important;
-}
-
-/* Fade-in und fade-out Effekt */
-.fade {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-/* Sichtbares Element */
-.show {
-  display: block;
-  opacity: 1;
+  display: none;
 }
 
 /* Responsive */
@@ -370,7 +347,7 @@ body {
 
 @media (max-height: 900px) {
   .font_color {
-    padding: 0;
+    margin: 0;
   }
   .header {
     height: 100px;

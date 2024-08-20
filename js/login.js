@@ -63,15 +63,18 @@ async function login(path = "login") {
   let loginSuccessful = false;
 
   Object.keys(responseToJson).forEach((key) => {
-    if (responseToJson[key]["email"] === emailValue && responseToJson[key]["password"] === passwordValue) {
+    if (
+      responseToJson[key]["email"] === emailValue &&
+      responseToJson[key]["password"] === passwordValue
+    ) {
       loginSuccessful = true;
-      let nameElement = responseToJson[key]["name"]
-      loginCorrect(nameElement)      
+      let nameElement = responseToJson[key]["name"];
+      loginCorrect(nameElement);
     }
   });
 
   if (!loginSuccessful) {
-    loginIncorrect()
+    loginIncorrect();
   }
 }
 
@@ -80,15 +83,5 @@ function loginCorrect(nameElement) {
 }
 
 function loginIncorrect() {
-  let content = document.getElementById("loginIncorrect");
-  content.classList.toggle("d-none");
-  content.classList.add('show');
-  setTimeout(function() {
-    content.classList.remove('show');
-    // Warte 1 Sekunde (bis der Fade-out abgeschlossen ist) bevor "d-none" hinzugefügt wird
-    setTimeout(function() {
-      content.classList.add('d-none');
-    }, 1000); // Wartezeit für die Dauer des Fade-out Effekts
-}, 5000);
-
+  document.getElementById("error-message").classList.remove("d-none");
 }

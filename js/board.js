@@ -8,7 +8,7 @@ let firebase_URL =
 let tasks =[];
 let contacts=[];
 let currentDraggedElement;
-let isTouchDevice = ('ontouchstart' in document.documentElement);
+let isOverlayOpen = true;
 let idNumberStartValue = 0;
 let checkedSubTaskNumber = 0;//vorerst ersatznummer für den eigentlichen wert;
 
@@ -59,7 +59,7 @@ function showAssignedPersonsInitial(element){
 );
   for(j=0; j < Math.min(assignedPersons.length, 4); j++){//falls assignedPersons weniger als 4 ist
     persons.innerHTML +=`
-    <div class="initals-div-in-task" style="background-color:${assignedPersons[j].color}">${profileInitials(assignedPersons[j]['name'])}</div>`;
+    <div class="initals-div-in-task" style="background-color:${assignedPersons[j].color}; color:white;">${profileInitials(assignedPersons[j]['name'])}</div>`;
   }
   if(assignedPersons.length>4){
     persons.innerHTML +=`

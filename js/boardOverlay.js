@@ -7,10 +7,16 @@ function openDetailedTaskOverlay(i){
     editTaskOverlayContent.classList.add('edit-task-overlay-content');
     editTaskOverlayContent.classList.remove('edit-task-overlay-edit');
     let editOverlayParent = document.getElementById('editOverlayParent');
-    if(editOverlayParent.classList.contains('d-none')){
-        editOverlayParent.classList.remove('d-none');
+    // Zeige das Parent-Overlay an, wenn es ausgeblendet ist
+    if (editOverlayParent.classList.contains('d-none')) {
+        editOverlayParent.classList.remove('d-none');  
     }
-    // <div id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
+    // Setze das Flag auf true, wenn das Overlay geöffnet ist
+    isOverlayOpen = !isOverlayOpen
+    // Füge den Event Listener hinzu, wenn das Overlay geöffnet ist
+    if (!isOverlayOpen) {
+        document.addEventListener('click', closeDropdownOnOutsideClickOverlay);
+    }
     editTaskOverlayContent.innerHTML='';
     editTaskOverlayContent.innerHTML=/*html*/`
               <div class="task-category-and-close-button">
@@ -68,6 +74,25 @@ function openDetailedTaskOverlay(i){
     }
   }
   
+/**
+ * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
+ * @param {*} event 
+ */
+function closeDropdownOnOutsideClickOverlay(event) {
+  // Referenz zum Overlay-Container
+  const editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
+  const editOverlayParent = document.getElementById('editOverlayParent');
+
+  // Überprüfe, ob der Klick außerhalb des Containers erfolgt
+  if (!editTaskOverlayContent.contains(event.target)) {
+      // Blende das Parent-Overlay aus
+      editOverlayParent.classList.add('d-none');
+      
+      // Entferne den Event Listener, da das Overlay geschlossen ist
+      document.removeEventListener('click', closeDropdownOnOutsideClickOverlay);
+  }
+}
+
   /**
  * Diese Funktion dient dazu, dass die geänderten Infos zu checkedSubtasks zum Firebase weitergeleitet werden und die Seite sich je nachdem anpasst
  * @param {*} i 
@@ -227,4 +252,5 @@ function prioritySignOverlay(i){
 function closeDetailsOverlay(){
     let editOverlayParent = document.getElementById('editOverlayParent');
     editOverlayParent.classList.add('d-none');
+    isOverlayOpen=!isOverlayOpen;
   }

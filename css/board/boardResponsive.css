@@ -22,7 +22,7 @@
   
   @media (max-width: 1020px) {
     .content {
-      height: 83vh;
+      /* height: 83vh; */
       width: 100vw;
       overflow-x: hidden;
     }
@@ -83,17 +83,10 @@
       display: flex;
     }
   }
-  
-  @media (max-height: 850px) {
-    .content {
-      height: 81vh;
-    }
-}
 
 @media (max-width: 1020px) {
   .content {
-    height: 83vh;
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
   }
 }

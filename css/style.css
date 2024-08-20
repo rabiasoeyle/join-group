@@ -27,6 +27,7 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
+  z-index:33;
 }
 
 .header-content {
@@ -51,6 +52,7 @@ body {
   align-items: center;
   padding: 64px 0px;
   min-width: 180px;
+  
 }
 
 .join_Logo {
@@ -201,7 +203,9 @@ button {
   display: flex;
   justify-content: space-around;
   display: none;
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  z-index: 33;
 }
 
 .sidebar_mobile_sector {

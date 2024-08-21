@@ -235,7 +235,7 @@ border-bottom-right-radius: 10px;
   text-decoration: none;
   color: black;
   padding: 16px;
-  width: 25vh;
+  width: 100%;
 }
 
 .dropdown-categories a:hover {

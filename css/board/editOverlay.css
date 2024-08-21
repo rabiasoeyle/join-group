@@ -205,11 +205,17 @@ h4{
   .svgLowPrio {
     color: rgb(255, 255, 255);
   }
-  .one-person-div{
+  .one-person-div-edit{
     display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
+  }
+  .one-person-div-edit-right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:8px;
   }
   .subtask-container {
     display: flex;
@@ -341,7 +347,15 @@ h4{
     border: solid 1px white;
     margin-left: -20px;
   }
-
+.assigned-person-initials-edit{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid 1px white;
+}
 .selected-person-initals-div{
     width: 40px;
     height: 40px;
@@ -367,13 +381,13 @@ h4{
 }
 
 .assign-to{
-  height: auto;
+  max-height: 200px;
 }
 
 .assign-contacts-list{
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 60%;
   width: 100%;
   overflow-y: scroll;
   border: solid 1px #d1d1d1;

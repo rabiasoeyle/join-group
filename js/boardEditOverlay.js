@@ -255,11 +255,14 @@ function rollContactsListEdit(i){
             isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
         }
         assignContactsList.innerHTML += /*html*/ `
-            <div class="one-person-div" onclick="editAddAssignedPersons(${j}, ${i})">
+            <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})">
+                <div class="one-person-div-edit-right">
+                    <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
+                    <div>${contacts[j]['name']}</div>
+                </div>
                 <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
-                <div>${contacts[j]['name']}</div>
             </div>`;
-    }
+}
 }
 
 /**

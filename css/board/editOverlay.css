@@ -211,7 +211,7 @@ h4{
   align-items: center;
   justify-content: space-between;
   padding:4px 16px;
-  border-radius: 16px;
+  border-radius: 8px;
   cursor: pointer;
   margin:1px 0px;
 }
@@ -392,7 +392,7 @@ h4{
 }
 
 .assign-contacts-list{
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   height: 60%;
   width: 100%;
@@ -400,6 +400,15 @@ h4{
   border: solid 1px #d1d1d1;
   border-radius: 12px;
   padding: 8px;
+  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 20%);
+  border-radius: 8px; */
+  overflow-y: scroll;
+    scrollbar-width: thin;
+    height: 20vh;
+    width: 100%;
+    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 20%);
+    border-radius: 8px;
+    height: 60%;
 }
 
 .assign-contacts-list::-webkit-scrollbar {

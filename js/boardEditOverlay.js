@@ -264,7 +264,7 @@ function rollContactsListEdit(i){
             </div>`;
             let input= document.getElementById(`editInputCheckbox-${j}`);
             if(input.checked){
-                document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#091931";
+                document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
                 document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
             }
 }
@@ -317,7 +317,7 @@ function editAddAssignedPersons(j, i){
     // Der Kontakt, der zugewiesen oder entfernt werden soll
     let contact = contacts[j];
     if (checkbox.checked) {
-        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#091931";
+        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
         document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
         // Überprüfen, ob der Kontakt bereits zugewiesen ist
         let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);

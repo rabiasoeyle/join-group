@@ -25,7 +25,7 @@ body {
 
 .sidebar {
   width: 232px;
-  position: sticky;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
@@ -33,11 +33,33 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 64px 0px;
-  background-color: #f6f7f8;
+  animation: Ba 2s;
 }
 
-.headerLogoJoin {
-  display: none;
+@keyframes Ba {
+  0% {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 85%;
+    width: 100%;
+    background-color: #f6f7f8;
+  }
+  20% {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 85%;
+    width: 100%;
+    background-color: #f6f7f8;
+  }
+  100% {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 85%;
+    width: 100%;
+  }
 }
 
 .sidebar_links a {
@@ -102,7 +124,6 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  max-width: 1440px;
 }
 
 .login_base {
@@ -114,6 +135,7 @@ body {
   align-items: center;
   flex-direction: column;
   border-radius: 30px;
+  max-width: 600px;
 }
 
 .sing_up_base {
@@ -310,6 +332,54 @@ body {
   display: none;
 }
 
+.headerLogoJoin {
+  display: none;
+}
+
+.join_Logo {
+  width: 100px;
+  height: 13vh;
+  position: absolute;
+  top: 3vh;
+  left: 4vw;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  animation: Logo 2s;
+}
+
+
+@keyframes Logo {
+  0% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25vw;
+    height: 25vh;
+    object-fit: contain;
+    transform: translate(-50%, -50%)
+  }
+  20% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25vw;
+    height: 25vh;
+    object-fit: contain;
+    transform: translate(-50%, -50%)
+  }
+  100% {
+    position: absolute;
+    top: 3vh;
+    left: 4vw;
+    width: 100px;
+    height: 13vh;
+    object-fit: contain;
+  }
+}
+
 /* Responsive */
 
 @media (max-width: 1020px) {
@@ -363,9 +433,6 @@ body {
 @media (max-height: 700px) {
   .login_base {
     height: 64vh;
-  }
-  .join_Logo {
-    height: 6vh;
   }
   .font_color {
     font-size: 42px;

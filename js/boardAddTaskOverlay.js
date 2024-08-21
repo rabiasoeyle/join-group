@@ -209,7 +209,7 @@ function overlayAddRollContactsList(){
         </div>`;
         let input = document.getElementById(`overlayAddInputCheckbox-${i}`);
         if(input.checked){
-            document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#091931";
+            document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#2a3647";
             document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
         }
     }
@@ -249,7 +249,7 @@ function overlayAddAddAssignedPersons(i){
     let personName = contacts[i].name;
     inputCheckbox.checked =!inputCheckbox.checked; 
     if (inputCheckbox.checked) {
-        document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#091931";
+        document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#2a3647";
         document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
         // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
         if (!overlayAddAssignedPersons.includes(person => person.name === personName)) {

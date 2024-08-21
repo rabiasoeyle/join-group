@@ -256,7 +256,7 @@ function contactDetails(i) {
   let name = document.getElementById(`contactFont-${i}`);
   // Wenn es einen vorherigen Highlight gibt, entfernen Sie die Highlight-Klasse
   if (previouslyHighlighted) {
-    previouslyHighlighted.classList.remove('highlighted');
+    previouslyHighlighted.classList.remove('highlighted-p');
     previouslyHighlighted.classList.add('one-contact-container');
     previouslyHighlightedName.classList.remove('highlighted-name');
   }
@@ -264,7 +264,7 @@ function contactDetails(i) {
   previouslyHighlighted = container;
   previouslyHighlightedName= name;
   previouslyHighlighted.classList.remove('one-contact-container');
-  previouslyHighlighted.classList.add('highlighted');
+  previouslyHighlighted.classList.add('highlighted-p');
   previouslyHighlightedName.classList.add('highlighted-name');
   if(document.documentElement.clientWidth > 840) {
     rightSide.style.display = "flex";

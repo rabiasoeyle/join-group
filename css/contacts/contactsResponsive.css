@@ -88,6 +88,10 @@
   .add-contact-left img {
     width: 40px;
   }
+  .profil_replacement_img_big_edit {
+    height: 120px;
+    top: -3vh;
+  }
 }
 
 @media (max-width: 1020px) {
@@ -131,8 +135,10 @@
   .profile-picture {
     margin-left: 0%;
     margin-top: -130%;
-    /* position: relative;
-    top: -3vh; */
+  }
+  .profil_replacement_img_big_edit {
+    margin-left: 0%;
+    margin-top: -130%;
   }
   .overlay-new-contact {
     height: 78%;
@@ -155,10 +161,16 @@
   .profile-picture {
     top: -1vh;
   }
+  profil_replacement_img_big_edit {
+    top: -1vh;
+  }
 }
 
 @media (max-height: 900px) {
   .profile-picture {
+    top: -2vh;
+  }
+  .profil_replacement_img_big_edit {
     top: -2vh;
   }
   .add-contact-left {
@@ -168,6 +180,9 @@
 
 @media (max-height: 850px) {
   .profile-picture {
+    top: 0vh;
+  }
+  .profil_replacement_img_big_edit {
     top: 0vh;
   }
   .contacts-list-desktop {
@@ -206,6 +221,9 @@
   .profile-picture {
     top: 2vh;
   }
+  .profil_replacement_img_big_edit {
+    top: 2vh;
+  }
   .cancel-button-top {
     height: 40px;
   }
@@ -227,12 +245,21 @@
   .profile-picture {
     top: 4vh;
   }
+  .profil_replacement_img_big_edit {
+    top: 4vh;
+  }
 }
 
 @media (max-height: 670px) {
   .profile-picture {
     top: 4vh;
     height: 80px;
+  }
+  .profil_replacement_img_big_edit {
+    height: 80px;
+    width: 80px;
+    font-size: 32px;
+
   }
   .contacts-list-desktop {
     height: 80vh;
@@ -263,6 +290,9 @@
     justify-content: center;
   }
   .profile-picture {
+    margin-top: -180%;
+  }
+  .profil_replacement_img_big_edit {
     margin-top: -180%;
   }
   .contacts-list-desktop {
@@ -336,6 +366,9 @@
 
 @media (max-height: 500px) {
   .profile-picture {
+    top: 5vh;
+  }
+  .profil_replacement_img_big_edit {
     top: 5vh;
   }
   .contacts-list-desktop {

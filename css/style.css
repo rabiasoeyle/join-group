@@ -156,9 +156,9 @@ body {
 }
 
 .help_initials {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 16px;
   height: 56px;
   width: 104px;
 }
@@ -249,10 +249,16 @@ button {
 .backToLogin_tap {
   margin-bottom: 0;
 }
+
+.dropdown {
+  position: absolute;
+  display: none;
+}
+
 .dropdown-menu-content{
-/* display: none; */
+display:block;
 position: absolute;
-right: 40px;
+right: 35px;
 top: 68px;
 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 z-index: 10;

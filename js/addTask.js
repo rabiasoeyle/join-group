@@ -13,6 +13,14 @@ let isDropDownOpenAssigned = false;
 let isDropDownOpenCategory = false;
 
 
+window.addEventListener('load', () => {
+    const circle = document.getElementById('circle');
+    if (circle) {
+        const userStatus = localStorage.getItem('userStatus');
+        circle.textContent = userStatus || 'Not logged in';
+    }
+});
+
 /**
  * Diese Funktion ist zum rendern der Hauptbausteine.
  */

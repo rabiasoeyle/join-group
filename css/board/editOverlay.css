@@ -1,30 +1,24 @@
-*{
-  box-sizing: border-box;
+.edit-task-overlay-content {
+  height: 90%;
+  width: 512px;
+  padding: 30px 30px;
+  background-color: white;
+  border-radius: 24px;
+  z-index: 46;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  right: -100%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: right 0.5s ease-in-out;
 }
-.edit-task-overlay{
-    position:fixed;
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
-    background-color: rgba(0,0,0,0.7);
-    z-index:44;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .edit-task-overlay-content {
-    height: 90%;
-    width: 512px;
-    padding: 30px 30px;
-    background-color: white;
-    border-radius: 24px;
-    z-index:46;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    
-  }
+
+.slide-in {
+  right: 50%;
+  transform: translateX(50%) translateY(-50%);
+}
 
   .showDetailTaskOverlayCategory{
     padding: 4px 24px;

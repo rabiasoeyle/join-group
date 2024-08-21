@@ -3,15 +3,14 @@
  * @param {*} i
  */
 function openDetailedTaskOverlay(i) {
-  let editTaskOverlayContent = document.getElementById(
-    "editTaskOverlayContent"
-  );
+  let editTaskOverlayContent = document.getElementById("editTaskOverlayContent");
+  editTaskOverlayContent.classList.remove("slide-in");
+  void editTaskOverlayContent.offsetWidth;
   editTaskOverlayContent.classList.add("edit-task-overlay-content");
-  editTaskOverlayContent.classList.remove("edit-task-overlay-edit");
+  document.body.classList.add("no-scroll");
   let editOverlayParent = document.getElementById("editOverlayParent");
-  // Zeige das Parent-Overlay an, wenn es ausgeblendet ist
   if (editOverlayParent.classList.contains("d-none")) {
-    editOverlayParent.classList.remove("d-none");
+      editOverlayParent.classList.remove("d-none");
   }
 
   editTaskOverlayContent.innerHTML = "";
@@ -69,6 +68,15 @@ function openDetailedTaskOverlay(i) {
     if(tasks[i]['priority']){
       prioritySignOverlay(i);
     }
+    // Add the slide-in class after a small delay to trigger the animation
+    setTimeout(() => {
+      editTaskOverlayContent.classList.add("slide-in");
+
+      // Re-enable scrolling after the animation ends
+      editTaskOverlayContent.addEventListener('transitionend', () => {
+          document.body.classList.remove("no-scroll");
+      }, { once: true });
+  }, 10);
   }
 
 /**

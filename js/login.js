@@ -3,7 +3,7 @@ let firebase_URL =
 
   function goToSummary() {
     window.location.href = "../html/summary.html?";
-    localStorage.setItem('username', 'Gasterino');
+    localStorage.setItem('username', 'Guest User');
     // Den Wert von nameElement in die URL-Parameter einfügen
     window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 

@@ -23,6 +23,8 @@ async function initBoard() {
     inProgressBoard();
     awaitFeedbackBoard();
     doneBoard();
+    const userName = localStorage.getItem('username');
+    document.getElementById('circle').textContent = userName;
 }
 /**
  * Diese Funktion filtert die Aufgaben basierend auf dem Suchbegriff.

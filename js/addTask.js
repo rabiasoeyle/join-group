@@ -28,6 +28,7 @@ function initAddTask() {
     renderMainForm(); 
     setMinDate();
     
+    
 }
 
 /**
@@ -45,6 +46,8 @@ function setMinDate(){
  */
 async function renderMainForm(){
     await loadContacts();
+    const userName = localStorage.getItem('username');
+    document.getElementById('circle').textContent = userName;
 }
 
 /**

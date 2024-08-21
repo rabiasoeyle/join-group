@@ -109,8 +109,9 @@ async function initSummary() {
     // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
     // Name aus dem localStorage auslesen und in die user_name-Div einfügen
     const userName = localStorage.getItem('username');
+    const usernameInitial = localStorage.getItem('usernameInitial');
         document.querySelector('.user_name').textContent = userName;
-        document.getElementById('circle').textContent = userName;
+        document.getElementById('circle').textContent = usernameInitial;
 }
 
 async function getAllTasks(path) {

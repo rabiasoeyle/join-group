@@ -3,7 +3,8 @@ let firebase_URL =
 
   function goToSummary() {
     window.location.href = "../html/summary.html?";
-    localStorage.setItem('username', 'GU');
+    localStorage.setItem('username', 'Guest User');
+    localStorage.setItem('usernameInitial', 'GU');
     // Den Wert von nameElement in die URL-Parameter einfügen
     window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 
@@ -82,10 +83,19 @@ async function login(path = "login") {
 }
 
 function loginCorrect(nameElement) {
-  // Den Wert von nameElement lokal speichern
+  // Speichern des gesamten Namens unter 'username'
   localStorage.setItem('username', nameElement);
 
-  // Den Wert von nameElement in die URL-Parameter einfügen
+  // Split des Namens in Vorname und Nachname
+  let names = nameElement.split(' ');
+  
+  // Anfangsbuchstaben der Namen extrahieren
+  let initials = names.map(name => name.charAt(0).toUpperCase()).join('');
+  
+  // Speichern der Initialen unter 'usernameInitial'
+  localStorage.setItem('usernameInitial', initials);
+
+  // Weiterleiten zur Zusammenfassungsseite mit dem Namen als URL-Parameter
   window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 }
 

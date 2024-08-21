@@ -46,8 +46,8 @@ function setMinDate(){
  */
 async function renderMainForm(){
     await loadContacts();
-    const userName = localStorage.getItem('username');
-    document.getElementById('circle').textContent = userName;
+    const usernameInitial = localStorage.getItem('usernameInitial');
+    document.getElementById('circle').textContent = usernameInitial;
 }
 
 /**

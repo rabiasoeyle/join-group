@@ -68,39 +68,46 @@ function addAssignedPersons(i){
 /**
  * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
  */
-function rollContactsList(){
+function rollContactsList() {
     let assignContactsList = document.getElementById('assignContactsList');
     assignContactsList.classList.toggle('d-none');
+
     // Update true or false
     isDropDownOpenAssigned = !assignContactsList.classList.contains('d-none');
-    assignContactsList.innerHTML='';
-    if(isDropDownOpenAssigned){
-         for(let i=0; i<contacts.length; i++){
-        // Überprüfen, ob der Kontakt bereits zugewiesen wurde
-        //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
-        let isChecked = assignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML +=`
-        <div class="one-person-div" onclick="addAssignedPersons(${i})" id="onePersonDiv-${i}">
-            <div class="one-person-div-left">
-                <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
-                <div>${contacts[i]['name']}</div>
-            </div>
-            <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" ${isChecked}>
-        </div>`;
-        let input = document.getElementById(`inputCheckbox-${i}`);
-        if(input.checked){
-            document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#2a3647";
-            document.getElementById(`onePersonDiv-${i}`).style.color = "white";
+    assignContactsList.innerHTML = '';
+
+    if (isDropDownOpenAssigned) {
+        for (let i = 0; i < contacts.length; i++) {
+            // Überprüfen, ob der Kontakt bereits zugewiesen wurde
+            let isChecked = assignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
+            
+            assignContactsList.innerHTML += /*html*/`
+                <div class="one-person-div" onclick="addAssignedPersons(${i})" id="onePersonDiv-${i}">
+                    <div class="one-person-div-left">
+                        <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">
+                            ${profileInitials(i)}
+                        </div>
+                        <div>${contacts[i]['name']}</div>
+                    </div>
+                    <input id="inputCheckbox-${i}" class="assign-checkbox" type="checkbox" ${isChecked}>
+                    <label for="inputCheckbox-${i}"></label>
+                </div>`;
+            
+            let input = document.getElementById(`inputCheckbox-${i}`);
+            if (input.checked) {
+                document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#2a3647";
+                document.getElementById(`onePersonDiv-${i}`).style.color = "white";
+            }
         }
+
+        // Add event listener to close the dropdown when clicking outside
+        document.addEventListener('click', closeDropdownOnOutsideClickAssigned);
+    } else {
+        // Remove event listener if dropdown is closed
+        document.removeEventListener('click', closeDropdownOnOutsideClickAssigned);
     }
-         // Add event listener to close the dropdown when clicking outside
-         document.addEventListener('click', closeDropdownOnOutsideClickAssigned);
-        } else {
-            // Remove event listener if dropdown is closed
-            document.removeEventListener('click', closeDropdownOnOutsideClickAssigned);
-        }
-        
 }
+
 
 /**
  * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.

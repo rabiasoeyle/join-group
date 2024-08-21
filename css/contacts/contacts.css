@@ -1,3 +1,7 @@
+.header {
+  z-index: unset !important;
+}
+
 .contacts-list-desktop {
   background-color: white;
   height: 93vh;
@@ -442,7 +446,7 @@ span {
   align-items: center;
 }
 
-.highlighted{
+.highlighted {
   background-color: #2a3647;
   display: flex;
   padding: 16px 0 16px 16px;
@@ -451,6 +455,6 @@ span {
   gap: 12%;
   transition: background-color 125ms;
 }
-.highlighted-name{
-  color:white;
+.highlighted-name {
+  color: white;
 }

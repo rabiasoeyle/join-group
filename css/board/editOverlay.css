@@ -456,7 +456,24 @@ h4{
   flex-direction: column;
   gap: 16px;
 }
-.assigen_checkbox {
+/* .assign-checkbox {
   margin-left: 8px;
   pointer-events: none;
+} */
+
+.subtask-and-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.subtask-and-checkbox label {
+  display: inline-block;	
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+  background-image: url(../../assets/img/checkbox_unchecked.png);
+  background-size: cover;
+}
+
+.subtask-and-checkbox input[type="checkbox"]:checked + label {
+	background-image: url(../../assets/img/checkbox_checked.png);
 }

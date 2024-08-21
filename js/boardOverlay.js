@@ -190,9 +190,10 @@ function showDetailTaskOverlaySubtasks(i) {
       tasks[i]["checkedSubtasks"].includes(subtask)
         ? "checked"
         : "";
-    content.innerHTML += `
+    content.innerHTML += /*html*/`
       <div class="subtask-and-checkbox" onclick="addCheckedSubtasks(${i}, ${j})">
-          <input id="inputCheckbox-${i}-${j}" class="assigen_checkbox" type="checkbox"  ${isChecked}>
+          <input id="inputCheckbox-${i}-${j}" class="assign-checkbox" type="checkbox"  ${isChecked}>
+          <label for="inputCheckbox"></label>
           <div>${subtask}</div>
       </div>
       `;

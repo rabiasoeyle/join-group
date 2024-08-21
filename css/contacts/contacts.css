@@ -1,3 +1,6 @@
+.header{
+  z-index:unset !important;
+}
 .contacts-list-desktop {
   background-color: white;
   height: 93vh;

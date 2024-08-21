@@ -254,6 +254,12 @@
     align-items: center;
     justify-content: space-between;
     padding:4px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    margin:1px 0px;
+  }
+  .overlay-add-one-person-div:hover{
+    background-color: #c6cbcf;
   }
   
   .overlay-add-dropdownCategories {

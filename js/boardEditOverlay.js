@@ -255,13 +255,18 @@ function rollContactsListEdit(i){
             isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
         }
         assignContactsList.innerHTML += /*html*/ `
-            <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})">
+            <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
                 <div class="one-person-div-edit-left">
                     <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
                     <div>${contacts[j]['name']}</div>
                 </div>
                 <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
             </div>`;
+            let input= document.getElementById(`editInputCheckbox-${j}`);
+            if(input.checked){
+                document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#091931";
+                document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
+            }
 }
 }
 
@@ -312,6 +317,8 @@ function editAddAssignedPersons(j, i){
     // Der Kontakt, der zugewiesen oder entfernt werden soll
     let contact = contacts[j];
     if (checkbox.checked) {
+        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#091931";
+        document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
         // Überprüfen, ob der Kontakt bereits zugewiesen ist
         let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);
         if (!alreadyAssigned) {
@@ -320,6 +327,8 @@ function editAddAssignedPersons(j, i){
     } else {
         // Entferne den Kontakt aus dem assigned-Array
         tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== contact.name);
+        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "white";
+        document.getElementById(`onePersonDivEdit-${j}`).style.color = "black";
         // checkbox.checked = false;
     }
     editOvShowAssignedPersons(i);

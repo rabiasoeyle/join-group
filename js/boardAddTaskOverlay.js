@@ -200,13 +200,18 @@ function overlayAddRollContactsList(){
         //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
         let isChecked = overlayAddAssignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
         assignContactsList.innerHTML +=`
-        <div class="overlay-add-one-person-div" onclick="overlayAddAddAssignedPersons(${i})">
+        <div class="overlay-add-one-person-div" onclick="overlayAddAddAssignedPersons(${i})" id="overlayAddOnePersonDiv-${i}">
             <div class="overlay-add-one-person-div-left">
                 <div class="overlay-add-assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${overlayAddProfileInitials(i)}</div>
                 <div>${contacts[i]['name']}</div>
             </div>
             <input id="overlayAddInputCheckbox-${i}" class="overlay-add-assigen_checkbox" type="checkbox" ${isChecked}>
         </div>`;
+        let input = document.getElementById(`overlayAddInputCheckbox-${i}`);
+        if(input.checked){
+            document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#091931";
+            document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
+        }
     }
          // Add event listener to close the dropdown when clicking outside
          document.addEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
@@ -244,6 +249,8 @@ function overlayAddAddAssignedPersons(i){
     let personName = contacts[i].name;
     inputCheckbox.checked =!inputCheckbox.checked; 
     if (inputCheckbox.checked) {
+        document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#091931";
+        document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
         // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
         if (!overlayAddAssignedPersons.includes(person => person.name === personName)) {
             let newAssign = { name: contacts[i].name, color: contacts[i].color };
@@ -252,6 +259,8 @@ function overlayAddAddAssignedPersons(i){
     } else {
         // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
         overlayAddAssignedPersons = overlayAddAssignedPersons.filter(person => person.name !== personName);
+        document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "white";
+        document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "black";
     }
     overlayAddShowAssignedPersons();
 }
@@ -523,7 +532,9 @@ function overlayAddClearForm(){
     document.getElementById('overlayAddLow').style.backgroundColor = "white";
     // document.getElementById('showAssignedPersonInitial').innerHTML='';
 }
+
 function closeAddOverlay(){
+    overlayAddClearForm();
     let overlay = document.getElementById('atOaddTaskOverlayParent');
     overlay.classList.add('d-none');
     let overlayChild = document.getElementById('addTaskOverlay');

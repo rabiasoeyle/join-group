@@ -44,3 +44,8 @@ function toggleDropdown(event) {
     dropdownMenuHeader.style.display = "block";
   }
 }
+
+function logOut() {
+  localStorage.clear();
+  window.location.href = "../html/index.html";
+}

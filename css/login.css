@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 64px 0px;
-  animation: Ba 1s;
+  animation: Ba 2s;
 }
 
 @keyframes Ba {
@@ -343,7 +343,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  animation: Logo 1s;
+  animation: Logo 2s;
 }
 
 

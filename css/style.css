@@ -250,13 +250,8 @@ button {
   margin-bottom: 0;
 }
 
-.dropdown {
-  position: absolute;
-  display: none;
-}
-
-.dropdown-menu-content{
-display:block;
+.dropdown-menu-header-content{
+display: none;
 position: absolute;
 right: 35px;
 top: 68px;
@@ -268,7 +263,7 @@ color: white;
 border-radius: 20px;
 }
 
-.dropdown-menu-content a {
+.dropdown-menu-header-content a {
   color: #cdcdcd;
   padding: 12px 20px;
   text-decoration: none;
@@ -276,10 +271,12 @@ border-radius: 20px;
   font-size: 16px;
 }
 
-.dropdown-menu-content a:hover {
+.dropdown-menu-header-content a:hover {
   background-color: rgba(42, 61, 89, 1);;
   border-radius: 20px;
 }
+
+
 
 @media (max-width: 1020px) {
   .sidebar {

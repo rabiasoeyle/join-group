@@ -212,7 +212,8 @@
   justify-content: flex-start;
 }
 
-.dropdownCategories {
+.wrapper-dropdown-categories {
+  width: 100%;
   position: absolute;
 }
 
@@ -224,6 +225,12 @@
   background-color: white;
 }
 
+.dropdown-categories:nth-last-child(1) {
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+
+
 .dropdown-categories a {
   text-decoration: none;
   color: black;
@@ -232,7 +239,17 @@
 }
 
 .dropdown-categories a:hover {
+  width: 100%;
   background-color: #e0e0e0;
+}
+
+.dropdown-categories:nth-last-child(1) :hover {
+  border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+
+.dropdown-categorie{
+  width: 100%;
 }
 
 .oneSubtask {

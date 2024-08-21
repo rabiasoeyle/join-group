@@ -287,7 +287,7 @@ function renderSubtasks(){
     let subtaskListDiv= document.getElementById('subtaskList');
     subtaskListDiv.innerHTML='';
     for(i=0; i<subtaskList.length; i++){
-        subtaskListDiv.innerHTML +=`
+        subtaskListDiv.innerHTML +=/*html*/`
         <ul class="oneSubtask" id="oneSubtask-${i}" class="oneSubtask" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
             <li class="" id="subtaskListText-${i}">${subtaskList[i]}</li>
             <input class="d-none editInput" value="${subtaskList[i]}" id="editInput-${i}">

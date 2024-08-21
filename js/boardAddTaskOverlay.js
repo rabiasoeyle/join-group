@@ -17,7 +17,7 @@ function overlayAddTask(status){
     overlay.classList.remove('d-none');
     let overlayChild = document.getElementById('addTaskOverlay');
     overlayChild.innerHTML=``;
-    overlayChild.innerHTML=`
+    overlayChild.innerHTML=/*html*/`
     <form class="overlay-add-form-style" id="overlayAddFormId" onsubmit="overlayAddCreateTask(); return false">
                     <div class="overlay-add-headline">
                         <h1>Add Task</h1>
@@ -123,7 +123,7 @@ function overlayAddTask(status){
                                 </div>
                                 <div class="d-none overlay-add-dropdownCategories" id="overlayAddDropdownCategories">
                                     <div class="overlay-add-dropdown-categories" onclick="overlayAddSelectCategory('Technical Task')">
-                                        <a id='overlayAddCategory1' href="#" >Technical Task</a>
+                                        <a id='overlayAddCategory1' href="#" >Technical-Task</a>
                                     </div>
                                     <div class="overlay-add-dropdown-categories" onclick="overlayAddSelectCategory('User Story')">
                                         <a id='overlayAddCategory2' href="#" >User Story</a>

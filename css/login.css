@@ -33,10 +33,10 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 64px 0px;
-  animation: Ba 2s;
+  animation: BackColor_Deskstop 2s;
 }
 
-@keyframes Ba {
+@keyframes BackColor_Deskstop {
   0% {
     position: absolute;
     top: 0;
@@ -336,7 +336,7 @@ body {
   display: none;
 }
 
-.join_Logo {
+.join_Logo_Desktop {
   width: 100px;
   height: 13vh;
   position: absolute;
@@ -347,11 +347,11 @@ body {
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  animation: Logo 2s;
+  animation: Logo_Desktop 2s;
 }
 
 
-@keyframes Logo {
+@keyframes Logo_Desktop {
   0% {
     position: absolute;
     top: 50%;
@@ -372,23 +372,112 @@ body {
   }
   100% {
     position: absolute;
-    top: 3vh;
-    left: 4vw;
     width: 100px;
     height: 13vh;
+    top: 3vh;
+    left: 4vw;
     object-fit: contain;
+  }
+}
+
+.join_Logo_Mobile {
+  display: none;
+  top: 2vh;
+  left: -6vw;
+  width: 100px;
+  height: 6vh;
+  object-fit: contain;
+  animation: join_Logo_Mobile 2s;
+}
+
+@keyframes join_Logo_Mobile {
+  0% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25vw;
+    height: 25vh;
+    object-fit: contain;
+    transform: translate(-50%, -50%)
+  }
+  20% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25vw;
+    height: 25vh;
+    object-fit: contain;
+    transform: translate(-50%, -50%)
+  }
+  100% {
+    position: absolute;
+    top: 4vh;
+    left: 8vw;
+    width: 100px;
+    height: 6vh;
+    object-fit: contain;
+  }
+}
+
+.backColor_Mobil {
+  display: none;
+  top: 2vh;
+  left: -6vw;
+  width: 100px;
+  height: 6vh;
+  object-fit: contain;
+  animation: backColor_Mobil 2s;
+}
+
+@keyframes backColor_Mobil {
+  0% {
+    background-color: #2a3647;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  20% {
+    background-color: #2a3647;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  100% {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 }
 
 /* Responsive */
 
-@media (max-width: 1020px) {
+@media (max-width: 700px) {
   .sidebar {
     display: none;
   }
   .headerLogoJoin {
     display: block;
     margin-left: 16px;
+  }
+  .join_Logo_Mobile {
+    display: block;
+    position: absolute;
+  }
+  .backColor_Mobil {
+    display: block;
+    position: absolute;
   }
   .help_initials {
     display: none;
@@ -401,57 +490,20 @@ body {
   }
   .header {
     justify-content: flex-start;
-    margin-left: 20vw;
-    height: 17vh;
+    margin: 0 0 3vh 20vw;
+    height: 10vh;
   }
   .login_base {
     width: 80vw;
   }
-  .join_Logo {
-    height: 65px;
-  }
   .checkbox_container {
     margin: 12px 30% 16px 0px;
   }
-}
-
-@media (max-height: 900px) {
-  .font_color {
-    margin: 0;
-  }
-  .header {
-    height: 100px;
-  }
-}
-
-@media (max-height: 750px) {
-  .sing_up_base {
-    height: 500px;
-  }
-}
-
-@media (max-height: 700px) {
   .login_base {
     height: 64vh;
   }
   .font_color {
     font-size: 42px;
-  }
-}
-
-@media (max-height: 900px) {
-  .content {
-    height: 80vh;
-  }
-}
-
-@media (max-height: 800px) {
-  .sidebar_bottom {
-    height: 8vh;
-  }
-  .header {
-    height: 75px;
-    margin-bottom: 12px;
   }
 }
 

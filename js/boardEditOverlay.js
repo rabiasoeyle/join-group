@@ -254,15 +254,15 @@ function rollContactsListEdit(i){
         if(tasks[i]['assigned']){
             let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
             assignContactsList.innerHTML +=/*html*/`
-        <div class="one-person-div">
-            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})" ${isChecked}>
+        <div class="one-person-div"onclick="editAddAssignedPersons(${j},${i})">
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox"  ${isChecked}>
             <div>${contacts[j]['name']}</div>
         </div>`
         }
         else{
             assignContactsList.innerHTML +=/*html*/`
-        <div class="one-person-div">
-            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" onclick="editAddAssignedPersons(${j},${i})">
+        <div class="one-person-div"onclick="editAddAssignedPersons(${j},${i})">
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" >
             <div>${contacts[j]['name']}</div>
         </div>`
         }
@@ -277,8 +277,13 @@ function rollContactsListEdit(i){
 function editOvShowAssignedPersons(i) {
     let showAssignedPersons = document.getElementById(`showAssignedPersonInitial-${i}`);
     showAssignedPersons.innerHTML='';
-    for(j=0;j<tasks[i]['assigned'].length;j++){
-        showAssignedPersons.innerHTML += `<div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">${editAssignedPersonsInitials(i, j)}</div>`;
+    for(j=0;j<Math.min(tasks[i]['assigned'].length, 5);j++){
+        showAssignedPersons.innerHTML += `
+        <div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">${editAssignedPersonsInitials(i, j)}</div>`;
+}
+if(tasks[i]['assigned'].length>5){
+    showAssignedPersons.innerHTML+= `
+    <div style="background-color:white; color:black" class="selected-person-initals-div">+${tasks[i]['assigned'].length-5}</div>`;
 }
 } 
 
@@ -306,6 +311,7 @@ function editAddAssignedPersons(j, i){
     if (!tasks[i].hasOwnProperty('assigned') || !Array.isArray(tasks[i]['assigned'])) {
         tasks[i]['assigned'] = [];
     }
+    checkbox.checked =!checkbox.checked
     // Der Kontakt, der zugewiesen oder entfernt werden soll
     let contact = contacts[j];
     // Checkbox-Status abrufen
@@ -320,6 +326,7 @@ function editAddAssignedPersons(j, i){
     } else {
         // Entferne den Kontakt aus dem assigned-Array
         tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== contact.name);
+        // checkbox.checked = false;
     }
     editOvShowAssignedPersons(i);
 }
@@ -337,6 +344,11 @@ function editOverlayProfileInitials(i){
   }
   return initials;
 }
+
+// function closeContactsList(event){
+//     let assignContactsList = document.getElementById(`edit-assignContactsList-${i}`);
+//     assignContactsList.classList.toggle('d-none');
+// }
 
 /**
  * Dies ist die abschließende Speicherfunktion beim Edit-Overlay, die dafür sorgt, dass alle bisher geänderten Infos auch gespeichert werden.

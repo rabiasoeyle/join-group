@@ -191,8 +191,8 @@ function showDetailTaskOverlaySubtasks(i) {
         ? "checked"
         : "";
     content.innerHTML += `
-      <div class="subtask-and-checkbox">
-          <input id="inputCheckbox-${i}-${j}" class="assigen_checkbox" type="checkbox" onclick="addCheckedSubtasks(${i}, ${j})" ${isChecked}>
+      <div class="subtask-and-checkbox" onclick="addCheckedSubtasks(${i}, ${j})">
+          <input id="inputCheckbox-${i}-${j}" class="assigen_checkbox" type="checkbox"  ${isChecked}>
           <div>${subtask}</div>
       </div>
       `;
@@ -210,6 +210,7 @@ function addCheckedSubtasks(i, j) {
     tasks[i]["checkedSubtasks"] = []; //zum hinzufügen einer checkedsubtaskArrays
   }
   let checkbox = document.getElementById(`inputCheckbox-${i}-${j}`);
+  checkbox.checked = !checkbox.checked;
   if (checkbox.checked) {
     if (!tasks[i].checkedSubtasks.includes(subtask)) {
       tasks[i]["checkedSubtasks"].push(subtask);

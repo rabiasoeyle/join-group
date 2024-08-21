@@ -45,7 +45,6 @@ async function renderMainForm(){
  */
 function addAssignedPersons(i){
     let inputCheckbox = document.getElementById(`inputCheckbox-${i}`);
-    
     let personName = contacts[i].name;
     inputCheckbox.checked =!inputCheckbox.checked; 
     if (inputCheckbox.checked) {
@@ -174,16 +173,16 @@ function profileInitials(i) {
     return initials;
   }
 
-/**
- * Diese Funktion soll dazu dienen, die Personen auszuwählen und die Personendaten 
- * sowie der Kreis mit den Initialien drin sollen gesehen werden, wenn man draufklickt.
- * @param {*} i 
- */
-function selectPerson(i){
-    let inputCheckbox = document.getElementById('inputCheckbox');
-    inputCheckbox.innerHTML= assignedPersons += contacts[i]['name'];
-    showAssignedPersons();
-}
+// /**
+//  * Diese Funktion soll dazu dienen, die Personen auszuwählen und die Personendaten 
+//  * sowie der Kreis mit den Initialien drin sollen gesehen werden, wenn man draufklickt.
+//  * @param {*} i 
+//  */
+// function selectPerson(i){
+//     let inputCheckbox = document.getElementById('inputCheckbox');
+//     inputCheckbox.innerHTML= assignedPersons += contacts[i]['name'];
+//     showAssignedPersons();
+// }
 
 /**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
 function selectPrio(x){

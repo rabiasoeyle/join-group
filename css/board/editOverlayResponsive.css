@@ -31,10 +31,13 @@
         justify-content: center;
       }
 }
-@media(max-height:700px){
-  .showDetailTaskOverlayTitle{
+@media(max-height:750px){
+   .showDetailTaskOverlayTitle{
     font-size:40px;
   }
+}
+@media(max-height:600px){
+ 
   .edit-task-overlay-edit{
     width:90vW;
   }

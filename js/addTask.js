@@ -49,7 +49,7 @@ function addAssignedPersons(i){
     let personName = contacts[i].name;
     inputCheckbox.checked =!inputCheckbox.checked; 
     if (inputCheckbox.checked) {
-        document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#091931";
+        document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#2a3647";
         document.getElementById(`onePersonDiv-${i}`).style.color = "white";
         // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
         if (!assignedPersons.includes(person => person.name === personName)) {
@@ -89,7 +89,7 @@ function rollContactsList(){
         </div>`;
         let input = document.getElementById(`inputCheckbox-${i}`);
         if(input.checked){
-            document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#091931";
+            document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#2a3647";
             document.getElementById(`onePersonDiv-${i}`).style.color = "white";
         }
     }

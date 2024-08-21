@@ -2,7 +2,7 @@ function openEditTaskOverlayHTML(i){
     return /*html*/`
     <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i}); return false">
             <div class="close-button-top">
-                <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg onclick="closeDetailsOverlay(event)" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>

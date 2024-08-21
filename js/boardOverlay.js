@@ -1,83 +1,71 @@
 /**
  * Diese Funktion soll die Großansicht der Karte anzeigen.
- * @param {*} i
+ * @param {*} i 
  */
-function openDetailedTaskOverlay(i) {
-  let editTaskOverlayContent = document.getElementById("editTaskOverlayContent");
-  editTaskOverlayContent.classList.remove("slide-in");
-  void editTaskOverlayContent.offsetWidth;
-  editTaskOverlayContent.classList.add("edit-task-overlay-content");
-  document.body.classList.add("no-scroll");
-  let editOverlayParent = document.getElementById("editOverlayParent");
-  if (editOverlayParent.classList.contains("d-none")) {
-      editOverlayParent.classList.remove("d-none");
+function openDetailedTaskOverlay(i){
+  let editTaskOverlayContent = document.getElementById('editTaskOverlayContent');
+  editTaskOverlayContent.classList.add('edit-task-overlay-content');
+  editTaskOverlayContent.classList.remove('edit-task-overlay-edit');
+  let editOverlayParent = document.getElementById('editOverlayParent');
+  if(editOverlayParent.classList.contains('d-none')){
+      editOverlayParent.classList.remove('d-none');
   }
-
-  editTaskOverlayContent.innerHTML = "";
-  editTaskOverlayContent.innerHTML = /*html*/ `
-              <div class="task-category-and-close-button">
-                  <div class="showDetailTaskOverlayCategory" id="showDetailTaskOverlayCategory">${tasks[i]["category"]}</div>
-                  <svg onclick="closeDetailsOverlay(event)" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-              </div>
-              <h3 class="showDetailTaskOverlayTitle" id="showDetailTaskOverlayTitle">
-              ${tasks[i]["title"]}
-              </h3>
-              <div class="scroll-container">
-              <h4 class="showDetailTaskOverlayDescription" id="showDetailTaskOverlayDescription">
-              ${tasks[i]["description"]}
-              </h4>
-              <div class="showDetailTaskOverlayDate">
-                  <div>Due Date:</div>
-                  <div id="showDetailTaskOverlayDueDate">${tasks[i]["dueDate"]}</div>
-              </div>
-              <div class="showDetailTaskOverlayPriority">
-                  <div>Priority:</div>
-                  <div id="showDetailTaskOverlayPriority">${tasks[i]["priority"]}</div>
-                  <div id="prioritySVGOverlay"></div>
-              </div>
-              <div class="showDetailTaskOverlayAssignedTo" id="showDetailTaskOverlayAssignedTo">
-                  <div>Assigned to:</div>
-                  <div class="showDetailTaskOverlayAssignedToChild" id="showDetailTaskOverlayAssignedToChild"></div>
-              </div>
-              <div id="showDetailTaskOverlaySubtasks">
-                  <div>Subtasks:</div>
-                  <div id="showDetailTaskOverlaySubtasksChild"></div>
-              </div>
-              </div>
-              <div class="delete-or-edit-task-buttons">
-                  <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]["id"]}')">
-                      <img src="../assets/img/deleteTask.png">
-                      Delete
-                  </div>
-                  <div class="separator"></div>
-                  <div class="edit-task-button" onclick="openEditTaskOverlay(${i})">
-                      <img src="../assets/img/editTask.png">
-                      Edit
-                  </div>
-              </div>
-    `;
-    categorySignOverlay(i);
-    if(tasks[i]['assigned']){
-      showDetailTaskOverlayAssignedTo(i);
-    }
-    if(tasks[i]['subtaskList']){
-       showDetailTaskOverlaySubtasks(i);
-    }
-    if(tasks[i]['priority']){
-      prioritySignOverlay(i);
-    }
-    // Add the slide-in class after a small delay to trigger the animation
-    setTimeout(() => {
-      editTaskOverlayContent.classList.add("slide-in");
-
-      // Re-enable scrolling after the animation ends
-      editTaskOverlayContent.addEventListener('transitionend', () => {
-          document.body.classList.remove("no-scroll");
-      }, { once: true });
-  }, 10);
+  editTaskOverlayContent.innerHTML='';
+  editTaskOverlayContent.innerHTML=/*html*/`
+            <div class="task-category-and-close-button">
+                <div class="showDetailTaskOverlayCategory" id="showDetailTaskOverlayCategory">${tasks[i]['category']}</div>
+                <svg onclick="closeDetailsOverlay()" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 class="showDetailTaskOverlayTitle" id="showDetailTaskOverlayTitle">
+            ${tasks[i]['title']}
+            </h3>
+            <div class="scroll-container">
+            <h4 class="showDetailTaskOverlayDescription" id="showDetailTaskOverlayDescription">
+            ${tasks[i]['description']}
+            </h4>
+            <div class="showDetailTaskOverlayDate">
+                <div>Due Date:</div>
+                <div id="showDetailTaskOverlayDueDate">${tasks[i]['dueDate']}</div>
+            </div>
+            <div class="showDetailTaskOverlayPriority">
+                <div>Priority:</div>
+                <div id="showDetailTaskOverlayPriority">${tasks[i]['priority']}</div>
+                <div id="prioritySVGOverlay"></div>
+            </div>
+            <div class="showDetailTaskOverlayAssignedTo" id="showDetailTaskOverlayAssignedTo">
+                <div>Assigned to:</div>
+                <div class="showDetailTaskOverlayAssignedToChild" id="showDetailTaskOverlayAssignedToChild"></div>
+            </div>
+            <div id="showDetailTaskOverlaySubtasks">
+                <div>Subtasks:</div>
+                <div id="showDetailTaskOverlaySubtasksChild"></div>
+            </div>
+            </div>
+            <div class="delete-or-edit-task-buttons">
+                <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]['id']}')">
+                    <img src="../assets/img/deleteTask.png">
+                    Delete
+                </div>
+                <div class="separator"></div>
+                <div class="edit-task-button" onclick="openEditTaskOverlay(${i})">
+                    <img src="../assets/img/editTask.png">
+                    Edit
+                </div>
+            </div>
+  `;
+  categorySignOverlay(i);
+  if(tasks[i]['assigned']){
+    showDetailTaskOverlayAssignedTo(i);
   }
+  if(tasks[i]['subtaskList']){
+     showDetailTaskOverlaySubtasks(i);
+  }
+  if(tasks[i]['priority']){
+    prioritySignOverlay(i);
+  }
+}
 
 /**
  * Diese Funktion dient dazu, dass die geänderten Infos zu checkedSubtasks zum Firebase weitergeleitet werden und die Seite sich je nachdem anpasst

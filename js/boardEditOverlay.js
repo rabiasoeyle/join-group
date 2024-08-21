@@ -17,7 +17,6 @@ function openEditTaskOverlay(i){
     }if(tasks[i]['assigned']){
         editOvShowAssignedPersons(i);
     }
- setMinDate(i);
 }
 
 /**

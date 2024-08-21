@@ -33,3 +33,14 @@ function includeHTML() {
 function backToLogin() {
   window.location.href = "../html/index.html";
 }
+
+
+function toggleDropdown(event) {
+  event.stopPropagation();
+  let dropdownMenu = document.getElementById("dropdownMenu");
+  if (dropdownMenu.style.display === "block") {
+    dropdownMenu.style.display = "none";
+  } else {
+    dropdownMenu.style.display = "block";
+  }
+}

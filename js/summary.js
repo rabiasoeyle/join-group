@@ -111,6 +111,9 @@ async function initSummary() {
     const userName = localStorage.getItem('username');
     if (userName) {
         document.querySelector('.user_name').textContent = userName;
+        document.getElementById('circle').textContent = userName;
+
+
 }
 }
 

@@ -19,6 +19,7 @@ let isDropDownOpenCategory = false;
 function initAddTask() {
     renderMainForm(); 
     setMinDate();
+    
 }
 
 /**

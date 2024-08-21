@@ -37,10 +37,10 @@ function backToLogin() {
 
 function toggleDropdown(event) {
   event.stopPropagation();
-  let dropdownMenu = document.getElementById("dropdownMenu");
-  if (dropdownMenu.style.display === "block") {
-    dropdownMenu.style.display = "none";
+  let dropdownMenuHeader = document.getElementById("dropdownMenuHeader");
+  if (dropdownMenuHeader.style.display === "block") {
+    dropdownMenuHeader.style.display = "none";
   } else {
-    dropdownMenu.style.display = "block";
+    dropdownMenuHeader.style.display = "block";
   }
 }

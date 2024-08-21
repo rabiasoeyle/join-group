@@ -58,9 +58,9 @@ function openEditTaskOverlayHTML(i){
                         </div>
                     </div>
             </div>
-            <div class="assign-to" id="assignDropdown">
-                        <label>Assigned to</label>
-                    <div onclick="rollContactsListEdit(${i})" class="assigned-to-input-and-button">
+            <div class="assign-to" id="assignDropdown" >
+                        <label onclick="rollContactsListEdit(${i})">Assigned to</label>
+                    <div class="assigned-to-input-and-button" onclick="rollContactsListEdit(${i})">
                             <!-- <input class="assign-to-input" id="assignedPersons"
                                 value="Select Contacts to assign"> -->
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -76,7 +76,7 @@ function openEditTaskOverlayHTML(i){
                                 </g>
                             </svg>
                     </div>
-                        <div id="showAssignedPersonInitial-${i}" class="show-assigned-persons-initials"></div>
+                        <div id="showAssignedPersonInitial-${i}" class="show-assigned-persons-initials" onclick="rollContactsListEdit(${i})"></div>
                         <div class="d-none assign-contacts-list" id="edit-assignContactsList-${i}"></div>
             </div>
             <div class="subtask">

@@ -320,6 +320,8 @@ function editAddAssignedPersons(j, i){
         // checkbox.checked = false;
     }
     editOvShowAssignedPersons(i);
+    saveNewAssignedPerson(i);
+    showAssignedPersonsInitial(tasks[i]);
 }
 
 /**
@@ -357,4 +359,10 @@ async function saveTasksChanges(i){
     awaitFeedbackBoard();
     doneBoard();
     openDetailedTaskOverlay(i);
+}
+
+async function saveNewAssignedPerson(i){
+    await putData(`/tasks/${tasks[i]['id']}`, tasks[i]);
+    tasks=[];
+    await loadTasks();
 }

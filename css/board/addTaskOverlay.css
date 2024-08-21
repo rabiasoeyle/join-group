@@ -266,6 +266,7 @@
   
   .overlay-add-dropdownCategories {
     position: absolute;
+    width:100%;
   }
   
   .overlay-add-dropdown-categories {
@@ -274,14 +275,23 @@
     align-items: flex-start;
     flex-direction: column;
     background-color: white;
+    width:100%;
   }
   
   .overlay-add-dropdown-categories a {
     text-decoration: none;
     color: black;
     padding: 16px;
-    width: 25vh;
+    width: 100%;
   }
+  .overlay-add-dropdown-categories:nth-last-child(1) {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    }
+    .overlay-add-dropdown-categories:nth-last-child(1) :hover {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      }
   
   .overlay-add-dropdown-categories a:hover {
     background-color: #e0e0e0;

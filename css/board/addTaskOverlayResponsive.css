@@ -53,6 +53,7 @@
     }
     .overlay-add-headline{
         flex-direction: column-reverse;
+        width:377px;
     }
     .overlay-add-form-style h1{
         font-size: 47px;
@@ -67,19 +68,19 @@
   
   @media (max-height: 700px){
     .overlay-add-clear-button, .overlay-add-create-button {
-      font-size: 18px;
-      padding: 2vh;
+      font-size: 16px;
+      padding: 4px;
     }
     .overlay-add-content {
       height: 78vh;
     }
   }
   
-  @media (max-height: 670px) {
-    .overlay-add-form-style {
+  /* @media (max-height: 670px) {
+     .overlay-add-form-style {
       height: 72vh;
-    }
-  }
+    } 
+  } */
   
   @media (max-height: 650px) {
     .overlay-add-form-style {
@@ -112,10 +113,13 @@
     }
   }
   
-  @media (max-width: 450px) {
+  @media (max-width: 470px) {
     .overlay-add-form-style {
       padding: 0px;
     }
+    .overlay-add-headline{
+      width:250px;
+  }
     .overlay-add-task-title input {
       width: 250px;
     }

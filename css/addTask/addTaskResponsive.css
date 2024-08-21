@@ -88,9 +88,12 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 470px) {
   .form-style {
     padding: 0;
+  }
+  .form-style h1{
+    font-size: 40px;
   }
   .task-title input {
     width: 250px;

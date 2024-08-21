@@ -31,3 +31,20 @@
         justify-content: center;
       }
 }
+@media(max-height:700px){
+  .showDetailTaskOverlayTitle{
+    font-size:40px;
+  }
+  .edit-task-overlay-edit{
+    width:90vW;
+  }
+  .task-title input{
+    width:100%;
+  }
+  .description-title textarea{
+    width:100%;
+  }
+  .edit-task-overlay-content{
+    width:90vW;
+  } 
+}

@@ -86,10 +86,17 @@
 
 @media (max-width: 1020px) {
   .content {
+    height:80vh;
     width: 100%;
     overflow-x: hidden;
   }
 }
+@media (max-width: 520px) {
+  .content {
+    padding:16px;
+  }
+}
+
   @media (max-height: 540px) {
     .content {
       height: 77vh;

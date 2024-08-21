@@ -350,6 +350,9 @@ span {
   margin-left: 16px;
 }
 
+.add-contact-left p, span {
+  font-size: 16px;
+}
 .group-initial {
   font-size: 1.5em;
   margin-bottom: 5px;

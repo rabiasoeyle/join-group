@@ -251,22 +251,14 @@ function rollContactsListEdit(i){
     assignContactsList.innerHTML='';
     for(j=0; j<contacts.length; j++){
         // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
-        if(tasks[i]['assigned']){
-            let isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-            assignContactsList.innerHTML +=/*html*/`
-        <div class="one-person-div"onclick="editAddAssignedPersons(${j},${i})">
-            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox"  ${isChecked}>
-            <div>${contacts[j]['name']}</div>
-        </div>`
+        if (tasks[i]['assigned']) {
+            isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
         }
-        else{
-            assignContactsList.innerHTML +=/*html*/`
-        <div class="one-person-div"onclick="editAddAssignedPersons(${j},${i})">
-            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" >
-            <div>${contacts[j]['name']}</div>
-        </div>`
-        }
-        
+        assignContactsList.innerHTML += /*html*/ `
+            <div class="one-person-div" onclick="editAddAssignedPersons(${j}, ${i})">
+                <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
+                <div>${contacts[j]['name']}</div>
+            </div>`;
     }
 }
 
@@ -311,13 +303,12 @@ function editAddAssignedPersons(j, i){
     if (!tasks[i].hasOwnProperty('assigned') || !Array.isArray(tasks[i]['assigned'])) {
         tasks[i]['assigned'] = [];
     }
+     // Referenz zur Checkbox abrufen
+     let checkbox = document.getElementById(`editInputCheckbox-${j}`);
     checkbox.checked =!checkbox.checked
     // Der Kontakt, der zugewiesen oder entfernt werden soll
     let contact = contacts[j];
-    // Checkbox-Status abrufen
-    let checkbox = document.getElementById(`editInputCheckbox-${j}`);
-    let isChecked = checkbox.checked;
-    if (isChecked) {
+    if (checkbox.checked) {
         // Überprüfen, ob der Kontakt bereits zugewiesen ist
         let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);
         if (!alreadyAssigned) {

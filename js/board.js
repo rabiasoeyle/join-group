@@ -24,26 +24,45 @@ async function initBoard() {
     awaitFeedbackBoard();
     doneBoard();
 }
-
 /**
- * Diese Funktion dient zum filtern der Aufgaben.
+ * Diese Funktion filtert die Aufgaben basierend auf dem Suchbegriff.
  */
 function filterTasks() {
   let searchBar = document.getElementById('searchBar');
   let searchQuery = searchBar.value.trim().toLowerCase();
+  let clearButton = document.getElementById('clearSearch');
 
-  // Filter die Aufgaben, ohne das ursprüngliche tasks-Array zu überschreiben
-  let filteredTasks = tasks.filter(task =>
-      task.title.toLowerCase().includes(searchQuery) ||
-      (task.description && task.description.toLowerCase().includes(searchQuery))
-  );
+  if (searchQuery.length < 3) {
+      // Wenn der Suchbegriff weniger als 3 Zeichen hat, zeige alle Aufgaben
+      todoBoard();
+      inProgressBoard();
+      awaitFeedbackBoard();
+      doneBoard();
+  } else {
+      // Filter die Aufgaben, wenn der Suchbegriff mindestens 3 Zeichen hat
+      let filteredTasks = tasks.filter(task =>
+          task.title.toLowerCase().includes(searchQuery) ||
+          (task.description && task.description.toLowerCase().includes(searchQuery))
+      );
 
-  // Aufgaben auf den Boards anzeigen
-  todoBoard(filteredTasks);
-  inProgressBoard(filteredTasks);
-  awaitFeedbackBoard(filteredTasks);
-  doneBoard(filteredTasks);
+      // Aufgaben auf den Boards anzeigen
+      todoBoard(filteredTasks);
+      inProgressBoard(filteredTasks);
+      awaitFeedbackBoard(filteredTasks);
+      doneBoard(filteredTasks);
+  }
 }
+
+/**
+* Diese Funktion setzt die Suche zurück.
+*/
+function clearSearch() {
+  let searchBar = document.getElementById('searchBar');
+  searchBar.value = ""; // Suchfeld leeren
+  filterTasks(); // Alle Aufgaben wieder anzeigen
+}
+
+
 
 /**
  * Diese Funktion dient dazu die Initalien der zugeschriebenen Personen darzustellen

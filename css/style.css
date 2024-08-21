@@ -249,6 +249,31 @@ button {
 .backToLogin_tap {
   margin-bottom: 0;
 }
+.dropdown-menu-content{
+/* display: none; */
+position: absolute;
+right: 40px;
+top: 68px;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+z-index: 10;
+min-width: 150px;
+background-color: rgba(42, 54, 71, 1);;
+color: white;
+border-radius: 20px;
+}
+
+.dropdown-menu-content a {
+  color: #cdcdcd;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+}
+
+.dropdown-menu-content a:hover {
+  background-color: rgba(42, 61, 89, 1);;
+  border-radius: 20px;
+}
 
 @media (max-width: 1020px) {
   .sidebar {

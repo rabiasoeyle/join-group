@@ -256,7 +256,7 @@ function rollContactsListEdit(i){
         }
         assignContactsList.innerHTML += /*html*/ `
             <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})">
-                <div class="one-person-div-edit-right">
+                <div class="one-person-div-edit-left">
                     <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
                     <div>${contacts[j]['name']}</div>
                 </div>

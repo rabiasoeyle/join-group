@@ -76,8 +76,10 @@ function rollContactsList(){
         let isChecked = assignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
         assignContactsList.innerHTML +=`
         <div class="one-person-div" onclick="addAssignedPersons(${i})">
-            <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
-            <div>${contacts[i]['name']}</div>
+            <div class="one-person-div-left">
+                <div class="assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${profileInitials(i)}</div>
+                <div>${contacts[i]['name']}</div>
+            </div>
             <input id="inputCheckbox-${i}" class="assigen_checkbox" type="checkbox" ${isChecked}>
         </div>`;
     }

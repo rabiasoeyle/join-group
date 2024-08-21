@@ -64,7 +64,7 @@ function showAssignedPersonsInitial(element){
   if(assignedPersons.length>4){
     persons.innerHTML +=`
     <div style="background-color:white; color:black" class="initals-div-in-task">
-    +${assignedPersons.length-5}
+    +${assignedPersons.length-4}
     </div>`
   }
    //Aktualisieren des 'assigned' Felds im Element

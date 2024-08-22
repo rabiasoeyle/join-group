@@ -166,3 +166,30 @@
   fill: white !important;
   stroke: white !important;
 }
+.summary-part-top-svg circle{
+  fill:#2A3647;
+}
+.summary-part-top-svg path{
+  fill: white;
+  stroke: white;
+}
+.summary-part-top-svg-vector path{
+stroke:white;
+}
+.summary-part-top-svg-vector circle{
+  fill:#2A3647;
+}
+.summary-part-top-svg-parent{
+  background-color: #2A3647;
+  border-radius: 50%;
+  width:62px;
+  height:62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-part-top-svg-hover{
+  color:#2A3647;
+  fill: #2A3647;
+  stroke:#2A3647;
+}

@@ -62,7 +62,7 @@
                         <div id="error-message" class="error-message d-none">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
                         <input required id="loginEmail" class="login_input" placeholder="Email" type="email" autocomplete="email">
                         <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Bitte nur Buchstaben verwenden." autocomplete="password">
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mindest 8 Zeichen, davon mindest klein wie groß Buchstarben, mindest ein Zahl und ein Sonderzeichen." autocomplete="password">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>
@@ -84,10 +84,10 @@
                         <input required id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
                         <input required id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
                         <input required id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
-                            type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password">
+                            type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Mindest 8 Zeichen, davon mindest klein wie groß Buchstarben, mindest ein Zahl und ein Sonderzeichen.">
                         <input required id="neuUserLoginConfirm_Passwort" class="login_input"
                             placeholder="Confirm Passwort" type="password"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password">
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Es muss das gleiche Passwort sein.">
                         <div class="checkbox_I_Acpept">
                             <input required class="checkbox" type="checkbox">
                             <p class="checkbox_font" href="datenschutz.html">I accept the</p>

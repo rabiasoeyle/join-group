@@ -278,7 +278,23 @@ border-radius: 20px;
 .pop-up-added{
   position: absolute;
     right: 10%;
-    bottom: 10%;
+    bottom: 14%;
+    z-index: 40;
+    height: 70px;
+    width: 240px;
+    background-color:#2a3647;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 20px;
+    animation-delay:2s;
+}
+.pop-up-added-w-svg{
+  position: absolute;
+    right: 10%;
+    bottom: 14%;
     z-index: 40;
     height: 70px;
     width: 240px;

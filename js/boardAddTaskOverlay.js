@@ -507,7 +507,7 @@ async function overlayAddCreateTask(){
     await postData("/tasks", newTaskInformation);
       // Erstelle das Popup-Element
 const popup = document.createElement('div');
-popup.classList.add('pop-up-added');
+popup.classList.add('pop-up-added-w-svg');
     popup.innerHTML=`
         <span>Task added to board</span>
         <svg class="pop-up-added-svg"width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -520,16 +520,15 @@ document.body.appendChild(popup);
     overlayAddClearForm();
     closeAddOverlay();
     tasks =[];
-    await loadTasks();
-setTimeout(() => {    
+    await loadTasks(); 
     todoBoard();
     inProgressBoard();
     awaitFeedbackBoard();
-    doneBoard();}, 2000);
+    doneBoard();
      // Warte 5 Sekunden, bevor das Popup verschwindet
      setTimeout(() => {
         popup.remove(); // Entfernt das Popup nach 5 Sekunden
-    }, 5000);
+    }, 2000);
 }
 
 /**

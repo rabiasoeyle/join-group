@@ -277,7 +277,7 @@ border-radius: 20px;
 }
 .pop-up-added{
   position: absolute;
-    right: 10%;
+    right: -100%;
     bottom: 14%;
     z-index: 40;
     height: 70px;
@@ -289,11 +289,12 @@ border-radius: 20px;
     align-items: center;
     padding: 8px;
     border-radius: 20px;
-    animation-delay:2s;
+    font-size:12px;
+    animation: slideIn 0.5s forwards; /* Animation anwenden */
 }
 .pop-up-added-w-svg{
   position: absolute;
-    right: 10%;
+    right: -100%;
     bottom: 14%;
     z-index: 40;
     height: 70px;
@@ -305,7 +306,17 @@ border-radius: 20px;
     align-items: center;
     padding: 8px;
     border-radius: 20px;
-    animation-delay:2s;
+    animation: slideIn 0.5s forwards; /* Animation anwenden */
+}
+
+/* Keyframes für die Animation */
+@keyframes slideIn {
+    from {
+        right: -300px; /* Startposition */
+    }
+    to {
+        right: 20px; /* Endposition */
+    }
 }
 .pop-up-added-svg{
   color: white !important;

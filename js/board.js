@@ -179,7 +179,6 @@ function todoBoard(filteredTasks){
       <div class="no-task-available">No tasks To do</div>
       `
     }else{ 
-
       for(i=0; i<status.length;i++){
         let element = status[i]
         content.innerHTML += boardHTML(i, status)

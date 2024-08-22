@@ -118,6 +118,11 @@ async function initSummary() {
 
     setDaytimeGreeting();
 
+    setTimeout(function() {
+        let content = document.getElementById('welcome_user');
+        content.classList.add('d-none');
+    }, 11000);
+    
     // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
     // Name aus dem localStorage auslesen und in die user_name-Div einfügen
     const userName = localStorage.getItem('username');

@@ -172,6 +172,10 @@ a{
   stroke: white !important;
 }
 
+.d-none {
+  display: none;
+}
+
 .welcome_user_animation {
   animation: afterRightDisappearing 2s;
 }

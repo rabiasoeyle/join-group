@@ -20,7 +20,7 @@ a{
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 32px 24px;
+  padding: 36px 0 0 48px;
 }
 .summary_container{
   display: flex;

@@ -13,9 +13,9 @@
   }
   
   @media (max-height: 850px){
-    .overlay-add-form-style {
+    /* .overlay-add-form-style {
       height: 70vh;
-    }
+    } */
     .overlay-add-clear-button, .overlay-add-create-button {
       font-size: 18px;
       padding: 2vh;
@@ -62,7 +62,7 @@
   .overlay-add-create-button {
     gap: 2px;
     font-size: 16px;
-    padding: 4px;
+    padding: 8px;
   }
   }
   
@@ -83,28 +83,28 @@
   } */
   
   @media (max-height: 650px) {
-    .overlay-add-form-style {
+    /* .overlay-add-form-style {
       height: 71vh;
-    }
+    } */
   }
   
   @media (max-height: 600px){
     .overlay-add-form-style h1 {
       font-size: 32px;
     }
-    .overlay-add-form-style {
+    /* .overlay-add-form-style {
       height: 66vh;
-    }
-    .overlay-add-clear-button, .overlay-add-create-button {
-      font-size: 18px;
-      padding: 2vh;
+    } */
+    .overlay-add-clear-button, .create-button {
+      font-size: 16px;
+      padding: 4px;
     }
   }
   
   @media (max-height: 500px){
-    .overlay-add-form-style {
+    /* .overlay-add-form-style {
       height: 61vh;
-    }
+    } */
     .overlay-add-content {
       height: 76vh;
     }
@@ -146,8 +146,8 @@
       width: 250px;
     }
     .overlay-add-clear-button, .create-button {
-      font-size: 16px;
-      padding: 4px;
+      font-size: 14px;
+      padding: 2px;
     }
     .overlay-add-due-date {
       width: 250px;
@@ -160,6 +160,7 @@
     }
     .overlay-add-form-style h1 {
         padding-left: 0px;
+        font-size:32px;
       }
   }
   
@@ -169,11 +170,11 @@
       height: 70vh;
     }
     .overlay-add-clear-button, .overlay-add-create-button {
-      font-size: 16px;
-      padding: 4px;
+      font-size: 14px;
+      padding: 2px;
     }
-    .overlay-add-form-style {
+    /* .overlay-add-form-style {
       height: 70vh;
-    }
+    } */
   }
   

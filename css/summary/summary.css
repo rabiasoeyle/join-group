@@ -244,5 +244,5 @@ transform:scale(1.1);
 .summary_prio_hover{
   background-color: #2a3647 !important;
   color:white !important;
-  transform:scale(1.1);
+  transform:scale(1.05);
 }

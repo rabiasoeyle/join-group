@@ -261,7 +261,7 @@ function rollContactsListEdit(i){
                     <div>${contacts[j]['name']}</div>
                 </div>
                 <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
-                <label for="inputCheckbox-${i}"></label>
+                <label for="editInputCheckbox-${i}"></label>
             </div>`;
             let input= document.getElementById(`editInputCheckbox-${j}`);
             if(input.checked){
@@ -276,6 +276,7 @@ function rollContactsListEdit(i){
                     <div>${contacts[j]['name']}</div>
                 </div>
                 <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
+                <label for="inputCheckbox-${i}"></label>
             </div>`;
         }
 }

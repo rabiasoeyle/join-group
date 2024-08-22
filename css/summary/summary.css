@@ -168,21 +168,20 @@
 }
 
 .welcome_user_animation {
-  overflow-x: hidden;
-  scrollbar-width: none;
-  width: 100%;
-  height: auto;
-  padding-left: 2vw;
-  animation: afterRightDisappearing 12s;
+  animation: afterRightDisappearing 2s;
 }
 
 @keyframes afterRightDisappearing {
-  0% {}
-  50% {
-    transform: translateX(0); /* Bewegt den Inhalt vollständig nach rechts */
+  0% {
+
+  }
+  80% {
+    position: relative;
+    left: 0vw;
   }
   100% {
-    transform: translateX(100%); /* Bewegt den Inhalt vollständig nach rechts */
+    position: relative;
+    left: 36vw;
   }
 }
 /* ab hier */

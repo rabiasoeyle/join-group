@@ -2,7 +2,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   background-color: #f6f7f8;
-  max-width: 1440px;
+  max-width: 1920px;
   font-family: "Inter";
 }
 
@@ -10,8 +10,8 @@ body {
   font-weight: 400;
   font-size: 20px;
   font-family: "Inter";
-  max-width: 1440px;
-  height: 200px;
+  max-width: 1920px;
+  height: 130px;
   display: flex;
   justify-content: flex-end;
   padding-right: 150px;
@@ -166,7 +166,7 @@ body {
   margin: 12px;
   max-width: 440px;
   width: 40vw;
-  height: 48px;
+  height: 18px;
 }
 
 .login_button_blue {
@@ -462,7 +462,6 @@ body {
 }
 
 /* Responsive */
-
 @media (max-width: 700px) {
   .sidebar {
     display: none;
@@ -491,7 +490,6 @@ body {
   .header {
     justify-content: flex-start;
     margin: 0 0 3vh 20vw;
-    height: 10vh;
   }
   .login_base {
     width: 80vw;
@@ -505,14 +503,23 @@ body {
   .font_color {
     font-size: 42px;
   }
-}
-
-@media (max-width: 700px) {
   .sing_up_headline {
     width: 50vw;
   }
+}
+
+@media (max-height: 1100px) {
+  .login_base {
+    height: 60vh;
+  }
+}
+
+@media (max-height: 800px) {
+  .login_base {
+    height: 50vh;
+  }
   .font_color {
-    font-size: 45px;
+    padding: 14px 0 14px 0;
   }
 }
 
@@ -531,6 +538,16 @@ body {
   }
   .checkbox_container {
     margin: 0px 30% 0px 0px;
+  }
+  .login_input {
+    margin: 6px;
+  }
+  .login_base {
+    height: 54vh;
+  }
+  .font_color {
+    padding: 0px 0 14px 0;
+    margin: 0 0 12px 0;
   }
 }
 

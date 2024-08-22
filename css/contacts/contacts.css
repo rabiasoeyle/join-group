@@ -66,19 +66,28 @@
 }
 
 .overlay-new-contact {
+  position: fixed;
+  top: 25vh;
+  left: 25vw;
+  right:25vW;
   max-width: 950px;
   max-height: 850px;
   width: 55%;
   height: 55%;
   background: white;
-  position: fixed;
-  top: 25vh;
-  left: 25vw;
-  right: 25vw;
   bottom: 25vh;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
+/* Keyframes für die Animation */
+@keyframes slideInContacts {
+  from {
+      right: -300px; /* Startposition */
+  }
+  to {
+      right: 0; /* Endposition */
+  }
+} 
 
 .input-new-contact {
   width: 100%;
@@ -183,8 +192,11 @@
 /* Add contact overlay */
 
 .add-contact-container {
+  background: white;
+  position: relative;
   display: flex;
   width: 100%;
+  animation: slideInContacts 1s forwards; /* Animation anwenden */
 }
 
 .add-contact-left {

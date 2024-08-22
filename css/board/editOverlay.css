@@ -9,6 +9,7 @@
   display:flex;
   justify-content: center;
   align-items: center;
+  animation: slideInBoard 1s forwards; /* Animation anwenden */
 }
 .edit-task-overlay-content {
   height: 90%;
@@ -21,12 +22,6 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-
-/* .slide-in {
-  right: 50%;
-  transform: translateX(50%) translateY(-50%);
-} */
-
   .showDetailTaskOverlayCategory{
     padding: 4px 24px;
     border-radius: 8px;
@@ -392,16 +387,6 @@ h4{
 }
 
 .assign-contacts-list{
-  /* display: flex;
-  flex-direction: column;
-  height: 60%;
-  width: 100%;
-  overflow-y: scroll;
-  border: solid 1px #d1d1d1;
-  border-radius: 12px;
-  padding: 8px;
-  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 20%);
-  border-radius: 8px; */
   overflow-y: scroll;
     scrollbar-width: thin;
     height: 20vh;

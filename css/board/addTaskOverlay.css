@@ -1,11 +1,12 @@
 .add-task-overlay-parent{
-    position:fixed;
+    position:absolute;
     left:0;
     right:0;
     top:0;
     bottom:0;
     background-color: rgba(0,0,0,0.7);
     z-index:44;
+    animation: slideInBoard 1s forwards; /* Animation anwenden */
 }
 .add-task-overlay{
     position: relative;
@@ -19,9 +20,16 @@
     background-color: white;
     border-radius: 24px;
     z-index:46;
-    /* display:flex;
-    flex-direction: column; */
-    /* justify-content: space-evenly; */
+  }
+  
+  /* Keyframes für die Animation */
+  @keyframes slideInBoard {
+      from {
+          right: -300px; /* Startposition */
+      }
+      to {
+          right: 0px; /* Endposition */
+      }
 } 
 .overlay-add-close-div{
     display:flex;

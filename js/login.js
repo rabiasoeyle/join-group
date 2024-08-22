@@ -42,12 +42,18 @@ async function neuUser() {
     phone: numberValue,
     color: colorValue,
   };
-  nameValue = "";
-  emailValue = "";
-  passwordValue = "";
-  contacts = [];
+  
+  // Sende die Daten an den Server
   await postData("/login", newLogin);
-  // Es Fehlt noch eine weiter leitung nach dem mein Sein Acc gemacht wurde
+
+  // Input-Felder zurücksetzen (optional)
+  document.getElementById("neuUserLoginName").value = '';
+  document.getElementById("neuUserLoginEmail").value = '';
+  document.getElementById("neuUserLoginPasswort").value = '';
+  document.getElementById("neuUserLoginConfirm_Passwort").value = '';
+
+  // Nach erfolgreichem Sign-up zur Login-Seite weiterleiten
+  singUp(); // Diese Funktion wechselt die Ansichten zwischen Sign-up und Login
 }
 
 function getRandomColor() {

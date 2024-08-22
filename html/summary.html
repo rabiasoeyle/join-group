@@ -32,23 +32,31 @@
                     <div class="summary_board">
                         <div class="summary_container">
                             <div class="summary_larger_part">
-                                <div class="summary_part_top">
-                                    <img class="summary_icon" src="../assets/img/edit.png" alt="Edit Icon">
+                                <div class="summary_part_top" id="summaryPartTopEdit" onmouseover="highlightTodo()" onmouseout="removeHighlightTodo()">
+                                     <div class="summary-part-top-svg-parent" id="summaryPartTopSvgEditParent">
+                                        <svg  id="summaryPartTopSvgEdit"class="summary-part-top-svg" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.0612 22.1418H4.92787L16.4279 10.6418L14.5612 8.7751L3.0612 20.2751V22.1418ZM22.1279 8.70843L16.4612 3.10843L18.3279 1.24176C18.839 0.730653 19.4668 0.475098 20.2112 0.475098C20.9556 0.475098 21.5834 0.730653 22.0945 1.24176L23.9612 3.10843C24.4723 3.61954 24.739 4.23621 24.7612 4.95843C24.7834 5.68065 24.539 6.29732 24.0279 6.80843L22.1279 8.70843ZM20.1945 10.6751L6.0612 24.8084H0.394531V19.1418L14.5279 5.00843L20.1945 10.6751Z" fill="#2A3647"/>
+                                        </svg> 
+                                    </div>  
                                     <div>
                                         <p class="summary_part_number" id="todoCount"></p>
-                                        <p class="summary_part_text"> To-do</p>
+                                        <p class="summary_part_text" id="summaryPartTextEdit"> To-do</p>
                                     </div>
                                 </div>
-                                <div class="summary_part_top">
-                                    <img class="summary_icon" src="../assets/img/Vector.png" alt="Vector Icon">
+                                <div class="summary_part_top" id="summaryPartTopDone"onmouseover="highlightDone()" onmouseout="removeHighlightDone()">
+                                    <div class=""> 
+                                        <svg id="summaryPartTopSvgVector"class="summary-part-top-svg-vector" width="62" height="62" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="33" cy="33" r="31" fill="white"/>
+                                            <path d="M19.9229 34.8085L31.1516 45.8745L49.8662 23.7424" stroke="#2A3647" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>   
                                     <div>
                                         <p class="summary_part_number" id="doneCount"></p>
-                                        <p class="summary_part_text"> Done</p>
+                                        <p class="summary_part_text" id="summaryPartTextDone"> Done</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="summary_prio">
-                                <!-- <img id ="prioIcon" src="../assets/img/Group 7.png" alt="Prio Icon"> -->
+                            <div class="summary_prio" id="summaryPrioParent" onmouseover="highlightPrio()" onmouseout="removeHighlightPrio()">
                                  <div id="prioIcon" class="summary_prio_icon"> 
                                  </div>
                                 <div>

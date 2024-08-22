@@ -185,3 +185,55 @@
     transform: translateX(100%); /* Bewegt den Inhalt vollständig nach rechts */
   }
 }
+/* ab hier */
+.summary-part-top-svg circle{
+  fill:#2A3647;
+}
+.summary-part-top-svg path{
+  fill: white;
+  stroke: white;
+}
+.summary-part-top-svg-vector path{
+stroke:white;
+}
+.summary-part-top-svg-vector circle{
+  fill:#2A3647;
+}
+.summary-part-top-svg-parent{
+  background-color: #2A3647;
+  border-radius: 50%;
+  width:62px;
+  height:62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* aussehen der Buttons beim drüberhovern */
+.summary-part-top-hover{
+background-color: #2A3647 !important;
+color:white !important;
+transform:scale(1.1);
+}
+.summary-part-top-svg-parent-hover{
+  background-color: white !important;
+}
+.summary-part-top-svg-hover path{
+  fill: #2A3647 !important;
+  stroke:#2A3647 !important;
+}
+.summary-part-top-svg-hover circle{
+  fill: white !important;
+}
+.summary-part-top-svg-vector-hover path{
+  stroke:#2A3647 !important;
+}
+.summary-part-top-svg-vector-hover circle{
+  fill:white !important;
+}
+/* bis hier */
+
+.summary_prio_hover{
+  background-color: #2a3647 !important;
+  color:white !important;
+  transform:scale(1.1);
+}

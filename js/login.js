@@ -15,9 +15,9 @@ function goToSummary() {
   }
 }
 
-function singUp() {
+function signUp() {
   document.getElementById("login_Content").classList.toggle("d-none");
-  document.getElementById("sing_up_content").classList.toggle("d-none");
+  document.getElementById("sign_up_content").classList.toggle("d-none");
   document.getElementById("help_initials").classList.toggle("d-none");
   document.getElementById("blue_signed_up").classList.toggle("d-none");
   document.getElementById("help_initials_mobile").classList.toggle("d-none");
@@ -67,7 +67,7 @@ async function neuUser() {
   document.getElementById("neuUserLoginConfirm_Passwort").value = '';
 
   // Nach erfolgreichem Sign-up zur Login-Seite weiterleiten
-  singUp();
+  signUp();
 }
 
 // Funktion zur Anzeige des Popups
@@ -87,7 +87,7 @@ function closePopup() {
   // Zur Login-Seite zurückkehren
   popupElement.classList.remove("popup");
   document.getElementById("login_Content").classList.remove("d-none");
-  document.getElementById("sing_up_content").classList.add("d-none");
+  document.getElementById("sign_up_content").classList.add("d-none");
   document.getElementById("help_initials").classList.remove("d-none");
   document.getElementById("blue_signed_up").classList.add("d-none");
   document.getElementById("help_initials_mobile").classList.remove("d-none");

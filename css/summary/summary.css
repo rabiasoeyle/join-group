@@ -178,7 +178,12 @@ a{
 }
 
 .welcome_user_animation {
-  animation: afterRightDisappearing 2s;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  width: 100%;
+  height: auto;
+  padding-left: 2vw;
+  animation: afterRightDisappearing 12s;
 }
 
 @keyframes afterRightDisappearing {
@@ -186,12 +191,10 @@ a{
 
   }
   80% {
-    position: relative;
-    left: 0vw;
+    transform: translateX(0); /* Bewegt den Inhalt vollständig nach rechts */
   }
   100% {
-    position: relative;
-    left: 36vw;
+    transform: translateX(100%); /* Bewegt den Inhalt vollständig nach rechts */
   }
 }
 /* ab hier */

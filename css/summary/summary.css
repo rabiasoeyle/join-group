@@ -167,6 +167,10 @@
   stroke: white !important;
 }
 
+.d-none {
+  display: none;
+}
+
 .welcome_user_animation {
   overflow-x: hidden;
   scrollbar-width: none;

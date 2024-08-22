@@ -141,7 +141,7 @@ body {
 .sing_up_base {
   display: flex;
   background-color: white;
-  width: 55vw;
+  width: 75vw;
   height: 600px;
   justify-content: center;
   align-items: center;
@@ -158,9 +158,7 @@ body {
 
 .login_input {
   color: black;
-  border: 1px;
-  border-style: solid;
-  border-color: #d1d1d1;
+  border: 1px solid #d1d1d1;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
   margin: 12px;
@@ -631,6 +629,12 @@ body {
   }
   .font_color {
     font-size: 28px;
+  }
+  .sing_up_base {
+    width: 100vw;
+  }
+  .login_input {
+    width: 50vw;
   }
 }
 

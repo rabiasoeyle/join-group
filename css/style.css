@@ -362,6 +362,11 @@ border-radius: 20px;
     width: 100%;
   }
 }
+@media(max-width:500px){
+  .linkText{
+    display: none;
+  }
+}
 
 @media (max-height: 750px) {
   .sidebar_mobile {
@@ -386,6 +391,9 @@ border-radius: 20px;
   }
   .form-style {
     height: 70vh;
+  }
+  .linkText{
+    display: none;
   }
 }
 

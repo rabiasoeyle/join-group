@@ -221,7 +221,10 @@ stroke:white;
 .summary-part-top-hover{
 background-color: #2A3647 !important;
 color:white !important;
-transform:scale(1.1);
+transform:scale(1.05);
+}
+.summary-part-top-hover p{
+  color:white !important;
 }
 .summary-part-top-svg-parent-hover{
   background-color: white !important;

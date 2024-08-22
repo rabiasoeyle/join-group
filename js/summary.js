@@ -210,3 +210,12 @@ function removeHighlightPrio(){
     let priority = document.getElementById('priority');
     priority.style.removeProperty('color');
 }
+function highlightStatus(x){
+let div = document.getElementById(x);
+div.classList.add('summary-part-top-hover');
+}
+
+function removeHighlightStatus(x){
+    let div = document.getElementById(x);
+    div.classList.remove('summary-part-top-hover');
+}

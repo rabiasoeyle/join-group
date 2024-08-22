@@ -3,6 +3,11 @@
   margin: 0px;
 }
 
+a{
+  text-decoration: none;
+  color: #091931;
+}
+
 .summary-link-color {
   background-color: #091931;
   border-radius: 16px;

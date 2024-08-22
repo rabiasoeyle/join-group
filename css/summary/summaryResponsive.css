@@ -68,11 +68,6 @@
 
   @media (max-width: 675px){
 
-    .summary_content{
-      padding: 32px 24px;
-      
-    }
-
     .summary_header{
       padding: 16px;
       margin: 0px;
@@ -82,16 +77,13 @@
         display:none;
     }
     .summary_board{
-      width: 100%;
+      width: 90%;
       gap: 0px;
 
     }
-
     .summary_container{
       width: 100%;
     }
-
-
     .summary_prio {
         width: 100%;
         background-color: white;
@@ -103,7 +95,6 @@
         justify-content: space-around;
         margin-bottom: 24px;
       }
-      
       .summary_part_bottom{
         width: 50%;
         margin-top: 0px;
@@ -157,7 +148,7 @@
 
     .summary_content{
       gap: unset;
-      padding: 16px 8px;
+      padding: 16px
     }
 
   }
@@ -192,7 +183,7 @@
 
   @media (max-width: 402px){
     .summary_content{
-      padding: unset;
+      padding: 20px;
     }
 
     .summary_container {

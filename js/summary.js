@@ -119,7 +119,7 @@ async function initSummary() {
     setDaytimeGreeting();
 
     setTimeout(function() {
-        let content = document.getElementById('welcome_user');
+        let content = document.getElementById('welcome_user_animation');
         content.classList.add('d-none');
     }, 12000);
     

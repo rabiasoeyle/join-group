@@ -24,10 +24,13 @@ function includeHTML() {
       };
       xhttp.open("GET", file, true);
       xhttp.send();
+      
       /*exit the function:*/
       return;
     }
   }
+  const usernameInitial = localStorage.getItem('usernameInitial');
+  document.getElementById('circle').textContent = usernameInitial;
 }
 
 function backToLogin() {

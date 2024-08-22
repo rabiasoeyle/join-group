@@ -1,12 +1,12 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
-  function goToSummary() {
-    window.location.href = "../html/summary.html?";
-    localStorage.setItem('username', 'Guest User');
-    localStorage.setItem('usernameInitial', 'GU');
-    // Den Wert von nameElement in die URL-Parameter einfügen
-    window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
+function goToSummary() {
+  window.location.href = "../html/summary.html?";
+  localStorage.setItem('username', 'Guest User');
+  localStorage.setItem('usernameInitial', 'GU');
+  // Den Wert von nameElement in die URL-Parameter einfügen
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");
@@ -26,13 +26,19 @@ function singUp() {
 /**
  * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen User auszulesen und sie an die postData() weiterzugeben.
  */
-
 async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
   let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
+  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
+
+  // Überprüfen, ob die Passwörter übereinstimmen
+  if (passwordValue !== confirmPasswordValue) {
+    showError("Passwörter stimmen nicht überein."); // Fehlermeldung anzeigen
+    return;
+  }
 
   // Überprüfen, ob die E-Mail bereits registriert ist
   let emailExists = await checkIfEmailExists(emailValue);
@@ -87,7 +93,6 @@ function closePopup() {
   document.getElementById("help_initials_mobile").classList.remove("d-none");
 }
 
-
 // Funktion zur Überprüfung, ob die E-Mail bereits existiert
 async function checkIfEmailExists(email) {
   let response = await fetch(firebase_URL + "login.json");
@@ -97,31 +102,16 @@ async function checkIfEmailExists(email) {
   return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
 }
 
-// Funktion zur Anzeige von Fehlermeldungen
+// Funktion zur Anzeige von Fehlermeldungen im Popup
 function showError(message) {
-  let errorMessageElement = document.getElementById("error-message");
-  errorMessageElement.textContent = message;
-  errorMessageElement.classList.remove("d-none");
+  let popupElement = document.getElementById("emailExistsPopup");
+  popupElement.querySelector("p").textContent = message;
+  popupElement.classList.add("popup");
+  popupElement.classList.remove("d-none"); // Popup anzeigen
 }
-
-// Funktion zur Überprüfung, ob die E-Mail bereits existiert
-async function checkIfEmailExists(email) {
-  let response = await fetch(firebase_URL + "login.json");
-  let responseToJson = await response.json();
-
-  return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
-}
-
-// Funktion zur Anzeige von Fehlermeldungen
-function showError(message) {
-  let errorMessageElement = document.getElementById("error-message");
-  errorMessageElement.textContent = message;
-  errorMessageElement.classList.remove("d-none");
-}
-
 
 function getRandomColor() {
-  const letters = "0123456789ABCDEF"; //jederBuchstabe des Farbstrings
+  const letters = "0123456789ABCDEF"; // Jeder Buchstabe des Farbstrings
   let color = "#";
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];

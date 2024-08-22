@@ -276,6 +276,7 @@ function rollContactsListEdit(i){
                     <div>${contacts[j]['name']}</div>
                 </div>
                 <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
+                <label for="inputCheckbox-${i}"></label>
             </div>`;
         }
 }

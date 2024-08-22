@@ -30,11 +30,19 @@ function singUp() {
 async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
-  let passwordValue = document
-    .getElementById("neuUserLoginPasswort")
-    .value.trim();
+  let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
+
+  // Überprüfen, ob die E-Mail bereits registriert ist
+  let emailExists = await checkIfEmailExists(emailValue);
+  if (emailExists) {
+    // Popup anzeigen und Registrierung stoppen
+    showPopup("Diese E-Mail ist bereits registriert.");
+    return;
+  }
+
+  // Neues Nutzerobjekt erstellen
   let newLogin = {
     name: nameValue,
     email: emailValue,
@@ -42,19 +50,75 @@ async function neuUser() {
     phone: numberValue,
     color: colorValue,
   };
-  
-  // Sende die Daten an den Server
+
+  // Sende die Daten an den Server (Firebase) nur, wenn die E-Mail nicht existiert
   await postData("/login", newLogin);
 
-  // Input-Felder zurücksetzen (optional)
+  // Eingabefelder zurücksetzen
   document.getElementById("neuUserLoginName").value = '';
   document.getElementById("neuUserLoginEmail").value = '';
   document.getElementById("neuUserLoginPasswort").value = '';
   document.getElementById("neuUserLoginConfirm_Passwort").value = '';
 
   // Nach erfolgreichem Sign-up zur Login-Seite weiterleiten
-  singUp(); // Diese Funktion wechselt die Ansichten zwischen Sign-up und Login
+  singUp();
 }
+
+// Funktion zur Anzeige des Popups
+function showPopup(message) {
+  let popupElement = document.getElementById("emailExistsPopup");
+  popupElement.querySelector("p").textContent = message;
+  popupElement.classList.add("popup");
+  popupElement.classList.remove("d-none"); // Popup anzeigen
+}
+
+// Funktion zum Schließen des Popups
+function closePopup() {
+  // Popup schließen
+  let popupElement = document.getElementById("emailExistsPopup");
+  popupElement.classList.add("d-none"); // Popup ausblenden
+  
+  // Zur Login-Seite zurückkehren
+  popupElement.classList.remove("popup");
+  document.getElementById("login_Content").classList.remove("d-none");
+  document.getElementById("sing_up_content").classList.add("d-none");
+  document.getElementById("help_initials").classList.remove("d-none");
+  document.getElementById("blue_signed_up").classList.add("d-none");
+  document.getElementById("help_initials_mobile").classList.remove("d-none");
+}
+
+
+// Funktion zur Überprüfung, ob die E-Mail bereits existiert
+async function checkIfEmailExists(email) {
+  let response = await fetch(firebase_URL + "login.json");
+  let responseToJson = await response.json();
+
+  // Überprüfen, ob die E-Mail bereits in der Datenbank vorhanden ist
+  return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
+}
+
+// Funktion zur Anzeige von Fehlermeldungen
+function showError(message) {
+  let errorMessageElement = document.getElementById("error-message");
+  errorMessageElement.textContent = message;
+  errorMessageElement.classList.remove("d-none");
+}
+
+// Funktion zur Überprüfung, ob die E-Mail bereits existiert
+async function checkIfEmailExists(email) {
+  let response = await fetch(firebase_URL + "login.json");
+  let responseToJson = await response.json();
+
+  return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
+}
+
+// Funktion zur Anzeige von Fehlermeldungen
+function showError(message) {
+  let errorMessageElement = document.getElementById("error-message");
+  errorMessageElement.textContent = message;
+  errorMessageElement.classList.remove("d-none");
+}
+
 
 function getRandomColor() {
   const letters = "0123456789ABCDEF"; //jederBuchstabe des Farbstrings

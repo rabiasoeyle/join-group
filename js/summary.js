@@ -146,3 +146,62 @@ function setDaytimeGreeting() {
 
     document.getElementById('welcomeUser').textContent = daytime;
 }
+
+// für den done container
+function highlightDone(){
+    let div = document.getElementById('summaryPartTopDone');
+    div.classList.add('summary-part-top-hover');
+    let svg = document.getElementById('summaryPartTopSvgVector');
+    svg.classList.add('summary-part-top-svg-vector-hover');
+    let text = document.getElementById('summaryPartTextDone');
+    text.style.color= "white";
+}
+function removeHighlightDone(){
+    let div = document.getElementById('summaryPartTopDone');
+    div.classList.remove('summary-part-top-hover');
+    let svg = document.getElementById('summaryPartTopSvgVector');
+    svg.classList.remove('summary-part-top-svg-vector-hover');
+    let text = document.getElementById('summaryPartTextDone');
+    text.style.color= "#2A3647";
+}
+
+//für den todo container
+function highlightTodo(){
+    let div = document.getElementById('summaryPartTopEdit');
+    div.classList.add('summary-part-top-hover');
+    let parent = document.getElementById('summaryPartTopSvgEditParent');
+    parent.classList.add('summary-part-top-svg-parent-hover');
+    let svg = document.getElementById('summaryPartTopSvgEdit');
+    svg.classList.add('summary-part-top-svg-hover');
+    let text = document.getElementById('summaryPartTextEdit');
+    text.style.color="white";
+}
+function removeHighlightTodo(){
+    let div = document.getElementById('summaryPartTopEdit');
+    div.classList.remove('summary-part-top-hover');
+    let parent = document.getElementById('summaryPartTopSvgEditParent');
+    parent.classList.remove('summary-part-top-svg-parent-hover');
+    let svg = document.getElementById('summaryPartTopSvgEdit');
+    svg.classList.remove('summary-part-top-svg-hover');
+    let text = document.getElementById('summaryPartTextEdit');
+    text.style.color="#2A3647";
+}
+
+//für die priorität
+function highlightPrio(){
+let div = document.getElementById('summaryPrioParent');
+div.classList.add('summary_prio_hover');
+let date = document.getElementById('date');
+date.style.setProperty('color', 'white', 'important');
+let priority = document.getElementById('priority');
+priority.style.setProperty('color', 'white', 'important');
+}
+
+function removeHighlightPrio(){
+    let div = document.getElementById('summaryPrioParent');
+    div.classList.remove('summary_prio_hover');
+    let date = document.getElementById('date');
+    date.style.removeProperty('color');
+    let priority = document.getElementById('priority');
+    priority.style.removeProperty('color');
+}

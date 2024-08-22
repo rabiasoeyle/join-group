@@ -6,7 +6,7 @@
     bottom:0;
     background-color: rgba(0,0,0,0.7);
     z-index:44;
-    animation: slideInBoard 0.5s forwards; /* Animation anwenden */
+    animation: slideInBoard 1s forwards; /* Animation anwenden */
     overflow-y: hidden;
     scrollbar-width: none;
 }

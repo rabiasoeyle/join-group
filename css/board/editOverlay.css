@@ -9,7 +9,7 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  animation: slideInBoard 0.5s forwards; /* Animation anwenden */
+  animation: slideInBoard 1s forwards; /* Animation anwenden */
 }
 .edit-task-overlay-content {
   height: 90%;

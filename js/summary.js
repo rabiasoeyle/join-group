@@ -72,15 +72,15 @@ async function initSummary() {
 
     if (priorityCounts.urgent > 0) {
         displayedPriorityCount = priorityCounts.urgent;
-        priorityIcon = "../assets/img/Prio alta.png"; 
+        priorityIcon = "../assets/img/Group 7.png"; 
         document.getElementById('priority').textContent = "Urgent";
     } else if (priorityCounts.medium > 0) {
         displayedPriorityCount = priorityCounts.medium;
-        priorityIcon = "../assets/img/Prio media.png"; 
+        priorityIcon = "../assets/img/Group 7.png"; 
         document.getElementById('priority').textContent = "Medium";
     } else if (priorityCounts.low > 0) {
         displayedPriorityCount = priorityCounts.low;
-        priorityIcon = "../assets/img/Prio baja.png"; 
+        priorityIcon = "../assets/img/Group 7.png"; 
         document.getElementById('priority').textContent = "Low";
     }
     else {
@@ -109,12 +109,9 @@ async function initSummary() {
     // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
     // Name aus dem localStorage auslesen und in die user_name-Div einfügen
     const userName = localStorage.getItem('username');
-    if (userName) {
+    const usernameInitial = localStorage.getItem('usernameInitial');
         document.querySelector('.user_name').textContent = userName;
-        document.getElementById('circle').textContent = userName;
-
-
-}
+        document.getElementById('circle').textContent = usernameInitial;
 }
 
 async function getAllTasks(path) {

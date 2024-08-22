@@ -59,6 +59,8 @@ async function renderContacts() {
   contactsList.innerHTML += renderContactsHTML();
   await loadContacts("/contacts");
   renderAllContacts();
+  const usernameInitial = localStorage.getItem('usernameInitial');
+  document.getElementById('circle').textContent = usernameInitial;
 }
 
 /**

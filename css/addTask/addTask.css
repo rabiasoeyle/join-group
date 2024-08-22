@@ -517,3 +517,21 @@ border-bottom-right-radius: 10px;
   background-color: rgba(0, 0, 0, 0.137);
   border-radius: 8px;
 }
+
+
+.one-person-div input[type="checkbox"] {
+  display: none;
+}
+
+.one-person-div label {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-image: url('../../assets/img/checkbox_unchecked.png');
+  background-size: cover;
+}
+
+.one-person-div input[type="checkbox"]:checked + label {
+  background-image: url('../../assets/svg/checkbox_checked.svg');
+}

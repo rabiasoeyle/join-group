@@ -71,15 +71,15 @@
                                 </div>
                             </div>
                             <div class="summary_larger_part">
-                                <div class="summary_part_bottom">
+                                <div class="summary_part_bottom" id="summaryTaskInBoard"onmouseover="highlightStatus('summaryTaskInBoard')" onmouseout="removeHighlightStatus('summaryTaskInBoard')" >
                                     <p class="summary_part_number" id="taskCount"></p>
                                     <p class="summary_part_text">Tasks in <br>Board</p>
                                 </div>
-                                <div class="summary_part_bottom">
+                                <div class="summary_part_bottom" id="summaryTaskInProgress"onmouseover="highlightStatus('summaryTaskInProgress')" onmouseout="removeHighlightStatus('summaryTaskInProgress')">
                                     <p class="summary_part_number" id="inProgressCount"></p>
                                     <p class="summary_part_text">Tasks in <br> Progress</p>
                                 </div>
-                                <div class="summary_part_bottom">
+                                <div class="summary_part_bottom" id="summaryTaskInAwaitFeedback"onmouseover="highlightStatus('summaryTaskInAwaitFeedback')" onmouseout="removeHighlightStatus('summaryTaskInAwaitFeedback')">
                                     <p class="summary_part_number" id="awaitingFeedbackCount"></p>
                                     <p class="summary_part_text">Awaiting <br>Feedback</p>
                                 </div>

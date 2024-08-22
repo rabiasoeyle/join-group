@@ -67,90 +67,21 @@
 }
 
   @media (max-width: 675px){
-
-    .summary_header{
-      padding: 16px;
-      margin: 0px;
-      text-align: center;}
-
-    .summary_header_dividing_line{
-        display:none;
-    }
-    .summary_board{
-      width: 90%;
-      gap: 0px;
-
-    }
     .summary_container{
-      width: 100%;
+      gap: 12px;
     }
-    .summary_prio {
-        width: 100%;
-        background-color: white;
-        height: 168px;
-        border-radius: 30px;
-        padding: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        margin-bottom: 24px;
-      }
-      .summary_part_bottom{
-        width: 50%;
-        margin-top: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-bottom: 24px;
-      }
-
-      .summary_part_top{
-        width: 50%;
-        margin-top: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-bottom: 24px;
-      }
-
-
-    /* .summary_header{
-        display: flex;
-        flex-direction: column;
-        align-items: center  
-    }
-
-    .summary_header h2{
-      margin: 0px;
-    }
-
-    .summary_header p{
-      margin: 0px;
-    }
-
-    .keyMetrics{
-        display: inline;
-    } */
-
-    .highlighted {
-        text-underline-offset: 8px;
-        text-decoration: underline; /* Underline the text */
-        text-decoration-color: #29abe2 ;
-    }
-
-    .normal {
-        text-decoration: none; /* Remove underline */
-    }
-
     .summary_larger_part{
-        width: 100%;
-        display: flex;
-        align-items: center;
+      width: 85vw;
     }
+  }
 
-    .summary_content{
-      gap: unset;
-      padding: 16px
+  @media (max-width: 480px){
+    .summary_header span{
+      font-size: 16px;
     }
-
+    .summary_header h2{
+        font-size: 32px;
+    }
   }
 
   @media (max-width: 460px){
@@ -172,7 +103,7 @@
     }
 
     .summary_larger_part {
-      gap: 12px;
+      gap: 16px;
   }
 
   .summary_header_dividing_line_prio {
@@ -184,11 +115,11 @@
   @media (max-width: 402px){
     .summary_content{
       padding: 20px;
-    }
-
-    .summary_container {
+      flex-direction: column-reverse;
       gap: unset;
     }
+
+    
     .summary_header p{
       font-size: 16px;
     }

@@ -275,7 +275,32 @@ border-radius: 20px;
   background-color: rgba(42, 61, 89, 1);;
   border-radius: 20px;
 }
-
+.pop-up-added{
+  position: absolute;
+    right: 10%;
+    bottom: 10%;
+    z-index: 40;
+    height: 70px;
+    width: 240px;
+    background-color:#2a3647;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-radius: 20px;
+    animation-delay:2s;
+}
+.pop-up-added-svg{
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}
+.pop-up-added-svg path{
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}
 
 
 @media (max-width: 1020px) {

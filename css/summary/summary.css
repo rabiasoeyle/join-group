@@ -146,3 +146,23 @@
   flex-direction: column;
   align-items: center;
 }
+
+.summary_prio_icon{
+  background-color: black;
+  border-radius: 50%;
+  width:62px;
+  height:62px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary_svg{
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}
+.summary_svg path{
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}

@@ -30,22 +30,13 @@ async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
   let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
-  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
+  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim(); // Bestätigungsfeld hinzufügen
   let numberValue = "-";
   let colorValue = getRandomColor();
 
-  // Passwortanforderungen überprüfen
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  if (!passwordPattern.test(passwordValue)) {
-    document.getElementById("passwordError").classList.remove("d-none");
-    return;
-  } else {
-    document.getElementById("passwordError").classList.add("d-none");
-  }
-
   // Überprüfen, ob die Passwörter übereinstimmen
   if (passwordValue !== confirmPasswordValue) {
-    showError("Passwörter stimmen nicht überein."); // Fehlermeldung anzeigen
+    showError("Die Passwörter stimmen nicht überein."); // Fehlermeldung anzeigen
     return;
   }
 
@@ -111,12 +102,11 @@ async function checkIfEmailExists(email) {
   return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
 }
 
-// Funktion zur Anzeige von Fehlermeldungen im Popup
+// Funktion zur Anzeige von Fehlermeldungen
 function showError(message) {
-  let popupElement = document.getElementById("emailExistsPopup");
-  popupElement.querySelector("p").textContent = message;
-  popupElement.classList.add("popup");
-  popupElement.classList.remove("d-none"); // Popup anzeigen
+  let errorMessageElement = document.getElementById("error-message");
+  errorMessageElement.textContent = message;
+  errorMessageElement.classList.remove("d-none");
 }
 
 function getRandomColor() {

@@ -198,9 +198,21 @@ async function addContact() {
     numberValue = "";
     contacts = [];
     await postData("/contacts", newContact);
+    // Erstelle das Popup-Element
+const popup = document.createElement('div');
+popup.classList.add('pop-up-added');
+    popup.innerHTML=`
+        <span>Contact successfully created</span>
+    `
+    // Füge das Popup-Element zum body hinzu
+    document.body.appendChild(popup);
     await loadContacts("/contacts");
     renderAllContacts();
-    cancelAdding();
+    cancelAdding(); 
+    setTimeout(()=>{
+      popup.remove(); // Entfernt das Popup nach 5 Sekunden
+    },5000);
+  
   document.getElementById('contactDetailsBottom').innerHTML = '';
 }
 

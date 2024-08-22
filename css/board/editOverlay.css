@@ -477,3 +477,20 @@ h4{
 .subtask-and-checkbox input[type="checkbox"]:checked + label {
 	background-image: url(../../assets/img/checkbox_checked.png);
 }
+
+.one-person-div-edit input[type="checkbox"] {
+  display: none;
+}
+
+.one-person-div-edit label {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-image: url('../../assets/img/checkbox_unchecked.png');
+  background-size: cover;
+}
+
+.one-person-div-edit input[type="checkbox"]:checked + label {
+  background-image: url('../../assets/svg/checkbox_checked.svg');
+}

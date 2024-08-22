@@ -62,7 +62,7 @@
                         <div id="error-message" class="error-message d-none">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
                         <input required id="loginEmail" class="login_input" placeholder="Email" type="email" autocomplete="email">
                         <input required id="loginPasswort" class="login_input" placeholder="Passwort" type="password"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Mindest 8 Zeichen, davon mindest klein wie groß Buchstarben, mindest ein Zahl und ein Sonderzeichen." autocomplete="password">
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Das Passwort muss mindestens 8 Zeichen lang sein, dabei mindestens einen Kleinbuchstaben, einen Großbucstaben, eine Zahl und ein Sonderzeichen enthalten." autocomplete="password">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>
@@ -76,6 +76,7 @@
 
                 <div id="sing_up_content" class="sing_up_content d-none">
                     <form onsubmit="neuUser(); return false" class="sing_up_base">
+                        <div id="passwordError" class="d-none error-message">Das Passwort muss mindestens 8 Zeichen lang sein, dabei mindestens einen Kleinbuchstaben, einen Großbucstaben, eine Zahl und ein Sonderzeichen enthalten</div>
                         <div class="sing_up_headline">
                             <img onclick="singUp()" src="../assets/img/blueArrow.png" alt="Blue Back Arrow">
                             <h2 class="font_color">Sign Up</h2>
@@ -84,7 +85,7 @@
                         <input required id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
                         <input required id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
                         <input required id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
-                            type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Mindest 8 Zeichen, davon mindest klein wie groß Buchstarben, mindest ein Zahl und ein Sonderzeichen.">
+                            type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Das Passwort muss mindestens 8 Zeichen lang sein, dabei mindestens einen Kleinbuchstaben, einen Großbucstaben, eine Zahl und ein Sonderzeichen enthalten.">
                         <input required id="neuUserLoginConfirm_Passwort" class="login_input"
                             placeholder="Confirm Passwort" type="password"
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Es muss das gleiche Passwort sein.">

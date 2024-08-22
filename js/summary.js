@@ -56,7 +56,7 @@ async function initSummary() {
         }
     }
     // Metriken aktualisieren
-    document.getElementById('taskCount').textContent = tasksArray.length - 1;
+    document.getElementById('taskCount').textContent = tasksArray.length;
     document.getElementById('todoCount').textContent = statusCounts.todo;
     document.getElementById('doneCount').textContent = statusCounts.done;
     document.getElementById('inProgressCount').textContent = statusCounts.inProgress;

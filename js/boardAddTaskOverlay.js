@@ -199,13 +199,14 @@ function overlayAddRollContactsList(){
         // Überprüfen, ob der Kontakt bereits zugewiesen wurde
         //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
         let isChecked = overlayAddAssignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML +=`
+        assignContactsList.innerHTML +=/*html*/`
         <div class="overlay-add-one-person-div" onclick="overlayAddAddAssignedPersons(${i})" id="overlayAddOnePersonDiv-${i}">
             <div class="overlay-add-one-person-div-left">
                 <div class="overlay-add-assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${overlayAddProfileInitials(i)}</div>
                 <div>${contacts[i]['name']}</div>
             </div>
             <input id="overlayAddInputCheckbox-${i}" class="overlay-add-assigen_checkbox" type="checkbox" ${isChecked}>
+            <label for="overlayAddInputCheckbox-${i}"></label>
         </div>`;
         let input = document.getElementById(`overlayAddInputCheckbox-${i}`);
         if(input.checked){

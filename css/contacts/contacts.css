@@ -74,9 +74,7 @@
   max-height: 850px;
   width: 55%;
   height: 55%;
-  background: white;
   bottom: 25vh;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
 /* Keyframes für die Animation */
@@ -197,6 +195,7 @@
   display: flex;
   width: 100%;
   animation: slideInContacts 1s forwards; /* Animation anwenden */
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .add-contact-left {

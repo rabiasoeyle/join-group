@@ -34,6 +34,15 @@ async function neuUser() {
   let numberValue = "-";
   let colorValue = getRandomColor();
 
+  // Passwortanforderungen überprüfen
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  if (!passwordPattern.test(passwordValue)) {
+    document.getElementById("passwordError").classList.remove("d-none");
+    return;
+  } else {
+    document.getElementById("passwordError").classList.add("d-none");
+  }
+
   // Überprüfen, ob die Passwörter übereinstimmen
   if (passwordValue !== confirmPasswordValue) {
     showError("Passwörter stimmen nicht überein."); // Fehlermeldung anzeigen

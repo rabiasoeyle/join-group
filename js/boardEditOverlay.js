@@ -253,7 +253,7 @@ function rollContactsListEdit(i){
         // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
         if (tasks[i]['assigned']) {
             isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-        }
+        
         assignContactsList.innerHTML += /*html*/ `
             <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
                 <div class="one-person-div-edit-left">
@@ -266,7 +266,17 @@ function rollContactsListEdit(i){
             if(input.checked){
                 document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
                 document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
-            }
+            }}
+        else{
+            assignContactsList.innerHTML += /*html*/ `
+            <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
+                <div class="one-person-div-edit-left">
+                    <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
+                    <div>${contacts[j]['name']}</div>
+                </div>
+                <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
+            </div>`;
+        }
 }
 }
 

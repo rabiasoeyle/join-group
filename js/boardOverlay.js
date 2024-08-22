@@ -44,7 +44,7 @@ function openDetailedTaskOverlay(i){
             </div>
             </div>
             <div class="delete-or-edit-task-buttons">
-                <div class="delete-task-button" onclick="deleteTask('tasks/${tasks[i]['id']}')">
+                <div class="delete-task-button" onclick=" deleteTask('tasks/${tasks[i]['id']}')">
                     <img src="../assets/img/deleteTask.png">
                     Delete
                 </div>
@@ -227,7 +227,7 @@ function addCheckedSubtasks(i, j) {
  * Diese Funktion dient zum schließen des Overlays.
  */
 function closeDetailsOverlay(event) {
-  event.stopPropagation();
+  // event.stopPropagation();
   let editOverlayParent = document.getElementById("editOverlayParent");
   editOverlayParent.classList.add("d-none");
   isOverlayOpen = !isOverlayOpen;

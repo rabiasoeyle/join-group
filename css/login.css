@@ -387,6 +387,7 @@ body {
   width: 100px;
   height: 6vh;
   object-fit: contain;
+  fill: #2A3647;
   animation: join_Logo_Mobile 2s;
 }
 
@@ -398,6 +399,7 @@ body {
     width: 25vw;
     height: 25vh;
     object-fit: contain;
+    fill: white;
     transform: translate(-50%, -50%)
   }
   20% {
@@ -407,6 +409,7 @@ body {
     width: 25vw;
     height: 25vh;
     object-fit: contain;
+    fill: white;
     transform: translate(-50%, -50%)
   }
   100% {
@@ -416,6 +419,7 @@ body {
     width: 100px;
     height: 6vh;
     object-fit: contain;
+    fill: #2A3647;
   }
 }
 

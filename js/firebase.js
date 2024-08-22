@@ -88,6 +88,18 @@ async function deleteContact(path = "") {
   renderContactDetails();
   await loadContacts("/contacts");
   renderAllContacts();
+  // Erstelle das Popup-Element
+const popup = document.createElement('div');
+popup.classList.add('pop-up-added');
+    popup.innerHTML=`
+        <span>Contact successfully deleted</span>
+    `
+// Füge das Popup-Element zum body hinzu
+document.body.appendChild(popup);
+   // Warte 5 Sekunden, bevor die Seite weitergeleitet wird
+    setTimeout(() => {
+      popup.remove(); // Entfernt das Popup nach 5 Sekunden
+  }, 2000); 
 }
 
 /**
@@ -100,6 +112,19 @@ async function deleteTask(path = "") {
   });
   tasks = [];
   await loadTasks("/tasks");
+  // Erstelle das Popup-Element
+const popup = document.createElement('div');
+popup.classList.add('pop-up-added');
+    popup.innerHTML=`
+        <span>Task successfully deleted</span>
+    `
+
+// Füge das Popup-Element zum body hinzu
+document.body.appendChild(popup);
+   // Warte 5 Sekunden, bevor die Seite weitergeleitet wird
+    setTimeout(() => {
+      popup.remove(); // Entfernt das Popup nach 5 Sekunden
+  }, 2000); 
   closeDetailsOverlay();
   todoBoard();
   inProgressBoard();

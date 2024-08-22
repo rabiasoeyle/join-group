@@ -211,7 +211,7 @@ popup.classList.add('pop-up-added');
     cancelAdding(); 
     setTimeout(()=>{
       popup.remove(); // Entfernt das Popup nach 5 Sekunden
-    },5000);
+    },2000);
   
   document.getElementById('contactDetailsBottom').innerHTML = '';
 }

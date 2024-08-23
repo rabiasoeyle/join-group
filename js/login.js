@@ -42,6 +42,8 @@ async function neuUser() {
   document.getElementById("email-format-error").classList.add("d-none");
   document.getElementById("wrongPasswordKey").classList.add("d-none");
   document.getElementById("email-errorSignUp").classList.add("d-none");
+  document.getElementById("emailExists").classList.add("d-none");
+
 
   // Check if the username has been entered
   if (!nameValue) {
@@ -76,7 +78,7 @@ async function neuUser() {
   try {
     let emailExists = await checkIfEmailExists(emailValue);
     if (emailExists) {
-      showPopup("Diese E-Mail ist bereits registriert.");
+      document.getElementById("emailExists").classList.remove("d-none");
       return;
     }
 

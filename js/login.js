@@ -341,28 +341,11 @@ function loginCorrect(nameElement) {
 
 function loginIncorrect() {
   document.getElementById("error-message").classList.remove("d-none");
-}
-
-// Event-Listener, um Fehlermeldungen bei Eingaben sofort zu entfernen
-document.getElementById("neuUserLoginName").addEventListener("input", function() {
-  document.getElementById("username-error").classList.add("d-none");
-});
-
-document.getElementById("neuUserLoginEmail").addEventListener("input", function() {
   document.getElementById("email-errorSignUp").classList.add("d-none");
   document.getElementById("emailExists").classList.add("d-none");
-});
-
-document.getElementById("neuUserLoginPasswort").addEventListener("input", function() {
   document.getElementById("password-field-error").classList.add("d-none");
   document.getElementById("password-mismatch-error").classList.add("d-none");
   document.getElementById("wrongPasswordKey").classList.add("d-none");
-});
-
-document.getElementById("neuUserLoginConfirm_Passwort").addEventListener("input", function() {
   document.getElementById("password-mismatch-error").classList.add("d-none");
-});
-
-document.getElementById("acceptTermsCheckbox").addEventListener("change", function() {
   document.getElementById("notCheckedBox").classList.add("d-none");
-});
+}

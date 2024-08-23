@@ -6,8 +6,7 @@ let previouslyHighlighted;
 let previouslyHighlightedName;
 
 /**
- * 
-This eventListener is used to ensure that the right field receives display none and flex again at the corresponding Width
+ * This eventListener is used to ensure that the right field receives display none and flex again at the corresponding Width
  */
 window.addEventListener("resize", function(){
   // fire when above 1203
@@ -68,13 +67,9 @@ async function renderContacts() {
 function renderAllContacts() {
   let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
-  // Group contacts by first letter
   let groupedContacts = groupContactsByInitial(contacts);
-  // Iterate through the grouped contacts
   for (let initial in groupedContacts) {
-    // Spacing and border for the new letter
     contactsListBottom.innerHTML += renderAllGroupinitialsHTML(initial);
-    // Render contacts of this group
     groupedContacts[initial].forEach((contact) => {
       contactsListBottom.innerHTML += renderAllContactsHTML(contact);
     });
@@ -83,7 +78,6 @@ function renderAllContacts() {
 
 /**
  * In this function, the initials of the contacts are filtered out and displayed
- *
  * @param {*} i
  * @returns
  */
@@ -108,12 +102,14 @@ function openNewContactOverlay() {
   openNewContactOverlayRight(); 
 }
 
+/**
+ * This function should open the overlay for "Add Contacts"-right side.
+ */
 function openNewContactOverlayRight(){
   let addContactRight = document.getElementById('addContactRight');
   addContactRight.innerHTML='';
   addContactRight.innerHTML= openNewContactOverlayRightHTML();
 }
-
 
 /**
  * In this function contacts are edited
@@ -177,6 +173,9 @@ async function editContact(i) {
   cancelEdit();
 }
 
+/**
+ * This function is used to cancel the edit of a contact.
+ */
 function cancelEdit(){
   let overlay = document.getElementById('overlayNewContact');
   overlay.classList.add("d-none");
@@ -186,8 +185,6 @@ function cancelEdit(){
 /**
  * This function is used to read the values ​​from the input fields for the new contact and pass them on to postData().
  */
-
-// This function collects the values ​​of the input fields and returns an object with these values.
 function getContactInputValues() {
   let nameValue = document.getElementById('inputFieldName').value.trim();
   let emailValue = document.getElementById('inputFieldEmail').value.trim();
@@ -196,54 +193,68 @@ function getContactInputValues() {
   return { name: nameValue, email: emailValue, phone: numberValue };
 }
 
-// Diese Funktion setzt die Werte der Eingabefelder zurück.
+/**
+ * This function deletes the value of the Input fields.
+ */
 function clearInputFields() {
   document.getElementById('inputFieldName').value = "";
   document.getElementById('inputFieldEmail').value = "";
   document.getElementById('inputFieldNumber').value = "";
 }
 
-// This function creates a contact object with a random color value.
+/**
+ * This function creates a contact object with a random color value.
+ * @param {*} name 
+ * @param {*} email 
+ * @param {*} phone 
+ * @returns 
+ */
 function createContactObject(name, email, phone) {
   let colorValue = getRandomColor();
   return { name: name, email: email, phone: phone, color: colorValue };
 }
 
-// This function creates a popup, displays it and removes it after 2 seconds.
+/**
+ * This function creates a popup, displays it and removes it after 2 seconds.
+ * @param {*} message 
+ */
 function showPopup(message) {
   const popup = document.createElement('div');
   popup.classList.add('pop-up-added');
   popup.innerHTML = `<span>${message}</span>`;
   document.body.appendChild(popup);
-  
   setTimeout(() => {
     popup.remove(); // Entfernt das Popup nach 2 Sekunden
   }, 2000);
 }
 
-// This function empties the contents of the contact details bottom area.
+/**
+ * This function empties the contents of the contact details bottom area.
+ */
 function clearContactDetails() {
   document.getElementById('contactDetailsBottom').innerHTML = '';
 }
 
-// This is the restructured add Contact function that uses the helper functions defined above.
+/**
+ * This is the restructured add Contact function that uses the helper functions defined above.
+ */
 async function addContact() {
   const { name, email, phone } = getContactInputValues();
   const newContact = createContactObject(name, email, phone);
-  
   clearInputFields();
   contacts = [];
-  
   await postData("/contacts", newContact);
   showPopup('Contact successfully created');
   await loadContacts("/contacts");
-  
   renderAllContacts();
   cancelAdding();
   clearContactDetails();
 }
 
-
+/**
+ * This function creates random colors.
+ * @returns 
+ */
 function getRandomColor() {
   const letters = '0123456789ABCDEF';//each letter of the color string
   let color = '#';
@@ -290,8 +301,6 @@ function groupContactsByInitial(contacts) {
  *
  * @param {*} i
  */
-
-// This is the main function that calls other helper functions.
 function contactDetails(i) {
   const elements = getContactElements(i);
   updateHighlight(elements.container, elements.name);
@@ -299,7 +308,11 @@ function contactDetails(i) {
   updateDetailsContent(i);
 }
 
-// This function fetches all required DOM elements and returns them as an object.
+/**
+ * This function fetches all required DOM elements and returns them as an object.
+ * @param {*} i 
+ * @returns 
+ */
 function getContactElements(i) {
   return {
     rightSide: document.getElementById('contactDetails'),
@@ -309,14 +322,17 @@ function getContactElements(i) {
   };
 }
 
-// This function removes the highlight from the previous contact and sets the highlight on the current contact.
+/**
+ * This function removes the highlight from the previous contact and sets the highlight on the current contact.
+ * @param {*} container 
+ * @param {*} name 
+ */
 function updateHighlight(container, name) {
   if (previouslyHighlighted) {
     previouslyHighlighted.classList.remove('highlighted-p');
     previouslyHighlighted.classList.add('one-contact-container');
     previouslyHighlightedName.classList.remove('highlighted-name');
   }
-
   previouslyHighlighted = container;
   previouslyHighlightedName = name;
   previouslyHighlighted.classList.remove('one-contact-container');
@@ -324,11 +340,12 @@ function updateHighlight(container, name) {
   previouslyHighlightedName.classList.add('highlighted-name');
 }
 
-// This feature adjusts the layout based on the screen width.
+/**
+ * This feature adjusts the layout based on the screen width.
+ */
 function adjustLayout() {
   const rightSide = document.getElementById('contactDetails');
   const leftSide = document.getElementById('contactsList');
-
   if (document.documentElement.clientWidth > 840) {
     rightSide.style.display = "flex";
     rightSide.style.flexDirection = "column";
@@ -340,7 +357,10 @@ function adjustLayout() {
   }
 }
 
-// This function updates the contents of the subrange based on the specified index i.
+/**
+ * This function updates the contents of the subrange based on the specified index i.
+ * @param {*} i 
+ */
 function updateDetailsContent(i) {
   const rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";

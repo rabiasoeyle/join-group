@@ -153,3 +153,17 @@ function getOverlayAddPersonTemplate(i, contacts, isChecked) {
             <label for="overlayAddInputCheckbox-${i}"></label>
         </div>`;
 }
+
+function getAssignedPersonTemplate(assignedPerson, initials) {
+    return `
+        <div style="background-color:${assignedPerson.color}; color:white" class="overlay-add-selected-person-initals-div">
+            ${initials}
+        </div>`;
+}
+
+function getPlusDivTemplate(extraPersonsCount) {
+    return `
+        <div style="background-color:white; color:black" class="overlay-add-selected-person-initals-div">
+            +${extraPersonsCount}
+        </div>`;
+}

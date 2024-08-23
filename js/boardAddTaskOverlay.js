@@ -124,14 +124,10 @@ function overlayAddShowAssignedPersons() {
     let showAssignedPersons = document.getElementById('overlayAddShowAssignedPersonInitial');
     showAssignedPersons.innerHTML='';
     for(i=0;i<Math.min(overlayAddAssignedPersons.length, 5);i++){
-        showAssignedPersons.innerHTML += `
-        <div style="background-color:${overlayAddAssignedPersons[i].color}; color:white" class="overlay-add-selected-person-initals-div">${overlayAddAssignedPersonsInitials(i)}</div>`;
+        showAssignedPersons.innerHTML += getAssignedPersonTemplate(overlayAddAssignedPersons[i], overlayAddAssignedPersonsInitials(i));       
 } // Wenn es mehr als 6 zugewiesene Personen gibt, ein weiteres "Plus"-Div hinzufügen
 if (overlayAddAssignedPersons.length > 6) {
-    showAssignedPersons.innerHTML += `
-        <div style="background-color:white; color:black" class="overlay-add-selected-person-initals-div">
-            +${overlayAddAssignedPersons.length - 6}
-        </div>`;
+    showAssignedPersons.innerHTML += getPlusDivTemplate(overlayAddAssignedPersons.length - 6);
 }
 } 
 

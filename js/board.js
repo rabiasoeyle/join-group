@@ -79,31 +79,6 @@ function showAssignedPersonsInitial(element){
 }
 
 /**
- * This function renders the initial container of the first 4 assigned contacts.
- * @param {*} assignedPersons 
- * @returns 
- */
-function showAssignedPersonsInitialHTMLOne(assignedPersons){
-return `
-    <div class="initals-div-in-task" style="background-color:${assignedPersons[j].color}; color:white;">
-      ${profileInitials(assignedPersons[j]['name'])}
-    </div>`;
-}
-
-/**
- * This function renders the circle container with a number, which shows how much more Contacts are assigned.
- * @param {*} assignedPersons 
- * @returns 
- */
-function showAssignedPersonsInitialHTMLTwo(assignedPersons){
-return `
-    <div style="background-color:white; color:black" class="initals-div-in-task">
-      +${assignedPersons.length-4}
-    </div>
-`
-}
-
-/**
  * This function is intended to change the background color of the categories div depending on the category
  * @param {*} element 
  */
@@ -215,15 +190,6 @@ function todoBoard(filteredTasks){
 }
 
 /**
- * This function is intended to render the container in the event that there are no tasks with status todo.
- * @returns 
- */
-function todoBoardHTMLOne(){
-  return `<div class="no-task-available">No tasks To do</div>
-  `
-}
-
-/**
  * This function describes the case of what happens when tasks are in this status.
  * @param {*} status 
  * @param {*} i 
@@ -240,21 +206,6 @@ function elseForBoardInfo(status, i){
     showAssignedPersonsInitial(element);  
   }
   elseForBoardInfoAfterAssignedPersons(status, i);
-}
-
-/**
- * This function renders the HTML for the subtasks in the small view.
- * @param {*} status 
- * @param {*} i 
- * @param {*} result 
- * @returns 
- */
-function subtaskListHTML(status, i, result){
-  return `<div class="load-subtask-div">
-            <div class="load-subtask" style="width:${result}%">
-            </div>
-          </div>
-          <div class="subtasks">${status[i].checkedSubtasksCount}/${status[i]['subtaskList'].length} Subtasks</div>`
 }
 
 /**
@@ -300,16 +251,6 @@ function inProgressBoard(filteredTasks){
 }
 
 /**
- * This function is intended to render the container in the event that there are no tasks with status inProgress.
- * @returns 
- */
-function inProgressBoardHTMLOne(){
-  return `
-      <div class="no-task-available">No tasks in Progress</div>
-      `
-}
-
-/**
  * This function is intended to render the tasks with the status awaitFeedback.
  */
 function awaitFeedbackBoard(filteredTasks){
@@ -332,16 +273,6 @@ function awaitFeedbackBoard(filteredTasks){
 }
 
 /**
- * This function is intended to render the container in the event that there are no tasks with status awaitFeedback
- * @returns 
- */
-function awaitFeedbackBoardHTMLOne(){
-  return `
-      <div class="no-task-available">No tasks await Feedback</div>
-      `
-}
-
-/**
  * This function is intended to render the tasks with the status done.
  */
 function doneBoard(filteredTasks){
@@ -361,16 +292,6 @@ function doneBoard(filteredTasks){
         elseForBoardInfo(status,i);
     }}
     
-}
-
-/**
- * This function is intended to render the container in the event that there are no tasks with status done.
- * @returns 
- */
-function doneBoardHTMLOne(){
-  return   `
-  <div class="no-task-available">No tasks await Feedback</div>
-  `
 }
 
 /**

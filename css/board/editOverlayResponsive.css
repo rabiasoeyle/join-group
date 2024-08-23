@@ -1,53 +1,52 @@
-@media(max-width:544px){
-  .edit-task-overlay-content{
-      width:100%;
-      min-height:100%;
-      border-radius: unset;
-      gap:16px;
+@media (max-width: 544px) {
+  .edit-task-overlay-content {
+    width: 100%;
+    min-height: 100%;
+    border-radius: unset;
+    gap: 16px;
   }
-  .edit-task-overlay-edit{
-      width:100%;
-      height:100%;
-      border-radius: unset;
-      gap:16px;
+  .edit-task-overlay-edit {
+    width: 100%;
+    height: 100%;
+    border-radius: unset;
+    gap: 16px;
   }
-  .showDetailTaskOverlayTitle{
-      font-size: 32px;
-      font-weight: 700;
-      overflow-wrap: break-word;
+  .showDetailTaskOverlayTitle {
+    font-size: 32px;
+    font-weight: 700;
+    overflow-wrap: break-word;
   }
-    .description-title textarea{
-      font-size: 16px;
-    }
-    .form-edit-overlay{
-      height:unset;
-      gap: 16px;
-    }
-    .showDetailTaskOverlayDescription{
-        font-size: 16px;
-        overflow-wrap: break-word;
-      }
-      .delete-or-edit-task-buttons{
-        justify-content: center;
-      }
-}
-@media(max-height:750px){
-   .showDetailTaskOverlayTitle{
-    font-size:40px;
+  .description-title textarea {
+    font-size: 16px;
+  }
+  .form-edit-overlay {
+    height: unset;
+    gap: 16px;
+  }
+  .showDetailTaskOverlayDescription {
+    font-size: 16px;
+    overflow-wrap: break-word;
+  }
+  .delete-or-edit-task-buttons {
+    justify-content: center;
   }
 }
-@media(max-height:600px){
- 
-  .edit-task-overlay-edit{
-    width:90vW;
+@media (max-height: 750px) {
+  .showDetailTaskOverlayTitle {
+    font-size: 40px;
   }
-  .task-title input{
-    width:100%;
+}
+@media (max-height: 600px) {
+  .edit-task-overlay-edit {
+    width: 90vw;
   }
-  .description-title textarea{
-    width:100%;
+  .task-title input {
+    width: 100%;
   }
-  .edit-task-overlay-content{
-    width:90vW;
-  } 
+  .description-title textarea {
+    width: 100%;
+  }
+  .edit-task-overlay-content {
+    width: 90vw;
+  }
 }

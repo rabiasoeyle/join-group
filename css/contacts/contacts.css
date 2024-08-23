@@ -70,7 +70,7 @@
   position: fixed;
   top: 25vh;
   left: 25vw;
-  right:25vW;
+  right: 25vw;
   max-width: 950px;
   max-height: 850px;
   width: 55%;
@@ -78,15 +78,16 @@
   bottom: 25vh;
   border-radius: 10px;
 }
-/* Keyframes für die Animation */
+
+/* Keyframes for animation */
 @keyframes slideInContacts {
   from {
-      right: -300px; /* Startposition */
+    right: -300px; /* Starting position */
   }
   to {
-      right: 0; /* Endposition */
+    right: 0; /* End position */
   }
-} 
+}
 
 .input-new-contact {
   width: 100%;
@@ -189,13 +190,12 @@
 }
 
 /* Add contact overlay */
-
 .add-contact-container {
   background: white;
   position: relative;
   display: flex;
   width: 100%;
-  animation: slideInContacts 1s forwards; /* Animation anwenden */
+  animation: slideInContacts 1s forwards; /* Apply animation */
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
 }
@@ -247,6 +247,7 @@ span {
   align-items: center;
   gap: 32px;
 }
+
 .add-contact-right-left {
   display: flex;
 }
@@ -363,9 +364,11 @@ span {
   margin-left: 16px;
 }
 
-.add-contact-left p, span {
+.add-contact-left p,
+span {
   font-size: 16px;
 }
+
 .group-initial {
   font-size: 1.5em;
   margin-bottom: 5px;
@@ -431,6 +434,7 @@ span {
   background-color: #091931;
   border-radius: 16px;
 }
+
 .contacts-link-color .icons_sidebar {
   fill: white;
 }
@@ -471,6 +475,7 @@ span {
   gap: 12%;
   transition: background-color 125ms;
 }
+
 .highlighted-name {
   color: white;
 }

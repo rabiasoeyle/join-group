@@ -1,122 +1,120 @@
 @media (max-width: 1300px) {
-    .all-boards {
-      flex-direction: column;
-      gap: 24px;
-    }
-    .board-content {
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      min-height: 10vh;
-      flex-direction: unset;
-      align-items: unset;
-      width: 100%;
-    }
-    .board-part-div {
-      align-items: flex-start;
-      width: 100%;
-    }
-    .name-of-board-add {
-      width: 100%;
-    }
+  .all-boards {
+    flex-direction: column;
+    gap: 24px;
   }
-  
-  @media (max-width: 1020px) {
-    .content {
-      /* height: 83vh; */
-      width: 100vw;
-      overflow-x: hidden;
-    }
+  .board-content {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    min-height: 10vh;
+    flex-direction: unset;
+    align-items: unset;
+    width: 100%;
   }
-  
-  @media (max-width: 720px) {
-    .add-task-big-button-responsive {
-      display: flex;
-      background-color: #2a3647;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-    }
-    .input-and-button button {
-      display: none;
-    }
-    .header-board {
-      flex-direction: column;
-      gap: 24px;
-    }
-    .headline-and-button {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .no-task-available {
-      width: 100%;
-    }
-    .search-bar {
-      width: 60vw;
-    }
-    .one-task-div {
-      width: 220px;
-      gap: 24px;
-    }
-    .initals-div-in-task:nth-of-type(1) {
-      width: 32px;
-      height: 32px;
-    }
-  
-    .initals-div-in-task:nth-of-type(n + 2) {
-      width: 32px;
-      height: 32px;
-    }
-    .subtask-loadboard-and-text {
-      padding-bottom: 10px;
-    }
-    .task-description {
-      padding-bottom: 10px;
-    }
-    .category-div {
-      justify-content: space-between;
-    }
-    .change-status-menu {
-      display: flex;
-    }
+  .board-part-div {
+    align-items: flex-start;
+    width: 100%;
   }
+  .name-of-board-add {
+    width: 100%;
+  }
+}
 
 @media (max-width: 1020px) {
   .content {
-    height:80vh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 720px) {
+  .add-task-big-button-responsive {
+    display: flex;
+    background-color: #2a3647;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+  .input-and-button button {
+    display: none;
+  }
+  .header-board {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .headline-and-button {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .no-task-available {
+    width: 100%;
+  }
+  .search-bar {
+    width: 60vw;
+  }
+  .one-task-div {
+    width: 220px;
+    gap: 24px;
+  }
+  .initals-div-in-task:nth-of-type(1) {
+    width: 32px;
+    height: 32px;
+  }
+  .initals-div-in-task:nth-of-type(n + 2) {
+    width: 32px;
+    height: 32px;
+  }
+  .subtask-loadboard-and-text {
+    padding-bottom: 10px;
+  }
+  .task-description {
+    padding-bottom: 10px;
+  }
+  .category-div {
+    justify-content: space-between;
+  }
+  .change-status-menu {
+    display: flex;
+  }
+}
+
+@media (max-width: 1020px) {
+  .content {
+    height: 80vh;
     width: 100%;
     overflow-x: hidden;
   }
 }
 @media (max-width: 520px) {
   .content {
-    padding:16px;
+    padding: 16px;
   }
 }
 
-  @media (max-height: 540px) {
-    .content {
-      height: 77vh;
-    }
+@media (max-height: 540px) {
+  .content {
+    height: 77vh;
   }
-  
-  @media (max-height: 460px) {
-    .content {
-      height: 75vh;
-    }
+}
+
+@media (max-height: 460px) {
+  .content {
+    height: 75vh;
   }
-  
-  @media (max-height: 400px) {
-    .content {
-      height: 73vh;
-    }
+}
+
+@media (max-height: 400px) {
+  .content {
+    height: 73vh;
   }
-  
-  @media (max-height: 350px) {
-    .content {
-      height: 70vh;
-    }
+}
+
+@media (max-height: 350px) {
+  .content {
+    height: 70vh;
   }
+}

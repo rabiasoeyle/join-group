@@ -38,7 +38,8 @@ async function neuUser() {
   document.getElementById("username-error").classList.add("d-none");
   document.getElementById("password-field-error").classList.add("d-none");
   document.getElementById("password-mismatch-error").classList.add("d-none");
-  document.getElementById("mailFormat-error").classList.add("d-none");
+  document.getElementById("email-format-error").classList.add("d-none");
+  document.getElementById("wrongPasswordKey").classList.add("d-none");
 
   // Überprüfen, ob der Benutzername eingegeben wurde
   if (!nameValue) {
@@ -58,9 +59,15 @@ async function neuUser() {
     return;
   }
 
+  // Überprüfen, ob das Passwortformat korrekt ist
+  if (!isValidPassword(passwordValue)) {
+    document.getElementById("wrongPasswordKey").classList.remove("d-none");
+    return;
+  }
+
   // E-Mail-Format überprüfen
   if (!isValidEmail(emailValue)) {
-    showError("Bitte geben Sie eine gültige E-Mail-Adresse ein.", "mailFormat-error");
+    document.getElementById("email-format-error").classList.remove("d-none");
     return;
   }
 
@@ -91,6 +98,13 @@ async function neuUser() {
     showError("Beim Erstellen des Benutzers ist ein Fehler aufgetreten.");
     console.error(error);
   }
+}
+
+// Funktion zur Überprüfung des Passwortformats
+function isValidPassword(password) {
+  // Regulärer Ausdruck zur Überprüfung des Passwortformats
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordPattern.test(password);
 }
 
 // Funktion zur Anzeige des Popups

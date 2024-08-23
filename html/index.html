@@ -60,11 +60,11 @@
                     <form onsubmit="login(); return false" class="login_base">
                         <h2 class="font_color">Log in</h2>
                         <input id="loginEmail" class="login_input" placeholder="Email" type="text">
+                        <input id="loginPasswort" class="login_input" placeholder="Passwort" type="password">
                         <div id="error-message" class="error-message d-none">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
                         <div id="password-error" class="error-message d-none">Bitte Passwort angeben</div>
                         <div id="mailFormat-error" class="error-message d-none">Falsches Mail Format</div>
                         <div id="email-error" class="error-message d-none">Bitte E-Mail Adresse angeben</div>
-                        <input id="loginPasswort" class="login_input" placeholder="Passwort" type="password">
                         <div class="checkbox_container">
                             <input class="checkbox" type="checkbox">
                             <p class="checkbox_font">Remember me</p>
@@ -84,19 +84,19 @@
                             <h2 class="font_color">Sign Up</h2>
                             <div></div>
                         </div>
-                        <div id="emailExists" class="error-message d-none">Diese E-Mail Adresse ist bereits registriert </div>
-                        <div id="email-format-error" class="error-message d-none">Bitte eine korrekte E-Mail Adresse eingeben</div>
-                        <div id="password-mismatch-error" class="error-message d-none">Passwörter stimmen nicht überein</div>
-                        <div id="password-field-error" class="error-message d-none">Bitte Passwort eingeben</div>
-                        <div id="username-error" class="error-message d-none">Bitte Benutzernamen angeben</div>
-                        <div id="wrongPasswordKey" class="error-message d-none">Falsches Passwortformat</div>
-                        <div id="email-errorSignUp" class="error-message d-none">Bitte E-Mail Adresse angeben</div>
                         <input  id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
                         <input  id="neuUserLoginEmail" class="login_input" placeholder="Email" type="text">
                         <input  id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
                             type="password">
+
                         <input  id="neuUserLoginConfirm_Passwort" class="login_input"
                             placeholder="Confirm Passwort" type="password">
+                            <div id="emailExists" class="error-message d-none">Diese E-Mail Adresse ist bereits registriert </div>
+                            <div id="password-mismatch-error" class="error-message d-none">Passwörter stimmen nicht überein</div>
+                            <div id="password-field-error" class="error-message d-none">Bitte Passwort eingeben</div>
+                            <div id="username-error" class="error-message d-none">Bitte Benutzernamen angeben</div>
+                            <div id="wrongPasswordKey" class="error-message d-none">Falsches Passwortformat</div>
+                            <div id="email-errorSignUp" class="error-message d-none">Bitte E-Mail Adresse im korrekten Format angeben</div>
                         <div class="checkbox_I_Acpept">
                             <input  class="checkbox" type="checkbox">
                             <p class="checkbox_font" href="datenschutz.html">I accept the</p>

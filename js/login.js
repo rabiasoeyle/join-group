@@ -39,7 +39,6 @@ async function neuUser() {
   document.getElementById("username-error").classList.add("d-none");
   document.getElementById("password-field-error").classList.add("d-none");
   document.getElementById("password-mismatch-error").classList.add("d-none");
-  document.getElementById("email-format-error").classList.add("d-none");
   document.getElementById("wrongPasswordKey").classList.add("d-none");
   document.getElementById("email-errorSignUp").classList.add("d-none");
   document.getElementById("emailExists").classList.add("d-none");

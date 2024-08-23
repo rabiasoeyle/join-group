@@ -36,6 +36,8 @@ async function neuUser() {
 
   // Fehlermeldungen zurücksetzen
   document.getElementById("username-error").classList.add("d-none");
+  document.getElementById("password-field-error").classList.add("d-none");
+  document.getElementById("password-mismatch-error").classList.add("d-none");
   document.getElementById("mailFormat-error").classList.add("d-none");
 
   // Überprüfen, ob der Benutzername eingegeben wurde
@@ -44,9 +46,15 @@ async function neuUser() {
     return;
   }
 
+  // Überprüfen, ob die Passwörter eingegeben wurden
+  if (!passwordValue || !confirmPasswordValue) {
+    document.getElementById("password-field-error").classList.remove("d-none");
+    return;
+  }
+
   // Überprüfen, ob die Passwörter übereinstimmen
   if (passwordValue !== confirmPasswordValue) {
-    showError("Die Passwörter stimmen nicht überein.", "passwordError");
+    document.getElementById("password-mismatch-error").classList.remove("d-none");
     return;
   }
 

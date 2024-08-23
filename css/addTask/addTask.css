@@ -30,6 +30,7 @@
   align-items: flex-start;
   padding: 16px;
   gap: 5vw;
+  max-width: 1000px;
 }
 
 .form-style h1 {

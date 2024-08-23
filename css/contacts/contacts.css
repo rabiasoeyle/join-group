@@ -5,7 +5,7 @@
 .contacts-list-desktop {
   background-color: white;
   height: 93vh;
-  width: 30vw;
+  width: 15vw;
   min-width: 360px;
   overflow-y: auto;
   scrollbar-width: thin;
@@ -48,6 +48,7 @@
 }
 
 .add-contacts-button {
+  top: 18px;
   position: sticky;
   width: 80%;
   max-width: 350px;

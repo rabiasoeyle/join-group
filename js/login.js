@@ -38,6 +38,8 @@ async function neuUser() {
 
   // Fehlermeldungen zurücksetzen
   document.getElementById("username-error").classList.add("d-none");
+  document.getElementById("password-field-error").classList.add("d-none");
+  document.getElementById("password-mismatch-error").classList.add("d-none");
   document.getElementById("mailFormat-error").classList.add("d-none");
 
   // Check if the username has been entered
@@ -45,9 +47,20 @@ async function neuUser() {
     document.getElementById("username-error").classList.remove("d-none");
     return;
   }
+<<<<<<< HEAD
   // Check if the passwords match
+=======
+
+  // Überprüfen, ob die Passwörter eingegeben wurden
+  if (!passwordValue || !confirmPasswordValue) {
+    document.getElementById("password-field-error").classList.remove("d-none");
+    return;
+  }
+
+  // Überprüfen, ob die Passwörter übereinstimmen
+>>>>>>> 86841974ec687aac5525ef40766bae33f7666dfb
   if (passwordValue !== confirmPasswordValue) {
-    showError("Die Passwörter stimmen nicht überein.", "passwordError");
+    document.getElementById("password-mismatch-error").classList.remove("d-none");
     return;
   }
 

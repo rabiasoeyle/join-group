@@ -128,8 +128,8 @@ function editOverlayDeleteSubtask(i,j){
         let index = tasks[i]['checkedSubtasks'].indexOf(tasks[i]['subtaskList'][j]);
     if(index !=-1){
         tasks[i]['checkedSubtasks'].splice(index,1);
-    }}
-    tasks[i]['checkedSubtasksCount']= tasks[i]['checkedSubtasks'].length;
+    }tasks[i]['checkedSubtasksCount']= tasks[i]['checkedSubtasks'].length;
+}
     tasks[i]['subtaskList'].splice(j,1);
     renderAllAvaillableSubtasks(i);
 }

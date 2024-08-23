@@ -53,10 +53,9 @@ function validateInputs(name, email, password, confirmPassword) {
     return false;
   }
   if (!isValidPassword(password)) {
-    showError("Passwort muss mindestens einen Großbuchstaben, Kleinbuchstaben, Sonderzeichen und eine Zahl enthalten", "wrongPasswordKey");
+    document.getElementById("wrongPasswordKey").classList.remove("d-none");
     return false;
   }
-
   const checkbox = document.getElementById("acceptTermsCheckbox");
   if (!checkbox.checked) {
     document.getElementById("notCheckedBox").classList.remove("d-none");

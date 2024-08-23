@@ -27,8 +27,6 @@ window.addEventListener('load', () => {
 function initAddTask() {
     renderMainForm(); 
     setMinDate();
-    
-    
 }
 
 /**
@@ -84,16 +82,13 @@ function rollContactsList() {
             let input = document.getElementById(`inputCheckbox-${i}`);
             if (input.checked) {
                 document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#2a3647";
-                document.getElementById(`onePersonDiv-${i}`).style.color = "white";
-            }
+                document.getElementById(`onePersonDiv-${i}`).style.color = "white";}
         }
         document.addEventListener('click', closeDropdownOnOutsideClickAssigned);
     } else {
         document.removeEventListener('click', closeDropdownOnOutsideClickAssigned);
     }
 }
-
-
 
 /**
  * This function is used to add or remove an event listener from the document.
@@ -123,7 +118,6 @@ function showAssignedPersons() {
     }
 }
 
-
 /**
  * This function filters the initials of the persons selected for the respective tasks.
  * @param {*} i 
@@ -137,6 +131,7 @@ function assignedPersonsInitials(i){
     }
     return initialsAssignedPersons;
 }
+
 /**
  * In this function, the initials of the contacts are filtered out and played back
  *
@@ -150,7 +145,7 @@ function profileInitials(i) {
       initials += names[names.length - 1].substring(0, 1).toUpperCase();
     }
     return initials;
-  }
+}
 
 /**This function is intended to save the value for the importancen */
 function selectPrio(x) {
@@ -195,6 +190,7 @@ function closeDropdownOnOutsideClickCategory(event) {
         document.removeEventListener('click', closeDropdownOnOutsideClickCategory);
     }
 }
+
 /**
  * This function ensures that all input fields are emptied again
  */
@@ -260,7 +256,6 @@ function renderSubtasks() {
     }
 }
 
-
 /**
  * With this function you should be able to change the subtask at exactly the corresponding point.
  * @param {*} i 
@@ -275,7 +270,6 @@ function editSubtask(i) {
     // Verwende die Template-Funktion
     editAndTrash.innerHTML = generateEditAndTrashHTML(i);
 }
-
 
 /**
  * By activating this function, changes to subtasks can be saved.
@@ -337,11 +331,9 @@ async function createTask() {
     };
     await postData("/tasks", newTaskInformation);
     clearForm();
-
     const popup = document.createElement('div');
     popup.classList.add('pop-up-added');
     popup.innerHTML = createTaskPopupTemplate(); // Verwende das Template hier
-
     document.body.appendChild(popup);
     setTimeout(() => {
         window.location.href = '../html/board.html?msg=Du hast eine neue Task erstellt';
@@ -360,4 +352,4 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  }
+}

@@ -279,11 +279,7 @@ function overlayAddEditSubtask(i){
     editInput.classList.remove('d-none');
     let editAndTrash = document.getElementById(`overlayAddEditAndTrash-${i}`);
     editAndTrash.innerHTML='';
-    editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="overlayAddLeftImage-${i}" onclick="overlayAddDeleteSubtask(${i})"class="overlay-add-deleteSubtask">
-    |
-    <img src="../assets/img/checkTask.png" id="overlayAddRightImage-${i}" onclick="overlayAddSaveChangedSubtask(${i})"class="overlay-add-saveSubtask">
-    `
+    editAndTrash.innerHTML= getOverlayAddEditSubtaskTemplate(i);
 }
 
 /**

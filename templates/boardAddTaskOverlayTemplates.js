@@ -182,3 +182,11 @@ function getOverlayAddSubtaskTemplate(i, overlayAddSubtaskList) {
     `;
 }
 
+function getOverlayAddEditSubtaskTemplate(i) {
+    return /*html*/`
+    <img src="../assets/img/deleteTask.png" id="overlayAddLeftImage-${i}" onclick="overlayAddDeleteSubtask(${i})"class="overlay-add-deleteSubtask">
+    |
+    <img src="../assets/img/checkTask.png" id="overlayAddRightImage-${i}" onclick="overlayAddSaveChangedSubtask(${i})"class="overlay-add-saveSubtask">
+    `
+}
+

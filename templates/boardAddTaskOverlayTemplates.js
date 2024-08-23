@@ -141,3 +141,15 @@ function getOverlayAddTaskTemplate() {
     
     `;
 }
+
+function getOverlayAddPersonTemplate(i, contacts, isChecked) {
+    return /*html*/`
+        <div class="overlay-add-one-person-div" onclick="overlayAddAddAssignedPersons(${i})" id="overlayAddOnePersonDiv-${i}">
+            <div class="overlay-add-one-person-div-left">
+                <div class="overlay-add-assigned-person-initials" style="background-color:${contacts[i]['color']}; color:white">${overlayAddProfileInitials(i)}</div>
+                <div>${contacts[i]['name']}</div>
+            </div>
+            <input id="overlayAddInputCheckbox-${i}" class="overlay-add-assigen_checkbox" type="checkbox" ${isChecked}>
+            <label for="overlayAddInputCheckbox-${i}"></label>
+        </div>`;
+}

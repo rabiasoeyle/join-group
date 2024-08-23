@@ -192,7 +192,7 @@
     height: 82vh;
   }
   .contacts-list-desktop {
-    height: calc(100vh - 144px);
+    height: calc(100vh - 145px);
   }
 }
 

@@ -6,7 +6,6 @@
 
 body {
   display: flex;
-  align-items: center;
   flex-direction: column;
   background-color: #f6f7f8;
 }
@@ -14,9 +13,12 @@ body {
 .main {
   max-width: 1920px;
   width: 100%;
+  display: flex;
+  min-height: 100vh;
 }
+
 .header {
-  width: 100%;
+  width: 96vw;
   height: 7vh;
   min-height: 60px;
   padding: 0px 40px;
@@ -127,10 +129,7 @@ body {
   align-items: center;
 }
 
-.main {
-  display: flex;
-  min-height: 100vh;
-}
+
 
 .body_right {
   display: flex;
@@ -174,6 +173,7 @@ body {
 }
 
 .content {
+  max-width: 1920px;
   background-color: #f6f7f8;
 }
 

@@ -31,12 +31,16 @@ function signUp() {
 async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
-  let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
-  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
+  let passwordValue = document
+    .getElementById("neuUserLoginPasswort")
+    .value.trim();
+  let confirmPasswordValue = document
+    .getElementById("neuUserLoginConfirm_Passwort")
+    .value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
 
-  // Fehlermeldungen zurücksetzen
+  // Reset error messages
   document.getElementById("username-error").classList.add("d-none");
   document.getElementById("password-field-error").classList.add("d-none");
   document.getElementById("password-mismatch-error").classList.add("d-none");
@@ -47,26 +51,28 @@ async function neuUser() {
     document.getElementById("username-error").classList.remove("d-none");
     return;
   }
-<<<<<<< HEAD
-  // Check if the passwords match
-=======
 
-  // Überprüfen, ob die Passwörter eingegeben wurden
+  // Check if the passwords have been entered
   if (!passwordValue || !confirmPasswordValue) {
     document.getElementById("password-field-error").classList.remove("d-none");
     return;
   }
 
-  // Überprüfen, ob die Passwörter übereinstimmen
->>>>>>> 86841974ec687aac5525ef40766bae33f7666dfb
+  // Check if the passwords match
   if (passwordValue !== confirmPasswordValue) {
-    document.getElementById("password-mismatch-error").classList.remove("d-none");
+    showError("Die Passwörter stimmen nicht überein.", "passwordError");
+    document
+      .getElementById("password-mismatch-error")
+      .classList.remove("d-none");
     return;
   }
 
   // Check email format
   if (!isValidEmail(emailValue)) {
-    showError("Bitte geben Sie eine gültige E-Mail-Adresse ein.", "mailFormat-error");
+    showError(
+      "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "mailFormat-error"
+    );
     return;
   }
 
@@ -87,10 +93,10 @@ async function neuUser() {
 
     await postData("/login", newLogin);
 
-    document.getElementById("neuUserLoginName").value = '';
-    document.getElementById("neuUserLoginEmail").value = '';
-    document.getElementById("neuUserLoginPasswort").value = '';
-    document.getElementById("neuUserLoginConfirm_Passwort").value = '';
+    document.getElementById("neuUserLoginName").value = "";
+    document.getElementById("neuUserLoginEmail").value = "";
+    document.getElementById("neuUserLoginPasswort").value = "";
+    document.getElementById("neuUserLoginConfirm_Passwort").value = "";
 
     signUp();
   } catch (error) {
@@ -104,7 +110,7 @@ function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.querySelector("p").textContent = message;
   popupElement.classList.add("popup");
-  popupElement.classList.remove("d-none"); // Show popup
+  popupElement.classList.remove("d-none"); // Popup anzeigen
 }
 
 // Function to close the popup
@@ -112,7 +118,6 @@ function closePopup() {
   // Close popup
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.classList.add("d-none"); // Hide popup
-
   // Return to login page
   popupElement.classList.remove("popup");
   document.getElementById("login_Content").classList.remove("d-none");
@@ -137,7 +142,6 @@ async function checkIfEmailExists(email) {
 function showError(message, elementId = "error-message") {
   let errorMessageElement = document.getElementById(elementId);
   if (errorMessageElement) {
-    // Check if the element exists
     errorMessageElement.textContent = message;
     errorMessageElement.classList.remove("d-none");
   } else {
@@ -146,7 +150,7 @@ function showError(message, elementId = "error-message") {
 }
 
 function isValidEmail(email) {
-  // Regular expression to check email format
+  //Regular expression to check email format
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
 }
@@ -214,7 +218,7 @@ function loginCorrect(nameElement) {
   // Save the initials as 'usernameInitial'
   localStorage.setItem("usernameInitial", initials);
 
-  // Redirect to the summary page with the name as a URL parameter
+  // Weiterleiten zur Zusammenfassungsseite mit dem Namen als URL-Parameter
   window.location.href = `../html/summary.html?msg=${encodeURIComponent(
     nameElement
   )}`;

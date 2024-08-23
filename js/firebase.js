@@ -1,5 +1,5 @@
 /**
- * In dieser Funktion werden die Daten aus dem Firebase geladen.
+ * In this function the contacts data is loaded from the Firebase.
  *
  * @param {*} path
  */
@@ -27,11 +27,14 @@ async function loadContacts(path = "/contacts") {
         });
       }
     });
-    // Sortiere die Kontakte alphabetisch nach Name
     contacts.sort((a, b) => a.name.localeCompare(b.name));
   }
 }
 
+/**
+ * This function is used to load tasks from Firebase.
+ * @param {*} path 
+ */
 async function loadTasks(path = "/tasks") {
   let response = await fetch(firebase_URL + path + ".json");
   let responseToJson = await response.json();
@@ -58,6 +61,10 @@ async function loadTasks(path = "/tasks") {
   idNumberStartValue = idNumberStartValue + 1;
 }
 
+/**
+ * This function is responsible for loading the login data from the Firebase.
+ * @param {*} path 
+ */
 async function loadLogin(path = "/login") {
   let response = await fetch(firebase_URL + path + ".json");
   let responseToJson = await response.json();
@@ -75,7 +82,7 @@ async function loadLogin(path = "/login") {
 }
 
 /**
- * Diese Funktion soll dazu dienen, dass ein Kontakt aus der Firebase und dem contactsArray gelöscht wird
+ * This function is intended to delete a contact from the Firebase and the contactsArray
  * @param {*} i
  */
 async function deleteContact(path = "") {
@@ -88,22 +95,19 @@ async function deleteContact(path = "") {
   renderContactDetails();
   await loadContacts("/contacts");
   renderAllContacts();
-  // Erstelle das Popup-Element
-const popup = document.createElement('div');
-popup.classList.add('pop-up-added');
-    popup.innerHTML=`
-        <span>Contact successfully deleted</span>
-    `
-// Füge das Popup-Element zum body hinzu
-document.body.appendChild(popup);
-   // Warte 5 Sekunden, bevor die Seite weitergeleitet wird
+  const popup = document.createElement('div');
+  popup.classList.add('pop-up-added');
+      popup.innerHTML=`
+          <span>Contact successfully deleted</span>
+      `
+  document.body.appendChild(popup);
     setTimeout(() => {
-      popup.remove(); // Entfernt das Popup nach 5 Sekunden
+      popup.remove();
   }, 2000); 
 }
 
 /**
- * Diese Funktion soll dazu dienen, dass eine Task aus der Firebase und dem tasksArray gelöscht wird
+ * This function is intended to delete a task from the Firebase and the tasksArray
  * @param {*} i
  */
 async function deleteTask(path = "") {
@@ -113,17 +117,14 @@ async function deleteTask(path = "") {
   tasks = [];
   await loadTasks("/tasks");
   // Erstelle das Popup-Element
-const popup = document.createElement('div');
-popup.classList.add('pop-up-added');
-    popup.innerHTML=`
-        <span>Task successfully deleted</span>
-    `
-
-// Füge das Popup-Element zum body hinzu
-document.body.appendChild(popup);
-   // Warte 5 Sekunden, bevor die Seite weitergeleitet wird
+  const popup = document.createElement('div');
+  popup.classList.add('pop-up-added');
+      popup.innerHTML=`
+          <span>Task successfully deleted</span>
+      `
+  document.body.appendChild(popup);d
     setTimeout(() => {
-      popup.remove(); // Entfernt das Popup nach 5 Sekunden
+      popup.remove(); 
   }, 2000); 
   closeDetailsOverlay();
   todoBoard();
@@ -133,7 +134,7 @@ document.body.appendChild(popup);
 }
 
 /**
- * Diese Funktion dient dazu um die neu erhaltenen Daten im Firebase zu speichern.
+ * This function is used to save the newly received data in Firebase.
  *
  * @param {*} path
  * @param {*} data
@@ -156,7 +157,7 @@ async function postData(path = "", data) {
 }
 
 /**
- * Diese Funktion dient dazu, um die geänderten Kontaktinfos genau an der richtigen Stelle zu ändern.
+ * This function is used to change the changed contact information in exactly the right place.
  *
  * @param {*} path
  * @param {*} data

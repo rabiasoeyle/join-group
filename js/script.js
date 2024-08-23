@@ -1,3 +1,7 @@
+/**
+ * This function is for including header, footer and sidebar in all Pages.
+ * @returns 
+ */
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /*loop through a collection of all HTML elements:*/
@@ -33,11 +37,17 @@ function includeHTML() {
   document.getElementById('circle').textContent = usernameInitial;
 }
 
+/**
+ * This function sends the user back to login
+ */
 function backToLogin() {
   window.location.href = "../html/index.html";
 }
 
-
+/**
+ * This function is for the dropdown menu in the header
+ * @param {*} event 
+ */
 function toggleDropdown(event) {
   event.stopPropagation();
   let dropdownMenuHeader = document.getElementById("dropdownMenuHeader");
@@ -48,6 +58,9 @@ function toggleDropdown(event) {
   }
 }
 
+/**
+ * This function sends the user back to login
+ */
 function logOut() {
   localStorage.clear();
   window.location.href = "../html/index.html";

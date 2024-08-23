@@ -96,7 +96,7 @@
 
 @media (max-width: 1020px) {
   .contacts-list-desktop {
-    height: 83vh;
+    height: calc(100vh - 220px);
   }
   .one-contact-container {
     gap: 4%;
@@ -185,9 +185,6 @@
   .profil_replacement_img_big_edit {
     top: 0vh;
   }
-  .contacts-list-desktop {
-    height: 82vh;
-  }
   .cancel-button-over {
     padding-bottom: 0;
   }
@@ -228,7 +225,7 @@
     height: 40px;
   }
   .contacts-list-desktop {
-    height: 81vh;
+    height: calc(100vh - 135px);
   }
   .add-contact-right {
     gap: 0;
@@ -239,9 +236,7 @@
 }
 
 @media (max-height: 700px) {
-  .contacts-list-desktop {
-    height: 81vh;
-  }
+
   .profile-picture {
     top: 4vh;
   }

@@ -1,29 +1,11 @@
 let tasks = [];
 const BASE_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+let statusCounts = {todo: 0, done: 0, inProgress: 0, awaitFeedback: 0};
+let priorityCounts = {urgent: 0, low: 0, medium: 0};
+let nearestFutureDate = null;
+let nearestTask = null;
 
-async function initSummary() {
-    let tasksData = await getAllTasks("tasks");
-    let tasksArray = Object.keys(tasksData);
-    
-    let statusCounts = {
-        todo: 0,
-        done: 0,
-        inProgress: 0,
-        awaitFeedback: 0
-    };
-    let priorityCounts = {
-        urgent: 0,
-        low: 0,
-        medium: 0
-    };
-    let nearestFutureDate = null;
-    let nearestTask = null;
-
-    for (let j = 0; j < tasksArray.length; j++) {
-        let task = tasksData[tasksArray[j]];
-        tasks.push({ id: tasksArray[j], ...task });
-        
-        // Statuszählung
+function setAmountStatus(task){
         switch (task.status) {
             case "todo":
                 statusCounts.todo++;
@@ -38,8 +20,10 @@ async function initSummary() {
                 statusCounts.awaitFeedback++;
                 break;
         }
-        // Prioritätszählung
-        if (task.priority === "urgent") {
+}
+
+function setAmountPriority(task){
+    if (task.priority === "urgent") {
             priorityCounts.urgent++;
         }
         if (task.priority === "low") {
@@ -48,23 +32,37 @@ async function initSummary() {
         if (task.priority === "medium") {
             priorityCounts.medium++;
         }
-        // Fälligkeitsdatum Überprüfung
-        let taskDueDate = new Date(task.dueDate);
+}
+
+function setAmountDate(task){
+    let taskDueDate = new Date(task.dueDate);
         if (taskDueDate > new Date() && (!nearestFutureDate || taskDueDate < nearestFutureDate)) {
             nearestFutureDate = taskDueDate;
             nearestTask = task;
         }
-    }
-    // Metriken aktualisieren
+}
+
+function updateMetrike(tasksArray){
     document.getElementById('taskCount').textContent = tasksArray.length;
     document.getElementById('todoCount').textContent = statusCounts.todo;
     document.getElementById('doneCount').textContent = statusCounts.done;
     document.getElementById('inProgressCount').textContent = statusCounts.inProgress;
     document.getElementById('awaitingFeedbackCount').textContent = statusCounts.awaitFeedback;
+}
 
+async function initSummary() {
+    let tasksData = await getAllTasks("tasks");
+    let tasksArray = Object.keys(tasksData);
+    for (let j = 0; j < tasksArray.length; j++) {
+        let task = tasksData[tasksArray[j]];
+        tasks.push({ id: tasksArray[j], ...task });
+    setAmountStatus(task);
+    setAmountPriority(task);
+    setAmountDate(task);
+    }
+    updateMetrike(tasksArray);
     let displayedPriorityCount = 0;
     let priorityIcon = document.getElementById('prioIcon'); 
-
     if (priorityCounts.urgent > 0) {
         displayedPriorityCount = priorityCounts.urgent;
         priorityIcon.innerHTML =  `
@@ -99,7 +97,6 @@ async function initSummary() {
         priorityIcon = "../assets/img/mail.png"; 
         document.getElementById('priority').textContent = "None";
     }
-
     document.getElementById('urgentCount').textContent = displayedPriorityCount;
     document.getElementById('prioIcon').src = priorityIcon; 
 
@@ -115,16 +112,7 @@ async function initSummary() {
     } else {
         document.getElementById('date').textContent = "Kein bevorstehendes Datum";
     }
-
     setDaytimeGreeting();
-
-    // setTimeout(function() {
-    //     let content = document.getElementById('welcome_user_animation');
-    //     content.classList.add('d-none');
-    // }, 12000);
-    
-    // Name aus URL-Parameter auslesen und in die user_name-Div einfügen
-    // Name aus dem localStorage auslesen und in die user_name-Div einfügen
     const userName = localStorage.getItem('username');
     const usernameInitial = localStorage.getItem('usernameInitial');
         document.querySelector('.user_name').textContent = userName;

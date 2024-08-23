@@ -15,10 +15,10 @@
   position: relative;
   top: 10%;
   left: 10%;
+  right: 10%;
   bottom: 10%;
   max-width: 80%;
   min-height: 80%;
-  right: 10%;
   padding: 30px 30px;
   background-color: white;
   border-radius: 24px;
@@ -85,6 +85,7 @@
   align-items: flex-start;
   padding: 16px;
   gap: 5vw;
+  max-width: 1000px;
 }
 
 .overlay-add-form-style h1 {

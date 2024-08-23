@@ -7,16 +7,10 @@ let nearestTask = null;
 let displayedPriorityCount = 0;
 
 /**
-<<<<<<< HEAD
- * 
- * @param {*} task 
- */
-=======
  * This Function counts the amount of task of each status
  * @param {*} task 
  */
 
->>>>>>> origin/main
 function setAmountStatus(task){
     switch (task.status) {
         case "todo":
@@ -35,16 +29,10 @@ function setAmountStatus(task){
 }
 
 /**
-<<<<<<< HEAD
- * 
- * @param {*} task 
- */
-=======
  * This Function counts the amount of task of each priority
  * @param {*} task 
  */
 
->>>>>>> origin/main
 function setAmountPriority(task){
     if (task.priority === "urgent") {
         priorityCounts.urgent++;

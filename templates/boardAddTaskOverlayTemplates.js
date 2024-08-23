@@ -167,3 +167,18 @@ function getPlusDivTemplate(extraPersonsCount) {
             +${extraPersonsCount}
         </div>`;
 }
+
+function getOverlayAddSubtaskTemplate(i, overlayAddSubtaskList) {
+    return /*html*/`
+        <ul class="overlay-add-oneSubtask" id="overlayAddOneSubtask-${i}" onmouseover="overlayAddSubtaskHoverEffekt(${i})" onmouseout= "overlayAddSubtaskNoHoverEffekt(${i})">
+            <li class="" id="overlayAddSubtaskListText-${i}">${overlayAddSubtaskList[i]}</li>
+            <input class="d-none overlay-add-editInput" value="${overlayAddSubtaskList[i]}" id="overlayAddEditInput-${i}">
+            <div class="d-none overlay-add-editAndTrash" id="overlayAddEditAndTrash-${i}">
+                <img src="../assets/img/editTask.png" id="overlayAddLeftImage-${i}" onclick="overlayAddEditSubtask(${i})"class="overlay-add-editSubtask">
+                |
+                <img src="../assets/img/deleteTask.png" id="overlayAddRightImage-${i}" onclick="overlayAddDeleteSubtask(${i})"class="overlay-add-deleteSubtask">
+            </div>
+        </ul>
+    `;
+}
+

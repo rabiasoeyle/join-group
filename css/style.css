@@ -28,7 +28,7 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
-  z-index:33;
+  z-index: 33;
 }
 
 .header-content {
@@ -53,7 +53,6 @@ body {
   align-items: center;
   padding: 64px 0px;
   min-width: 180px;
-  
 }
 
 .join_Logo {
@@ -127,8 +126,6 @@ body {
   justify-content: flex-end;
   align-items: center;
 }
-
-
 
 .body_right {
   display: flex;
@@ -219,6 +216,7 @@ button {
   background-color: #324f7b;
   border-radius: 16px;
 }
+
 .sidebar_mobile_sector:hover .icons_sidebar {
   background-color: #324f7b;
   border-radius: 16px;
@@ -249,17 +247,17 @@ button {
   margin-bottom: 0;
 }
 
-.dropdown-menu-header-content{
-display: none;
-position: absolute;
-right: 35px;
-top: 68px;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-z-index: 10;
-min-width: 150px;
-background-color: rgba(42, 54, 71, 1);;
-color: white;
-border-radius: 20px;
+.dropdown-menu-header-content {
+  display: none;
+  position: absolute;
+  right: 35px;
+  top: 68px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  min-width: 150px;
+  background-color: rgba(42, 54, 71, 1);
+  color: white;
+  border-radius: 20px;
 }
 
 .dropdown-menu-header-content a {
@@ -271,63 +269,65 @@ border-radius: 20px;
 }
 
 .dropdown-menu-header-content a:hover {
-  background-color: rgba(42, 61, 89, 1);;
+  background-color: rgba(42, 61, 89, 1);
   border-radius: 20px;
 }
-.pop-up-added{
+.pop-up-added {
   position: absolute;
-    right: -100%;
-    bottom: 14%;
-    z-index: 40;
-    height: 70px;
-    width: 240px;
-    background-color:#2a3647;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    border-radius: 20px;
-    font-size:12px;
-    animation: slideIn 0.5s forwards; /* Animation anwenden */
-}
-.pop-up-added-w-svg{
-  position: absolute;
-    right: -100%;
-    bottom: 14%;
-    z-index: 40;
-    height: 70px;
-    width: 240px;
-    background-color:#2a3647;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border-radius: 20px;
-    animation: slideIn 0.5s forwards; /* Animation anwenden */
+  right: -100%;
+  bottom: 14%;
+  z-index: 40;
+  height: 70px;
+  width: 240px;
+  background-color: #2a3647;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 20px;
+  font-size: 12px;
+  animation: slideIn 0.5s forwards; /* Apply animation */
 }
 
-/* Keyframes für die Animation */
+.pop-up-added-w-svg {
+  position: absolute;
+  right: -100%;
+  bottom: 14%;
+  z-index: 40;
+  height: 70px;
+  width: 240px;
+  background-color: #2a3647;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 20px;
+  animation: slideIn 0.5s forwards; /* Apply animation */
+}
+
+/* Keyframes for animation */
 @keyframes slideIn {
-    from {
-        right: -300px; /* Startposition */
-    }
-    to {
-        right: 20px; /* Endposition */
-    }
+  from {
+    right: -300px; /* Starting position */
+  }
+  to {
+    right: 20px; /* End position */
+  }
 }
-.pop-up-added-svg{
-  color: white !important;
-  fill: white !important;
-  stroke: white !important;
-}
-.pop-up-added-svg path{
+
+.pop-up-added-svg {
   color: white !important;
   fill: white !important;
   stroke: white !important;
 }
 
+.pop-up-added-svg path {
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+}
 
 @media (max-width: 1020px) {
   .sidebar {
@@ -362,8 +362,8 @@ border-radius: 20px;
   }
 }
 
-@media(max-width:500px){
-  .linkText{
+@media (max-width: 500px) {
+  .linkText {
     display: none;
   }
 }
@@ -392,7 +392,7 @@ border-radius: 20px;
   .form-style {
     height: 70vh;
   }
-  .linkText{
+  .linkText {
     display: none;
   }
 }

@@ -13,56 +13,55 @@ h1 {
 }
 
 .helpContent {
-    display: flex;
-    flex-direction: column;
-    padding: 64px 38px 24px 38px;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 64px 38px 24px 38px;
+  gap: 12px;
 }
 
 @media (max-width: 1020px) {
-    .helpContent {
-      overflow-y: scroll;
-      height: 83vh;
-      scrollbar-width: none;
-    }
+  .helpContent {
+    overflow-y: scroll;
+    height: 83vh;
+    scrollbar-width: none;
   }
-  
-  @media (max-width: 380px) {
-    h1 {
-      font-size: 42px;
-    }
+}
+
+@media (max-width: 380px) {
+  h1 {
+    font-size: 42px;
   }
-  
-  @media (max-height: 860px) {
-    .helpContent {
-      height: 80vh;
-    }
+}
+
+@media (max-height: 860px) {
+  .helpContent {
+    height: 80vh;
   }
-  
-  @media (max-height: 650px) {
-    .helpContent {
-      height: 79vh;
-    }
+}
+
+@media (max-height: 650px) {
+  .helpContent {
+    height: 79vh;
   }
-  
-  @media (max-height: 550px) {
-    .helpContent {
-      height: 76vh;
-    }
-    h1 {
-      font-size: 38px;
-    }
+}
+
+@media (max-height: 550px) {
+  .helpContent {
+    height: 76vh;
   }
-  
-  @media (max-height: 463px) {
-    .helpContent {
-      height: 74vh;
-    }
+  h1 {
+    font-size: 38px;
   }
-  
-  @media (max-height: 350px) {
-    .helpContent {
-      height: 73vh;
-    }
+}
+
+@media (max-height: 463px) {
+  .helpContent {
+    height: 74vh;
   }
-  
+}
+
+@media (max-height: 350px) {
+  .helpContent {
+    height: 73vh;
+  }
+}

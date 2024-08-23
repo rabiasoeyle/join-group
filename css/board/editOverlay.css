@@ -1,355 +1,336 @@
-.edit-task-overlay{
-  position:fixed;
-  left:0;
-  right:0;
-  top:0;
-  bottom:0;
-  background-color: rgba(0,0,0,0.7);
-  z-index:44;
-  display:flex;
+.edit-task-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 44;
+  display: flex;
   justify-content: center;
   align-items: center;
-  animation: slideInBoard 1s forwards; /* Animation anwenden */
+  animation: slideInBoard 1s forwards; /* Apply animation */
 }
+
 .edit-task-overlay-content {
   height: 90%;
   width: 512px;
   padding: 30px 30px;
   background-color: white;
   border-radius: 24px;
-  z-index:46;
-  display:flex;
+  z-index: 46;
+  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-  .showDetailTaskOverlayCategory{
-    padding: 4px 24px;
-    border-radius: 8px;
-  }
 
-  .showDetailTaskOverlayTitle{
-    padding-bottom: 8px;
-    font-size: 61px;
-    font-weight: 700;
-    overflow-wrap: break-word;
-  }
-
-  .showDetailTaskOverlayDescription{
-    font-size: 20px;
-    font-weight: 400;
-  }
-  .showDetailTaskOverlayAssignedTo{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-  }
-
-  .overlay-initals-parent{
-    display:flex;
-    align-items: center;
-    gap: 16px;
+.showDetailTaskOverlayCategory {
+  padding: 4px 24px;
+  border-radius: 8px;
 }
 
-.showDetailTaskOverlayAssignedToChild{
+.showDetailTaskOverlayTitle {
+  padding-bottom: 8px;
+  font-size: 61px;
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+.showDetailTaskOverlayDescription {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.showDetailTaskOverlayAssignedTo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.overlay-initals-parent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.showDetailTaskOverlayAssignedToChild {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-  .showDetailTaskOverlayDate{
-    display: flex;
-    gap: 16px;
-    width: 100%;
-    padding-bottom: 24px;
-  }
-
-  .showDetailTaskOverlayPriority{
-    display: flex;
-    gap: 16px;
-    width: 100%;
-    padding-bottom: 24px;
-  }
-  
-  
-
-.subtask-and-checkbox{
-    display:flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    padding:8px;
-}
-.delete-or-edit-task-buttons{
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap:16px;
+.showDetailTaskOverlayDate {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 24px;
 }
 
-.delete-task-button , .edit-task-button{
+.showDetailTaskOverlayPriority {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.subtask-and-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px;
+}
+
+.delete-or-edit-task-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.delete-task-button,
+.edit-task-button {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.delete-or-edit-task-buttons div:hover{
-   cursor: pointer;
-}
-.task-category-and-close-button{
-  padding: 8px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-}
-/* Overlay überschrift */
-h3{
-    font-size: 61px;
-    font-weight: 700;
-}
-h4{
-    font-size: 20px;
-}
-.prio-content {
-    display: flex;
-    gap: 16px;
-    width: 100%;
-  }
-  
-  .prio-content a {
-    text-decoration: none;
-    color: black;
-    height: 56px;
-    width: 100%;
-    padding: 8px 4px 8px 4px;
-    border-radius: 10px;
-    background-color: white;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  .prio-content-parent {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
-  }
-  /* .urgentPrio {
-    background-color: white;
-    color: black;
-    fill: #ff3d00;
-  } */
-  
-  .urgentPrio:hover {
-    box-shadow:  0px 3px 3px 1px #00000061;
-  }
-  
-  .urgentPrio_click {
-    background-color: #ff3d00 !important;
-    color: white !important;
-    fill: white;
-    stroke: white;
-  }
 
-  .svgUrgentPrio {
-    color: rgb(255, 255, 255);
-    background-color: #ff3d00;
-  }
-  
-  /* .mediumPrio {
-    background-color: white;
-    color: black;
-    fill: #ffa800;
-    stroke: #ffa800;
-  } */
-  
-  .mediumPrio:hover {
-    box-shadow:  0px 3px 3px 1px #00000061;
-  }
-  
-  
-  .mediumPrio_click {
-    background-color: #ffa800 !important;
-    color: white !important;
-    fill: white;
-    stroke: white;
-  }
-  
-  .svgMediumPrio {
-    color: rgb(255, 255, 255);
-  }
-  
-  /* .lowPrio {
-    background-color: white;
-    color: black;
-    fill: #7ae229;
-  } */
-  
-  .lowPrio:hover {
-    box-shadow:  0px 3px 3px 1px #00000061;
-  }
-  
-  .lowPrio_click {
-    background-color: #7ae229 !important; 
-    color: white !important; 
-    fill: white;
-    stroke: white;
-  }
-  
-  .svgLowPrio {
-    color: rgb(255, 255, 255);
-  }
-  .one-person-div-edit{
-    display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding:4px 16px;
-  border-radius: 8px;
+.delete-or-edit-task-buttons div:hover {
   cursor: pointer;
-  margin:1px 0px;
 }
-.one-person-div-edit:hover{
-  background-color: #c6cbcf;
+
+.task-category-and-close-button {
+  padding: 8px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
-  .one-person-div-edit-left{
+
+
+/* Overlay heading */
+h3 {
+  font-size: 61px;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.prio-content {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.prio-content a {
+  text-decoration: none;
+  color: black;
+  height: 56px;
+  width: 100%;
+  padding: 8px 4px 8px 4px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.prio-content-parent {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.urgentPrio:hover {
+  box-shadow: 0px 3px 3px 1px #00000061;
+}
+
+.urgentPrio_click {
+  background-color: #ff3d00 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+.svgUrgentPrio {
+  color: rgb(255, 255, 255);
+  background-color: #ff3d00;
+}
+
+.mediumPrio:hover {
+  box-shadow: 0px 3px 3px 1px #00000061;
+}
+
+.mediumPrio_click {
+  background-color: #ffa800 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+.svgMediumPrio {
+  color: rgb(255, 255, 255);
+}
+
+.lowPrio:hover {
+  box-shadow: 0px 3px 3px 1px #00000061;
+}
+
+.lowPrio_click {
+  background-color: #7ae229 !important;
+  color: white !important;
+  fill: white;
+  stroke: white;
+}
+
+.svgLowPrio {
+  color: rgb(255, 255, 255);
+}
+
+.one-person-div-edit {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap:8px;
-  }
-  .subtask-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .subtask-input {
-    width: 100%;
-    height: 48px;
-    border: unset;
-    border-radius: 10px 0 0 10px;
-    border: 1px solid #d1d1d1;
-    border-right: 0;
-    margin-top: 4px;
-    font-size: 16px;
-    padding-left: 12px;
-    outline: 0px;
-  }
-  
-  .subtask-add-button {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: white;
-    padding: 0 16px;
-    border: 1px solid #d1d1d1;
-    border-radius: 0 10px 10px 0;
-    border-left: 0;
-    margin-top: 4px;
-  }
-  .edit-one-subtask{
+  justify-content: space-between;
+  padding: 4px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 1px 0px;
+}
+
+.one-person-div-edit:hover {
+  background-color: #c6cbcf;
+}
+
+.one-person-div-edit-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtask-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.subtask-input {
+  width: 100%;
+  height: 48px;
+  border: unset;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid #d1d1d1;
+  border-right: 0;
+  margin-top: 4px;
+  font-size: 16px;
+  padding-left: 12px;
+  outline: 0px;
+}
+
+.subtask-add-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: white;
+  padding: 0 16px;
+  border: 1px solid #d1d1d1;
+  border-radius: 0 10px 10px 0;
+  border-left: 0;
+  margin-top: 4px;
+}
+
+.edit-one-subtask {
   border-radius: 12px;
   padding: 4px 12px 4px 18px;
   list-style-position: inside;
-  }
+}
 
+/* Edit Overlay */
+.edit-task-overlay-edit {
+  height: 90%;
+  width: 512px;
+  padding: 30px 30px;
+  background-color: white;
+  border-radius: 24px;
+  z-index: 46;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
 
-  /* Edit Overlay */
-
-  .edit-task-overlay-edit{
-    height: 90%;
-    width: 512px;
-    padding: 30px 30px;
-    background-color: white;
-    border-radius: 24px;
-    z-index:46;
-    display:flex;
-    flex-direction: column;
-    overflow-y: scroll;
-    scrollbar-width: none;
-  }
-
-.form-edit-overlay{
+.form-edit-overlay {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-evenly;
   gap: 24px;
 }
-.task-title , .description-title{
+
+.task-title,
+.description-title {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding-bottom: 8px;
 }
+
 .task-title label {
-    font-size: 20px;
-  }
-  .task-title input {
-    border-radius: 10px;
-    padding: 12px 21px;
-    border: 1px solid #d1d1d1;
-    font-family: inherit;
-    font-size: 20px;
-    height: 48px;
-    cursor: pointer;
-    width: min(440px, 100%);
-  }
+  font-size: 20px;
+}
 
-  .description-title label {
-    font-size: 20px;
-  }
-  
-  .description-title textarea {
-    padding: 16px;
-    height: 120px;
-    border-radius: 10px;
-    border: 1px solid #d1d1d1;
-    font-family: inherit;
-    font-size: 20px;
-    cursor: pointer;
-    width: min(440px, 100%);
-    resize: none;
-  }
+.task-title input {
+  border-radius: 10px;
+  padding: 12px 21px;
+  border: 1px solid #d1d1d1;
+  font-family: inherit;
+  font-size: 20px;
+  height: 48px;
+  cursor: pointer;
+  width: min(440px, 100%);
+}
 
-  .due-date{
-      display: flex;
-      gap: 16px;
-      width: 100%;
-      padding-bottom: 4px;
-  }
-  .assigned-to-input-and-button{
-    display:inline-block;
-    vertical-align: middle;
-  }
-  .show-assigned-persons-initials{
-      display: flex;
-      padding-bottom: 8px;
-      gap: 8px;
-  }
-  .selected-person-initals-div:nth-of-type(1) {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: solid 1px white;
-  }
-  
-  .selected-person-initals-div:nth-of-type(n+2){
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: solid 1px white;
-    margin-left: -20px;
-  }
-.assigned-person-initials-edit{
+.description-title label {
+  font-size: 20px;
+}
+
+.description-title textarea {
+  padding: 16px;
+  height: 120px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  font-family: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  width: min(440px, 100%);
+  resize: none;
+}
+
+.due-date {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 4px;
+}
+
+.assigned-to-input-and-button {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.show-assigned-persons-initials {
+  display: flex;
+  padding-bottom: 8px;
+  gap: 8px;
+}
+
+.selected-person-initals-div:nth-of-type(1) {
   width: 40px;
   height: 40px;
   display: flex;
@@ -358,66 +339,86 @@ h4{
   border-radius: 50%;
   border: solid 1px white;
 }
-.selected-person-initals-div{
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: solid 1px white;
+
+.selected-person-initals-div:nth-of-type(n + 2) {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid 1px white;
+  margin-left: -20px;
 }
 
-.ok-button{
+.assigned-person-initials-edit {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid 1px white;
+}
+
+.selected-person-initals-div {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: solid 1px white;
+}
+
+.ok-button {
   display: flex;
   justify-content: flex-end;
-  
 }
 
-.ok-button button{
+.ok-button button {
   display: flex;
   align-items: center;
   border-radius: 8px;
-  background-color: #2A3647;
+  background-color: #2a3647;
   color: white;
 }
 
-.assign-to{
+.assign-to {
   max-height: 200px;
 }
 
-.assign-contacts-list{
+.assign-contacts-list {
   overflow-y: scroll;
-    scrollbar-width: thin;
-    height: 20vh;
-    width: 100%;
-    box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 20%);
-    border-radius: 8px;
-    height: 60%;
+  scrollbar-width: thin;
+  height: 20vh;
+  width: 100%;
+  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 20%);
+  border-radius: 8px;
+  height: 60%;
 }
 
 .assign-contacts-list::-webkit-scrollbar {
   display: none;
 }
 
-.one-person-div{
+.one-person-div {
   display: flex;
   gap: 8px;
-  
 }
 
-.edit-one-subtask{
+.edit-one-subtask {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.editAndTrash img{
+.editAndTrash img {
   width: 18px;
   height: 18px;
 }
-.initials-div-in-task{
-  color:white;
+.initials-div-in-task {
+  color: white;
   width: 40px;
   height: 40px;
   display: flex;
@@ -427,12 +428,12 @@ h4{
   border: solid 1px white;
 }
 
-.svg-prio-click{
-  fill:white;
+.svg-prio-click {
+  fill: white;
   background-color: unset;
 }
 
-.scroll-container{
+.scroll-container {
   height: 100%;
   overflow-y: auto;
   margin-bottom: 24px;
@@ -441,26 +442,22 @@ h4{
   flex-direction: column;
   gap: 16px;
 }
-/* .assign-checkbox {
-  margin-left: 8px;
-  pointer-events: none;
-} */
 
 .subtask-and-checkbox input[type="checkbox"] {
   display: none;
 }
 
 .subtask-and-checkbox label {
-  display: inline-block;	
-	width: 24px;
-	height: 24px;
-	cursor: pointer;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
   background-image: url(../../assets/img/checkbox_unchecked.png);
   background-size: cover;
 }
 
 .subtask-and-checkbox input[type="checkbox"]:checked + label {
-	background-image: url(../../assets/img/checkbox_checked.png);
+  background-image: url(../../assets/img/checkbox_checked.png);
 }
 
 .overlay-add-one-person-div input[type="checkbox"] {
@@ -472,15 +469,15 @@ h4{
   width: 24px;
   height: 24px;
   cursor: pointer;
-  background-image: url('../../assets/img/checkbox_unchecked.png');
+  background-image: url("../../assets/img/checkbox_unchecked.png");
   background-size: cover;
 }
 
 .overlay-add-one-person-div input[type="checkbox"]:checked + label {
-  background-image: url('../../assets/svg/checkbox_checked.svg');
+  background-image: url("../../assets/svg/checkbox_checked.svg");
 }
 
-.edit-date-input{
+.edit-date-input {
   border-radius: 10px;
-  padding:4px;
+  padding: 4px;
 }

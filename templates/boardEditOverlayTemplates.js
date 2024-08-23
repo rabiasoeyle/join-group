@@ -16,7 +16,7 @@ function openEditTaskOverlayHTML(i){
             </div>
             <div class="due-date">
                 <label for="editOverlayDueDate-${i}">Due date</label>
-                <input required type="date" id="editOverlayDueDate-${i}" value="${tasks[i]['dueDate']}">
+                <input class="edit-date-input"required type="date" id="editOverlayDueDate-${i}" value="${tasks[i]['dueDate']}">
             </div>
             <div>
             <div class="prio-content-parent" id="prioContent">

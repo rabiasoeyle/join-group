@@ -479,3 +479,8 @@ h4{
 .overlay-add-one-person-div input[type="checkbox"]:checked + label {
   background-image: url('../../assets/svg/checkbox_checked.svg');
 }
+
+.edit-date-input{
+  border-radius: 10px;
+  padding:4px;
+}

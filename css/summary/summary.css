@@ -222,6 +222,46 @@ a{
   }
 } */ 
 /* ab hier */
+
+.User_greeting_Base{ /* Basis für die Mobile Animation, Hintergrund */
+  animation: MobileUserGreeting 3s;
+}
+
+@keyframes MobileUserGreeting{ /* Mobile Animation */
+  0% {
+    background-color: #F6F7F8;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 34;
+  }
+  20% {
+    background-color: #F6F7F8;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 34;
+  }
+  100% {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 34;
+  }
+}
+
 .summary-part-top-svg circle{
   fill:#2A3647;
 }

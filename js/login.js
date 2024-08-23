@@ -30,20 +30,19 @@ async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
   let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
-  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim(); // Bestätigungsfeld hinzufügen
+  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
 
   // Überprüfen, ob die Passwörter übereinstimmen
   if (passwordValue !== confirmPasswordValue) {
-    showError("Die Passwörter stimmen nicht überein."); // Fehlermeldung anzeigen
+    showError("Die Passwörter stimmen nicht überein.", "passwordError"); // Fehlermeldung anzeigen
     return;
   }
 
   // Überprüfen, ob die E-Mail bereits registriert ist
   let emailExists = await checkIfEmailExists(emailValue);
   if (emailExists) {
-    // Popup anzeigen und Registrierung stoppen
     showPopup("Diese E-Mail ist bereits registriert.");
     return;
   }
@@ -103,10 +102,14 @@ async function checkIfEmailExists(email) {
 }
 
 // Funktion zur Anzeige von Fehlermeldungen
-function showError(message) {
-  let errorMessageElement = document.getElementById("error-message");
-  errorMessageElement.textContent = message;
-  errorMessageElement.classList.remove("d-none");
+function showError(message, elementId = "error-message") {
+  let errorMessageElement = document.getElementById(elementId);
+  if (errorMessageElement) { // Überprüfen, ob das Element existiert
+    errorMessageElement.textContent = message;
+    errorMessageElement.classList.remove("d-none");
+  } else {
+    console.warn(`Element mit ID "${elementId}" wurde nicht gefunden.`);
+  }
 }
 
 function getRandomColor() {

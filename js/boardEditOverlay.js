@@ -1,5 +1,5 @@
 /**
- * Diese Funktion dient zum rendern des Edit Overlays der Aufgaben
+ * This function is used to render the edit overlay of the tasks.
  * @param {*} i 
  */
 function openEditTaskOverlay(i){
@@ -20,17 +20,15 @@ function openEditTaskOverlay(i){
 }
 
 /**
- * Diese Funktion soll das aktuelle Datum holen und im Inputfeld min einstellen.
+ * This function should get the current date and set min in the input field.
  */
 function setMinDate(i){
-    // Hole das heutige Datum
     let today = new Date().toISOString().split('T')[0];
-    // Setze das min-Attribut auf das heutige Datum
     document.getElementById(`editOverlayDueDate-${i}`).setAttribute('min', today);
 }
 
 /**
- * Diese Funktion fügt die passenden Klassen für die PriorityButtons hinzu, wenn keine Priorität vorliegt
+ * This function adds the appropriate classes for the PriorityButtons when there is no priority.
  */
 function noChosenPriority(){
     let urgent = document.getElementById('urgentButtonOverlay');
@@ -48,7 +46,7 @@ function noChosenPriority(){
 }
 
 /**
- * Diese Funktion dient dazu im Overlay neue subtasks hinzufügen zu können.
+ * This function is used to add new subtasks to the overlay.
  * @param {*} i 
  */
 function editAddSubtask(i){
@@ -65,7 +63,7 @@ function editAddSubtask(i){
 }
 
 /**
- * Diese Funktion dient dazu, dass alle Subtasks der Task gerendert werden
+ * This function is used to render all subtasks of the task.
  * @param {*} i 
  */
 function renderAllAvaillableSubtasks(i){
@@ -77,7 +75,7 @@ function renderAllAvaillableSubtasks(i){
 }
 
 /**
- * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.(Bei den Subtasks)
+ * This function is intended to undo the onmouseover effect with onmouseout. (For the subtasks)
  * @param {*} i 
  */
 function editSubtaskNoHoverEffekt(j){
@@ -86,7 +84,7 @@ function editSubtaskNoHoverEffekt(j){
 }
 
 /**
- * Diese Funktion soll den onmouseover effekt hinzufügen.(Bei den Subtasks)
+ * This function is intended to add the onmouseover effect. (For the subtasks)
  * @param {*} i 
  */
 function editSubtaskHoverEffekt(j){
@@ -94,7 +92,7 @@ function editSubtaskHoverEffekt(j){
     trashAndEdit.classList.remove('d-none');
 }
 /**
- * Mit dieser Funktion soll man die Subtask an genau der entsprechenden stelle ändern können.
+ * With this function you should be able to change the subtask at exactly the appropriate place.
  * @param {*} i 
  */
 function editEditSubtask(i ,j ){
@@ -112,7 +110,7 @@ function editEditSubtask(i ,j ){
 }
 
 /**
- * Durch Aktivierung dieser Funktion können Änderungen an Unteraufgaben gespeichert werden.
+ * Enabling this feature allows changes to subtasks to be saved.
  * @param {*} i 
  */
 function saveChangedSubtask(j,i){
@@ -122,7 +120,7 @@ function saveChangedSubtask(j,i){
 }
 
 /**
- * Diese Funktion dient zum Löschen von subtasks.
+ * This function is used to delete subtasks.
  * @param {*} i 
  */
 function editOverlayDeleteSubtask(i,j){
@@ -136,7 +134,11 @@ function editOverlayDeleteSubtask(i,j){
     renderAllAvaillableSubtasks(i);
 }
 
-/**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
+/**
+ * This function is intended to save the value for the priority and add or remove the classes accordingly.
+ * @param {*} i 
+ * @param {*} x 
+ */
 function selectPrio(i,x){
     let urgent = document.getElementById('urgentButtonOverlay');
     let medium = document.getElementById('mediumButtonOverlay');
@@ -145,50 +147,89 @@ function selectPrio(i,x){
     let mediumSVG = document.getElementById('svgMediumPrio');
     let lowSVG = document.getElementById('svgLowPrio');
     if(x =='urgent'){
-        urgentSVG.classList.add('svg-prio-click');
-        urgentSVG.classList.remove('svgUrgentPrio');
-        mediumSVG.classList.remove('svg-prio-click');
-        mediumSVG.classList.add('svgMediumPrio');
-        lowSVG.classList.remove('svg-prio-click');
-        lowSVG.classList.add('svgLowPrio');
-        urgent.classList.add('urgentPrio_click');
-        urgent.classList.remove('urgentPrio');
-        medium.classList.add('mediumPrio');
-        medium.classList.remove('mediumPrio_click');
-        low.classList.add('lowPrio');
-        low.classList.remove('lowPrio_click');
+        selectPrioUrgent(urgentSVG, mediumSVG,lowSVG, urgent, medium, low);
     }else if(x =='medium'){
-        urgentSVG.classList.remove('svg-prio-click');
-        urgentSVG.classList.add('svgUrgentPrio');
-        mediumSVG.classList.add('svg-prio-click');
-        mediumSVG.classList.remove('svgMediumPrio');
-        lowSVG.classList.remove('svg-prio-click');
-        lowSVG.classList.add('svgLowPrio');
-        urgent.classList.add('urgentPrio');
-        urgent.classList.remove('urgentPrio_click');
-        medium.classList.add('mediumPrio_click');
-        medium.classList.remove('mediumPrio');
-        low.classList.add('lowPrio');
-        low.classList.remove('lowPrio_click');
+        selectPrioMedium(urgentSVG, mediumSVG,lowSVG, urgent, medium, low);
     }else if(x =='low'){
-        urgentSVG.classList.remove('svg-prio-click');
-        urgentSVG.classList.add('svgUrgentPrio');
-        mediumSVG.classList.remove('svg-prio-click');
-        mediumSVG.classList.add('svgMediumPrio');
-        lowSVG.classList.add('svg-prio-click');
-        lowSVG.classList.remove('svgLowPrio');
-        urgent.classList.add('urgentPrio');
-        urgent.classList.remove('urgentPrio_click');
-        medium.classList.add('mediumPrio');
-        medium.classList.remove('mediumPrio_click');
-        low.classList.add('lowPrio_click');
-        low.classList.remove('lowPrio');
+        selectPrioLow(urgentSVG, mediumSVG,lowSVG, urgent, medium, low);
     }
     tasks[i]['priority'] = x;
 }
 
 /**
- * Diese Funktion dient dazu, dass beim laden des edit Overlays bereits eine Farbe bei der bereits bekannten prio ist.
+ * This function adds or removes the classes in the priority button.
+ * @param {*} urgentSVG 
+ * @param {*} mediumSVG 
+ * @param {*} lowSVG 
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ */
+function selectPrioUrgent(urgentSVG, mediumSVG,lowSVG, urgent, medium, low){
+    urgentSVG.classList.add('svg-prio-click');
+    urgentSVG.classList.remove('svgUrgentPrio');
+    mediumSVG.classList.remove('svg-prio-click');
+    mediumSVG.classList.add('svgMediumPrio');
+    lowSVG.classList.remove('svg-prio-click');
+    lowSVG.classList.add('svgLowPrio');
+    urgent.classList.add('urgentPrio_click');
+    urgent.classList.remove('urgentPrio');
+    medium.classList.add('mediumPrio');
+    medium.classList.remove('mediumPrio_click');
+    low.classList.add('lowPrio');
+    low.classList.remove('lowPrio_click');
+}
+
+/**
+ * This function adds or removes the classes in the priority button.
+ * @param {*} urgentSVG 
+ * @param {*} mediumSVG 
+ * @param {*} lowSVG 
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ */
+function selectPrioMedium(urgentSVG, mediumSVG,lowSVG, urgent, medium, low){
+    urgentSVG.classList.remove('svg-prio-click');
+    urgentSVG.classList.add('svgUrgentPrio');
+    mediumSVG.classList.add('svg-prio-click');
+    mediumSVG.classList.remove('svgMediumPrio');
+    lowSVG.classList.remove('svg-prio-click');
+    lowSVG.classList.add('svgLowPrio');
+    urgent.classList.add('urgentPrio');
+    urgent.classList.remove('urgentPrio_click');
+    medium.classList.add('mediumPrio_click');
+    medium.classList.remove('mediumPrio');
+    low.classList.add('lowPrio');
+    low.classList.remove('lowPrio_click');
+}
+
+/**
+ * This function adds or removes the classes in the priority button.
+ * @param {*} urgentSVG 
+ * @param {*} mediumSVG 
+ * @param {*} lowSVG 
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ */
+function selectPrioLow(urgentSVG, mediumSVG,lowSVG, urgent, medium, low){
+    urgentSVG.classList.remove('svg-prio-click');
+    urgentSVG.classList.add('svgUrgentPrio');
+    mediumSVG.classList.remove('svg-prio-click');
+    mediumSVG.classList.add('svgMediumPrio');
+    lowSVG.classList.add('svg-prio-click');
+    lowSVG.classList.remove('svgLowPrio');
+    urgent.classList.add('urgentPrio');
+    urgent.classList.remove('urgentPrio_click');
+    medium.classList.add('mediumPrio');
+    medium.classList.remove('mediumPrio_click');
+    low.classList.add('lowPrio_click');
+    low.classList.remove('lowPrio');
+}
+
+/**
+ * This function ensures that when the edit overlay is loaded, a color is already at the known priority.
  * @param {*} i 
  */
 function colorOfPriority(i){
@@ -198,25 +239,56 @@ function colorOfPriority(i){
     let low = document.getElementById('lowButtonOverlay');
     if(prio){
     if(prio == "urgent"){
-        urgent.classList.add('urgentPrio_click');
-        urgent.classList.remove('urgentPrio');
-        medium.classList.add('svgMediumPrio');
-        low.classList.add('svgLowPrio');
-    }else if(prio =="medium"){
-        medium.classList.add('mediumPrio_click');
-        medium.classList.remove('mediumPrio');
-        urgent.classList.add('svgUrgentPrio');
-        low.classList.add('svgLowPrio');
+        colorOfPriorityUrgent( urgent, medium, low);  
     }else if(prio == "low"){
-        low.classList.add('lowPrio_click');
-        low.classList.remove('svglowPrio');
-        medium.classList.add('svgMediumPrio');
-        urgent.classList.add('svgUrgentPrio');
-    }}else{}
+        colorOfPriorityLow(urgent, medium, low);
+    }else{
+        prio = "medium";
+        colorOfPriorityMedium(urgent, medium, low);
+    }}
 }
 
 /**
- * In dieser Funktion soll der Titel geändert und gespeichert werden.
+ * This function adds or removes the classes in the priority button.
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ */
+function colorOfPriorityUrgent(urgent, medium, low){
+    urgent.classList.add('urgentPrio_click');
+    urgent.classList.remove('urgentPrio');
+    medium.classList.add('svgMediumPrio');
+    low.classList.add('svgLowPrio');
+}
+
+/**
+ * This function adds or removes the classes in the priority button.
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ */
+function colorOfPriorityLow(urgent, medium, low){
+    low.classList.add('lowPrio_click');
+    low.classList.remove('svglowPrio');
+    medium.classList.add('svgMediumPrio');
+    urgent.classList.add('svgUrgentPrio');
+}
+
+/**
+ * This function adds or removes the classes in the priority button.
+ * @param {*} urgent 
+ * @param {*} medium 
+ * @param {*} low 
+ */
+function colorOfPriorityMedium(urgent, medium, low){
+    medium.classList.add('mediumPrio_click');
+    medium.classList.remove('mediumPrio');
+    urgent.classList.add('svgUrgentPrio');
+    low.classList.add('svgLowPrio');
+}
+
+/**
+ * In this function the title should be changed and saved.
  * @param {*} i 
  */
 function changeTitle(i){
@@ -225,7 +297,7 @@ function changeTitle(i){
 }
 
 /**
- * In dieser Funktion soll die Description geändert werden können.
+ * In this function the description should be able to be changed.
  * @param {*} i 
  */
 function changeDescription(i){
@@ -234,7 +306,7 @@ function changeDescription(i){
 }
 
 /**
- * In dieser Funktion soll das Datum geändert werden.
+ * In this function the date should be changed.
  * @param {*} i 
  */
 function changeDueDate(i){
@@ -243,47 +315,63 @@ function changeDueDate(i){
 }
 
 /**
- * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
+ * This function is used to render the list of contacts with the initials and the checkbox on onclick.
  */
 function rollContactsListEdit(i){
     let assignContactsList = document.getElementById(`edit-assignContactsList-${i}`);
     assignContactsList.classList.toggle('d-none');
     assignContactsList.innerHTML='';
     for(j=0; j<contacts.length; j++){
-        // let isChecked = tasks[i]['assigned'].includes(contacts[j]['name']) ? 'checked' : '';
         if (tasks[i]['assigned']) {
-            isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-        
-        assignContactsList.innerHTML += /*html*/ `
-            <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
-                <div class="one-person-div-edit-left">
-                    <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
-                    <div>${contacts[j]['name']}</div>
-                </div>
-                <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
-                <label for="editInputCheckbox-${i}"></label>
-            </div>`;
-            let input= document.getElementById(`editInputCheckbox-${j}`);
-            if(input.checked){
-                document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
-                document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
-            }}
+        ifRollContactsListEdit(i, j, assignContactsList);}
         else{
-            assignContactsList.innerHTML += /*html*/ `
-            <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
-                <div class="one-person-div-edit-left">
-                    <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
-                    <div>${contacts[j]['name']}</div>
-                </div>
-                <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
-                <label for="inputCheckbox-${i}"></label>
-            </div>`;
-        }
-}
+        elseRollContactsListEdit(i,j , assignContactsList);}}
 }
 
 /**
- * Diese Funktion soll die Div Container für die Initalien der ausgewählten Personen rendern.
+ * This function should be carried out when the priority has already been determined.
+ * @param {*} i 
+ * @param {*} j 
+ * @param {*} assignContactsList 
+ */
+function ifRollContactsListEdit(i, j , assignContactsList){
+    isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
+    assignContactsList.innerHTML += /*html*/ `
+        <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
+            <div class="one-person-div-edit-left">
+                <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
+                <div>${contacts[j]['name']}</div>
+            </div>
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
+            <label for="editInputCheckbox-${i}"></label>
+        </div>`;
+    let input= document.getElementById(`editInputCheckbox-${j}`);
+    if(input.checked){
+        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
+        document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
+    }
+}
+
+/**
+ * This function should be carried out if the priority has not yet been determined.
+ * @param {*} i 
+ * @param {*} j 
+ * @param {*} assignContactsList 
+ */
+function elseRollContactsListEdit(i,j, assignContactsList){
+    assignContactsList.innerHTML += /*html*/ `
+    <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
+        <div class="one-person-div-edit-left">
+            <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
+            <div>${contacts[j]['name']}</div>
+        </div>
+        <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
+        <label for="inputCheckbox-${i}"></label>
+    </div>`;
+}
+
+/**
+ * This function is intended to render the div containers for the initials of the selected people.
  * @param {*} i 
  */
 function editOvShowAssignedPersons(i) {
@@ -293,14 +381,14 @@ function editOvShowAssignedPersons(i) {
         showAssignedPersons.innerHTML += `
         <div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">${editAssignedPersonsInitials(i, j)}</div>`;
 }
-if(tasks[i]['assigned'].length>5){
-    showAssignedPersons.innerHTML+= `
-    <div style="background-color:white; color:black" class="selected-person-initals-div">+${tasks[i]['assigned'].length-5}</div>`;
+    if(tasks[i]['assigned'].length>5){
+        showAssignedPersons.innerHTML+= `
+        <div style="background-color:white; color:black" class="selected-person-initals-div">+${tasks[i]['assigned'].length-5}</div>`;
 }
 } 
 
 /**
- * Diese Funktion rendert die initalien der ausgewählten Personen
+ * This function renders the initials of the selected people.
  * @param {*} i 
  * @param {*} j 
  * @returns 
@@ -315,7 +403,7 @@ function editAssignedPersonsInitials(i,j){
 }
 
 /**
- * In dieser Funktion werden Personen zur Task hinzugefügt.
+ * In this function, people are added to the task.
  * @param {*} j 
  * @param {*} i 
  */
@@ -323,25 +411,13 @@ function editAddAssignedPersons(j, i){
     if (!tasks[i].hasOwnProperty('assigned') || !Array.isArray(tasks[i]['assigned'])) {
         tasks[i]['assigned'] = [];
     }
-     // Referenz zur Checkbox abrufen
-     let checkbox = document.getElementById(`editInputCheckbox-${j}`);
+    let checkbox = document.getElementById(`editInputCheckbox-${j}`);
     checkbox.checked =!checkbox.checked
-    // Der Kontakt, der zugewiesen oder entfernt werden soll
     let contact = contacts[j];
     if (checkbox.checked) {
-        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
-        document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
-        // Überprüfen, ob der Kontakt bereits zugewiesen ist
-        let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);
-        if (!alreadyAssigned) {
-            tasks[i]['assigned'].push(contact);
-        }
+        ifCheckboxIsCheckedEditAssignedPersons(i, j, contact);
     } else {
-        // Entferne den Kontakt aus dem assigned-Array
-        tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== contact.name);
-        document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "white";
-        document.getElementById(`onePersonDivEdit-${j}`).style.color = "black";
-        // checkbox.checked = false;
+        ifCheckboxNotCheckedEditAssignedPersons(i, j, contact);
     }
     editOvShowAssignedPersons(i);
     saveNewAssignedPerson(i);
@@ -349,7 +425,34 @@ function editAddAssignedPersons(j, i){
 }
 
 /**
- * Diese Funktion dient dazu, die Profilinitalien der Kontakte zu erstellen.
+ * This function is intended to describe what happens when the checkbox is checked.
+ * @param {*} i 
+ * @param {*} j 
+ * @param {*} contact 
+ */
+function ifCheckboxIsCheckedEditAssignedPersons(i, j, contact){
+    document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
+    document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
+    let alreadyAssigned = tasks[i]['assigned'].some(person => person.name === contact.name);
+    if (!alreadyAssigned) {
+        tasks[i]['assigned'].push(contact);
+    }
+}
+
+/**
+ * This function is intended to describe what happens when the checkbox is not checked
+ * @param {*} i 
+ * @param {*} j 
+ * @param {*} contact 
+ */
+function ifCheckboxNotCheckedEditAssignedPersons(i, j, contact){
+    tasks[i]['assigned'] = tasks[i]['assigned'].filter(person => person.name !== contact.name);
+    document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "white";
+    document.getElementById(`onePersonDivEdit-${j}`).style.color = "black";
+}
+
+/**
+ * This function is used to create the profile initials of the contacts.
  * @param {*} i 
  * @returns 
  */
@@ -362,13 +465,8 @@ function editOverlayProfileInitials(i){
   return initials;
 }
 
-// function closeContactsList(event){
-//     let assignContactsList = document.getElementById(`edit-assignContactsList-${i}`);
-//     assignContactsList.classList.toggle('d-none');
-// }
-
 /**
- * Dies ist die abschließende Speicherfunktion beim Edit-Overlay, die dafür sorgt, dass alle bisher geänderten Infos auch gespeichert werden.
+ * This is the final save function in the edit overlay, which ensures that all previously changed information is saved.
  * @param {*} i 
  */
 async function saveTasksChanges(i){
@@ -385,6 +483,10 @@ async function saveTasksChanges(i){
     openDetailedTaskOverlay(i);
 }
 
+/**
+ * This function saves the new assigned Persons or new deleted Persons in Firebase.
+ * @param {*} i 
+ */
 async function saveNewAssignedPerson(i){
     await putData(`/tasks/${tasks[i]['id']}`, tasks[i]);
     tasks=[];

@@ -1,6 +1,9 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
+/**
+ * links summary.html based on user name, if none given, uses Guest User and GU Initials
+ */
 function goToSummary() {
   window.location.href = "../html/summary.html?";
   localStorage.setItem("username", "Guest User");
@@ -16,6 +19,10 @@ function goToSummary() {
   }
 }
 
+/**
+ * toggles Classes to Ids
+ */
+
 function signUp() {
   document.getElementById("login_Content").classList.toggle("d-none");
   document.getElementById("sign_up_content").classList.toggle("d-none");
@@ -23,6 +30,10 @@ function signUp() {
   document.getElementById("blue_signed_up").classList.toggle("d-none");
   document.getElementById("help_initials_mobile").classList.toggle("d-none");
 }
+
+/**
+ * resets error message ids
+ */
 
 function resetErrorMessages() {
   document.getElementById("email-error").classList.add("d-none");
@@ -34,6 +45,15 @@ function resetErrorMessages() {
   document.getElementById("emailExists").classList.add("d-none");
   document.getElementById("notCheckedBox").classList.add("d-none");
 }
+
+/**
+ * validates user input and gives back error messages if they are wrong
+ * @param {*} name 
+ * @param {*} email 
+ * @param {*} password 
+ * @param {*} confirmPassword 
+ * @returns 
+ */
 
 function validateInputs(name, email, password, confirmPassword) {
   if (!name) {
@@ -65,6 +85,11 @@ function validateInputs(name, email, password, confirmPassword) {
   return true;
 }
 
+/**
+ * clears Input and registers new Login
+ * @param {*} newLogin 
+ */
+
 async function processRegistration(newLogin) {
   try {
     await postData("/login", newLogin);
@@ -76,6 +101,13 @@ async function processRegistration(newLogin) {
   }
 }
 
+/**
+ * checks if users e-mail has been registered and pops error message
+ * @param {*} email 
+ * @param {*} newLogin 
+ * @returns 
+ */
+
 async function checkEmailAndRegister(email, newLogin) {
   let emailExists = await checkIfEmailExists(email);
   if (emailExists) {
@@ -85,12 +117,20 @@ async function checkEmailAndRegister(email, newLogin) {
   await processRegistration(newLogin);
 }
 
+/**
+ * clears inputfields
+ */
 function clearInputFields() {
   document.getElementById("neuUserLoginName").value = "";
   document.getElementById("neuUserLoginEmail").value = "";
   document.getElementById("neuUserLoginPasswort").value = "";
   document.getElementById("neuUserLoginConfirm_Passwort").value = "";
 }
+
+/**
+ * Adds new User to Firebase
+ * @returns 
+ */
 
 async function neuUser() {
   resetErrorMessages();
@@ -117,12 +157,21 @@ async function neuUser() {
   await checkEmailAndRegister(emailValue, newLogin);
 }
 
+/**
+ * shows popup 
+ * @param {*} message 
+ */
+
 function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.querySelector("p").textContent = message;
   popupElement.classList.add("popup");
   popupElement.classList.remove("d-none");
 }
+
+/**
+ * closes popup
+ */
 
 function closePopup() {
   let popupElement = document.getElementById("emailExistsPopup");
@@ -135,6 +184,10 @@ function closePopup() {
   document.getElementById("help_initials_mobile").classList.remove("d-none");
 }
 
+/**
+ * checks if email is existing
+ */
+
 async function checkIfEmailExists(email) {
   let response = await fetch(firebase_URL + "login.json");
   let responseToJson = await response.json();
@@ -143,6 +196,12 @@ async function checkIfEmailExists(email) {
     (key) => responseToJson[key].email === email
   );
 }
+
+/**
+ * shows error message
+ * @param {*} message 
+ * @param {*} elementId 
+ */
 
 function showError(message, elementId = "error-message") {
   let errorMessageElement = document.getElementById(elementId);
@@ -154,15 +213,32 @@ function showError(message, elementId = "error-message") {
   }
 }
 
+/**
+ * checks if e-mail input is in correct format
+ * @param {*} email 
+ * @returns 
+ */
+
 function isValidEmail(email) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
 }
 
+/**
+ * checks if password is safe enough
+ * @param {*} password 
+ * @returns 
+ */
+
 function isValidPassword(password) {
   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.,:;!?'"@#$%^&*()_+\-=\[\]{}\\|`~<>\/€£¥₿©®™§°†‡¶‰•])[A-Za-z\d.,:;!?'"@#$%^&*()_+\-=\[\]{}\\|`~<>\/€£¥₿©®™§°†‡¶‰•]{8,}$/;
   return passwordPattern.test(password);
 }
+
+/**
+ * adds random color to new user
+ * @returns 
+ */
 
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
@@ -172,6 +248,12 @@ function getRandomColor() {
   }
   return color;
 }
+
+/**
+ * checks if user data is correct
+ * @param {*} path 
+ * @returns 
+ */
 
 async function login(path = "login") {
   resetErrorMessages();
@@ -192,6 +274,13 @@ async function login(path = "login") {
   }
 }
 
+/**
+ * validates email and password
+ * @param {*} emailValue 
+ * @param {*} passwordValue 
+ * @returns 
+ */
+
 function validateInput(emailValue, passwordValue) {
   if (!emailValue) {
     document.getElementById("email-error").classList.remove("d-none");
@@ -203,6 +292,14 @@ function validateInput(emailValue, passwordValue) {
   }
   return true;
 }
+
+/**
+ * compares user data with firebase data
+ * @param {*} emailValue 
+ * @param {*} passwordValue 
+ * @param {*} path 
+ * @returns 
+ */
 
 async function fetchAndValidateCredentials(emailValue, passwordValue, path) {
   const response = await fetch(firebase_URL + path + ".json");
@@ -223,6 +320,11 @@ async function fetchAndValidateCredentials(emailValue, passwordValue, path) {
   return loginSuccessful;
 }
 
+/**
+ * leads user to summary.html if login is correct
+ * @param {*} nameElement 
+ */
+
 function loginCorrect(nameElement) {
   localStorage.setItem("username", nameElement);
   let names = nameElement.split(" ");
@@ -232,6 +334,10 @@ function loginCorrect(nameElement) {
     nameElement
   )}`;
 }
+
+/**
+ * error message if login is incorrect, nulls error messages if user starts new input
+ */
 
 function loginIncorrect() {
   document.getElementById("error-message").classList.remove("d-none");

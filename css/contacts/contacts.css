@@ -48,6 +48,7 @@
 }
 
 .add-contacts-button {
+  top: 18px;
   position: sticky;
   width: 80%;
   max-width: 350px;

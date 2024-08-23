@@ -1,8 +1,3 @@
-// const urlParams = new URLSearchParams(window.location.search);
-// const msg = urlParams.get('msg');
-// if(msg){
-//     console.log(msg);
-// } 
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 let tasks =[];
@@ -14,7 +9,7 @@ let checkedSubTaskNumber = 0;//vorerst ersatznummer für den eigentlichen wert;
 
 
 /**
- * Diese Funktion dient dazu, um die benötigten Daten zu laden und zu rendern
+ * This function is used to load and render the required data
  */
 async function initBoard() {
     await loadTasks();
@@ -23,47 +18,47 @@ async function initBoard() {
     inProgressBoard();
     awaitFeedbackBoard();
     doneBoard();
-
 }
 /**
- * Diese Funktion filtert die Aufgaben basierend auf dem Suchbegriff.
+ * This feature filters the tasks based on the search term.
  */
 function filterTasks() {
   let searchBar = document.getElementById('searchBar');
   let searchQuery = searchBar.value.trim().toLowerCase();
   let clearButton = document.getElementById('clearSearch');
-
   if (searchQuery.length < 3) {
-      // Wenn der Suchbegriff weniger als 3 Zeichen hat, zeige alle Aufgaben
       todoBoard();
       inProgressBoard();
       awaitFeedbackBoard();
       doneBoard();
   } else {
-      // Filter die Aufgaben, wenn der Suchbegriff mindestens 3 Zeichen hat
       let filteredTasks = tasks.filter(task =>
           task.title.toLowerCase().includes(searchQuery) ||
           (task.description && task.description.toLowerCase().includes(searchQuery))
       );
-
-      // Aufgaben auf den Boards anzeigen
-      todoBoard(filteredTasks);
-      inProgressBoard(filteredTasks);
-      awaitFeedbackBoard(filteredTasks);
-      doneBoard(filteredTasks);
+      elseFilterTasks(filteredTasks);
   }
 }
 
 /**
-* Diese Funktion setzt die Suche zurück.
+ * This function is used to render the status fields with the filtered tasks.
+ * @param {*} filteredTasks 
+ */
+function elseFilterTasks(filteredTasks){
+    todoBoard(filteredTasks);
+    inProgressBoard(filteredTasks);
+    awaitFeedbackBoard(filteredTasks);
+    doneBoard(filteredTasks);
+}
+
+/**
+* This function resets the search.
 */
 function clearSearch() {
   let searchBar = document.getElementById('searchBar');
   searchBar.value = ""; // Suchfeld leeren
   filterTasks(); // Alle Aufgaben wieder anzeigen
 }
-
-
 
 /**
  * Diese Funktion dient dazu die Initalien der zugeschriebenen Personen darzustellen
@@ -72,27 +67,44 @@ function clearSearch() {
 function showAssignedPersonsInitial(element){
   let persons = document.getElementById(`assignedPerson-${element['idNumber']}`);
   persons.innerHTML ='';
-  assignedPersons = element['assigned'];
-  // Arrow-Funktion zum Filtern von Personen, die noch in den Kontakten existieren
-  assignedPersons = assignedPersons.filter(assignedPerson => 
-    contacts.some(contact => contact.name === assignedPerson.name)
-);
-  for(j=0; j < Math.min(assignedPersons.length, 4); j++){//falls assignedPersons weniger als 4 ist
-    persons.innerHTML +=`
-    <div class="initals-div-in-task" style="background-color:${assignedPersons[j].color}; color:white;">${profileInitials(assignedPersons[j]['name'])}</div>`;
+  let assignedPersons = element['assigned'];
+  assignedPersons = assignedPersons.filter(assignedPerson => contacts.some(contact => contact.name === assignedPerson.name));
+  for(j=0; j < Math.min(assignedPersons.length, 4); j++){
+    persons.innerHTML += showAssignedPersonsInitialHTMLOne(assignedPersons);
   }
   if(assignedPersons.length>4){
-    persons.innerHTML +=`
-    <div style="background-color:white; color:black" class="initals-div-in-task">
-    +${assignedPersons.length-4}
-    </div>`
+    persons.innerHTML += showAssignedPersonsInitialHTMLTwo(assignedPersons);
   }
-   //Aktualisieren des 'assigned' Felds im Element
-   element['assigned'] = assignedPersons;
+  element['assigned'] = assignedPersons;
 }
 
 /**
- * Diese Funktion soll die Hintergrundfarbe der div für die Kategorien je nach Kategorie ändern
+ * This function renders the initial container of the first 4 assigned contacts.
+ * @param {*} assignedPersons 
+ * @returns 
+ */
+function showAssignedPersonsInitialHTMLOne(assignedPersons){
+return `
+    <div class="initals-div-in-task" style="background-color:${assignedPersons[j].color}; color:white;">
+      ${profileInitials(assignedPersons[j]['name'])}
+    </div>`;
+}
+
+/**
+ * This function renders the circle container with a number, which shows how much more Contacts are assigned.
+ * @param {*} assignedPersons 
+ * @returns 
+ */
+function showAssignedPersonsInitialHTMLTwo(assignedPersons){
+return `
+    <div style="background-color:white; color:black" class="initals-div-in-task">
+      +${assignedPersons.length-4}
+    </div>
+`
+}
+
+/**
+ * This function is intended to change the background color of the categories div depending on the category
  * @param {*} element 
  */
 function categorySign(element){
@@ -105,7 +117,7 @@ function categorySign(element){
 }
 
 /**
- * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
+ * In this function, the initials of the contacts are filtered out and played back
  * @param {*} i
  * @returns
  */
@@ -119,7 +131,7 @@ function profileInitials(name) {
 }
 
 /**
- * Diese Funktion dient zum toggeln des Menüs, wo die Staten in der responsive Ansicht geändert werden können.
+ * This function is used to toggle the menu, where the states can be changed in the responsive view.
  * @param {*} id 
  */
 function changeStatusToggle(id){
@@ -132,7 +144,7 @@ function changeStatusToggle(id){
 }
 
 /**
- * In dieser Funktion wird bei der jeweiligen Aufgabe der status im Firebase geändert.
+ * In this function, the status in the Firebase is changed for the respective task.
  * @param {*} id 
  */
 async function changeStatusPutData(id){
@@ -146,7 +158,7 @@ async function changeStatusPutData(id){
 }
 
 /**
- *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu todo umgeändert.
+ *  In this function, the status of the respective task is changed to todo.
  * @param {*} id 
  */
 async function changeStatusToTodo(id){
@@ -155,7 +167,7 @@ async function changeStatusToTodo(id){
 }
 
 /**
- *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu inProgress umgeändert.
+ *  In this function, the status of the respective task is changed to inProgress.
  * @param {*} id 
  */
 async function changeStatusToInProgress(id){
@@ -164,7 +176,7 @@ async function changeStatusToInProgress(id){
 }
 
 /**
- *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu awaitFeedback umgeändert.
+ *  In this function, the status of the respective task is changed to awaitFeedback.
  * @param {*} id 
  */
 async function changeStatusToAwaitFeedback(id){
@@ -174,7 +186,7 @@ async function changeStatusToAwaitFeedback(id){
 
 /**
  * /**
- *  In dieser Funktion wird bei der jeweiligen Aufgabe der status zu done umgeändert.
+ *  In this function, the status of the respective task is changed to done.
  * @param {*} id 
  */
 async function changeStatusToDone(id){
@@ -183,54 +195,91 @@ async function changeStatusToDone(id){
 }
 
 /**
- * Diese Funktion soll die Tasks mit dem status todo rendern
+ * This function is intended to render the tasks with the status todo
  */
 function todoBoard(filteredTasks){
   let status =[];
   if(filteredTasks && filteredTasks.length >= 1){
     status = filteredTasks.filter(t => t['status'] == 'todo');
   }else{
-  status = tasks.filter(t => t['status'] == 'todo');
-}
+  status = tasks.filter(t => t['status'] == 'todo');}
     let content = document.getElementById('todoBoard');
     content.innerHTML='';
     if(status.length==0){
-      content.innerHTML=`
-      <div class="no-task-available">No tasks To do</div>
-      `
+      content.innerHTML= todoBoardHTMLOne();
     }else{ 
       for(i=0; i<status.length;i++){
-        let element = status[i]
-        content.innerHTML += boardHTML(i, status)
-        // / Überprüfen, ob Subtasks vorhanden sind
-          if (element['subtaskList'] && element['subtaskList'].length > 0) {
-            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
-            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
-            subtaskContent.innerHTML = `
-                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
-                subtaskContent.classList.remove('d-none');
-          }
-        if(element['assigned']){
-          showAssignedPersonsInitial(element);  
-        }
-        if(element['category']){
-          categorySign(element);
-        }
-        if(element['priority']){
-           prioritySign(element);
-        }
-        if(!element['category']){
-          document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
-        }
-        if(!element['description']){
-          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
-        }
+        content.innerHTML += boardHTML(i, status);
+        elseForBoardInfo(status, i);
     }}
 }
 
 /**
- * Diese Funktion soll die Tasks mit dem status inProgress rendern
+ * This function is intended to render the container in the event that there are no tasks with status todo.
+ * @returns 
+ */
+function todoBoardHTMLOne(){
+  return `<div class="no-task-available">No tasks To do</div>
+  `
+}
+
+/**
+ * This function describes the case of what happens when tasks are in this status.
+ * @param {*} status 
+ * @param {*} i 
+ */
+function elseForBoardInfo(status, i){
+  let element = status[i]
+  if (element['subtaskList'] && element['subtaskList'].length > 0) {
+      let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
+      let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
+      subtaskContent.innerHTML = subtaskListHTML(status, i, result);
+      subtaskContent.classList.remove('d-none');
+    }
+    if(element['assigned']){
+    showAssignedPersonsInitial(element);  
+  }
+  elseForBoardInfoAfterAssignedPersons(status, i);
+}
+
+/**
+ * This function renders the HTML for the subtasks in the small view.
+ * @param {*} status 
+ * @param {*} i 
+ * @param {*} result 
+ * @returns 
+ */
+function subtaskListHTML(status, i, result){
+  return `<div class="load-subtask-div">
+            <div class="load-subtask" style="width:${result}%">
+            </div>
+          </div>
+          <div class="subtasks">${status[i].checkedSubtasksCount}/${status[i]['subtaskList'].length} Subtasks</div>`
+}
+
+/**
+ * This function describes the case of what happens when tasks are in this status. -continuation
+ * @param {*} status 
+ * @param {*} i 
+ */
+function elseForBoardInfoAfterAssignedPersons(status, i){
+  let element = status[i];
+  if(element['category']){
+    categorySign(element);
+  }
+  if(element['priority']){
+     prioritySign(element);
+  }
+  if(!element['category']){
+    document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
+  }
+  if(!element['description']){
+    document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
+  }
+}
+
+/**
+ * This function is intended to render the tasks with the status in Progress.
  */
 function inProgressBoard(filteredTasks){
   let status =[];
@@ -242,42 +291,26 @@ function inProgressBoard(filteredTasks){
     let content = document.getElementById('inProgressBoard');
     content.innerHTML='';
     if(status.length == 0){
-      content.innerHTML=`
-      <div class="no-task-available">No tasks in Progress</div>
-      `
+      content.innerHTML= inProgressBoardHTMLOne();
     }else{
       for(i=0; i<status.length;i++){
-        let element = status[i];
         content.innerHTML += boardHTML(i, status)
-        // / Überprüfen, ob Subtasks vorhanden sind
-          if (element['subtaskList'] && element['subtaskList'].length > 0) {
-            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
-            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
-            subtaskContent.innerHTML = `
-                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
-                subtaskContent.classList.remove('d-none');
-              }
-            if(element['assigned']){
-            showAssignedPersonsInitial(element);  
-            }
-            if(element['category']){
-              categorySign(element);
-            }
-            if(element['priority']){
-               prioritySign(element);
-            }
-        if(!element['category']){
-          document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
-        }
-        if(!element['description']){
-          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
-        }
+        elseForBoardInfo(status, i);
     }}
 }
 
 /**
- * Diese Funktion soll die Tasks mit dem status awaitFeedback rendern
+ * This function is intended to render the container in the event that there are no tasks with status inProgress.
+ * @returns 
+ */
+function inProgressBoardHTMLOne(){
+  return `
+      <div class="no-task-available">No tasks in Progress</div>
+      `
+}
+
+/**
+ * This function is intended to render the tasks with the status awaitFeedback.
  */
 function awaitFeedbackBoard(filteredTasks){
   let status =[];
@@ -289,43 +322,27 @@ function awaitFeedbackBoard(filteredTasks){
     let content = document.getElementById('awaitFeedbackBoard');
     content.innerHTML='';
     if(status.length == 0){
-      content.innerHTML=`
-      <div class="no-task-available">No tasks await Feedback</div>
-      `
+      content.innerHTML= awaitFeedbackBoardHTMLOne()
     }else{
     for(i=0; i<status.length;i++){
-      let element = status[i];
-      content.innerHTML += boardHTML(i, status)
-        // / Überprüfen, ob Subtasks vorhanden sind
-          if (element['subtaskList'] && element['subtaskList'].length > 0) {
-            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
-            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
-            subtaskContent.innerHTML = `
-                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
-                subtaskContent.classList.remove('d-none');
-              }
-            if(element['assigned']){
-            showAssignedPersonsInitial(element);  
-            }
-            if(element['category']){
-              categorySign(element);
-            }
-            if(element['priority']){
-               prioritySign(element);
-            }
-      if(!element['category']){
-        document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
-      }
-      if(!element['description']){
-        document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');
-    }
+      content.innerHTML += boardHTML(i, status);
+      elseForBoardInfo(status, i);
   }
   }
 }
 
 /**
- * Diese Funktion soll die Tasks mit dem status done rendern
+ * This function is intended to render the container in the event that there are no tasks with status awaitFeedback
+ * @returns 
+ */
+function awaitFeedbackBoardHTMLOne(){
+  return `
+      <div class="no-task-available">No tasks await Feedback</div>
+      `
+}
+
+/**
+ * This function is intended to render the tasks with the status done.
  */
 function doneBoard(filteredTasks){
   let status =[];
@@ -337,46 +354,27 @@ function doneBoard(filteredTasks){
     let content = document.getElementById('doneBoard');
     content.innerHTML='';
     if(status.length == 0){
-      content.innerHTML=`
-      <div class="no-task-available">No tasks await Feedback</div>
-      `
+      content.innerHTML=doneBoardHTMLOne();
     }else{
       for(i=0; i<status.length;i++){
-        let element = status[i];
-        if(element['subtaskList']){
-          let result = parseInt((element.checkedSubtasksCount/element['subtaskList'].length)*100);
-        }
-        content.innerHTML += boardHTML(i, status)
-        // / Überprüfen, ob Subtasks vorhanden sind
-          if (element['subtaskList'] && element['subtaskList'].length > 0) {
-            let result = parseInt((element.checkedSubtasksCount / element['subtaskList'].length) * 100);
-            let subtaskContent = document.getElementById(`subtaskLoadboardAndText-${element['idNumber']}`);
-            subtaskContent.innerHTML = `
-                <div class="load-subtask-div"><div class="load-subtask" style="width:${result}%"></div></div>
-                <div class="subtasks">${element.checkedSubtasksCount}/${element['subtaskList'].length} Subtasks</div>`;
-                subtaskContent.classList.remove('d-none');
-              }
-            if(element['assigned']){
-            showAssignedPersonsInitial(element);  
-            }
-            if(element['category']){
-              categorySign(element);
-            }
-            if(element['priority']){
-               prioritySign(element);
-            }
-        if(!element['category']){
-          document.getElementById(`categorySign-${element['idNumber']}`).classList.add('d-none');
-        }
-        if(!element['description']){
-          document.getElementById(`descriptionSign-${element['idNumber']}`).classList.add('d-none');}
+        content.innerHTML += boardHTML(i, status);
+        elseForBoardInfo(status,i);
     }}
     
 }
 
+/**
+ * This function is intended to render the container in the event that there are no tasks with status done.
+ * @returns 
+ */
+function doneBoardHTMLOne(){
+  return   `
+  <div class="no-task-available">No tasks await Feedback</div>
+  `
+}
 
 /**
- * Diese Funktion sorgt dafür, dass je nach priority, die richtige svg gerendert wird
+ * This function ensures that the correct svg is rendered depending on the priority.
  * @param {*} element 
  */
 function prioritySign(element){
@@ -392,8 +390,8 @@ function prioritySign(element){
 }
 
 /**
- * Wird aufgerufen, sobald man anfängt den Container zu packen.
- * Die Id soll gloabal definiert sein, damit man sie bei dem nächsten feld einfügen kann.
+ * Is called as soon as you start grab the container.
+ * The ID should be defined globally so that you can insert it into the next field.
  * @param {*} id 
  */
 function startDragging(id) {
@@ -402,13 +400,17 @@ function startDragging(id) {
 }
 
 /**
- * Diese Funktion wird aufgerufen, wenn das Draggen endet
+ * This function is called when dragging ends.
  * @param {*} id 
  */
 function endDragging(id) {
    rotateCard(id); // Karte zurückdrehen beim Beenden des Drag-Vorgangs
 }
 
+/**
+ * This function is used to rotate the card while it is grabbed.
+ * @param {*} id 
+ */
 function rotateCard(id) {
   const element = document.getElementById(`oneTaskDiv-${id}`);
   if (element) {
@@ -419,7 +421,7 @@ function rotateCard(id) {
 }
 
 /**
- * Diese Funktion soll es ermöglichen, dass das Element außerhalb der div gelangen kann
+ * This function is intended to allow the element to go outside of the div.
  * @param {*} ev 
  */
 function allowDrop(ev) {
@@ -427,13 +429,11 @@ function allowDrop(ev) {
 }
 
 /**
- * Diese Funktion soll den Status anpassen
+ * This function is intended to adjust the status.
  * @param {*} category 
  */
 async function moveTo(event) {
-  let status = event.currentTarget.id.replace('Board', '');
-  //mit event.currentTarget.id finden wir die id heraus, auf dem sich das gedropte element befindet.
-  //da die Ids genauso wie die statuse heißen, nur mit Board am ende, wird board entfernt
+    let status = event.currentTarget.id.replace('Board', '');
     tasks[currentDraggedElement]['status'] = status;
     await putData(`/tasks/${tasks[currentDraggedElement]['id']}/status`, status);
     tasks=[];
@@ -445,7 +445,7 @@ async function moveTo(event) {
 }
 
 /**
- * Um den Container über den man ist hightliten zu können
+ * This function is used to highlight the corresponding field
  * @param {*} id 
  */
 function highlight(id) {
@@ -453,7 +453,7 @@ function highlight(id) {
 }
 
 /**
- * Dies dient dazu den highlight effekt zu removen.
+ * This function is used to remove highlights.
  * @param {*} id 
  */
 function removeHighlight(id) {
@@ -461,7 +461,7 @@ function removeHighlight(id) {
 }
 
 /**
- * Diese Funktion sorgt dafür, dass eine zufällige Farbe erstellt wird
+ * This function ensures that a random color is created.
  * @returns 
  */
 function getRandomColor() {

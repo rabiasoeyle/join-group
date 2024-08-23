@@ -33,7 +33,7 @@ async function neuUser() {
   let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
-
+  
   // Reset error messages
   document.getElementById("email-error").classList.add("d-none");
   document.getElementById("username-error").classList.add("d-none");
@@ -42,7 +42,7 @@ async function neuUser() {
   document.getElementById("wrongPasswordKey").classList.add("d-none");
   document.getElementById("email-errorSignUp").classList.add("d-none");
   document.getElementById("emailExists").classList.add("d-none");
-
+  document.getElementById("notCheckedBox").classList.add("d-none"); // Hide the not checked box error initially
 
   // Check if the username has been entered
   if (!nameValue) {
@@ -74,6 +74,13 @@ async function neuUser() {
     return;
   }
 
+  // Check if the checkbox is checked
+  const checkbox = document.getElementById("acceptTermsCheckbox");
+  if (!checkbox.checked) {
+    document.getElementById("notCheckedBox").classList.remove("d-none");
+    return;
+  }
+
   try {
     let emailExists = await checkIfEmailExists(emailValue);
     if (emailExists) {
@@ -102,7 +109,6 @@ async function neuUser() {
     console.error(error);
   }
 }
-
 // Function to display the popup
 function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
@@ -207,6 +213,7 @@ async function login(path = "login") {
     loginIncorrect();
   }
 }
+
 
 function loginCorrect(nameElement) {
   // Save the entire name as 'username'

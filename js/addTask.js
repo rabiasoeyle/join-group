@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
 });
 
 /**
- * Diese Funktion ist zum rendern der Hauptbausteine.
+ * This function is for rendering the main blocks.
  */
 function initAddTask() {
     renderMainForm(); 
@@ -32,24 +32,22 @@ function initAddTask() {
 }
 
 /**
- * Diese Funktion soll das aktuelle Datum holen und im Inputfeld min einstellen.
+ * This function should get the current date and set min in the input field.
  */
 function setMinDate(){
-    // Hole das heutige Datum
     let today = new Date().toISOString().split('T')[0];
-    // Setze das min-Attribut auf das heutige Datum
     document.getElementById('dateOfTask').setAttribute('min', today);
 }
 
 /**
- * Diese Funktion sorgt dafür, dass die Funktionen für den Hauptteil geladen werden.
+ * This function ensures that the functions for the main part are loaded.
  */
 async function renderMainForm(){
     await loadContacts();
 }
 
 /**
- * Diese Funktion soll die Personen, die einen Haken in der Checkbox erhalten feststellen und im Array assignedPersons abspeichern.
+ * This function should determine the persons who receive a tick in the checkbox and save them in the assignedPersons array.
  * @param {*} i 
  */
 function addAssignedPersons(i){
@@ -59,13 +57,11 @@ function addAssignedPersons(i){
     if (inputCheckbox.checked) {
         document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "#2a3647";
         document.getElementById(`onePersonDiv-${i}`).style.color = "white";
-        // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
         if (!assignedPersons.includes(person => person.name === personName)) {
             let newAssign = { name: contacts[i].name, color: contacts[i].color };
             assignedPersons.push(newAssign);
         }
     } else {
-        // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
         assignedPersons = assignedPersons.filter(person => person.name !== personName);
         document.getElementById(`onePersonDiv-${i}`).style.backgroundColor = "white";
         document.getElementById(`onePersonDiv-${i}`).style.color = "black";
@@ -118,34 +114,28 @@ function rollContactsList() {
 
 
 /**
- * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
+ * This function is used to add or remove an event listener from the document.
  * @param {*} event 
  */
 function closeDropdownOnOutsideClickAssigned(event) {
-    // Reference to the dropdown and toggle button
     const assignContactsList = document.getElementById('assignContactsList');
     const toggleButton = document.querySelector('.assigned-to-input-and-button');
-    // Check if the clicked element is not the dropdown or the toggle button
     if (!assignContactsList.contains(event.target) && !toggleButton.contains(event.target)) {
-        // Close the dropdown
         assignContactsList.classList.add('d-none');
-        // Update the flag
         isDropDownOpenAssigned = false;
-        // Remove the event listener
         document.removeEventListener('click', closeDropdownOnOutsideClickAssigned);
     }
 }
 
 /**
- * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
+ * This function is first used to display in the input field which persons have been assigned.
  */
 function showAssignedPersons() {
     let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
     showAssignedPersons.innerHTML='';
     for(i=0;i<Math.min(assignedPersons.length, 5);i++){
         showAssignedPersons.innerHTML += `
-        <div style="background-color:${assignedPersons[i].color}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;
-} // Wenn es mehr als 6 zugewiesene Personen gibt, ein weiteres "Plus"-Div hinzufügen
+        <div style="background-color:${assignedPersons[i].color}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;} 
 if (assignedPersons.length > 6) {
     showAssignedPersons.innerHTML += `
         <div style="background-color:white; color:black" class="selected-person-initals-div">
@@ -155,7 +145,7 @@ if (assignedPersons.length > 6) {
 } 
 
 /**
- * Diese Funktion filtert die Initialien der für die jeweiligen Aufgaben ausgewählten Personen.
+ * This function filters the initials of the persons selected for the respective tasks.
  * @param {*} i 
  * @returns 
  */
@@ -168,7 +158,7 @@ function assignedPersonsInitials(i){
     return initialsAssignedPersons;
 }
 /**
- * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
+ * In this function, the initials of the contacts are filtered out and played back
  *
  * @param {*} i
  * @returns
@@ -182,80 +172,51 @@ function profileInitials(i) {
     return initials;
   }
 
-// /**
-//  * Diese Funktion soll dazu dienen, die Personen auszuwählen und die Personendaten 
-//  * sowie der Kreis mit den Initialien drin sollen gesehen werden, wenn man draufklickt.
-//  * @param {*} i 
-//  */
-// function selectPerson(i){
-//     let inputCheckbox = document.getElementById('inputCheckbox');
-//     inputCheckbox.innerHTML= assignedPersons += contacts[i]['name'];
-//     showAssignedPersons();
-// }
-
-/**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
-function selectPrio(x){
-    if(x =='urgent'){
-        document.getElementById('urgent').classList.add('urgentPrio_click');
-        document.getElementById('urgent').classList.remove('urgentPrio');
-        document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('medium').classList.remove('mediumPrio_click');
-        document.getElementById('low').classList.add('lowPrio');
-        document.getElementById('low').classList.remove('lowPrio_click');
-    }else if(x =='medium'){
-        document.getElementById('urgent').classList.add('urgentPrio');
-        document.getElementById('urgent').classList.remove('urgentPrio_click');
-        document.getElementById('medium').classList.add('mediumPrio_click');
-        document.getElementById('medium').classList.remove('mediumPrio');
-        document.getElementById('low').classList.add('lowPrio');
-        document.getElementById('low').classList.remove('lowPrio_click');
-    }else if(x =='low'){
-        document.getElementById('urgent').classList.add('urgentPrio');
-        document.getElementById('urgent').classList.remove('urgentPrio_click');
-        document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('medium').classList.remove('mediumPrio_click');
-        document.getElementById('low').classList.add('lowPrio_click');
-        document.getElementById('low').classList.remove('lowPrio');
-    }
-    priority= x;
+/**This function is intended to save the value for the importancen */
+function selectPrio(x) {
+    const priorities = ['urgent', 'medium', 'low'];
+    priorities.forEach(prio => {
+        const element = document.getElementById(prio);
+        if (prio === x) {
+            element.classList.add(`${prio}Prio_click`);
+            element.classList.remove(`${prio}Prio`);
+        } else {
+            element.classList.add(`${prio}Prio`);
+            element.classList.remove(`${prio}Prio_click`);
+        }
+    });
+    priority = x;
 }
 
 /**
- * Diese Funktion soll zum Toggeln der d-none Klasse bei dem Kategoriefeld sein
+ * This function should be for toggling the d-none class in the category field
  */
 function rollCategories(){
     let dropdownCategories = document.getElementById('dropdownCategories');
     dropdownCategories.classList.toggle('d-none');  
     isDropDownOpenCategory = !dropdownCategories.classList.contains('d-none');   
     if(isDropDownOpenCategory){
-         // Add event listener to close the dropdown when clicking outside
          document.addEventListener('click', closeDropdownOnOutsideClickCategory);
         } else {
-            // Remove event listener if dropdown is closed
             document.removeEventListener('click', closeDropdownOnOutsideClickCategory);
     }
 }
 
 /**
- * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
+ * This function is used to add or remove an event listener from the document.
  * @param {*} event 
  */
 function closeDropdownOnOutsideClickCategory(event) {
-    // Reference to the dropdown and toggle button
     const categories = document.getElementById('dropdownCategories');
     const toggleButton = document.querySelector('.dropdown');
-    // Check if the clicked element is not the dropdown or the toggle button
     if (!categories.contains(event.target) && !toggleButton.contains(event.target)) {
-        // Close the dropdown
         categories.classList.add('d-none');
-        // Update the flag
         isDropDownOpenCategory = false;
-        // Remove the event listener
         document.removeEventListener('click', closeDropdownOnOutsideClickCategory);
     }
 }
 /**
- * Diese Funktion sorgt dafür, dass alle Inputfelder wieder geleert werden
+ * This function ensures that all input fields are emptied again
  */
 function clearForm(){
     assignedPersons=[];
@@ -271,7 +232,7 @@ function clearForm(){
 }
 
 /**
- * Diese Funktion dient dazu, um das Startdesign bei den Prioritätsbutton bei clear wieder auf den Startzustand zu setzen.
+ * This function is used to reset the start design of the priority button to the start status when clear.
  */
 function renderStartClassPrio(){
     document.getElementById('urgent').classList.add('urgentPrio');
@@ -284,7 +245,7 @@ function renderStartClassPrio(){
 }
 
 /**
- * Diese Funktion dient zum abspeichern einer Kategorie.
+ * This function is used to save a category.
  * @param {*} x 
  */
 function selectCategory(x){
@@ -297,7 +258,7 @@ function selectCategory(x){
 }
 
 /**
- * Diese Funktion dient dazu Unteraufgaben zu erstellen und speichern.
+ * This function is used to create and save subtasks.
  */
 function addSubtask(){
     let subtask = document.getElementById('subtask').value.trim();
@@ -309,7 +270,7 @@ function addSubtask(){
 }
 
 /**
- * Diese Funktion soll die erstellten Unteraufgaben, die im array subtaskList gespeichert sind rendern.
+ * This function should render the created subtasks that are stored in the subtaskList array.
  */
 function renderSubtasks(){
     let subtaskListDiv= document.getElementById('subtaskList');
@@ -330,7 +291,7 @@ function renderSubtasks(){
 }
 
 /**
- * Mit dieser Funktion soll man die Subtask an genau der entsprechenden stelle ändern können.
+ * With this function you should be able to change the subtask at exactly the corresponding point.
  * @param {*} i 
  */
 function editSubtask(i){
@@ -348,7 +309,7 @@ function editSubtask(i){
 }
 
 /**
- * Durch Aktivierung dieser Funktion können Änderungen an Unteraufgaben gespeichert werden.
+ * By activating this function, changes to subtasks can be saved.
  * @param {*} i 
  */
 function saveChangedSubtask(i){
@@ -358,7 +319,7 @@ function saveChangedSubtask(i){
 }
 
 /**
- * Diese Funktion dient zum Löschen von subtasks.
+ * This function is used to delete subtasks.
  * @param {*} i 
  */
 function deleteSubtask(i){
@@ -367,7 +328,7 @@ function deleteSubtask(i){
 }
 
 /**
- * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.
+ * This function is intended to undo the onmouseover effect with onmouseout.
  * @param {*} i 
  */
 function subtaskNoHoverEffekt(i){
@@ -418,20 +379,19 @@ popup.classList.add('pop-up-added');
         </svg>
     `
 
-// Füge das Popup-Element zum body hinzu
+
 document.body.appendChild(popup);
-   // Warte 5 Sekunden, bevor die Seite weitergeleitet wird
     setTimeout(() => {
     window.location.href = '../html/board.html?msg=Du hast eine neue Task erstellt';
   }, 2000); 
   createButton.disabled = false;
 }
 /**
- * Diese Funktion dient zur Erstellung von Farben, falls die Kontakte keine zugeschriebenen Farben haben.
+ * This function is used to create colors if the contacts do not have any assigned colors.
  * @returns 
  */
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
+    const letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];

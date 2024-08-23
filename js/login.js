@@ -35,35 +35,55 @@ async function neuUser() {
   let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
+
+  // Fehlermeldungen zurücksetzen
+  document.getElementById("username-error").classList.add("d-none");
+  document.getElementById("mailFormat-error").classList.add("d-none");
+
+  // Check if the username has been entered
+  if (!nameValue) {
+    document.getElementById("username-error").classList.remove("d-none");
+    return;
+  }
   // Check if the passwords match
   if (passwordValue !== confirmPasswordValue) {
-    showError("Die Passwörter stimmen nicht überein.", "passwordError"); // Fehlermeldung anzeigen
+    showError("Die Passwörter stimmen nicht überein.", "passwordError");
     return;
   }
-  //Check if @ is in the email address
-  //Check if the email is already registered
-  let emailExists = await checkIfEmailExists(emailValue);
-  if (emailExists) {
-    showPopup("Diese E-Mail ist bereits registriert.");
+
+  // Check email format
+  if (!isValidEmail(emailValue)) {
+    showError("Bitte geben Sie eine gültige E-Mail-Adresse ein.", "mailFormat-error");
     return;
   }
-  // Create new user object
-  let newLogin = {
-    name: nameValue,
-    email: emailValue,
-    password: passwordValue,
-    phone: numberValue,
-    color: colorValue,
-  };
-  // Send the data to the server (Firebase) only if the email does not exist
-  await postData("/login", newLogin);
-  // Reset input fields
-  document.getElementById("neuUserLoginName").value = "";
-  document.getElementById("neuUserLoginEmail").value = "";
-  document.getElementById("neuUserLoginPasswort").value = "";
-  document.getElementById("neuUserLoginConfirm_Passwort").value = "";
-  // Redirect to the login page after successful sign-up
-  signUp();
+
+  try {
+    let emailExists = await checkIfEmailExists(emailValue);
+    if (emailExists) {
+      showPopup("Diese E-Mail ist bereits registriert.");
+      return;
+    }
+
+    let newLogin = {
+      name: nameValue,
+      email: emailValue,
+      password: passwordValue,
+      phone: numberValue,
+      color: colorValue,
+    };
+
+    await postData("/login", newLogin);
+
+    document.getElementById("neuUserLoginName").value = '';
+    document.getElementById("neuUserLoginEmail").value = '';
+    document.getElementById("neuUserLoginPasswort").value = '';
+    document.getElementById("neuUserLoginConfirm_Passwort").value = '';
+
+    signUp();
+  } catch (error) {
+    showError("Beim Erstellen des Benutzers ist ein Fehler aufgetreten.");
+    console.error(error);
+  }
 }
 
 // Function to display the popup
@@ -110,6 +130,12 @@ function showError(message, elementId = "error-message") {
   } else {
     console.warn(`Element mit ID "${elementId}" wurde nicht gefunden.`);
   }
+}
+
+function isValidEmail(email) {
+  // Regular expression to check email format
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
 }
 
 function getRandomColor() {

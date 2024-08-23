@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 64px 38px 24px 38px;
   gap: 12px;
+  max-width: 1980px;
 }
 
 h1 {
@@ -14,18 +15,43 @@ h1 {
 @media (max-width: 1020px) {
   .impressumContent {
     overflow-y: scroll;
+    height: 83vh;
     scrollbar-width: none;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 700px) {
   h1 {
     font-size: 42px;
   }
 }
 
-@media (max-height: 550px) {
+@media (max-width: 650px) {
+  .impressumContent {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 380px) {
   h1 {
-    font-size: 38px;
+    font-size: 36px;
+  }
+}
+
+@media (max-height: 900px) {
+  .impressumContent {
+    height: 80vh;
+  }
+}
+
+@media (max-height: 600px) {
+  .impressumContent {
+    height: 74vh;
+  }
+}
+
+@media (max-height: 370px) {
+  .impressumContent {
+    height: 70vh;
   }
 }

@@ -3,9 +3,7 @@
   flex-direction: column;
   padding: 64px 38px 24px 38px;
   gap: 12px;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  width: 100vw;
+  max-width: 1980px;
 }
 
 h1 {
@@ -16,7 +14,6 @@ h1 {
 
 a {
   display: inline-block;
-  width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -25,15 +22,53 @@ a {
   background-color: #091931;
 }
 
-@media (max-width: 650px) {
-  h1 {
-    font-size: 34px;
+@media (max-width: 1020px) {
+  .datenschutzContent {
+    overflow-y: scroll;
+    height: 83vh;
+    scrollbar-width: none;
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 700px) {
+  h1 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 650px) {
+  .datenschutzContent {
+    width: 100vw;
+  }
+  h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 500px) {
   h1 {
     font-size: 24px;
     margin-bottom: 8px;
+  }
+  .datenschutzContent {
+    padding: 44px 20px 0px 20px;
+  }
+}
+
+@media (max-height: 900px) {
+  .datenschutzContent {
+    height: 80vh;
+  }
+}
+
+@media (max-height: 600px) {
+  .datenschutzContent {
+    height: 74vh;
+  }
+}
+
+@media (max-height: 370px) {
+  .datenschutzContent {
+    height: 70vh;
   }
 }

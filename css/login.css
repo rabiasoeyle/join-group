@@ -315,7 +315,7 @@ body {
 }
 
 .error-message {
-  color: #FF8190;
+  color: #ff8190;
   font-size: 12px;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
@@ -346,7 +346,6 @@ body {
   animation: Logo_Desktop 2s;
 }
 
-
 @keyframes Logo_Desktop {
   0% {
     position: absolute;
@@ -355,7 +354,7 @@ body {
     width: 25vw;
     height: 25vh;
     object-fit: contain;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
   }
   20% {
     position: absolute;
@@ -364,7 +363,7 @@ body {
     width: 25vw;
     height: 25vh;
     object-fit: contain;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
   }
   100% {
     position: absolute;
@@ -383,7 +382,7 @@ body {
   width: 100px;
   height: 6vh;
   object-fit: contain;
-  fill: #2A3647;
+  fill: #2a3647;
   animation: join_Logo_Mobile 2s;
 }
 
@@ -396,7 +395,7 @@ body {
     height: 25vh;
     object-fit: contain;
     fill: white;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
   }
   20% {
     position: absolute;
@@ -406,7 +405,7 @@ body {
     height: 25vh;
     object-fit: contain;
     fill: white;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
   }
   100% {
     position: absolute;
@@ -415,7 +414,7 @@ body {
     width: 100px;
     height: 6vh;
     object-fit: contain;
-    fill: #2A3647;
+    fill: #2a3647;
   }
 }
 

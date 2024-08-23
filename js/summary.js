@@ -6,6 +6,11 @@ let nearestFutureDate = null;
 let nearestTask = null;
 let displayedPriorityCount = 0;
 
+/**
+ * This Function counts the amount of task of each status
+ * @param {*} task 
+ */
+
 function setAmountStatus(task){
     switch (task.status) {
         case "todo":
@@ -23,6 +28,11 @@ function setAmountStatus(task){
         }
 }
 
+/**
+ * This Function counts the amount of task of each priority
+ * @param {*} task 
+ */
+
 function setAmountPriority(task){
     if (task.priority === "urgent") {
         priorityCounts.urgent++;
@@ -35,6 +45,11 @@ function setAmountPriority(task){
     }
 }
 
+/**
+ * Function returns which Task is due next 
+ * @param {*} task 
+ */
+
 function setAmountDate(task){
     let taskDueDate = new Date(task.dueDate);
         if (taskDueDate > new Date() && (!nearestFutureDate || taskDueDate < nearestFutureDate)) {
@@ -42,6 +57,11 @@ function setAmountDate(task){
             nearestTask = task;
         }
 }
+
+/**
+ * updates board information
+ * @param {*} tasksArray 
+ */
 
 function updateMetrike(tasksArray){
     document.getElementById('taskCount').textContent = tasksArray.length;
@@ -51,6 +71,10 @@ function updateMetrike(tasksArray){
     document.getElementById('awaitingFeedbackCount').textContent = statusCounts.awaitFeedback;
 }
 
+/**
+ * designs the icon for urgent tasks
+ */
+
 function showPriorityIfUrgent(){
     let priorityIcon = document.getElementById('prioIcon'); 
     displayedPriorityCount = priorityCounts.urgent;
@@ -58,6 +82,10 @@ function showPriorityIfUrgent(){
      priorityIcon.style.backgroundColor = "red";
      document.getElementById('priority').textContent = "Urgent";
 }
+
+/**
+ * designs the icon for medium tasks
+ */
 
 function showPriorityIfMedium(){
     let priorityIcon = document.getElementById('prioIcon'); 
@@ -67,6 +95,10 @@ function showPriorityIfMedium(){
      document.getElementById('priority').textContent = "Medium";
 }
 
+/**
+ * designs the icon for low tasks
+ */
+
 function showPriorityIfLow(){
     let priorityIcon = document.getElementById('prioIcon'); 
     displayedPriorityCount = priorityCounts.low;
@@ -74,6 +106,10 @@ function showPriorityIfLow(){
      priorityIcon.style.backgroundColor = "#7ae229";
      document.getElementById('priority').textContent = "Low";
 }
+
+/**
+ * shows urgent tasks if available, if not shows medium tasks, if not shows low tasks, if no tasks, shows placeholder
+ */
 
 function showPriority(){
     let priorityIcon = document.getElementById('prioIcon'); 
@@ -90,6 +126,9 @@ function showPriority(){
     document.getElementById('urgentCount').textContent = displayedPriorityCount;
     document.getElementById('prioIcon').src = priorityIcon;  
  }
+/**
+ * initialises summary visualization
+ */
 
 async function initSummary() {
     let tasksData = await getAllTasks("tasks");
@@ -105,6 +144,10 @@ async function initSummary() {
     showPriority();
     showNextDueTaskDate();
 }
+
+/**
+ * shows the date of task that is due next and greets user by name, puts initials to header
+ */
 
 function showNextDueTaskDate(){
     if (nearestFutureDate) {
@@ -123,10 +166,21 @@ function showNextDueTaskDate(){
         document.querySelector('.user_name').textContent = userName;
         document.getElementById('circle').textContent = usernameInitial;
 }
+
+/**
+ * gets task from firebase
+ * @param {*} path 
+ * @returns 
+ */
+
 async function getAllTasks(path) {
     let response = await fetch(BASE_URL + path + ".json");
     return response.json();
 }
+
+/**
+ * greets user with individual quote, based on time 
+ */
 
 function setDaytimeGreeting() {
     let now = new Date();
@@ -142,7 +196,10 @@ function setDaytimeGreeting() {
     document.getElementById('welcomeUser').textContent = daytime;
 }
 
-// für den done container
+/**
+ * highlights done-card
+ */
+
 function highlightDone(){
     let div = document.getElementById('summaryPartTopDone');
     div.classList.add('summary-part-top-hover');
@@ -151,6 +208,11 @@ function highlightDone(){
     let text = document.getElementById('summaryPartTextDone');
     text.style.color= "white";
 }
+
+/**
+ * un-highlights done-card
+ */
+
 function removeHighlightDone(){
     let div = document.getElementById('summaryPartTopDone');
     div.classList.remove('summary-part-top-hover');
@@ -160,7 +222,10 @@ function removeHighlightDone(){
     text.style.color= "#2A3647";
 }
 
-//für den todo container
+/**
+ * highlights todo-card
+ */
+
 function highlightTodo(){
     let div = document.getElementById('summaryPartTopEdit');
     div.classList.add('summary-part-top-hover');
@@ -171,6 +236,11 @@ function highlightTodo(){
     let text = document.getElementById('summaryPartTextEdit');
     text.style.color="white";
 }
+
+/**
+ * un-highlights todo-card
+ */
+
 function removeHighlightTodo(){
     let div = document.getElementById('summaryPartTopEdit');
     div.classList.remove('summary-part-top-hover');
@@ -182,7 +252,10 @@ function removeHighlightTodo(){
     text.style.color="#2A3647";
 }
 
-//für die priorität
+/**
+ * highlights priority
+ */
+
 function highlightPrio(){
 let div = document.getElementById('summaryPrioParent');
 div.classList.add('summary_prio_hover');
@@ -191,6 +264,10 @@ date.style.setProperty('color', 'white', 'important');
 let priority = document.getElementById('priority');
 priority.style.setProperty('color', 'white', 'important');
 }
+
+/**
+ * un-highlights priority
+ */
 
 function removeHighlightPrio(){
     let div = document.getElementById('summaryPrioParent');
@@ -201,10 +278,20 @@ function removeHighlightPrio(){
     priority.style.removeProperty('color');
 }
 
+/**
+ * highlights top of summary
+ * @param {*} x 
+ */
+
 function highlightStatus(x){
 let div = document.getElementById(x);
 div.classList.add('summary-part-top-hover');
 }
+
+/**
+ * un-highlights top of summary
+ * @param {*} x 
+ */
 
 function removeHighlightStatus(x){
     let div = document.getElementById(x);

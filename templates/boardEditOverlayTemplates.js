@@ -1,3 +1,8 @@
+/**
+ * This function renders the html for the overlay from the Task.
+ * @param {*} i 
+ * @returns 
+ */
 function openEditTaskOverlayHTML(i){
     return `
     <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i}); return false">
@@ -107,6 +112,12 @@ function openEditTaskOverlayHTML(i){
 `
   }
 
+  /**
+   * This function renders all avillableSubtasks in the Overlay.
+   * @param {*} i 
+   * @param {*} j 
+   * @returns 
+   */
   function renderAllAvaillableSubtasksHTML(i, j){
     return`
         <ul class="edit-one-subtask" id="oneSubtask-${j}" class="oneSubtask" onmouseover="editSubtaskHoverEffekt(${j})" onmouseout= "editSubtaskNoHoverEffekt(${j})">
@@ -120,7 +131,13 @@ function openEditTaskOverlayHTML(i){
         </ul>
         `;
   }
-
+/**
+ * This function shows all Contacts with checked input.
+ * @param {*} i 
+ * @param {*} j 
+ * @param {*} isChecked 
+ * @returns 
+ */
   function ifRollContactsListEditHTML(i, j, isChecked){
     return `
         <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
@@ -151,6 +168,12 @@ function elseRollContactsListEditHTML(i,j, assignContactsList){
     </div>`;
 }
 
+/**
+ * This function renders the html div of all added Persons.
+ * @param {*} i 
+ * @param {*} j 
+ * @returns 
+ */
 function editOvShowAssignedPersonsHTMLOne(i, j){
     return `
         <div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">
@@ -158,6 +181,11 @@ function editOvShowAssignedPersonsHTMLOne(i, j){
         </div>`;
 }
 
+/**
+ * This function renders one div, with the number of how much people are more added, but not shown, because of the space.
+ * @param {*} i 
+ * @returns 
+ */
 function editOvShowAssignedPersonsHTMLTwo(i){
     return `
         <div style="background-color:white; color:black" class="selected-person-initals-div">
@@ -165,6 +193,12 @@ function editOvShowAssignedPersonsHTMLTwo(i){
         </div>`;
 }
 
+/**
+ * This function opens the editSubtask menu.
+ * @param {*} i 
+ * @param {*} j 
+ * @returns 
+ */
 function editEditSubtaskHTML(i,j){
     return `
     <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${i},${j})">
@@ -279,6 +313,12 @@ function prioritySignOverlayUrgentSvg(){
    `;
   }
 
+  /**
+   * This function renders all assigned Persons in the overlay.
+   * @param {*} j 
+   * @param {*} i 
+   * @returns 
+   */
   function showDetailTaskOverlayAssignedToHTML(j, i){
     return  `
     <div class="overlay-initals-parent">
@@ -288,6 +328,12 @@ function prioritySignOverlayUrgentSvg(){
     `;
   }
 
+  /**
+   * This function renders all assigned Persons in the overlay.
+   * @param {*} assignedPersons 
+   * @param {*} j 
+   * @returns 
+   */
   function showAssignedPersonsInitalsInOverlayHTML(assignedPersons, j){
     return ` 
         <div class="initials-div-in-task"style="background-color:${
@@ -296,6 +342,13 @@ function prioritySignOverlayUrgentSvg(){
         `;
   }
 
+  /**
+   * This function renders all assigned Persons in the overlay.
+   * @param {*} isChecked 
+   * @param {*} i 
+   * @param {*} j 
+   * @returns 
+   */
   function showDetailTaskOverlaySubtasksHTML(isChecked, i, j){
     return `
         <div class="subtask-and-checkbox" onclick="addCheckedSubtasks(${i}, ${j})">

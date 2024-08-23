@@ -3,10 +3,12 @@ let firebase_URL =
 
 function goToSummary() {
   window.location.href = "../html/summary.html?";
-  localStorage.setItem('username', 'Guest User');
-  localStorage.setItem('usernameInitial', 'GU');
-  // Den Wert von nameElement in die URL-Parameter einfügen
-  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
+  localStorage.setItem("username", "Guest User");
+  localStorage.setItem("usernameInitial", "GU");
+  // Insert the value of nameElement into the URL parameters
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(
+    nameElement
+  )}`;
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");
@@ -24,7 +26,7 @@ function signUp() {
 }
 
 /**
- * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen User auszulesen und sie an die postData() weiterzugeben.
+ * This function is used to read the values ​​from the input fields for the new user and pass them on to postData().
  */
 async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
@@ -33,24 +35,19 @@ async function neuUser() {
   let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
-
-  // Überprüfen, ob die Passwörter übereinstimmen
+  // Check if the passwords match
   if (passwordValue !== confirmPasswordValue) {
     showError("Die Passwörter stimmen nicht überein.", "passwordError"); // Fehlermeldung anzeigen
     return;
   }
-
-  //Überprüfen, ob @ in der Mail-Adresse
-
-
-  // Überprüfen, ob die E-Mail bereits registriert ist
+  //Check if @ is in the email address
+  //Check if the email is already registered
   let emailExists = await checkIfEmailExists(emailValue);
   if (emailExists) {
     showPopup("Diese E-Mail ist bereits registriert.");
     return;
   }
-
-  // Neues Nutzerobjekt erstellen
+  // Create new user object
   let newLogin = {
     name: nameValue,
     email: emailValue,
@@ -58,35 +55,32 @@ async function neuUser() {
     phone: numberValue,
     color: colorValue,
   };
-
-  // Sende die Daten an den Server (Firebase) nur, wenn die E-Mail nicht existiert
+  // Send the data to the server (Firebase) only if the email does not exist
   await postData("/login", newLogin);
-
-  // Eingabefelder zurücksetzen
-  document.getElementById("neuUserLoginName").value = '';
-  document.getElementById("neuUserLoginEmail").value = '';
-  document.getElementById("neuUserLoginPasswort").value = '';
-  document.getElementById("neuUserLoginConfirm_Passwort").value = '';
-
-  // Nach erfolgreichem Sign-up zur Login-Seite weiterleiten
+  // Reset input fields
+  document.getElementById("neuUserLoginName").value = "";
+  document.getElementById("neuUserLoginEmail").value = "";
+  document.getElementById("neuUserLoginPasswort").value = "";
+  document.getElementById("neuUserLoginConfirm_Passwort").value = "";
+  // Redirect to the login page after successful sign-up
   signUp();
 }
 
-// Funktion zur Anzeige des Popups
+// Function to display the popup
 function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.querySelector("p").textContent = message;
   popupElement.classList.add("popup");
-  popupElement.classList.remove("d-none"); // Popup anzeigen
+  popupElement.classList.remove("d-none"); // Show popup
 }
 
-// Funktion zum Schließen des Popups
+// Function to close the popup
 function closePopup() {
-  // Popup schließen
+  // Close popup
   let popupElement = document.getElementById("emailExistsPopup");
-  popupElement.classList.add("d-none"); // Popup ausblenden
-  
-  // Zur Login-Seite zurückkehren
+  popupElement.classList.add("d-none"); // Hide popup
+
+  // Return to login page
   popupElement.classList.remove("popup");
   document.getElementById("login_Content").classList.remove("d-none");
   document.getElementById("sign_up_content").classList.add("d-none");
@@ -95,19 +89,22 @@ function closePopup() {
   document.getElementById("help_initials_mobile").classList.remove("d-none");
 }
 
-// Funktion zur Überprüfung, ob die E-Mail bereits existiert
+// Function to check whether the email already exists
 async function checkIfEmailExists(email) {
   let response = await fetch(firebase_URL + "login.json");
   let responseToJson = await response.json();
 
-  // Überprüfen, ob die E-Mail bereits in der Datenbank vorhanden ist
-  return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
+  // Check if the email already exists in the database
+  return Object.keys(responseToJson).some(
+    (key) => responseToJson[key].email === email
+  );
 }
 
-// Funktion zur Anzeige von Fehlermeldungen
+// Function for displaying error messages
 function showError(message, elementId = "error-message") {
   let errorMessageElement = document.getElementById(elementId);
-  if (errorMessageElement) { // Überprüfen, ob das Element existiert
+  if (errorMessageElement) {
+    // Check if the element exists
     errorMessageElement.textContent = message;
     errorMessageElement.classList.remove("d-none");
   } else {
@@ -116,7 +113,7 @@ function showError(message, elementId = "error-message") {
 }
 
 function getRandomColor() {
-  const letters = "0123456789ABCDEF"; // Jeder Buchstabe des Farbstrings
+  const letters = "0123456789ABCDEF"; // Each letter of the color string
   let color = "#";
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
@@ -127,19 +124,19 @@ function getRandomColor() {
 async function login(path = "login") {
   let emailValue = document.getElementById("loginEmail").value.trim();
   let passwordValue = document.getElementById("loginPasswort").value.trim();
-  
-  // Fehlermeldungen zurücksetzen
+
+  // Reset error messages
   document.getElementById("error-message").classList.add("d-none");
   document.getElementById("email-error").classList.add("d-none");
   document.getElementById("password-error").classList.add("d-none");
 
-  // Überprüfen, ob die E-Mail-Adresse eingegeben wurde
+  // Check if the email address has been entered
   if (!emailValue) {
     document.getElementById("email-error").classList.remove("d-none");
     return;
   }
 
-  // Überprüfen, ob das Passwort eingegeben wurde
+  // Check if the password has been entered
   if (!passwordValue) {
     document.getElementById("password-error").classList.remove("d-none");
     return;
@@ -166,20 +163,22 @@ async function login(path = "login") {
 }
 
 function loginCorrect(nameElement) {
-  // Speichern des gesamten Namens unter 'username'
-  localStorage.setItem('username', nameElement);
+  // Save the entire name as 'username'
+  localStorage.setItem("username", nameElement);
 
-  // Split des Namens in Vorname und Nachname
-  let names = nameElement.split(' ');
-  
-  // Anfangsbuchstaben der Namen extrahieren
-  let initials = names.map(name => name.charAt(0).toUpperCase()).join('');
-  
-  // Speichern der Initialen unter 'usernameInitial'
-  localStorage.setItem('usernameInitial', initials);
+  // Split the name into first name and last name
+  let names = nameElement.split(" ");
 
-  // Weiterleiten zur Zusammenfassungsseite mit dem Namen als URL-Parameter
-  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
+  // Extract initial letters of names
+  let initials = names.map((name) => name.charAt(0).toUpperCase()).join("");
+
+  // Save the initials as 'usernameInitial'
+  localStorage.setItem("usernameInitial", initials);
+
+  // Redirect to the summary page with the name as a URL parameter
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(
+    nameElement
+  )}`;
 }
 
 function loginIncorrect() {

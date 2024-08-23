@@ -173,30 +173,19 @@ function profileInitials(i) {
   }
 
 /**This function is intended to save the value for the importancen */
-function selectPrio(x){
-    if(x =='urgent'){
-        document.getElementById('urgent').classList.add('urgentPrio_click');
-        document.getElementById('urgent').classList.remove('urgentPrio');
-        document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('medium').classList.remove('mediumPrio_click');
-        document.getElementById('low').classList.add('lowPrio');
-        document.getElementById('low').classList.remove('lowPrio_click');
-    }else if(x =='medium'){
-        document.getElementById('urgent').classList.add('urgentPrio');
-        document.getElementById('urgent').classList.remove('urgentPrio_click');
-        document.getElementById('medium').classList.add('mediumPrio_click');
-        document.getElementById('medium').classList.remove('mediumPrio');
-        document.getElementById('low').classList.add('lowPrio');
-        document.getElementById('low').classList.remove('lowPrio_click');
-    }else if(x =='low'){
-        document.getElementById('urgent').classList.add('urgentPrio');
-        document.getElementById('urgent').classList.remove('urgentPrio_click');
-        document.getElementById('medium').classList.add('mediumPrio');
-        document.getElementById('medium').classList.remove('mediumPrio_click');
-        document.getElementById('low').classList.add('lowPrio_click');
-        document.getElementById('low').classList.remove('lowPrio');
-    }
-    priority= x;
+function selectPrio(x) {
+    const priorities = ['urgent', 'medium', 'low'];
+    priorities.forEach(prio => {
+        const element = document.getElementById(prio);
+        if (prio === x) {
+            element.classList.add(`${prio}Prio_click`);
+            element.classList.remove(`${prio}Prio`);
+        } else {
+            element.classList.add(`${prio}Prio`);
+            element.classList.remove(`${prio}Prio_click`);
+        }
+    });
+    priority = x;
 }
 
 /**

@@ -34,6 +34,16 @@ async function neuUser() {
   let numberValue = "-";
   let colorValue = getRandomColor();
 
+  // Fehlermeldungen zurücksetzen
+  document.getElementById("username-error").classList.add("d-none");
+  document.getElementById("mailFormat-error").classList.add("d-none");
+
+  // Überprüfen, ob der Benutzername eingegeben wurde
+  if (!nameValue) {
+    document.getElementById("username-error").classList.remove("d-none");
+    return;
+  }
+
   // Überprüfen, ob die Passwörter übereinstimmen
   if (passwordValue !== confirmPasswordValue) {
     showError("Die Passwörter stimmen nicht überein.", "passwordError");

@@ -84,15 +84,16 @@
                             <h2 class="font_color">Sign Up</h2>
                             <div></div>
                         </div>
-                        <input required id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
-                        <input required id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
-                        <input required id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
+                        <div id="username-error" class="error-message d-none">Bitte Benutzernamen angeben</div>
+                        <input  id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
+                        <input  id="neuUserLoginEmail" class="login_input" placeholder="Email" type="email">
+                        <input  id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
                             type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Das Passwort muss mindestens 8 Zeichen lang sein, dabei mindestens einen Kleinbuchstaben, einen Großbucstaben, eine Zahl und ein Sonderzeichen enthalten.">
-                        <input required id="neuUserLoginConfirm_Passwort" class="login_input"
+                        <input  id="neuUserLoginConfirm_Passwort" class="login_input"
                             placeholder="Confirm Passwort" type="password"
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="password" title="Es muss das gleiche Passwort sein.">
                         <div class="checkbox_I_Acpept">
-                            <input required class="checkbox" type="checkbox">
+                            <input  class="checkbox" type="checkbox">
                             <p class="checkbox_font" href="datenschutz.html">I accept the</p>
                             <a href="datenschutzNotLogin.html" class="privacy_policy_button">Privacy policy</a>
                         </div>

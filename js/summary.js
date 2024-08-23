@@ -6,6 +6,10 @@ let nearestFutureDate = null;
 let nearestTask = null;
 let displayedPriorityCount = 0;
 
+/**
+ * 
+ * @param {*} task 
+ */
 function setAmountStatus(task){
     switch (task.status) {
         case "todo":
@@ -23,6 +27,10 @@ function setAmountStatus(task){
         }
 }
 
+/**
+ * 
+ * @param {*} task 
+ */
 function setAmountPriority(task){
     if (task.priority === "urgent") {
         priorityCounts.urgent++;

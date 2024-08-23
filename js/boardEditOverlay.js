@@ -102,11 +102,7 @@ function editEditSubtask(i ,j ){
     editInput.classList.remove('d-none');
     let editAndTrash = document.getElementById(`editEditAndTrash-${j}`);
     editAndTrash.innerHTML='';
-    editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${i},${j})">
-    |
-    <img src="../assets/img/checkTask.png" id="rightImage-${j}" onclick="saveChangedSubtask(${j},${i})">
-    `
+    editAndTrash.innerHTML= editEditSubtaskHTML(i, j);
 }
 
 /**
@@ -325,7 +321,7 @@ function rollContactsListEdit(i){
         if (tasks[i]['assigned']) {
         ifRollContactsListEdit(i, j, assignContactsList);}
         else{
-        elseRollContactsListEdit(i,j , assignContactsList);}}
+        assignContactsList.innerHTML +=elseRollContactsListEditHTML(i,j , assignContactsList);}}
 }
 
 /**
@@ -336,38 +332,12 @@ function rollContactsListEdit(i){
  */
 function ifRollContactsListEdit(i, j , assignContactsList){
     isChecked = tasks[i]['assigned'].some(person => person.name === contacts[j]['name']) ? 'checked' : '';
-    assignContactsList.innerHTML += /*html*/ `
-        <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
-            <div class="one-person-div-edit-left">
-                <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
-                <div>${contacts[j]['name']}</div>
-            </div>
-            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
-            <label for="editInputCheckbox-${i}"></label>
-        </div>`;
+    assignContactsList.innerHTML += ifRollContactsListEditHTML(i, j, isChecked);
     let input= document.getElementById(`editInputCheckbox-${j}`);
     if(input.checked){
         document.getElementById(`onePersonDivEdit-${j}`).style.backgroundColor = "#2a3647";
         document.getElementById(`onePersonDivEdit-${j}`).style.color = "white";
     }
-}
-
-/**
- * This function should be carried out if the priority has not yet been determined.
- * @param {*} i 
- * @param {*} j 
- * @param {*} assignContactsList 
- */
-function elseRollContactsListEdit(i,j, assignContactsList){
-    assignContactsList.innerHTML += /*html*/ `
-    <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
-        <div class="one-person-div-edit-left">
-            <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
-            <div>${contacts[j]['name']}</div>
-        </div>
-        <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
-        <label for="inputCheckbox-${i}"></label>
-    </div>`;
 }
 
 /**
@@ -378,12 +348,10 @@ function editOvShowAssignedPersons(i) {
     let showAssignedPersons = document.getElementById(`showAssignedPersonInitial-${i}`);
     showAssignedPersons.innerHTML='';
     for(j=0;j<Math.min(tasks[i]['assigned'].length, 5);j++){
-        showAssignedPersons.innerHTML += `
-        <div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">${editAssignedPersonsInitials(i, j)}</div>`;
-}
+        showAssignedPersons.innerHTML += editOvShowAssignedPersonsHTMLOne(i, j)
+    }
     if(tasks[i]['assigned'].length>5){
-        showAssignedPersons.innerHTML+= `
-        <div style="background-color:white; color:black" class="selected-person-initals-div">+${tasks[i]['assigned'].length-5}</div>`;
+        showAssignedPersons.innerHTML+= editOvShowAssignedPersonsHTMLTwo(i)
 }
 } 
 

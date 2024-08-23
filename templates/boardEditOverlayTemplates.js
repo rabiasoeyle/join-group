@@ -1,5 +1,5 @@
 function openEditTaskOverlayHTML(i){
-    return /*html*/`
+    return `
     <form class="form-edit-overlay" onsubmit="saveTasksChanges(${i}); return false">
             <div class="close-button-top">
                 <svg onclick="closeDetailsOverlay(event)" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +104,7 @@ function openEditTaskOverlayHTML(i){
                 </button>
             </div>
         </form>
-`;
+`
   }
 
   function renderAllAvaillableSubtasksHTML(i, j){
@@ -120,3 +120,55 @@ function openEditTaskOverlayHTML(i){
         </ul>
         `;
   }
+
+  function ifRollContactsListEditHTML(i, j, isChecked){
+    return `
+        <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
+            <div class="one-person-div-edit-left">
+                <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
+                <div>${contacts[j]['name']}</div>
+            </div>
+            <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox" ${isChecked}>
+            <label for="editInputCheckbox-${i}"></label>
+        </div>`;
+}
+
+/**
+ * This function should be carried out if the priority has not yet been determined.
+ * @param {*} i 
+ * @param {*} j 
+ * @param {*} assignContactsList 
+ */
+function elseRollContactsListEditHTML(i,j, assignContactsList){
+    return`
+    <div class="one-person-div-edit" onclick="editAddAssignedPersons(${j}, ${i})" id="onePersonDivEdit-${j}">
+        <div class="one-person-div-edit-left">
+            <div class="assigned-person-initials-edit" style="background-color:${contacts[j]['color']}; color:white">${profileInitials(contacts[j]['name'])}</div>
+            <div>${contacts[j]['name']}</div>
+        </div>
+        <input id="editInputCheckbox-${j}" class="assigen_checkbox" type="checkbox">
+        <label for="inputCheckbox-${i}"></label>
+    </div>`;
+}
+
+function editOvShowAssignedPersonsHTMLOne(i, j){
+    return `
+        <div style="background-color:${tasks[i]['assigned'][j]['color']}; color:white" class="selected-person-initals-div">
+        ${editAssignedPersonsInitials(i, j)}
+        </div>`;
+}
+
+function editOvShowAssignedPersonsHTMLTwo(i){
+    return `
+        <div style="background-color:white; color:black" class="selected-person-initals-div">
+        +${tasks[i]['assigned'].length-5}
+        </div>`;
+}
+
+function editEditSubtaskHTML(i,j){
+    return `
+    <img src="../assets/img/deleteTask.png" id="leftImage-${j}" onclick="editOverlayDeleteSubtask(${i},${j})">
+    |
+    <img src="../assets/img/checkTask.png" id="rightImage-${j}" onclick="saveChangedSubtask(${j},${i})">
+    `
+}

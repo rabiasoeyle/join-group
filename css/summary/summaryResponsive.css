@@ -4,218 +4,175 @@
 }
 
 @media (max-width: 1300px) {
-    .user_name{
-        display: none;
-    }
-    .welcome_user{
-        display: none;
-    }
-    .summary_content{
-      padding: 32px 24px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .summary_board{
-      gap: 0px;
-    }
-    .summary_prio{
-      margin: 0;
-    }
+  .user_name {
+    display: none;
   }
-
-  @media (max-width: 858px){
-    .user_name{
-        font-size: 0px;
-    }
-    .welcome_user{
-        display: none;
-    }
-    .summary_prio{
-      margin: 0;
-    }
+  .welcome_user {
+    display: none;
   }
-
-  @media (max-width: 768px){
-        .summary_header{
-        justify-content: center;
-    }
-
-    .summary_board{
-        justify-content: center;
-    }
-
+  .summary_content {
+    padding: 32px 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-
-  @media (max-width: 700px){
-    .summary_header h2{
-      font-size: 32px;
-    }
-
-    .summary_header p{
-      font-size: 21px;
-    }
-
-    .summary_header_dividing_line{
-      height: 48px;
-    }
+  .summary_board {
+    gap: 0px;
+  }
+  .summary_prio {
+    margin: 0;
+  }
 }
 
-  @media (max-width: 675px){
-
-    .summary_header{
-      padding: 16px;
-      margin: 0px;
-      text-align: center;}
-
-    .summary_header_dividing_line{
-        display:none;
-    }
-    .summary_board{
-      width: 90%;
-      gap: 0px;
-
-    }
-    .summary_container{
-      width: 100%;
-    }
-    .summary_prio {
-        width: 100%;
-        background-color: white;
-        height: 168px;
-        border-radius: 30px;
-        padding: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        margin-bottom: 24px;
-      }
-      .summary_part_bottom{
-        width: 50%;
-        margin-top: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-bottom: 24px;
-      }
-
-      .summary_part_top{
-        width: 50%;
-        margin-top: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-bottom: 24px;
-      }
-
-
-    /* .summary_header{
-        display: flex;
-        flex-direction: column;
-        align-items: center  
-    }
-
-    .summary_header h2{
-      margin: 0px;
-    }
-
-    .summary_header p{
-      margin: 0px;
-    }
-
-    .keyMetrics{
-        display: inline;
-    } */
-
-    .highlighted {
-        text-underline-offset: 8px;
-        text-decoration: underline; /* Underline the text */
-        text-decoration-color: #29abe2 ;
-    }
-
-    .normal {
-        text-decoration: none; /* Remove underline */
-    }
-
-    .summary_larger_part{
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    .summary_content{
-      gap: unset;
-      padding: 16px
-    }
-
+@media (max-width: 858px) {
+  .user_name {
+    font-size: 0px;
   }
-
-  @media (max-width: 460px){
-    .summary_header {
-      display: none;
-    }
-
-    .summary_content{
-      padding: 61px 8px;
-    }
-
-    .summary_part_text{
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .summary_part_number {
-      font-size: 48px;
-    }
-
-    .summary_larger_part {
-      gap: 12px;
+  .welcome_user {
+    display: none;
   }
+  .summary_prio {
+    margin: 0;
+  }
+}
 
+@media (max-width: 768px) {
+  .summary_header {
+    justify-content: center;
+  }
+  .summary_board {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .summary_header h2 {
+    font-size: 32px;
+  }
+  .summary_header p {
+    font-size: 21px;
+  }
+  .summary_header_dividing_line {
+    height: 48px;
+  }
+}
+
+@media (max-width: 675px) {
+  .summary_header {
+    padding: 16px;
+    margin: 0px;
+    text-align: center;
+  }
+  .summary_header_dividing_line {
+    display: none;
+  }
+  .summary_board {
+    width: 90%;
+    gap: 0px;
+  }
+  .summary_container {
+    width: 100%;
+  }
+  .summary_prio {
+    width: 100%;
+    background-color: white;
+    height: 168px;
+    border-radius: 30px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 24px;
+  }
+  .summary_part_bottom {
+    width: 50%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 24px;
+  }
+  .summary_part_top {
+    width: 50%;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 24px;
+  }
+  .highlighted {
+    text-underline-offset: 8px;
+    text-decoration: underline; /* Underline the text */
+    text-decoration-color: #29abe2;
+  }
+  .normal {
+    text-decoration: none; /* Remove underline */
+  }
+  .summary_larger_part {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .summary_content {
+    gap: unset;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  .summary_header {
+    display: none;
+  }
+  .summary_content {
+    padding: 61px 8px;
+  }
+  .summary_part_text {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .summary_part_number {
+    font-size: 48px;
+  }
+  .summary_larger_part {
+    gap: 12px;
+  }
   .summary_header_dividing_line_prio {
     margin: 9px;
   }
+}
+
+@media (max-width: 402px) {
+  .summary_content {
+    padding: 20px;
   }
-  
-
-  @media (max-width: 402px){
-    .summary_content{
-      padding: 20px;
-    }
-
-    .summary_container {
-      gap: unset;
-    }
-    .summary_part_number{
-      font-size: 30px;
-    }
-
-    .summary_part_text{
-      font-size: 12px;
-    }
-    
-    .summary_header p{
-      font-size: 16px;
-    }
-
-    h2{
-      font-size: 38px;
-    }
-    .linkText{
-      display: none;
-    }
-
-
-    .sidebar_mobile{
-      justify-content: center;
-    }
-    .summary_prio {
-      text-align: center;
-    }
-    .summary_prio img {
-      display: none;
-    }
-
-    .summary_part_bottom {
-      height: 130px;
-    }
+  .summary_container {
+    gap: unset;
   }
+  .summary_part_number {
+    font-size: 30px;
+  }
+  .summary_part_text {
+    font-size: 12px;
+  }
+  .summary_header p {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 38px;
+  }
+  .linkText {
+    display: none;
+  }
+  .sidebar_mobile {
+    justify-content: center;
+  }
+  .summary_prio {
+    text-align: center;
+  }
+  .summary_prio img {
+    display: none;
+  }
+
+  .summary_part_bottom {
+    height: 130px;
+  }
+}

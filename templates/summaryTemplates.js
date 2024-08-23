@@ -1,3 +1,7 @@
+/**
+ * This function renders a svg.
+ * @returns 
+ */
 function showPriorityUrgentSVG(){
     return `
      <svg id="summarySvgUrgent" class="summary_svg"width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -6,6 +10,10 @@ function showPriorityUrgentSVG(){
      </svg> `
 }
 
+/**
+ * This function renders a svg.
+ * @returns 
+ */
 function showPriorityMediumSVG(){
     return `
      <svg id="summarySvgMedium" class="summary_svg" width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,6 +23,10 @@ function showPriorityMediumSVG(){
      `
 }
 
+/**
+ * This function renders a svg.
+ * @returns 
+ */
 function showPriorityLowSVG(){
     return `
      <svg id="summarySvgLow" class="summary_svg"width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">

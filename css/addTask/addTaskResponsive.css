@@ -1,4 +1,3 @@
-
 @media (max-width: 1020px) {
   .form-left {
     width: 377px;
@@ -8,11 +7,12 @@
   }
 }
 
-@media (max-height: 850px){
+@media (max-height: 850px) {
   .form-style {
     height: 70vh;
   }
-  .clear-button, .create-button {
+  .clear-button,
+  .create-button {
     font-size: 18px;
     padding: 2vh;
   }
@@ -37,12 +37,13 @@
     height: 73vh;
   }
   .form-left {
-    width: 377px
+    width: 377px;
   }
 }
 
-@media (max-height: 700px){
-  .clear-button, .create-button {
+@media (max-height: 700px) {
+  .clear-button,
+  .create-button {
     font-size: 18px;
     padding: 2vh;
   }
@@ -63,20 +64,21 @@
   }
 }
 
-@media (max-height: 600px){
+@media (max-height: 600px) {
   .form-style h1 {
     font-size: 32px;
   }
   .form-style {
     height: 66vh;
   }
-  .clear-button, .create-button {
+  .clear-button,
+  .create-button {
     font-size: 18px;
     padding: 2vh;
   }
 }
 
-@media (max-height: 500px){
+@media (max-height: 500px) {
   .form-style {
     height: 61vh;
   }
@@ -92,7 +94,7 @@
   .form-style {
     padding: 0;
   }
-  .form-style h1{
+  .form-style h1 {
     font-size: 40px;
   }
   .task-title input {
@@ -120,7 +122,8 @@
   .subtask-container {
     width: 250px;
   }
-  .clear-button, .create-button {
+  .clear-button,
+  .create-button {
     font-size: 16px;
     padding: 4px;
   }
@@ -135,12 +138,13 @@
   }
 }
 
-@media (max-height: 400px){
+@media (max-height: 400px) {
   .content {
     padding: 0;
     height: 70vh;
   }
-  .clear-button, .create-button {
+  .clear-button,
+  .create-button {
     font-size: 16px;
     padding: 4px;
   }

@@ -60,7 +60,7 @@
                     <form onsubmit="login(); return false" class="login_base">
                         <h2 class="font_color">Log in</h2>
                         <input id="loginEmail" class="login_input" placeholder="Email" type="text">
-                        <input id="loginPasswort" class="login_input" placeholder="Passwort" type="password">
+                        <input id="loginPasswort" class="login_input" placeholder="Passwort" type="password" autocomplete="current-password">
                         <div id="error-message" class="error-message d-none">Login-Daten sind falsch. Bitte versuchen Sie es erneut.</div>
                         <div id="password-error" class="error-message d-none">Bitte Passwort angeben</div>
                         <div id="mailFormat-error" class="error-message d-none">Falsches Mail Format</div>
@@ -87,10 +87,10 @@
                         <input  id="neuUserLoginName" class="login_input" placeholder="Name" type="text">
                         <input  id="neuUserLoginEmail" class="login_input" placeholder="Email" type="text">
                         <input  id="neuUserLoginPasswort" class="login_input" placeholder="Passwort"
-                            type="password">
+                            type="password" autocomplete="new-password">
 
                         <input  id="neuUserLoginConfirm_Passwort" class="login_input"
-                            placeholder="Confirm Passwort" type="password">
+                            placeholder="Confirm Passwort" type="password" autocomplete="new-password">
                             <div id="notCheckedBox" class="error-message d-none">Bitte akzeptieren Sie die Privacy Policy</div>
                             <div id="emailExists" class="error-message d-none">Diese E-Mail Adresse ist bereits registriert </div>
                             <div id="password-mismatch-error" class="error-message d-none">Passwörter stimmen nicht überein</div>

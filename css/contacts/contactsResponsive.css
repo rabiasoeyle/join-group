@@ -80,6 +80,7 @@
     gap: 6%;
   }
 }
+
 @media (max-height: 1080px) {
   .profile-picture {
     height: 120px;
@@ -96,7 +97,7 @@
 
 @media (max-width: 1020px) {
   .contacts-list-desktop {
-  height: 83vh;
+    height: 83vh;
   }
   .one-contact-container {
     gap: 4%;
@@ -202,7 +203,6 @@
   }
   .contacts-list-desktop {
     width: 100%;
-    
   }
   .go-back-to-contacts {
     display: flex;
@@ -240,7 +240,6 @@
 }
 
 @media (max-height: 700px) {
-
   .profile-picture {
     top: 4vh;
   }
@@ -258,7 +257,6 @@
     height: 80px;
     width: 80px;
     font-size: 32px;
-
   }
   .contacts-list-desktop {
     height: 80vh;
@@ -312,7 +310,6 @@
   .contact-details {
     height: 78vh;
   }
-
 }
 
 @media (max-height: 550px) {
@@ -383,16 +380,14 @@
     height: 76vh;
   }
   .sidebar {
-    height: 112vh!important;
+    height: 112vh !important;
   }
 }
-
 
 @media (max-height: 430px) {
   .contact-details {
     height: 75vh;
   }
-
 }
 
 @media (max-width: 400px) {

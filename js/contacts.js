@@ -6,7 +6,8 @@ let previouslyHighlighted;
 let previouslyHighlightedName;
 
 /**
- * Dieser eventListener dient dazu, dass das rechte Feld wieder display none und flex erhält bei der entsprechenden Width.
+ * 
+This eventListener is used to ensure that the right field receives display none and flex again at the corresponding Width
  */
 window.addEventListener("resize", function(){
   // fire when above 1203
@@ -24,7 +25,7 @@ window.addEventListener("resize", function(){
 }, true);
 
 /**
- * Diese Funktion dient dazu alle Funktionen, die für das Rendern verantwortlich sind, nach dem Laden der Seite zu rendern
+ * This function is used to render all functions responsible for rendering after the page has loaded
  */
 function initContacts() {
   renderMainContacts();
@@ -33,7 +34,7 @@ function initContacts() {
 }
 
 /**
- * Diese Funktion soll die beiden Container für den Content erstellen.
+ * This function should create the two containers for the content.
  */
 function renderMainContacts() {
   let content = document.getElementById("content");
@@ -42,7 +43,7 @@ function renderMainContacts() {
 }
 
 /**
- * Diese Funktion dient zum rendern von der Überschrift des rechten Contact contents
+ * This function is used to render the heading of the right contact content
  */
 function renderContactDetails() {
   let content = document.getElementById("contactDetails");
@@ -51,7 +52,7 @@ function renderContactDetails() {
 }
 
 /**
- * Diese Funktion soll den Button und den unteren Container für die Kontakte erstellen
+ * This function should create the button and the lower container for the contacts
  */
 async function renderContacts() {
   let contactsList = document.getElementById("contactsList");
@@ -59,22 +60,21 @@ async function renderContacts() {
   contactsList.innerHTML += renderContactsHTML();
   await loadContacts("/contacts");
   renderAllContacts();
-
 }
 
 /**
- * In dieser Funktion werden alle Kontakte gerendert.
+ * In this function all contacts are rendered.
  */
 function renderAllContacts() {
   let contactsListBottom = document.getElementById("contactsListBottom");
   contactsListBottom.innerHTML = "";
-  // Kontakte nach Anfangsbuchstaben gruppieren
+  // Group contacts by first letter
   let groupedContacts = groupContactsByInitial(contacts);
-  // Durch die gruppierten Kontakte iterieren
+  // Iterate through the grouped contacts
   for (let initial in groupedContacts) {
-    // Abstand und Border für den neuen Buchstaben
+    // Spacing and border for the new letter
     contactsListBottom.innerHTML += renderAllGroupinitialsHTML(initial);
-    // Kontakte dieser Gruppe rendern
+    // Render contacts of this group
     groupedContacts[initial].forEach((contact) => {
       contactsListBottom.innerHTML += renderAllContactsHTML(contact);
     });
@@ -82,7 +82,7 @@ function renderAllContacts() {
 }
 
 /**
- * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
+ * In this function, the initials of the contacts are filtered out and displayed
  *
  * @param {*} i
  * @returns
@@ -97,7 +97,7 @@ function profileInitials(i) {
 }
 
 /**
- * Diese Funktion soll das Overlay für "Kontakte hinzufügen" öffnen
+ * This function should open the overlay for "Add Contacts"
  */
 function openNewContactOverlay() {
   let overlay = document.getElementById("overlayNewContact");
@@ -116,7 +116,7 @@ function openNewContactOverlayRight(){
 
 
 /**
- * In dieser Funktion werden Kontakte bearbeitet
+ * In this function contacts are edited
  * @param {*} i
  */
 function editContactOverlay(i) {
@@ -132,7 +132,7 @@ function editContactOverlay(i) {
 }
 
 /**
- * Diese Funktion soll die Linke Seite des editOverlays rendern
+ * This function should render the left side of the editOverlay
  */
 function editContactOverlayLeft() {
   let editContactLeft = document.getElementById("addContactLeft");
@@ -141,7 +141,7 @@ function editContactOverlayLeft() {
 }
 
 /**
- * Diese Funktion soll die Rechte Seite des editOverlays rendern
+ * This function should render the right side of the editOverlay
  * @param {*} i
  */
 function editContactOverlayRight(i) {
@@ -151,7 +151,7 @@ function editContactOverlayRight(i) {
 }
 
 /**
- * Diese Funktion soll dazu dienen, die veränderten Infos von den Kontakten auszulesen und an die putData() weiterzugeben.
+ *  This function is used to read the changed information from the contacts and pass it on to putData().
  */
 async function editContact(i) {
   let nameValue = document.getElementById("inputFieldName").value.trim();
@@ -184,39 +184,68 @@ function cancelEdit(){
 }
 
 /**
- * Diese Funktion dient dazu, die Werte aus den Inputfeldern für den neuen Kontakt auszulesen und sie an die postData() weiterzugeben.
+ * This function is used to read the values ​​from the input fields for the new contact and pass them on to postData().
  */
-async function addContact() {
+
+// This function collects the values ​​of the input fields and returns an object with these values.
+function getContactInputValues() {
   let nameValue = document.getElementById('inputFieldName').value.trim();
   let emailValue = document.getElementById('inputFieldEmail').value.trim();
   let numberValue = document.getElementById('inputFieldNumber').value.trim();
-  let colorValue = getRandomColor();
-    let newContact = { name: nameValue, email: emailValue, phone: numberValue, color: colorValue};
-    nameValue = "";
-    emailValue = "";
-    numberValue = "";
-    contacts = [];
-    await postData("/contacts", newContact);
-    // Erstelle das Popup-Element
-const popup = document.createElement('div');
-popup.classList.add('pop-up-added');
-    popup.innerHTML=`
-        <span>Contact successfully created</span>
-    `
-    // Füge das Popup-Element zum body hinzu
-    document.body.appendChild(popup);
-    await loadContacts("/contacts");
-    renderAllContacts();
-    cancelAdding(); 
-    setTimeout(()=>{
-      popup.remove(); // Entfernt das Popup nach 5 Sekunden
-    },2000);
   
+  return { name: nameValue, email: emailValue, phone: numberValue };
+}
+
+// Diese Funktion setzt die Werte der Eingabefelder zurück.
+function clearInputFields() {
+  document.getElementById('inputFieldName').value = "";
+  document.getElementById('inputFieldEmail').value = "";
+  document.getElementById('inputFieldNumber').value = "";
+}
+
+// This function creates a contact object with a random color value.
+function createContactObject(name, email, phone) {
+  let colorValue = getRandomColor();
+  return { name: name, email: email, phone: phone, color: colorValue };
+}
+
+// This function creates a popup, displays it and removes it after 2 seconds.
+function showPopup(message) {
+  const popup = document.createElement('div');
+  popup.classList.add('pop-up-added');
+  popup.innerHTML = `<span>${message}</span>`;
+  document.body.appendChild(popup);
+  
+  setTimeout(() => {
+    popup.remove(); // Entfernt das Popup nach 2 Sekunden
+  }, 2000);
+}
+
+// This function empties the contents of the contact details bottom area.
+function clearContactDetails() {
   document.getElementById('contactDetailsBottom').innerHTML = '';
 }
 
+// This is the restructured add Contact function that uses the helper functions defined above.
+async function addContact() {
+  const { name, email, phone } = getContactInputValues();
+  const newContact = createContactObject(name, email, phone);
+  
+  clearInputFields();
+  contacts = [];
+  
+  await postData("/contacts", newContact);
+  showPopup('Contact successfully created');
+  await loadContacts("/contacts");
+  
+  renderAllContacts();
+  cancelAdding();
+  clearContactDetails();
+}
+
+
 function getRandomColor() {
-  const letters = '0123456789ABCDEF';//jederBuchstabe des Farbstrings
+  const letters = '0123456789ABCDEF';//each letter of the color string
   let color = '#';
   for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
@@ -225,7 +254,7 @@ function getRandomColor() {
 }
 
 /**
- * Falls der Kontakt doch nicht mehr gespeichert werden soll, wird das Overlay geschlossen
+ * If the contact is no longer to be saved, the overlay is closed
  */
 function cancelAdding() {
   let nameValue = document.getElementById('inputFieldName').value;
@@ -240,7 +269,7 @@ function cancelAdding() {
 }
 
 /**
- * Diese Funktion soll dazu dienen, die Kontakte mithilfe der ersten Buchstaben in Kategorien anzuordnen
+ * This function is intended to organize the contacts into categories using the first letters
  * @param {*} contacts
  * @returns
  */
@@ -250,54 +279,76 @@ function groupContactsByInitial(contacts) {
     let name = contact.name;
     let initial = name[0].toUpperCase();
     if (!groupedContacts[initial]) {
-      groupedContacts[initial] = [];
-    }
+      groupedContacts[initial] = [];}
     groupedContacts[initial].push(contact);
   });
   return groupedContacts;
 }
 
 /**
- * Die Funktion dient zur Öffnung der Details von Kontakten
+ * The function is used to open the details of contacts
  *
  * @param {*} i
  */
+
+// This is the main function that calls other helper functions.
 function contactDetails(i) {
-  let rightSide = document.getElementById('contactDetails');
-  let leftSide = document.getElementById('contactsList');
-  let container = document.getElementById(`contactsContainer-${i}`);
-  let name = document.getElementById(`contactFont-${i}`);
-  // Wenn es einen vorherigen Highlight gibt, entfernen Sie die Highlight-Klasse
+  const elements = getContactElements(i);
+  updateHighlight(elements.container, elements.name);
+  adjustLayout();
+  updateDetailsContent(i);
+}
+
+// This function fetches all required DOM elements and returns them as an object.
+function getContactElements(i) {
+  return {
+    rightSide: document.getElementById('contactDetails'),
+    leftSide: document.getElementById('contactsList'),
+    container: document.getElementById(`contactsContainer-${i}`),
+    name: document.getElementById(`contactFont-${i}`)
+  };
+}
+
+// This function removes the highlight from the previous contact and sets the highlight on the current contact.
+function updateHighlight(container, name) {
   if (previouslyHighlighted) {
     previouslyHighlighted.classList.remove('highlighted-p');
     previouslyHighlighted.classList.add('one-contact-container');
     previouslyHighlightedName.classList.remove('highlighted-name');
   }
-  //füge die highlights dem aktuellen container zu
+
   previouslyHighlighted = container;
-  previouslyHighlightedName= name;
+  previouslyHighlightedName = name;
   previouslyHighlighted.classList.remove('one-contact-container');
   previouslyHighlighted.classList.add('highlighted-p');
   previouslyHighlightedName.classList.add('highlighted-name');
-  if(document.documentElement.clientWidth > 840) {
+}
+
+// This feature adjusts the layout based on the screen width.
+function adjustLayout() {
+  const rightSide = document.getElementById('contactDetails');
+  const leftSide = document.getElementById('contactsList');
+
+  if (document.documentElement.clientWidth > 840) {
     rightSide.style.display = "flex";
     rightSide.style.flexDirection = "column";
     leftSide.style.display = "flex";
+  } else {
+    rightSide.style.display = "flex";
+    rightSide.style.flexDirection = "column";
+    leftSide.style.display = "none";
   }
-    else {
-      rightSide.style.display = "flex";
-      rightSide.style.flexDirection = "column";
-      leftSide.style.display = "none";
-    }
-  
-  //hier muss das so eingestellt werden, dass der obere teil erst ab einer width von 840px geht
-  let rightContent = document.getElementById("contactDetailsBottom");
+}
+
+// This function updates the contents of the subrange based on the specified index i.
+function updateDetailsContent(i) {
+  const rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";
   rightContent.innerHTML = contactDetailsHTML(i);
 }
 
 /**
- * Die Funktion dient zum schließen der contactDetails in der Responsive Ansicht.
+ * The function is used to close the contact details in the responsive view.
  * 
  * @param {*} i 
  */
@@ -309,7 +360,7 @@ function closeContactDetails(){
 }
 
 /**
- * Diese Funktion dient zum toggeln des edit und delete Menus
+ * This function is used to toggle the edit and delete menu
  */
 function toggleEditOrDelete(){
   let menu = document.getElementById('editOrDeleteMenu');

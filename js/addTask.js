@@ -70,7 +70,7 @@ function addAssignedPersons(i){
 }
 
 /**
- * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
+ * This function is used to render the list of contacts with the initials and the checkbox for onclick.
  */
 function rollContactsList() {
     let assignContactsList = document.getElementById('assignContactsList');
@@ -114,17 +114,15 @@ function closeDropdownOnOutsideClickAssigned(event) {
  */
 function showAssignedPersons() {
     let showAssignedPersons = document.getElementById('showAssignedPersonInitial');
-    showAssignedPersons.innerHTML='';
-    for(i=0;i<Math.min(assignedPersons.length, 5);i++){
-        showAssignedPersons.innerHTML += `
-        <div style="background-color:${assignedPersons[i].color}; color:white" class="selected-person-initals-div">${assignedPersonsInitials(i)}</div>`;} 
-if (assignedPersons.length > 6) {
-    showAssignedPersons.innerHTML += `
-        <div style="background-color:white; color:black" class="selected-person-initals-div">
-            +${assignedPersons.length - 6}
-        </div>`;
+    showAssignedPersons.innerHTML = '';
+    for (let i = 0; i < Math.min(assignedPersons.length, 5); i++) {
+        showAssignedPersons.innerHTML += assignedPersonTemplate(assignedPersons[i].color, assignedPersonsInitials(i));
+    }
+    if (assignedPersons.length > 6) {
+        showAssignedPersons.innerHTML += additionalPersonsTemplate(assignedPersons.length - 6);
+    }
 }
-} 
+
 
 /**
  * This function filters the initials of the persons selected for the respective tasks.
@@ -254,41 +252,30 @@ function addSubtask(){
 /**
  * This function should render the created subtasks that are stored in the subtaskList array.
  */
-function renderSubtasks(){
-    let subtaskListDiv= document.getElementById('subtaskList');
-    subtaskListDiv.innerHTML='';
-    for(i=0; i<subtaskList.length; i++){
-        subtaskListDiv.innerHTML +=/*html*/`
-        <ul class="oneSubtask" id="oneSubtask-${i}" class="oneSubtask" onmouseover="subtaskHoverEffekt(${i})" onmouseout= "subtaskNoHoverEffekt(${i})">
-            <li class="" id="subtaskListText-${i}">${subtaskList[i]}</li>
-            <input class="d-none editInput" value="${subtaskList[i]}" id="editInput-${i}">
-            <div class="d-none editAndTrash" id="editAndTrash-${i}">
-                <img src="../assets/img/editTask.png" id="leftImage-${i}" onclick="editSubtask(${i})"class="editSubtask">
-                |
-                <img src="../assets/img/deleteTask.png" id="rightImage-${i}" onclick="deleteSubtask(${i})"class="deleteSubtask">
-            </div>
-        </ul>
-        `;
+function renderSubtasks() {
+    let subtaskListDiv = document.getElementById('subtaskList');
+    subtaskListDiv.innerHTML = '';
+    for (let i = 0; i < subtaskList.length; i++) {
+        subtaskListDiv.innerHTML += generateSubtaskHTML(i, subtaskList[i]);
     }
 }
+
 
 /**
  * With this function you should be able to change the subtask at exactly the corresponding point.
  * @param {*} i 
  */
-function editSubtask(i){
+function editSubtask(i) {
     let subtaskListText = document.getElementById(`subtaskListText-${i}`);
     subtaskListText.classList.add('d-none');
     let editInput = document.getElementById(`editInput-${i}`);
     editInput.classList.remove('d-none');
     let editAndTrash = document.getElementById(`editAndTrash-${i}`);
-    editAndTrash.innerHTML='';
-    editAndTrash.innerHTML= `
-    <img src="../assets/img/deleteTask.png" id="leftImage-${i}" onclick="deleteSubtask(${i})"class="deleteSubtask">
-    |
-    <img src="../assets/img/checkTask.png" id="rightImage-${i}" onclick="saveChangedSubtask(${i})"class="saveSubtask">
-    `
+    editAndTrash.innerHTML = '';
+    // Verwende die Template-Funktion
+    editAndTrash.innerHTML = generateEditAndTrashHTML(i);
 }
+
 
 /**
  * By activating this function, changes to subtasks can be saved.
@@ -330,44 +317,38 @@ function subtaskHoverEffekt(i){
 /**
  * Diese Funktion speichert die ausgewählten Daten in einem Array und schickt sie an die Funktion, die sie an den Server verschickt.
  */
-async function createTask(){
-    let createButton= document.getElementById('createTaskButton')
+async function createTask() {
+    let createButton = document.getElementById('createTaskButton');
     createButton.disabled = true;
     let titleOfTask = document.getElementById('titleOfTask').value.trim();
     let descriptionOfTask = document.getElementById('descriptionOfTask').value.trim();
     let dateOfTask = document.getElementById('dateOfTask').value.trim();
-    let newTaskInformation ={
+    let newTaskInformation = {
         title: titleOfTask,
         description: descriptionOfTask,
         assigned: assignedPersons,
         dueDate: dateOfTask,
-        category:category,
-        priority:priority,
-        subtaskList:subtaskList,
-        status:"todo",
-        checkedSubtasks:checkedSubtasks,
+        category: category,
+        priority: priority,
+        subtaskList: subtaskList,
+        status: "todo",
+        checkedSubtasks: checkedSubtasks,
         checkedSubtasksCount: 0,
-    }
+    };
     await postData("/tasks", newTaskInformation);
     clearForm();
-    // Erstelle das Popup-Element
-const popup = document.createElement('div');
-popup.classList.add('pop-up-added');
-    popup.innerHTML=`
-        <span>Task added to board</span>
-        <svg class="pop-up-added-svg"width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M22.9575 5.73855L22.9575 26.1929C22.9569 26.7955 22.7173 27.3732 22.2912 27.7993C21.8651 28.2253 21.2874 28.465 20.6848 28.4656L16.1394 28.4656C15.5368 28.465 14.9591 28.2253 14.533 27.7993C14.1069 27.3732 13.8673 26.7955 13.8667 26.1929L13.8667 5.73855C13.8673 5.13597 14.1069 4.55825 14.533 4.13217C14.9591 3.70608 15.5368 3.46644 16.1394 3.46584L20.6848 3.46584C21.2874 3.46644 21.8651 3.70608 22.2912 4.13217C22.7173 4.55825 22.9569 5.13597 22.9575 5.73855ZM16.1394 26.1929L20.6848 26.1929L20.6848 5.73855L16.1394 5.73855L16.1394 26.1929ZM16.1394 5.73855L16.1394 26.1929C16.1388 26.7955 15.8992 27.3731 15.4731 27.7992C15.047 28.2253 14.4693 28.4649 13.8667 28.4655L9.32128 28.4655C8.71871 28.4649 8.14099 28.2253 7.7149 27.7992C7.28882 27.3731 7.04918 26.7954 7.04858 26.1928L7.04858 5.73852C7.04918 5.13595 7.28882 4.55823 7.7149 4.13214C8.14099 3.70606 8.71871 3.46642 9.32128 3.46582L13.8667 3.46582C14.4693 3.46642 15.047 3.70606 15.4731 4.13214C15.8992 4.55823 16.1388 5.13597 16.1394 5.73855ZM9.32128 26.1928L13.8667 26.1929L13.8667 5.73855L9.32128 5.73852L9.32128 26.1928ZM9.32128 5.73852L9.32128 26.1928C9.32068 26.7954 9.08104 27.3731 8.65496 27.7992C8.22887 28.2253 7.65115 28.4649 7.04858 28.4656L2.50317 28.4656C1.9006 28.4649 1.32288 28.2253 0.896793 27.7992C0.470708 27.3731 0.23107 26.7954 0.230469 26.1928L0.230468 5.73852C0.231069 5.13595 0.470707 4.55823 0.896792 4.13214C1.32288 3.70606 1.9006 3.46642 2.50317 3.46582L7.04858 3.46582C7.65115 3.46642 8.22887 3.70606 8.65496 4.13214C9.08104 4.55823 9.32068 5.13595 9.32128 5.73852ZM2.50317 26.1928L7.04858 26.1928L7.04858 5.73852L2.50317 5.73852L2.50317 26.1928Z" fill="white"/>
-            <path d="M29.7756 5.7388L29.7756 26.1931C29.775 26.7957 29.5354 27.3734 29.1093 27.7995C28.6832 28.2256 28.1055 28.4652 27.5029 28.4658L22.9575 28.4658C22.3549 28.4652 21.7772 28.2256 21.3511 27.7995C20.925 27.3734 20.6854 26.7955 20.6848 26.1929L20.6848 5.73855C20.6854 5.13597 20.925 4.5585 21.3511 4.13242C21.7772 3.70633 22.3549 3.4667 22.9575 3.46609L27.5029 3.46609C28.1055 3.4667 28.6832 3.70633 29.1093 4.13242C29.5354 4.5585 29.775 5.13622 29.7756 5.7388ZM22.9575 26.1929L27.5029 26.1931L27.5029 5.7388L22.9575 5.73855L22.9575 26.1929Z" fill="white"/>
-        </svg>
-    `
 
+    const popup = document.createElement('div');
+    popup.classList.add('pop-up-added');
+    popup.innerHTML = createTaskPopupTemplate(); // Verwende das Template hier
 
-document.body.appendChild(popup);
+    document.body.appendChild(popup);
     setTimeout(() => {
-    window.location.href = '../html/board.html?msg=Du hast eine neue Task erstellt';
-  }, 2000); 
-  createButton.disabled = false;
+        window.location.href = '../html/board.html?msg=Du hast eine neue Task erstellt';
+    }, 2000);
+    createButton.disabled = false;
 }
+
 /**
  * This function is used to create colors if the contacts do not have any assigned colors.
  * @returns 

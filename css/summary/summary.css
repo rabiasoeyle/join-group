@@ -62,7 +62,7 @@ a{
   gap: 64px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .summary_larger_part {

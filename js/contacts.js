@@ -290,45 +290,65 @@ function groupContactsByInitial(contacts) {
  *
  * @param {*} i
  */
+
+// This is the main function that calls other helper functions.
 function contactDetails(i) {
-  let rightSide = document.getElementById('contactDetails');
-  let leftSide = document.getElementById('contactsList');
-  let container = document.getElementById(`contactsContainer-${i}`);
-  let name = document.getElementById(`contactFont-${i}`);
-  // Wenn es einen vorherigen Highlight gibt, entfernen Sie die Highlight-Klasse
+  const elements = getContactElements(i);
+  updateHighlight(elements.container, elements.name);
+  adjustLayout();
+  updateDetailsContent(i);
+}
+
+// This function fetches all required DOM elements and returns them as an object.
+function getContactElements(i) {
+  return {
+    rightSide: document.getElementById('contactDetails'),
+    leftSide: document.getElementById('contactsList'),
+    container: document.getElementById(`contactsContainer-${i}`),
+    name: document.getElementById(`contactFont-${i}`)
+  };
+}
+
+// This function removes the highlight from the previous contact and sets the highlight on the current contact.
+function updateHighlight(container, name) {
   if (previouslyHighlighted) {
     previouslyHighlighted.classList.remove('highlighted-p');
     previouslyHighlighted.classList.add('one-contact-container');
     previouslyHighlightedName.classList.remove('highlighted-name');
   }
-  //füge die highlights dem aktuellen container zu
+
   previouslyHighlighted = container;
-  previouslyHighlightedName= name;
+  previouslyHighlightedName = name;
   previouslyHighlighted.classList.remove('one-contact-container');
   previouslyHighlighted.classList.add('highlighted-p');
   previouslyHighlightedName.classList.add('highlighted-name');
-  if(document.documentElement.clientWidth > 840) {
+}
+
+// This feature adjusts the layout based on the screen width.
+function adjustLayout() {
+  const rightSide = document.getElementById('contactDetails');
+  const leftSide = document.getElementById('contactsList');
+
+  if (document.documentElement.clientWidth > 840) {
     rightSide.style.display = "flex";
     rightSide.style.flexDirection = "column";
     leftSide.style.display = "flex";
+  } else {
+    rightSide.style.display = "flex";
+    rightSide.style.flexDirection = "column";
+    leftSide.style.display = "none";
   }
-    else {
-      rightSide.style.display = "flex";
-      rightSide.style.flexDirection = "column";
-      leftSide.style.display = "none";
-    }
-  
-  //hier muss das so eingestellt werden, dass der obere teil erst ab einer width von 840px geht
-  let rightContent = document.getElementById("contactDetailsBottom");
+}
+
+// This function updates the contents of the subrange based on the specified index i.
+function updateDetailsContent(i) {
+  const rightContent = document.getElementById("contactDetailsBottom");
   rightContent.innerHTML = "";
   rightContent.innerHTML = contactDetailsHTML(i);
 }
 
-
-
-
 /**
- * Die Funktion dient zum schließen der contactDetails in der Responsive Ansicht.
+ * The function is used to close the contact details in the responsive view.
  * 
  * @param {*} i 
  */
@@ -340,7 +360,7 @@ function closeContactDetails(){
 }
 
 /**
- * Diese Funktion dient zum toggeln des edit und delete Menus
+ * This function is used to toggle the edit and delete menu
  */
 function toggleEditOrDelete(){
   let menu = document.getElementById('editOrDeleteMenu');

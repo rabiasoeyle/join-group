@@ -1,5 +1,5 @@
 /**
- * Diese Funktion dient zum rendern der HTML der einzelnen Aufgaben.
+ * This function is used to render the HTML of the individual tasks.
  * @param {*} i 
  * @param {*} status 
  * @returns 
@@ -32,7 +32,7 @@ function boardHTML(i, status){
   }
 
   /**
- * Diese Funktion rendert die entsprechenden svgs für die Prioritäten.
+ * This function renders the corresponding svgs for the priorities.
  * @returns 
  */
 function prioUrgentHTML(){
@@ -50,7 +50,7 @@ function prioUrgentHTML(){
   }
   
   /**
-   * Diese Funktion rendert die entsprechenden svgs für die Prioritäten.
+   * This function renders the corresponding svgs for the priorities.
    * @returns 
    */
   function prioMediumHTML(){
@@ -67,7 +67,7 @@ function prioUrgentHTML(){
   }
   
   /**
-   * Diese Funktion rendert die entsprechenden svgs für die Prioritäten.
+   * This function renders the corresponding svgs for the priorities.
    * @returns 
    */
   function prioLowHTML(){

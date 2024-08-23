@@ -3,10 +3,11 @@ let firebase_URL =
 
 function goToSummary() {
   window.location.href = "../html/summary.html?";
-  localStorage.setItem('username', 'Guest User');
-  localStorage.setItem('usernameInitial', 'GU');
-  // Insert the value of nameElement into the URL parameters
-  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
+  localStorage.setItem("username", "Guest User");
+  localStorage.setItem("usernameInitial", "GU");
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(
+    nameElement
+  )}`;
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");
@@ -23,18 +24,7 @@ function signUp() {
   document.getElementById("help_initials_mobile").classList.toggle("d-none");
 }
 
-/**
- * This function is used to read the values from the input fields for the new user and pass them on to postData().
- */
-async function neuUser() {
-  let nameValue = document.getElementById("neuUserLoginName").value.trim();
-  let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
-  let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
-  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
-  let numberValue = "-";
-  let colorValue = getRandomColor();
-  
-  // Reset error messages
+function resetErrorMessages() {
   document.getElementById("email-error").classList.add("d-none");
   document.getElementById("username-error").classList.add("d-none");
   document.getElementById("password-field-error").classList.add("d-none");
@@ -42,87 +32,102 @@ async function neuUser() {
   document.getElementById("wrongPasswordKey").classList.add("d-none");
   document.getElementById("email-errorSignUp").classList.add("d-none");
   document.getElementById("emailExists").classList.add("d-none");
-  document.getElementById("notCheckedBox").classList.add("d-none"); // Hide the not checked box error initially
+  document.getElementById("notCheckedBox").classList.add("d-none");
+}
 
-  // Check if the username has been entered
-  if (!nameValue) {
+function validateInputs(name, email, password, confirmPassword) {
+  if (!name) {
     document.getElementById("username-error").classList.remove("d-none");
-    return;
+    return false;
   }
-
-  // Check if the passwords have been entered
-  if (!passwordValue || !confirmPasswordValue) {
+  if (!password || !confirmPassword) {
     document.getElementById("password-field-error").classList.remove("d-none");
-    return;
+    return false;
   }
-
-  // Check if the passwords match
-  if (passwordValue !== confirmPasswordValue) {
+  if (password !== confirmPassword) {
     document.getElementById("password-mismatch-error").classList.remove("d-none");
-    return;
+    return false;
   }
-
-  // Check email format
-  if (!isValidEmail(emailValue)) {
+  if (!isValidEmail(email)) {
     document.getElementById("email-errorSignUp").classList.remove("d-none");
-    return;
+    return false;
   }
-
-  // Check if the password format is valid
-  if (!isValidPassword(passwordValue)) {
+  if (!isValidPassword(password)) {
     showError("Falsches Passwortformat.", "wrongPasswordKey");
-    return;
+    return false;
   }
 
-  // Check if the checkbox is checked
   const checkbox = document.getElementById("acceptTermsCheckbox");
   if (!checkbox.checked) {
     document.getElementById("notCheckedBox").classList.remove("d-none");
-    return;
+    return false;
   }
 
+  return true;
+}
+async function processRegistration(newLogin) {
   try {
-    let emailExists = await checkIfEmailExists(emailValue);
-    if (emailExists) {
-      document.getElementById("emailExists").classList.remove("d-none");
-      return;
-    }
-
-    let newLogin = {
-      name: nameValue,
-      email: emailValue,
-      password: passwordValue,
-      phone: numberValue,
-      color: colorValue,
-    };
-
     await postData("/login", newLogin);
-
-    document.getElementById("neuUserLoginName").value = "";
-    document.getElementById("neuUserLoginEmail").value = "";
-    document.getElementById("neuUserLoginPasswort").value = "";
-    document.getElementById("neuUserLoginConfirm_Passwort").value = "";
-
+    clearInputFields();
     signUp();
   } catch (error) {
     showError("Beim Erstellen des Benutzers ist ein Fehler aufgetreten.");
     console.error(error);
   }
 }
-// Function to display the popup
+
+async function checkEmailAndRegister(email, newLogin) {
+  let emailExists = await checkIfEmailExists(email);
+  if (emailExists) {
+    document.getElementById("emailExists").classList.remove("d-none");
+    return;
+  }
+  await processRegistration(newLogin);
+}
+
+function clearInputFields() {
+  document.getElementById("neuUserLoginName").value = "";
+  document.getElementById("neuUserLoginEmail").value = "";
+  document.getElementById("neuUserLoginPasswort").value = "";
+  document.getElementById("neuUserLoginConfirm_Passwort").value = "";
+}
+
+async function neuUser() {
+  resetErrorMessages();
+
+  let nameValue = document.getElementById("neuUserLoginName").value.trim();
+  let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
+  let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
+  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
+  let numberValue = "-";
+  let colorValue = getRandomColor();
+
+  if (!validateInputs(nameValue, emailValue, passwordValue, confirmPasswordValue)) {
+    return;
+  }
+
+  let newLogin = {
+    name: nameValue,
+    email: emailValue,
+    password: passwordValue,
+    phone: numberValue,
+    color: colorValue,
+  };
+
+  await checkEmailAndRegister(emailValue, newLogin);
+}
+
+
 function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.querySelector("p").textContent = message;
   popupElement.classList.add("popup");
-  popupElement.classList.remove("d-none"); // Show popup
+  popupElement.classList.remove("d-none");
 }
 
-// Function to close the popup
 function closePopup() {
-  // Close popup
   let popupElement = document.getElementById("emailExistsPopup");
-  popupElement.classList.add("d-none"); // Hide popup
-  // Return to login page
+  popupElement.classList.add("d-none");
   popupElement.classList.remove("popup");
   document.getElementById("login_Content").classList.remove("d-none");
   document.getElementById("sign_up_content").classList.add("d-none");
@@ -131,16 +136,15 @@ function closePopup() {
   document.getElementById("help_initials_mobile").classList.remove("d-none");
 }
 
-// Function to check whether the email already exists
 async function checkIfEmailExists(email) {
   let response = await fetch(firebase_URL + "login.json");
   let responseToJson = await response.json();
 
-  // Check if the email already exists in the database
-  return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
+  return Object.keys(responseToJson).some(
+    (key) => responseToJson[key].email === email
+  );
 }
 
-// Function for displaying error messages
 function showError(message, elementId = "error-message") {
   let errorMessageElement = document.getElementById(elementId);
   if (errorMessageElement) {
@@ -152,20 +156,18 @@ function showError(message, elementId = "error-message") {
 }
 
 function isValidEmail(email) {
-  // Regular expression to check email format
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
 }
 
-// Function to check if the password format is valid
 function isValidPassword(password) {
-  // Regular expression to check password format
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  const passwordPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   return passwordPattern.test(password);
 }
 
 function getRandomColor() {
-  const letters = "0123456789ABCDEF"; // Each letter of the color string
+  const letters = "0123456789ABCDEF";
   let color = "#";
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
@@ -174,28 +176,45 @@ function getRandomColor() {
 }
 
 async function login(path = "login") {
-  let emailValue = document.getElementById("loginEmail").value.trim();
-  let passwordValue = document.getElementById("loginPasswort").value.trim();
+  resetErrorMessages();
 
-  // Reset error messages
+  const emailValue = document.getElementById("loginEmail").value.trim();
+  const passwordValue = document.getElementById("loginPasswort").value.trim();
+
+  if (!validateInput(emailValue, passwordValue)) return;
+
+  const loginSuccessful = await fetchAndValidateCredentials(
+    emailValue,
+    passwordValue,
+    path
+  );
+
+  if (!loginSuccessful) {
+    loginIncorrect();
+  }
+}
+
+function resetErrorMessages() {
   document.getElementById("error-message").classList.add("d-none");
   document.getElementById("email-error").classList.add("d-none");
   document.getElementById("password-error").classList.add("d-none");
+}
 
-  // Check if the email address has been entered
+function validateInput(emailValue, passwordValue) {
   if (!emailValue) {
     document.getElementById("email-error").classList.remove("d-none");
-    return;
+    return false;
   }
-
-  // Check if the password has been entered
   if (!passwordValue) {
     document.getElementById("password-error").classList.remove("d-none");
-    return;
+    return false;
   }
+  return true;
+}
 
-  let response = await fetch(firebase_URL + path + ".json");
-  let responseToJson = await response.json();
+async function fetchAndValidateCredentials(emailValue, passwordValue, path) {
+  const response = await fetch(firebase_URL + path + ".json");
+  const responseToJson = await response.json();
   let loginSuccessful = false;
 
   Object.keys(responseToJson).forEach((key) => {
@@ -204,32 +223,22 @@ async function login(path = "login") {
       responseToJson[key]["password"] === passwordValue
     ) {
       loginSuccessful = true;
-      let nameElement = responseToJson[key]["name"];
+      const nameElement = responseToJson[key]["name"];
       loginCorrect(nameElement);
     }
   });
 
-  if (!loginSuccessful) {
-    loginIncorrect();
-  }
+  return loginSuccessful;
 }
 
-
 function loginCorrect(nameElement) {
-  // Save the entire name as 'username'
   localStorage.setItem("username", nameElement);
-
-  // Split the name into first name and last name
   let names = nameElement.split(" ");
-
-  // Extract initial letters of names
   let initials = names.map((name) => name.charAt(0).toUpperCase()).join("");
-
-  // Save the initials as 'usernameInitial'
   localStorage.setItem("usernameInitial", initials);
-
-  // Redirect to the summary page with the name as URL parameter
-  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(
+    nameElement
+  )}`;
 }
 
 function loginIncorrect() {

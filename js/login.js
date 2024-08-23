@@ -3,12 +3,10 @@ let firebase_URL =
 
 function goToSummary() {
   window.location.href = "../html/summary.html?";
-  localStorage.setItem("username", "Guest User");
-  localStorage.setItem("usernameInitial", "GU");
+  localStorage.setItem('username', 'Guest User');
+  localStorage.setItem('usernameInitial', 'GU');
   // Insert the value of nameElement into the URL parameters
-  window.location.href = `../html/summary.html?msg=${encodeURIComponent(
-    nameElement
-  )}`;
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 
   const urlParams = new URLSearchParams(window.location.search);
   const msg = urlParams.get("msg");
@@ -26,26 +24,24 @@ function signUp() {
 }
 
 /**
- * This function is used to read the values ​​from the input fields for the new user and pass them on to postData().
+ * This function is used to read the values from the input fields for the new user and pass them on to postData().
  */
 async function neuUser() {
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
-  let passwordValue = document
-    .getElementById("neuUserLoginPasswort")
-    .value.trim();
-  let confirmPasswordValue = document
-    .getElementById("neuUserLoginConfirm_Passwort")
-    .value.trim();
+  let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
+  let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
 
   // Reset error messages
+  document.getElementById("email-error").classList.add("d-none");
   document.getElementById("username-error").classList.add("d-none");
   document.getElementById("password-field-error").classList.add("d-none");
   document.getElementById("password-mismatch-error").classList.add("d-none");
   document.getElementById("email-format-error").classList.add("d-none");
   document.getElementById("wrongPasswordKey").classList.add("d-none");
+  document.getElementById("email-errorSignUp").classList.add("d-none");
 
   // Check if the username has been entered
   if (!nameValue) {
@@ -61,28 +57,19 @@ async function neuUser() {
 
   // Check if the passwords match
   if (passwordValue !== confirmPasswordValue) {
-    showError("Die Passwörter stimmen nicht überein.", "passwordError");
-    document
-      .getElementById("password-mismatch-error")
-      .classList.remove("d-none");
-    return;
-  }
-
-  // Überprüfen, ob das Passwortformat korrekt ist
-  if (!isValidPassword(passwordValue)) {
-    document.getElementById("wrongPasswordKey").classList.remove("d-none");
-    return;
-  }
-
-  // Überprüfen, ob das Passwortformat korrekt ist
-  if (!isValidPassword(passwordValue)) {
-    document.getElementById("wrongPasswordKey").classList.remove("d-none");
+    document.getElementById("password-mismatch-error").classList.remove("d-none");
     return;
   }
 
   // Check email format
   if (!isValidEmail(emailValue)) {
-    document.getElementById("email-format-error").classList.remove("d-none");
+    document.getElementById("email-errorSignUp").classList.remove("d-none");
+    return;
+  }
+
+  // Check if the password format is valid
+  if (!isValidPassword(passwordValue)) {
+    showError("Falsches Passwortformat.", "wrongPasswordKey");
     return;
   }
 
@@ -115,26 +102,12 @@ async function neuUser() {
   }
 }
 
-// Funktion zur Überprüfung des Passwortformats
-function isValidPassword(password) {
-  // Regulärer Ausdruck zur Überprüfung des Passwortformats
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  return passwordPattern.test(password);
-}
-
-// Funktion zur Überprüfung des Passwortformats
-function isValidPassword(password) {
-  // Regulärer Ausdruck zur Überprüfung des Passwortformats
-  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  return passwordPattern.test(password);
-}
-
 // Function to display the popup
 function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.querySelector("p").textContent = message;
   popupElement.classList.add("popup");
-  popupElement.classList.remove("d-none"); // Popup anzeigen
+  popupElement.classList.remove("d-none"); // Show popup
 }
 
 // Function to close the popup
@@ -157,9 +130,7 @@ async function checkIfEmailExists(email) {
   let responseToJson = await response.json();
 
   // Check if the email already exists in the database
-  return Object.keys(responseToJson).some(
-    (key) => responseToJson[key].email === email
-  );
+  return Object.keys(responseToJson).some(key => responseToJson[key].email === email);
 }
 
 // Function for displaying error messages
@@ -174,9 +145,16 @@ function showError(message, elementId = "error-message") {
 }
 
 function isValidEmail(email) {
-  //Regular expression to check email format
+  // Regular expression to check email format
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
+}
+
+// Function to check if the password format is valid
+function isValidPassword(password) {
+  // Regular expression to check password format
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordPattern.test(password);
 }
 
 function getRandomColor() {
@@ -242,10 +220,8 @@ function loginCorrect(nameElement) {
   // Save the initials as 'usernameInitial'
   localStorage.setItem("usernameInitial", initials);
 
-  // Weiterleiten zur Zusammenfassungsseite mit dem Namen als URL-Parameter
-  window.location.href = `../html/summary.html?msg=${encodeURIComponent(
-    nameElement
-  )}`;
+  // Redirect to the summary page with the name as URL parameter
+  window.location.href = `../html/summary.html?msg=${encodeURIComponent(nameElement)}`;
 }
 
 function loginIncorrect() {

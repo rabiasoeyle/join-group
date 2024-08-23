@@ -40,6 +40,9 @@ async function neuUser() {
     return;
   }
 
+  //Überprüfen, ob @ in der Mail-Adresse
+
+
   // Überprüfen, ob die E-Mail bereits registriert ist
   let emailExists = await checkIfEmailExists(emailValue);
   if (emailExists) {
@@ -122,10 +125,28 @@ function getRandomColor() {
 }
 
 async function login(path = "login") {
-  let response = await fetch(firebase_URL + path + ".json");
-  let responseToJson = await response.json();
   let emailValue = document.getElementById("loginEmail").value.trim();
   let passwordValue = document.getElementById("loginPasswort").value.trim();
+  
+  // Fehlermeldungen zurücksetzen
+  document.getElementById("error-message").classList.add("d-none");
+  document.getElementById("email-error").classList.add("d-none");
+  document.getElementById("password-error").classList.add("d-none");
+
+  // Überprüfen, ob die E-Mail-Adresse eingegeben wurde
+  if (!emailValue) {
+    document.getElementById("email-error").classList.remove("d-none");
+    return;
+  }
+
+  // Überprüfen, ob das Passwort eingegeben wurde
+  if (!passwordValue) {
+    document.getElementById("password-error").classList.remove("d-none");
+    return;
+  }
+
+  let response = await fetch(firebase_URL + path + ".json");
+  let responseToJson = await response.json();
   let loginSuccessful = false;
 
   Object.keys(responseToJson).forEach((key) => {

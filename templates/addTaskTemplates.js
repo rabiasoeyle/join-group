@@ -1,3 +1,10 @@
+/**
+ * This function should generate the Contact Item.
+ * @param {*} index 
+ * @param {*} contact 
+ * @param {*} isChecked 
+ * @returns 
+ */
 function generateContactItemHTML(index, contact, isChecked) {
     return /*html*/`
         <div class="one-person-div" onclick="addAssignedPersons(${index})" id="onePersonDiv-${index}">
@@ -12,6 +19,11 @@ function generateContactItemHTML(index, contact, isChecked) {
         </div>`;
 }
 
+/**
+ * This function should generate the edit and trash button.
+ * @param {*} index 
+ * @returns 
+ */
 function generateEditAndTrashHTML(index) {
     return /*html*/`
         <img src="../assets/img/deleteTask.png" id="leftImage-${index}" onclick="deleteSubtask(${index})" class="deleteSubtask">
@@ -20,6 +32,12 @@ function generateEditAndTrashHTML(index) {
     `;
 }
 
+/**
+ * This function should generate the subtasks.
+ * @param {*} index 
+ * @param {*} subtaskText 
+ * @returns 
+ */
 function generateSubtaskHTML(index, subtaskText) {
     return /*html*/`
         <ul class="oneSubtask" id="oneSubtask-${index}" onmouseover="subtaskHoverEffekt(${index})" onmouseout="subtaskNoHoverEffekt(${index})">
@@ -34,6 +52,10 @@ function generateSubtaskHTML(index, subtaskText) {
     `;
 }
 
+/**
+ * This function should create a task popup.
+ * @returns 
+ */
 function createTaskPopupTemplate() {
     return /*html*/`
         <span>Task added to board</span>
@@ -44,6 +66,12 @@ function createTaskPopupTemplate() {
     `;
 }
 
+/**
+ * This function should render the div for assigned Persons.
+ * @param {*} color 
+ * @param {*} initials 
+ * @returns 
+ */
 function assignedPersonTemplate(color, initials) {
     return /*html*/`
         <div style="background-color:${color}; color:white" class="selected-person-initals-div">
@@ -52,6 +80,11 @@ function assignedPersonTemplate(color, initials) {
     `;
 }
 
+/**
+ * This function should show how much more people are assigned.
+ * @param {*} extraCount 
+ * @returns 
+ */
 function additionalPersonsTemplate(extraCount) {
     return /*html*/`
         <div style="background-color:white; color:black" class="selected-person-initals-div">

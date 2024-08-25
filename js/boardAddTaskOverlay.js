@@ -10,7 +10,10 @@ let overlayAddIsDropDownOpenAssigned = false;
 let overlayAddIsDropDownOpenCategory = false;
 let overlayAddStatus;
 
-
+/**
+ * This function should open the overlay.
+ * @param {*} status 
+ */
 function overlayAddTask(status){
     overlayAddStatus = status;
     let overlay = document.getElementById('atOaddTaskOverlayParent');
@@ -22,17 +25,15 @@ function overlayAddTask(status){
 }
 
 /**
- * Diese Funktion soll das aktuelle Datum holen und im Inputfeld min einstellen.
+ * This function should get the current date and set min in the input field.
  */
 function overlayAddSetMinDate(){
-    // Hole das heutige Datum
     let today = new Date().toISOString().split('T')[0];
-    // Setze das min-Attribut auf das heutige Datum
     document.getElementById('overlayAddDateOfTask').setAttribute('min', today);
 }
 
 /**
- * Diese Funktion dient dazu, um das Startdesign bei den Prioritätsbutton bei clear wieder auf den Startzustand zu setzen.
+ * This function is used to set the start design for the priority buttons back to the start state when clear.
  */
 function overlayAddRenderStartClassPrio(){
     document.getElementById('overlayAddUrgent').classList.add('overlay-add-urgentPrio');
@@ -45,18 +46,15 @@ function overlayAddRenderStartClassPrio(){
 }
 
 /**
- * Diese Funktion dient dazu bei onclick die Liste der Kontakte mit den Initialien und der Checkbox zu rendern.
+ * This function is used to render the list of contacts with the initials and the checkbox on onclick.
  */
 function overlayAddRollContactsList(){
     let assignContactsList = document.getElementById('overlayAddAssignContactsList');
     assignContactsList.classList.toggle('d-none');
-    // Update true or false
     overlayAddIsDropDownOpenAssigned = !assignContactsList.classList.contains('d-none');
     assignContactsList.innerHTML='';
     if(overlayAddIsDropDownOpenAssigned){
          for(let i=0; i<contacts.length; i++){
-        // Überprüfen, ob der Kontakt bereits zugewiesen wurde
-        //some, weil assignedPerson objekte beeinhaltet und nicht nur namen
         let isChecked = overlayAddAssignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
         assignContactsList.innerHTML += getOverlayAddPersonTemplate(i, contacts, isChecked)
         let input = document.getElementById(`overlayAddInputCheckbox-${i}`);
@@ -65,35 +63,28 @@ function overlayAddRollContactsList(){
             document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
         }
     }
-         // Add event listener to close the dropdown when clicking outside
-         document.addEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
+        document.addEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
         } else {
-            // Remove event listener if dropdown is closed
-            document.removeEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
+        document.removeEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
         }
 }
 
 /**
- * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
+ * This function is used to add or remove an event listener from the document.
  * @param {*} event 
  */
 function overlayAddCloseDropdownOnOutsideClickAssigned(event) {
-    // Reference to the dropdown and toggle button
     const assignContactsList = document.getElementById('overlayAddAssignContactsList');
     const toggleButton = document.querySelector('.overlay-add-assigned-to-input-and-button');
-    // Check if the clicked element is not the dropdown or the toggle button
     if (!assignContactsList.contains(event.target) && !toggleButton.contains(event.target)) {
-        // Close the dropdown
         assignContactsList.classList.add('d-none');
-        // Update the flag
         overlayAddIsDropDownOpenAssigned = false;
-        // Remove the event listener
         document.removeEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
     }
 }
 
 /**
- * Diese Funktion soll die Personen, die einen Haken in der Checkbox erhalten feststellen und im Array assignedPersons abspeichern.
+ * This function is intended to identify the people who receive a tick in the checkbox and store them in the assignedPersons array.
  * @param {*} i 
  */
 function overlayAddAddAssignedPersons(i){
@@ -103,13 +94,11 @@ function overlayAddAddAssignedPersons(i){
     if (inputCheckbox.checked) {
         document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#2a3647";
         document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
-        // Prüfen, ob die Person bereits im Array vorhanden ist, bevor sie hinzugefügt wird
         if (!overlayAddAssignedPersons.includes(person => person.name === personName)) {
             let newAssign = { name: contacts[i].name, color: contacts[i].color };
             overlayAddAssignedPersons.push(newAssign);
         }
     } else {
-        // Wenn die Checkbox nicht mehr ausgewählt ist, die Person aus dem Array entfernen
         overlayAddAssignedPersons = overlayAddAssignedPersons.filter(person => person.name !== personName);
         document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "white";
         document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "black";
@@ -118,7 +107,7 @@ function overlayAddAddAssignedPersons(i){
 }
 
 /**
- * Diese Funktion dient erstmal dazu, um im Inputfeld darzustellen, welche Personen zugeordnet worden.
+ * This function is initially used to show which people have been assigned in the input field.
  */
 function overlayAddShowAssignedPersons() {
     let showAssignedPersons = document.getElementById('overlayAddShowAssignedPersonInitial');
@@ -132,7 +121,7 @@ if (overlayAddAssignedPersons.length > 6) {
 } 
 
 /**
- * Diese Funktion filtert die Initialien der für die jeweiligen Aufgaben ausgewählten Personen.
+ * This function filters the initials of the people selected for the respective tasks.
  * @param {*} i 
  * @returns 
  */
@@ -145,7 +134,7 @@ function overlayAddAssignedPersonsInitials(i){
     return overlayAddInitialsAssignedPersons;
 }
 /**
- * In dieser Funktion werden die Initialien der Kontakte rausgefiltert und wiedergegeben
+ * In this function, the initials of the contacts are filtered out and played back
  *
  * @param {*} i
  * @returns
@@ -160,8 +149,8 @@ function overlayAddProfileInitials(i) {
   }
 
 /**
- * Diese Funktion soll dazu dienen, die Personen auszuwählen und die Personendaten 
- * sowie der Kreis mit den Initialien drin sollen gesehen werden, wenn man draufklickt.
+ * This function is intended to be used to select people and personal data 
+ * and the circle with the initials inside should be visible when you click on it.
  * @param {*} i 
  */
 function overlayAddSelectPerson(i){
@@ -170,7 +159,7 @@ function overlayAddSelectPerson(i){
     overlayAddShowAssignedPersons();
 }
 
-/**Diese Funktion soll den Wert für die Wichtigkeit abspeichern */
+/**This function is intended to store the importance value. */
 function overlayAddSelectPrio(x){
     if(x =='urgent'){
         document.getElementById('overlayAddUrgent').classList.add('overlay-add-urgentPrio_click');
@@ -198,42 +187,35 @@ function overlayAddSelectPrio(x){
 }
 
 /**
- * Diese Funktion soll zum Toggeln der d-none Klasse bei dem Kategoriefeld sein
+ * This function is intended for toggling the d-none class in the category field
  */
 function overlayAddRollCategories(){
     let dropdownCategories = document.getElementById('overlayAddDropdownCategories');
     dropdownCategories.classList.toggle('d-none');  
     isDropDownOpenCategory = !dropdownCategories.classList.contains('d-none');   
     if(isDropDownOpenCategory){
-         // Add event listener to close the dropdown when clicking outside
-         document.addEventListener('click', overlayAddCloseDropdownOnOutsideClickCategory);
+        document.addEventListener('click', overlayAddCloseDropdownOnOutsideClickCategory);
         } else {
-            // Remove event listener if dropdown is closed
-            document.removeEventListener('click', overlayAddCloseDropdownOnOutsideClickCategory);
-    }
-}
-
-/**
- * Diese Funktion ist dazu da, um auf das Dokument einen event listener hinzuzufügen oder wegzunehmen.
- * @param {*} event 
- */
-function overlayAddCloseDropdownOnOutsideClickCategory(event) {
-    // Reference to the dropdown and toggle button
-    const categories = document.getElementById('overlayAddDropdownCategories');
-    const toggleButton = document.querySelector('.overlay-add-dropdown');
-    // Check if the clicked element is not the dropdown or the toggle button
-    if (!categories.contains(event.target) && !toggleButton.contains(event.target)) {
-        // Close the dropdown
-        categories.classList.add('d-none');
-        // Update the flag
-        overlayAddIsDropDownOpenCategory = false;
-        // Remove the event listener
         document.removeEventListener('click', overlayAddCloseDropdownOnOutsideClickCategory);
     }
 }
 
 /**
- * Diese Funktion dient zum abspeichern einer Kategorie.
+ * This function is used to add or remove an event listener from the document.
+ * @param {*} event 
+ */
+function overlayAddCloseDropdownOnOutsideClickCategory(event) {
+    const categories = document.getElementById('overlayAddDropdownCategories');
+    const toggleButton = document.querySelector('.overlay-add-dropdown');
+    if (!categories.contains(event.target) && !toggleButton.contains(event.target)) {
+        categories.classList.add('d-none');
+        overlayAddIsDropDownOpenCategory = false;
+        document.removeEventListener('click', overlayAddCloseDropdownOnOutsideClickCategory);
+    }
+}
+
+/**
+ * This function is used to save a category.
  * @param {*} x 
  */
 function overlayAddSelectCategory(x){
@@ -246,7 +228,8 @@ function overlayAddSelectCategory(x){
 }
 
 /**
- * Diese Funktion dient dazu Unteraufgaben zu erstellen und speichern.
+ * 
+This function is used to create and save subtasks.
  */
 function overlayAddAddSubtask(){
     let subtask = document.getElementById('overlayAddSubtask').value.trim();
@@ -258,7 +241,7 @@ function overlayAddAddSubtask(){
 }
 
 /**
- * Diese Funktion soll die erstellten Unteraufgaben, die im array subtaskList gespeichert sind rendern.
+ * This function is intended to render the created subtasks stored in the subtaskList array.
  */
 function overlayAddRenderSubtasks(){
     let subtaskListDiv = document.getElementById('overlayAddSubtaskList');
@@ -269,7 +252,7 @@ function overlayAddRenderSubtasks(){
 }
 
 /**
- * Mit dieser Funktion soll man die Subtask an genau der entsprechenden stelle ändern können.
+ * With this function you should be able to change the subtask at exactly the appropriate point.
  * @param {*} i 
  */
 function overlayAddEditSubtask(i){
@@ -283,7 +266,7 @@ function overlayAddEditSubtask(i){
 }
 
 /**
- * Durch Aktivierung dieser Funktion können Änderungen an Unteraufgaben gespeichert werden.
+ * Enabling this feature allows changes to subtasks to be saved.
  * @param {*} i 
  */
 function overlayAddSaveChangedSubtask(i){
@@ -293,7 +276,7 @@ function overlayAddSaveChangedSubtask(i){
 }
 
 /**
- * Diese Funktion dient zum Löschen von subtasks.
+ * This function is used to delete subtasks.
  * @param {*} i 
  */
 function overlayAddDeleteSubtask(i){
@@ -302,7 +285,7 @@ function overlayAddDeleteSubtask(i){
 }
 
 /**
- * Diese Funktion soll den onmouseover effekt wieder mit onmouseout rückgängig machen.
+ * This function is intended to undo the onmouseover effect with onmouseout.
  * @param {*} i 
  */
 function overlayAddSubtaskNoHoverEffekt(i){
@@ -311,7 +294,8 @@ function overlayAddSubtaskNoHoverEffekt(i){
 }
 
 /**
- * Diese Funktion soll den onmouseover effekt hinzufügen.
+ * 
+This function is intended to add the onmouseover effect.
  * @param {*} i 
  */
 function overlayAddSubtaskHoverEffekt(i){
@@ -320,7 +304,7 @@ function overlayAddSubtaskHoverEffekt(i){
 }
 
 /**
- * Diese Funktion speichert die ausgewählten Daten in einem Array und schickt sie an die Funktion, die sie an den Server verschickt.
+ * This function stores the selected data in an array and sends it to the function, which sends it to the server.
  */
 async function overlayAddCreateTask(){
     let titleOfTask = document.getElementById('overlayAddTitleOfTask').value.trim();
@@ -339,12 +323,11 @@ async function overlayAddCreateTask(){
         checkedSubtasksCount: 0,
     }
     await postData("/tasks", newTaskInformation);
-      // Erstelle das Popup-Element
-const popup = document.createElement('div');
-popup.classList.add('pop-up-added-w-svg');
-    popup.innerHTML= getTaskAddedPopupTemplate()
-    // Füge das Popup-Element zum body hinzu
-document.body.appendChild(popup);
+    // Erstelle das Popup-Element
+    const popup = document.createElement('div');
+    popup.classList.add('pop-up-added-w-svg');
+        popup.innerHTML= getTaskAddedPopupTemplate()
+    document.body.appendChild(popup);
     overlayAddClearForm();
     closeAddOverlay();
     tasks =[];
@@ -353,14 +336,13 @@ document.body.appendChild(popup);
     inProgressBoard();
     awaitFeedbackBoard();
     doneBoard();
-     // Warte 5 Sekunden, bevor das Popup verschwindet
-     setTimeout(() => {
-        popup.remove(); // Entfernt das Popup nach 5 Sekunden
+    setTimeout(() => {
+        popup.remove();
     }, 2000);
 }
 
 /**
- * Diese Funktion sorgt dafür, dass alle Inputfelder wieder geleert werden
+ * This function ensures that all input fields are emptied again
  */
 function overlayAddClearForm(){
     overlayAddAssignedPersons=[];
@@ -374,9 +356,11 @@ function overlayAddClearForm(){
     document.getElementById('overlayAddUrgent').style.backgroundColor = "white";
     document.getElementById('overlayAddMedium').style.backgroundColor = "white";
     document.getElementById('overlayAddLow').style.backgroundColor = "white";
-    // document.getElementById('showAssignedPersonInitial').innerHTML='';
 }
 
+/**
+ * This function is for closing the overlay.
+ */
 function closeAddOverlay(){
     overlayAddClearForm();
     let overlay = document.getElementById('atOaddTaskOverlayParent');

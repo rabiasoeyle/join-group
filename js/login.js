@@ -54,7 +54,6 @@ function resetErrorMessages() {
  * @param {*} confirmPassword 
  * @returns 
  */
-
 function validateInputs(name, email, password, confirmPassword) {
   if (!name) {
     document.getElementById("username-error").classList.remove("d-none");
@@ -89,7 +88,6 @@ function validateInputs(name, email, password, confirmPassword) {
  * clears Input and registers new Login
  * @param {*} newLogin 
  */
-
 async function processRegistration(newLogin) {
   try {
     await postData("/login", newLogin);
@@ -107,7 +105,6 @@ async function processRegistration(newLogin) {
  * @param {*} newLogin 
  * @returns 
  */
-
 async function checkEmailAndRegister(email, newLogin) {
   let emailExists = await checkIfEmailExists(email);
   if (emailExists) {
@@ -131,21 +128,17 @@ function clearInputFields() {
  * Adds new User to Firebase
  * @returns 
  */
-
 async function neuUser() {
   resetErrorMessages();
-
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
   let passwordValue = document.getElementById("neuUserLoginPasswort").value.trim();
   let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
-
   if (!validateInputs(nameValue, emailValue, passwordValue, confirmPasswordValue)) {
     return;
   }
-
   let newLogin = {
     name: nameValue,
     email: emailValue,
@@ -153,7 +146,6 @@ async function neuUser() {
     phone: numberValue,
     color: colorValue,
   };
-
   await checkEmailAndRegister(emailValue, newLogin);
 }
 
@@ -161,7 +153,6 @@ async function neuUser() {
  * shows popup 
  * @param {*} message 
  */
-
 function showPopup(message) {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.querySelector("p").textContent = message;
@@ -172,7 +163,6 @@ function showPopup(message) {
 /**
  * closes popup
  */
-
 function closePopup() {
   let popupElement = document.getElementById("emailExistsPopup");
   popupElement.classList.add("d-none");
@@ -187,11 +177,9 @@ function closePopup() {
 /**
  * checks if email is existing
  */
-
 async function checkIfEmailExists(email) {
   let response = await fetch(firebase_URL + "login.json");
   let responseToJson = await response.json();
-
   return Object.keys(responseToJson).some(
     (key) => responseToJson[key].email === email
   );
@@ -202,7 +190,6 @@ async function checkIfEmailExists(email) {
  * @param {*} message 
  * @param {*} elementId 
  */
-
 function showError(message, elementId = "error-message") {
   let errorMessageElement = document.getElementById(elementId);
   if (errorMessageElement) {
@@ -218,7 +205,6 @@ function showError(message, elementId = "error-message") {
  * @param {*} email 
  * @returns 
  */
-
 function isValidEmail(email) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
@@ -229,7 +215,6 @@ function isValidEmail(email) {
  * @param {*} password 
  * @returns 
  */
-
 function isValidPassword(password) {
   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.,:;!?'"@#$%^&*()_+\-=\[\]{}\\|`~<>\/€£¥₿©®™§°†‡¶‰•])[A-Za-z\d.,:;!?'"@#$%^&*()_+\-=\[\]{}\\|`~<>\/€£¥₿©®™§°†‡¶‰•]{8,}$/;
   return passwordPattern.test(password);
@@ -239,7 +224,6 @@ function isValidPassword(password) {
  * adds random color to new user
  * @returns 
  */
-
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
   let color = "#";
@@ -254,21 +238,16 @@ function getRandomColor() {
  * @param {*} path 
  * @returns 
  */
-
 async function login(path = "login") {
   resetErrorMessages();
-
   const emailValue = document.getElementById("loginEmail").value.trim();
   const passwordValue = document.getElementById("loginPasswort").value.trim();
-
   if (!validateInput(emailValue, passwordValue)) return;
-
   const loginSuccessful = await fetchAndValidateCredentials(
     emailValue,
     passwordValue,
     path
   );
-
   if (!loginSuccessful) {
     loginIncorrect();
   }
@@ -280,7 +259,6 @@ async function login(path = "login") {
  * @param {*} passwordValue 
  * @returns 
  */
-
 function validateInput(emailValue, passwordValue) {
   if (!emailValue) {
     document.getElementById("email-error").classList.remove("d-none");
@@ -300,7 +278,6 @@ function validateInput(emailValue, passwordValue) {
  * @param {*} path 
  * @returns 
  */
-
 async function fetchAndValidateCredentials(emailValue, passwordValue, path) {
   const response = await fetch(firebase_URL + path + ".json");
   const responseToJson = await response.json();
@@ -316,7 +293,6 @@ async function fetchAndValidateCredentials(emailValue, passwordValue, path) {
       loginCorrect(nameElement);
     }
   });
-
   return loginSuccessful;
 }
 
@@ -324,7 +300,6 @@ async function fetchAndValidateCredentials(emailValue, passwordValue, path) {
  * leads user to summary.html if login is correct
  * @param {*} nameElement 
  */
-
 function loginCorrect(nameElement) {
   localStorage.setItem("username", nameElement);
   let names = nameElement.split(" ");
@@ -338,7 +313,6 @@ function loginCorrect(nameElement) {
 /**
  * error message if login is incorrect, nulls error messages if user starts new input
  */
-
 function loginIncorrect() {
   document.getElementById("error-message").classList.remove("d-none");
   document.getElementById("email-errorSignUp").classList.add("d-none");

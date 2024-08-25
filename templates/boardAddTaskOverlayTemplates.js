@@ -1,3 +1,7 @@
+/**
+ * This function renders the overlay content.
+ * @returns 
+ */
 function getOverlayAddTaskTemplate() {
     return /*html*/`<form class="overlay-add-form-style" id="overlayAddFormId" onsubmit="overlayAddCreateTask(); return false">
                     <div class="overlay-add-headline">
@@ -142,6 +146,13 @@ function getOverlayAddTaskTemplate() {
     `;
 }
 
+/**
+ * This function renders the contactlist.
+ * @param {*} i 
+ * @param {*} contacts 
+ * @param {*} isChecked 
+ * @returns 
+ */
 function getOverlayAddPersonTemplate(i, contacts, isChecked) {
     return /*html*/`
         <div class="overlay-add-one-person-div" onclick="overlayAddAddAssignedPersons(${i})" id="overlayAddOnePersonDiv-${i}">
@@ -154,6 +165,12 @@ function getOverlayAddPersonTemplate(i, contacts, isChecked) {
         </div>`;
 }
 
+/**
+ * This function shows all assigned Persons.
+ * @param {*} assignedPerson 
+ * @param {*} initials 
+ * @returns 
+ */
 function getAssignedPersonTemplate(assignedPerson, initials) {
     return `
         <div style="background-color:${assignedPerson.color}; color:white" class="overlay-add-selected-person-initals-div">
@@ -161,6 +178,11 @@ function getAssignedPersonTemplate(assignedPerson, initials) {
         </div>`;
 }
 
+/**
+ * This function renders the + div.
+ * @param {*} extraPersonsCount 
+ * @returns 
+ */
 function getPlusDivTemplate(extraPersonsCount) {
     return `
         <div style="background-color:white; color:black" class="overlay-add-selected-person-initals-div">
@@ -168,6 +190,12 @@ function getPlusDivTemplate(extraPersonsCount) {
         </div>`;
 }
 
+/**
+ * This function renders the created subtasks.
+ * @param {*} i 
+ * @param {*} overlayAddSubtaskList 
+ * @returns 
+ */
 function getOverlayAddSubtaskTemplate(i, overlayAddSubtaskList) {
     return /*html*/`
         <ul class="overlay-add-oneSubtask" id="overlayAddOneSubtask-${i}" onmouseover="overlayAddSubtaskHoverEffekt(${i})" onmouseout= "overlayAddSubtaskNoHoverEffekt(${i})">
@@ -182,6 +210,11 @@ function getOverlayAddSubtaskTemplate(i, overlayAddSubtaskList) {
     `;
 }
 
+/**
+ * This function shows two images, when mouseover subtask.
+ * @param {*} i 
+ * @returns 
+ */
 function getOverlayAddEditSubtaskTemplate(i) {
     return /*html*/`
     <img src="../assets/img/deleteTask.png" id="overlayAddLeftImage-${i}" onclick="overlayAddDeleteSubtask(${i})"class="overlay-add-deleteSubtask">
@@ -190,6 +223,10 @@ function getOverlayAddEditSubtaskTemplate(i) {
     `
 }
 
+/**
+ * This function renders the popup, when a task is successfully created.
+ * @returns 
+ */
 function getTaskAddedPopupTemplate() {
     return /*html*/`
     <span>Task added to board</span>

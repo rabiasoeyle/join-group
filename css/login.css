@@ -115,6 +115,7 @@ body {
 .help_initials_mobile {
   display: none;
   align-items: center;
+  gap:40px;
 }
 
 .content {
@@ -130,7 +131,7 @@ body {
   display: flex;
   background-color: white;
   width: 55vw;
-  height: 450px;
+  height: fit-content;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -142,18 +143,19 @@ body {
   display: flex;
   background-color: white;
   width: 75vw;
-  height: 600px;
+  height: fit-content;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 30px;
+  max-width:800px;
 }
 
 .sign_up_headline {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40vw;
+  width: 80%;
 }
 
 .login_input {
@@ -318,10 +320,9 @@ body {
   color: #ff8190;
   font-size: 12px;
   border-radius: 10px;
-  padding: 12px 21px 12px 21px;
+  padding: 12px;
   margin: 12px;
-  max-width: 440px;
-  width: 40vw;
+  width: 80%;
 }
 
 .d-none {
@@ -506,9 +507,9 @@ body {
   .help_initials {
     display: none;
   }
-  .help_initials_mobile {
+  /* .help_initials_mobile {
     display: flex;
-  }
+  } */
   .not_user_mobile {
     margin: 46px 26px 46px 0;
   }
@@ -517,13 +518,11 @@ body {
     margin: 0 0 3vh 20vw;
   }
   .login_base {
-    width: 80vw;
+    width: 100vw;
+    /* height: 64vH; */
   }
   .checkbox_container {
     margin: 12px 30% 16px 0px;
-  }
-  .login_base {
-    height: 64vh;
   }
   .font_color {
     font-size: 42px;
@@ -531,24 +530,27 @@ body {
   .sign_up_headline {
     width: 50vw;
   }
+  .sign_up_base{
+    width: 100vW;
+  }
 }
 
-@media (max-height: 1100px) {
+/* @media (max-height: 1100px) {
   .login_base {
     height: 60vh;
   }
-}
+} */
 
 @media (max-height: 900px) {
-  .login_base {
+  /* .login_base {
     height: 57vh;
-  }
+  } */
   .font_color {
     padding: 14px 0 14px 0;
   }
-  .sign_up_base {
+  /* .sign_up_base {
     height: 65vh;
-  }
+  } */
 }
 
 @media (max-height: 800px) {
@@ -561,21 +563,21 @@ body {
   .checkbox_I_Acpept {
     margin: 0;
   }
-  .sign_up_base {
+  /* .sign_up_base {
     height: 430px;
-  }
+  } */
   .checkbox_container {
     margin: 0px 30% 0px 0px;
   }
   .login_input {
     margin: 6px;
   }
-  .login_base {
+  /* .login_base {
     height: 54vh;
-  }
+  } */
   .font_color {
     padding: 0px 0 14px 0;
-    margin: 0 0 12px 0;
+    margin: 12px 0 12px 0;
   }
 }
 
@@ -605,9 +607,9 @@ body {
   .pricacy_policy_font {
     padding: 12px 16px 12px 16px;
   }
-  .sign_up_base {
+  /* .sign_up_base {
     height: 350px;
-  }
+  } */
   .login_input {
     margin: 0;
     height: 20px;
@@ -628,15 +630,12 @@ body {
 }
 
 @media (max-height: 500px) {
-  .login_base {
+  /* .login_base {
     height: 58vh;
-  }
+  } */
 }
 
 @media (max-width: 450px) {
-  .checkbox_I_Acpept {
-    flex-direction: column;
-  }
   .font_color {
     font-size: 28px;
   }
@@ -644,8 +643,8 @@ body {
     width: 100vw;
   }
   .login_input {
-    width: 50vw;
-    padding:4px;
+    width: 80%;
+    padding:8px 4px;
   }
 }
 

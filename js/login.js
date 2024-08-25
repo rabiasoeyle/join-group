@@ -1,6 +1,23 @@
 let firebase_URL =
   "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
 
+ // Event Listener für das Fenster-Resize-Event
+  window.addEventListener("resize", toggleHelpInitialsMobile);
+
+/**
+ * This function ensures that the Sign Up div only appears in the login in the responsive view.
+ */
+  function toggleHelpInitialsMobile() {
+    let signUpContent = document.getElementById('sign_up_content');
+    let helpInitialsMobile = document.getElementById('help_initials_mobile');
+    // Überprüfe, ob die Fensterbreite kleiner als 850px ist und die Klasse 'd-none' vorhanden ist
+    if (document.documentElement.clientWidth < 850 && signUpContent.classList.contains('d-none')) {
+      helpInitialsMobile.style.display = "flex"; // Zeige das Element an
+    } else {
+      helpInitialsMobile.style.display = "none"; // Verberge das Element
+    }
+  }
+
 /**
  * links summary.html based on user name, if none given, uses Guest User and GU Initials
  */
@@ -22,19 +39,18 @@ function goToSummary() {
 /**
  * toggles Classes to Ids
  */
-
 function signUp() {
   document.getElementById("login_Content").classList.toggle("d-none");
   document.getElementById("sign_up_content").classList.toggle("d-none");
   document.getElementById("help_initials").classList.toggle("d-none");
   document.getElementById("blue_signed_up").classList.toggle("d-none");
   document.getElementById("help_initials_mobile").classList.toggle("d-none");
+  toggleHelpInitialsMobile()
 }
 
 /**
  * resets error message ids
  */
-
 function resetErrorMessages() {
   document.getElementById("email-error").classList.add("d-none");
   document.getElementById("username-error").classList.add("d-none");

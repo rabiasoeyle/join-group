@@ -155,7 +155,9 @@ function showNextDueTaskDate(){
     const userName = localStorage.getItem('username');
     const usernameInitial = localStorage.getItem('usernameInitial');
         document.querySelector('.user_name').textContent = userName;
-        document.getElementById('circle').textContent = usernameInitial;
+        setTimeout(() => {
+          document.getElementById('circle').textContent = usernameInitial;
+        }, 2000);
 }
 
 /**

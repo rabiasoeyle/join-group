@@ -10,7 +10,6 @@ let displayedPriorityCount = 0;
  * This Function counts the amount of task of each status
  * @param {*} task 
  */
-
 function setAmountStatus(task){
     switch (task.status) {
         case "todo":
@@ -32,7 +31,6 @@ function setAmountStatus(task){
  * This Function counts the amount of task of each priority
  * @param {*} task 
  */
-
 function setAmountPriority(task){
     if (task.priority === "urgent") {
         priorityCounts.urgent++;
@@ -49,7 +47,6 @@ function setAmountPriority(task){
  * Function returns which Task is due next 
  * @param {*} task 
  */
-
 function setAmountDate(task){
     let taskDueDate = new Date(task.dueDate);
         if (taskDueDate > new Date() && (!nearestFutureDate || taskDueDate < nearestFutureDate)) {
@@ -62,7 +59,6 @@ function setAmountDate(task){
  * updates board information
  * @param {*} tasksArray 
  */
-
 function updateMetrike(tasksArray){
     document.getElementById('taskCount').textContent = tasksArray.length;
     document.getElementById('todoCount').textContent = statusCounts.todo;
@@ -74,7 +70,6 @@ function updateMetrike(tasksArray){
 /**
  * designs the icon for urgent tasks
  */
-
 function showPriorityIfUrgent(){
     let priorityIcon = document.getElementById('prioIcon'); 
     displayedPriorityCount = priorityCounts.urgent;
@@ -86,7 +81,6 @@ function showPriorityIfUrgent(){
 /**
  * designs the icon for medium tasks
  */
-
 function showPriorityIfMedium(){
     let priorityIcon = document.getElementById('prioIcon'); 
     displayedPriorityCount = priorityCounts.medium;
@@ -98,7 +92,6 @@ function showPriorityIfMedium(){
 /**
  * designs the icon for low tasks
  */
-
 function showPriorityIfLow(){
     let priorityIcon = document.getElementById('prioIcon'); 
     displayedPriorityCount = priorityCounts.low;
@@ -110,7 +103,6 @@ function showPriorityIfLow(){
 /**
  * shows urgent tasks if available, if not shows medium tasks, if not shows low tasks, if no tasks, shows placeholder
  */
-
 function showPriority(){
     let priorityIcon = document.getElementById('prioIcon'); 
     if (priorityCounts.urgent > 0) {
@@ -126,10 +118,10 @@ function showPriority(){
     document.getElementById('urgentCount').textContent = displayedPriorityCount;
     document.getElementById('prioIcon').src = priorityIcon;  
  }
+
 /**
  * initialises summary visualization
  */
-
 async function initSummary() {
     let tasksData = await getAllTasks("tasks");
     let tasksArray = Object.keys(tasksData);
@@ -148,7 +140,6 @@ async function initSummary() {
 /**
  * shows the date of task that is due next and greets user by name, puts initials to header
  */
-
 function showNextDueTaskDate(){
     if (nearestFutureDate) {
         const months = [
@@ -172,7 +163,6 @@ function showNextDueTaskDate(){
  * @param {*} path 
  * @returns 
  */
-
 async function getAllTasks(path) {
     let response = await fetch(BASE_URL + path + ".json");
     return response.json();
@@ -181,7 +171,6 @@ async function getAllTasks(path) {
 /**
  * greets user with individual quote, based on time 
  */
-
 function setDaytimeGreeting() {
     let now = new Date();
     let hours = now.getHours();
@@ -199,7 +188,6 @@ function setDaytimeGreeting() {
 /**
  * highlights done-card
  */
-
 function highlightDone(){
     let div = document.getElementById('summaryPartTopDone');
     div.classList.add('summary-part-top-hover');
@@ -212,7 +200,6 @@ function highlightDone(){
 /**
  * un-highlights done-card
  */
-
 function removeHighlightDone(){
     let div = document.getElementById('summaryPartTopDone');
     div.classList.remove('summary-part-top-hover');
@@ -225,7 +212,6 @@ function removeHighlightDone(){
 /**
  * highlights todo-card
  */
-
 function highlightTodo(){
     let div = document.getElementById('summaryPartTopEdit');
     div.classList.add('summary-part-top-hover');
@@ -240,7 +226,6 @@ function highlightTodo(){
 /**
  * un-highlights todo-card
  */
-
 function removeHighlightTodo(){
     let div = document.getElementById('summaryPartTopEdit');
     div.classList.remove('summary-part-top-hover');
@@ -255,7 +240,6 @@ function removeHighlightTodo(){
 /**
  * highlights priority
  */
-
 function highlightPrio(){
 let div = document.getElementById('summaryPrioParent');
 div.classList.add('summary_prio_hover');
@@ -268,7 +252,6 @@ priority.style.setProperty('color', 'white', 'important');
 /**
  * un-highlights priority
  */
-
 function removeHighlightPrio(){
     let div = document.getElementById('summaryPrioParent');
     div.classList.remove('summary_prio_hover');
@@ -282,7 +265,6 @@ function removeHighlightPrio(){
  * highlights top of summary
  * @param {*} x 
  */
-
 function highlightStatus(x){
 let div = document.getElementById(x);
 div.classList.add('summary-part-top-hover');
@@ -292,7 +274,6 @@ div.classList.add('summary-part-top-hover');
  * un-highlights top of summary
  * @param {*} x 
  */
-
 function removeHighlightStatus(x){
     let div = document.getElementById(x);
     div.classList.remove('summary-part-top-hover');

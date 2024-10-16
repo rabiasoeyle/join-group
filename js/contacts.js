@@ -1,5 +1,5 @@
-let firebase_URL =
-  "https://join-30b43-default-rtdb.europe-west1.firebasedatabase.app/";
+// let firebase_URL =
+//   "https://join-30b43-default-rtdb.europe-west1.firebasedatabase.app/";
 let contacts = [];
 let initialArray = [];
 let previouslyHighlighted;

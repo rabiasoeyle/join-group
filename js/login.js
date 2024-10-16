@@ -1,5 +1,5 @@
-let firebase_URL =
-  "https://join-30b43-default-rtdb.europe-west1.firebasedatabase.app/";
+// let firebase_URL =
+//   "https://join-30b43-default-rtdb.europe-west1.firebasedatabase.app/";
 
  // Event Listener für das Fenster-Resize-Event
   window.addEventListener("resize", toggleHelpInitialsMobile);
@@ -101,15 +101,15 @@ function validateInputs(name, email, password, confirmPassword) {
  * @param {*} newLogin 
  */
 async function processRegistration(newLogin) {
-  try {
+  // try {
     await postData("/login", newLogin);
     clearInputFields();
     signUp();
-  } catch (error) {
-    showError("Beim Erstellen des Benutzers ist ein Fehler aufgetreten.");
-    console.error(error);
+  // } catch (error) {
+    // showError("Beim Erstellen des Benutzers ist ein Fehler aufgetreten.");
+    // console.error(error);
   }
-}
+// }
 
 /**
  * checks if users e-mail has been registered and pops error message
@@ -140,7 +140,7 @@ function clearInputFields() {
  * Adds new User to Firebase
  * @returns 
  */
-async function neuUser() {
+async function newUser() {
   resetErrorMessages();
   let nameValue = document.getElementById("neuUserLoginName").value.trim();
   let emailValue = document.getElementById("neuUserLoginEmail").value.trim();
@@ -148,9 +148,9 @@ async function neuUser() {
   let confirmPasswordValue = document.getElementById("neuUserLoginConfirm_Passwort").value.trim();
   let numberValue = "-";
   let colorValue = getRandomColor();
-  if (!validateInputs(nameValue, emailValue, passwordValue, confirmPasswordValue)) {
-    return;
-  }
+  // if (!validateInputs(nameValue, emailValue, passwordValue, confirmPasswordValue)) {
+  //   return;
+  // }
   let newLogin = {
     name: nameValue,
     email: emailValue,
@@ -192,9 +192,12 @@ function closePopup() {
 async function checkIfEmailExists(email) {
   let response = await fetch(firebase_URL + "login.json");
   let responseToJson = await response.json();
-  return Object.keys(responseToJson).some(
+  if(responseToJson){
+    return Object.keys(responseToJson).some(
     (key) => responseToJson[key].email === email
   );
+  }
+  
 }
 
 /**

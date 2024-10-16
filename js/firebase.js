@@ -1,3 +1,5 @@
+let firebase_URL =
+"https://join-group-e9a46-default-rtdb.europe-west1.firebasedatabase.app/";
 /**
  * In this function the contacts data is loaded from the Firebase.
  *

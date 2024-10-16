@@ -1,5 +1,5 @@
 let firebase_URL =
-  "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+  "https://join-30b43-default-rtdb.europe-west1.firebasedatabase.app/";
 
  // Event Listener für das Fenster-Resize-Event
   window.addEventListener("resize", toggleHelpInitialsMobile);

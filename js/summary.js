@@ -1,5 +1,5 @@
 let tasks = [];
-const BASE_URL = "https://join-2-b992b-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL = "https://join-30b43-default-rtdb.europe-west1.firebasedatabase.app/";
 let statusCounts = {todo: 0, done: 0, inProgress: 0, awaitFeedback: 0};
 let priorityCounts = {urgent: 0, low: 0, medium: 0};
 let nearestFutureDate = null;

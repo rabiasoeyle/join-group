@@ -10,6 +10,7 @@ function showPriorityUrgentSVG(){
      </svg> `
 }
 
+
 /**
  * This function renders a svg.
  * @returns 

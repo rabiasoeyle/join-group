@@ -55,13 +55,13 @@ function overlayAddRollContactsList(){
     assignContactsList.innerHTML='';
     if(overlayAddIsDropDownOpenAssigned){
          for(let i=0; i<contacts.length; i++){
-        let isChecked = overlayAddAssignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
-        assignContactsList.innerHTML += getOverlayAddPersonTemplate(i, contacts, isChecked)
-        let input = document.getElementById(`overlayAddInputCheckbox-${i}`);
-        if(input.checked){
+            let isChecked = overlayAddAssignedPersons.some(person => person.name === contacts[i]['name']) ? 'checked' : '';
+            assignContactsList.innerHTML += getOverlayAddPersonTemplate(i, contacts, isChecked)
+            let input = document.getElementById(`overlayAddInputCheckbox-${i}`);
+            if(input.checked){
             document.getElementById(`overlayAddOnePersonDiv-${i}`).style.backgroundColor = "#2a3647";
             document.getElementById(`overlayAddOnePersonDiv-${i}`).style.color = "white";
-        }
+            }
     }
         document.addEventListener('click', overlayAddCloseDropdownOnOutsideClickAssigned);
         } else {

@@ -9,7 +9,7 @@
 
 @media (max-height: 850px) {
   .form-style {
-    height: 70vh;
+    height: 100%;
   }
   .clear-button,
   .create-button {
@@ -34,7 +34,7 @@
     justify-content: center;
   }
   .form-style {
-    height: 73vh;
+    height: 100%;
   }
   .form-left {
     width: 377px;
@@ -54,13 +54,13 @@
 
 @media (max-height: 670px) {
   .form-style {
-    height: 72vh;
+    height: 100%;
   }
 }
 
 @media (max-height: 650px) {
   .form-style {
-    height: 71vh;
+    height: 100%;
   }
 }
 
@@ -68,9 +68,9 @@
   .form-style h1 {
     font-size: 32px;
   }
-  .form-style {
+  /* .form-style {
     height: 66vh;
-  }
+  } */
   .clear-button,
   .create-button {
     font-size: 18px;
@@ -79,9 +79,9 @@
 }
 
 @media (max-height: 500px) {
-  .form-style {
+  /* .form-style {
     height: 61vh;
-  }
+  } */
   .content {
     height: 76vh;
   }
@@ -91,9 +91,9 @@
 }
 
 @media (max-width: 470px) {
-  .form-style {
+  /* .form-style {
     padding: 0;
-  }
+  } */
   .form-style h1 {
     font-size: 40px;
   }
@@ -148,7 +148,7 @@
     font-size: 16px;
     padding: 4px;
   }
-  .form-style {
+  /* .form-style {
     height: 70vh;
-  }
+  } */
 }

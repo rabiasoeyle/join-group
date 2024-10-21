@@ -96,9 +96,9 @@
 }
 
 @media (max-width: 1020px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 83vh;
-  }
+  } */
   .one-contact-container {
     gap: 4%;
   }
@@ -192,9 +192,9 @@
   .contact-details {
     height: 82vh;
   }
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: calc(100vh - 145px);
-  }
+  } */
 }
 
 @media (max-width: 840px) {
@@ -228,9 +228,9 @@
   .cancel-button-top {
     height: 40px;
   }
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: calc(100vh - 135px);
-  }
+  } */
   .add-contact-right {
     gap: 0;
   }
@@ -258,9 +258,9 @@
     width: 80px;
     font-size: 32px;
   }
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 80vh;
-  }
+  } */
   .contact-details {
     height: 80vh;
   }
@@ -295,9 +295,9 @@
 }
 
 @media (max-height: 600px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 79vh;
-  }
+  } */
   .contact-details {
     height: 79vh;
   }
@@ -313,9 +313,9 @@
 }
 
 @media (max-height: 550px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 78vh;
-  }
+  } */
   .add-contact-left h2 {
     font-size: 28px;
   }
@@ -364,18 +364,18 @@
   .profil_replacement_img_big_edit {
     top: 5vh;
   }
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 77vh;
-  }
+  } */
   .contact-details {
     height: 77vh;
   }
 }
 
 @media (max-height: 470px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 75vh;
-  }
+  } */
   .contact-details {
     height: 76vh;
   }
@@ -400,27 +400,27 @@
 }
 
 @media (max-height: 400px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 74vh;
-  }
+  } */
   .contact-details {
     height: 74vh;
   }
 }
 
 @media (max-height: 374px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     height: 72vh;
-  }
+  } */
   .contact-details {
     height: 73vh;
   }
 }
 
 @media (max-width: 360px) {
-  .contacts-list-desktop {
+  /* .contacts-list-desktop {
     min-width: 300px;
-  }
+  } */
   .contact_details_H2 {
     font-size: 18px;
   }

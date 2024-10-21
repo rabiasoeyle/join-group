@@ -124,7 +124,7 @@ async function deleteTask(path = "") {
       popup.innerHTML=`
           <span>Task successfully deleted</span>
       `
-  document.body.appendChild(popup);d
+  document.body.appendChild(popup);
     setTimeout(() => {
       popup.remove(); 
   }, 2000); 

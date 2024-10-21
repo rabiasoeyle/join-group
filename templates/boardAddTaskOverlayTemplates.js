@@ -26,8 +26,7 @@ function getOverlayAddTaskTemplate() {
                             <div class="overlay-add-assign-to" id="overlayAddAssignDropdown">
                                 <label>Assigned to</label>
                                 <div onclick="overlayAddRollContactsList()" class="overlay-add-assigned-to-input-and-button">
-                                    <input class="overlay-add-assign-to-input" id="overlayAddAssignedPersons"
-                                        value="Select Contacts to assign">
+                                    <input class="overlay-add-assign-to-input" id="overlayAddAssignedPersons" value="Select Contacts to assign">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <mask id="mask0_210222_6030" style="mask-type:alpha" maskUnits="userSpaceOnUse"

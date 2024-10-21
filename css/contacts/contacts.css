@@ -4,7 +4,7 @@
 
 .contacts-list-desktop {
   background-color: white;
-  height: 93vh;
+  height: 100vH;
   width: 15vw;
   min-width: 360px;
   overflow-y: auto;
@@ -117,6 +117,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
+  flex:1;
 }
 
 .profil_replacement_img_big {
@@ -177,6 +178,7 @@
   font-size: 14px;
   font-weight: 400;
   color: #007cee;
+  word-break: break-all;
 }
 
 .profil_replacement_img {

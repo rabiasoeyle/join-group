@@ -60,6 +60,7 @@ body {
 }
 
 .sidebar_top {
+  z-index:10;
   height: 50%;
   width: 100%;
   display: flex;
